@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Threading;
 
-using GIS.Common.Logger;
+using Common.Logger;
 
 using WPFUtilities.Controls;
 

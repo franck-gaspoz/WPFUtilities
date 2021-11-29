@@ -21,8 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>bin\Debug\WPFUtilities.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -72,7 +71,6 @@
     <Compile Include="Command\Interactivity\CancelDialogCommand.cs" />
     <Compile Include="Command\Interactivity\HideDialogCommand.cs" />
     <Compile Include="Command\Interactivity\OkDialogCommand.cs" />
-    <Compile Include="Command\Interactivity\OpenFolderCommand.cs" />
     <Compile Include="Components\Dispatchable.cs" />
     <Compile Include="Components\Display\Zoomer.cs" />
     <Compile Include="Components\ViewModelBase.cs" />
@@ -97,26 +95,19 @@
     <Compile Include="WPFHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".editorconfig" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Components\Components.csproj">
-      <Project>{64DFFED0-7809-4EE9-99DB-4242A90D3D47}</Project>
-      <Name>Components</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FileUtilities\FileUtilities.csproj">
-      <Project>{0b3d1ddc-a198-4d3a-b3aa-d0dade12550c}</Project>
-      <Name>FileUtilities</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Logger\Logger.csproj">
-      <Project>{240606fb-ad96-451e-a59c-17989edb1a10}</Project>
-      <Name>Logger</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf">
       <Version>1.1.31</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Components\Common.Components.csproj">
+      <Project>{64dffed0-7809-4ee9-99db-4242a90d3d47}</Project>
+      <Name>Common.Components</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common.Logger\Common.Logger.csproj">
+      <Project>{240606fb-ad96-451e-a59c-17989edb1a10}</Project>
+      <Name>Common.Logger</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,7 +4,7 @@ using System.Windows.Input;
 
 using WPFUtilities.Components;
 
-using static GIS.Common.Logger.Log;
+using static Common.Logger.Log;
 
 namespace WPFUtilities.Command
 {

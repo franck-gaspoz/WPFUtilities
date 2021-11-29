@@ -19,7 +19,6 @@ namespace WPFUtilities.Command
 
         public static ICommand CancelDialog { get; } = new CancelDialogCommand();
 
-        public static ICommand OpenFolder { get; } = new OpenFolderCommand();
     }
 }
  
