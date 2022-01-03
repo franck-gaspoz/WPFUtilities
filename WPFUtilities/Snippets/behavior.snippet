@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>WPF behavior</Title>
+            <Author>WPFUtilities</Author>
+            <Description>WPF behavior class implementation</Description>
+            <Shortcut>behavior</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp" Delimiter="~">
+<![CDATA[namespace ~Namespace~
+{
+    /// <summary>
+    /// behavior
+    /// </summary>
+    public class ~Name~Behavior : Behavior<~AssociatedObjectType~>
+    {
+	    #region properties
+	
+        #region IsEnabled
+
+        /// <summary>
+        /// get IsEnabled dependency property value for object
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <returns>true if is enabled</returns>
+        public static bool GetIsEnabled(DependencyObject dependencyObject)
+            => (bool)dependencyObject.GetValue(IsEnabledProperty);
+
+        /// <summary>
+        /// set IsEnabled dependency property value for object
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <param name="value">value</param>
+        public static void SetIsEnabled(DependencyObject dependencyObject, bool value)
+            => dependencyObject.SetValue(IsEnabledProperty, value);
+
+        /// <summary>
+        /// IsEnabled dependency property
+        /// </summary>
+        public static readonly DependencyProperty IsEnabledProperty =
+            DependencyProperty.RegisterAttached(
+                "IsEnabled",
+                typeof(bool),
+                typeof(~Name~Behavior),
+                new PropertyMetadata(true, IsEnabledChanged));
+		
+		#endregion
+		
+		#endregion
+		
+		#region interactivity
+	
+        /// <summary>
+        /// IsEnabled changed handler
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <param name="eventArgs">event args</param>
+        static void IsEnabledChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
+        {
+            if (!(dependencyObject is ~AssociatedObjectType~ target)) return;
+            var isEnabled = GetIsEnabled(dependencyObject);
+
+            if ((bool)eventArgs.NewValue && !isEnabled)
+            {
+                Enable();
+            }
+            else
+            {
+                if (isEnabled)
+                    Disable();
+            }
+        }
+		
+        /// <inheritdoc/>
+        protected override void OnAttached()
+        {
+            AssociatedObject.Loaded += AssociatedObject_Loaded;
+        }
+
+        /// <inheritdoc/>
+        protected override void OnDetaching()
+        {
+            AssociatedObject.Loaded -= AssociatedObject_Loaded;
+        }
+	
+	    void AssociatedObject_Loaded(object sender, RoutedEventArgs eventArgs)
+        {
+            AssociatedObject.Loaded -= AssociatedObject_Loaded;
+		    Enable();
+        }
+		
+		#endregion
+		
+		/// <summary>
+		/// enable behavior on associated object
+		/// </summary>
+		void Enable() {
+		    if (_isInitialized) return;
+			// ...
+			_isInitialized = true;
+		}
+		
+		/// <summary>
+		/// disable behavior on associated object
+		/// </summary>
+		void Disable() {
+		    if (!_isInitialized) return;
+			// ...
+			_isInitialized = false;
+		}
+    }
+}]]>
+            </Code>
+            <Declarations>
+				<Literal>
+					<ID>Namespace</ID>
+					<ToolTip>classnamespace</ToolTip>
+					<Default>Behaviors</Default>
+				</Literal>
+                <Literal>
+                    <ID>Name</ID>
+                    <ToolTip>behavior name</ToolTip>
+                    <Default>Name</Default>
+                </Literal>
+                <Literal>
+                    <ID>AssociatedObjectType</ID>
+                    <ToolTip>associated object type</ToolTip>
+                    <Default>AssociatedObjectType</Default>
+                </Literal>
+            </Declarations> 
+            <Imports>
+                <Import>
+					<Namespace>Microsoft.Xaml.Behaviors</Namespace>
+				</Import>
+				<Import>
+					<Namespace>System.ComponentModel</Namespace>
+				</Import>
+				<Import>
+					<Namespace>System.Windows</Namespace>
+				</Import>
+				<Import>
+					<Namespace>System.Windows.Controls</Namespace>
+				</Import>
+            </Imports>           
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
