@@ -1,20 +1,33 @@
 ﻿using System.Windows;
 
+using WPFUtilities.Extensions.Appl;
 
 namespace WPFUtilities.Behaviors.Windows
 {
+    /// <summary>
+    /// callback app viewmodel when window is totally displayed (visible on screen)
+    /// </summary>
     public class WindowDisplayedCallBackBehavior
     {
-        public static bool GetIsEnabled(DependencyObject obj)
-        {
-            return (bool)obj.GetValue(IsEnabledProperty);
-        }
+        /// <summary>
+        /// get IsEnabled dependency property value for object
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <returns>true if is enabled</returns>
+        public static bool GetIsEnabled(DependencyObject dependencyObject)
+            => (bool)dependencyObject.GetValue(IsEnabledProperty);
 
-        public static void SetIsEnabled(DependencyObject obj, bool value)
-        {
-            obj.SetValue(IsEnabledProperty, value);
-        }
+        /// <summary>
+        /// set IsEnabled dependency property value for object
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <param name="value">value</param>
+        public static void SetIsEnabled(DependencyObject dependencyObject, bool value)
+            => dependencyObject.SetValue(IsEnabledProperty, value);
 
+        /// <summary>
+        /// IsEnabled dependency property
+        /// </summary>
         public static readonly DependencyProperty IsEnabledProperty =
             DependencyProperty.RegisterAttached(
                 "IsEnabled",
@@ -22,11 +35,16 @@ namespace WPFUtilities.Behaviors.Windows
                 typeof(WindowDisplayedCallBackBehavior),
                 new PropertyMetadata(false, IsEnabledChanged));
 
-        static void IsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        /// <summary>
+        /// IsEnabled changed handler
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <param name="eventArgs">event args</param>
+        static void IsEnabledChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if (!(d is Window target)) return;
+            if (!(dependencyObject is Window target)) return;
 
-            if ((bool)e.NewValue)
+            if ((bool)eventArgs.NewValue)
             {
                 target.SizeChanged += Target_SizeChanged;
             }
@@ -36,20 +54,24 @@ namespace WPFUtilities.Behaviors.Windows
             }
         }
 
+        /// <summary>
+        /// window size changed
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="eventArgs">event args</param>
         static void Target_SizeChanged(
             object sender,
-            SizeChangedEventArgs e)
+            SizeChangedEventArgs eventArgs)
         {
             if ((sender is Window w) &&
-                e.NewSize.Width != double.NaN
-                && e.NewSize.Height != double.NaN
-                && e.NewSize.Width != 0
-                && e.NewSize.Height != 0)
+                eventArgs.NewSize.Width != double.NaN
+                && eventArgs.NewSize.Height != double.NaN
+                && eventArgs.NewSize.Width != 0
+                && eventArgs.NewSize.Height != 0)
             {
                 w.SizeChanged -= Target_SizeChanged;
-                // TODO: couplage fort à changer
-                (Application.Current as IApp)
-                    ?.NotifyWindowDisplayed(sender);
+
+                Application.Current.ViewModel()?.NotifyMainWindowDisplayed(sender);
             }
         }
     }

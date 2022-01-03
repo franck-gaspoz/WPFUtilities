@@ -11,6 +11,6 @@ namespace WPFUtilities.Components
         /// <summary>
         /// application view model
         /// </summary>
-        IAppViewModel ViewModel { get; set; }
+        IAppBaseViewModel ViewModel { get; set; }
     }
 }

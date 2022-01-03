@@ -64,7 +64,6 @@
     <Compile Include="Commands\Display\DisplayCommands.cs" />
     <Compile Include="Commands\Interactivity\InteractivityCommands.cs" />
     <Compile Include="Commands\Interactivity\OpenWindowCommand.cs" />
-    <Compile Include="Commands\ControlValueCommandParameters.cs" />
     <Compile Include="Commands\Display\ZoomCommand.cs" />
     <Compile Include="Commands\Display\ZoomCommandParameters.cs" />
     <Compile Include="Commands\Interactivity\CloseWindowCommand.cs" />
@@ -84,7 +83,7 @@
     <Compile Include="CustomBrushes\HatchRawBrush.cs" />
     <Compile Include="CustomBrushes\SpectrumBrush.cs" />
     <Compile Include="Extensions\Appl\ApplicationExtensions.cs" />
-    <Compile Include="ViewModels\IAppViewModel.cs" />
+    <Compile Include="ViewModels\IAppBaseViewModel.cs" />
     <Compile Include="Converters\ObjectIsNotNullToBoolConverter.cs" />
     <Compile Include="Converters\ValidDoubleValueFilterConverter.cs" />
     <Compile Include="Converters\NotBooleanToVisibilityConverter.cs" />

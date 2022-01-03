@@ -13,11 +13,11 @@ namespace WPFUtilities.Extensions.Appl
         /// <summary>
         /// current application facade
         /// </summary>
-        public static IApp App => Application.Current as IApp;
+        public static IApp App(this object obj) => (IApp)Application.Current;
 
         /// <summary>
         /// current application view model
         /// </summary>
-        public static IAppViewModel AppViewModel => (Application.Current as IApp)?.ViewModel;
+        public static IAppBaseViewModel ViewModel(this Application app) => (app as IApp)?.ViewModel;
     }
 }

@@ -4,6 +4,8 @@ using System.Windows.Controls;
 
 using Microsoft.Xaml.Behaviors;
 
+using WPFUtilities.Helpers;
+
 namespace WPFUtilities.Behaviors.FrameworkElements
 {
     public class AutoScrollBehavior :
