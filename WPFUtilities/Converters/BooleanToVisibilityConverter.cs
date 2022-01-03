@@ -3,21 +3,17 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
+using WPFUtilities.ComponentModel;
+
 namespace WPFUtilities.Converters
 {
     /// <summary>
     /// converts a boolean to a visibility value
     /// </summary>
-    public class BooleanToVisibilityConverter
-        : IValueConverter
+    public class BooleanToVisibilityConverter :
+        Singleton<BooleanToVisibilityConverter>,
+        IValueConverter
     {
-        static BooleanToVisibilityConverter _instance;
-        /// <summary>
-        /// shared instance
-        /// </summary>
-        public static BooleanToVisibilityConverter Instance
-            => _instance ?? (_instance = new BooleanToVisibilityConverter());
-
         /// <summary>
         /// convert from bool to Visibility
         /// </summary>
@@ -25,7 +21,7 @@ namespace WPFUtilities.Converters
         /// <param name="targetType">target type</param>
         /// <param name="parameter">parameter</param>
         /// <param name="culture">culture</param>
-        /// <returns>Visiblity.Visibile if value is true, Collapsed otherwize returns Collapsed if value is not a Visibility</returns>
+        /// <returns>Visiblity.Visibile if value is true, Collapsed otherwize returns Collapsed if value is not a Visibility/returns>
         public object Convert(
             object value,
             Type targetType,
@@ -54,7 +50,7 @@ namespace WPFUtilities.Converters
         /// <param name="targetType">expect </param>
         /// <param name="parameter">parameter</param>
         /// <param name="culture">culture</param>
-        /// <returns>true if visivility is Visible, false otherwize returns false if value is not a boolean</returns>
+        /// <returns>true if visivility is Visible, false otherwize returns false if value is not a boolean/returns>
         public object ConvertBack(
             object value,
             Type targetType,

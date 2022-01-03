@@ -1,7 +1,7 @@
 ﻿namespace WPFUtilities.ComponentModel
 {
     /// <summary>
-    /// singleton feature implemented in a base class
+    /// singleton feature
     /// </summary>
     /// <typeparam name="T">class</typeparam>
     public abstract class Singleton<T>
