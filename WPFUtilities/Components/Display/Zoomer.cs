@@ -6,12 +6,14 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 
-using Common.Components;
+using WPFUtilities.ComponentModel;
 
 namespace WPFUtilities.Components.Display
 {
-    public class Zoomer
-        : ModelBase
+    /// <summary>
+    /// zoomer interactor
+    /// </summary>
+    public class Zoomer : ModelBase
     {
         static Zoomer _instance;
         public static Zoomer Instance => _instance ?? (_instance = new Zoomer());
@@ -26,7 +28,6 @@ namespace WPFUtilities.Components.Display
         /// <summary>
         /// set zoom factor
         /// </summary>
-        /// <param name="zoomFactor">zoom factor (0..100)</param>
         /// <param name="zoomFactor">zoom factor (0..100)</param>
         /// <param name="target">the zoomed framework element</param>
         /// <param name="scrollViewer">if not null is used to keep view at same place</param>

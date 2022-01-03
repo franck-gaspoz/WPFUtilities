@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 
-using WPFUtilities.Controls;
 
 namespace WPFUtilities.Behaviors.Windows
 {

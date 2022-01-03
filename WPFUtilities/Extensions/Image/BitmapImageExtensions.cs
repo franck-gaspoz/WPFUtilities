@@ -1,10 +1,18 @@
 ﻿using System.IO;
 using System.Windows.Media.Imaging;
 
-namespace WPFUtilities.Extensions
+namespace WPFUtilities.Extensions.Image
 {
-    public static class BitmapImageExt
+    /// <summary>
+    /// bitmap image extensions
+    /// </summary>
+    public static class BitmapImageExtensions
     {
+        /// <summary>
+        /// get bitmap source bytes
+        /// </summary>
+        /// <param name="bitmapSource">bitmap source</param>
+        /// <returns>bytes array</returns>
         public static byte[] ToByteArray(this BitmapSource bitmapSource)
         {
             byte[] data;
