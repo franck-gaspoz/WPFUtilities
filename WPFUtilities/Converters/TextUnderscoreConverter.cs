@@ -2,14 +2,21 @@
 using System.Globalization;
 using System.Windows.Data;
 
+using WPFUtilities.ComponentModel;
+
 namespace WPFUtilities.Converters
 {
     public class TextUnderscoreConverter
-        : IValueConverter
+        : Singleton<TextUnderscoreConverter>, IValueConverter
     {
-        static TextUnderscoreConverter _instance;
-        public static TextUnderscoreConverter Instance
-            => _instance ?? (_instance = new TextUnderscoreConverter());
+        /// <summary>
+        /// disable underscores in a string value
+        /// </summary>
+        /// <param name="value">value, expects a string</param>
+        /// <param name="targetType">target type</param>
+        /// <param name="parameter">parameter</param>
+        /// <param name="culture">culture</param>
+        /// <returns>transformed value or value if not a string</returns>
 
         public object Convert(
             object value,
@@ -29,13 +36,16 @@ namespace WPFUtilities.Converters
             }
         }
 
-        public object ConvertBack(
-            object value,
-            Type targetType,
-            object parameter,
-            CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
+        /// <summary>
+        /// convert back
+        /// </summary>
+        /// <exception cref="NotImplementedException">not implemented</exception>
+        /// <param name="value">value</param>
+        /// <param name="targetType">target type</param>
+        /// <param name="parameter">parameter</param>
+        /// <param name="culture">culture</param>
+        /// <returns></returns>
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+            => throw new NotImplementedException();
     }
 }
