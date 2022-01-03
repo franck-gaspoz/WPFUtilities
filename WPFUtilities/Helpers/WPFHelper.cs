@@ -13,6 +13,12 @@ namespace WPFUtilities.Helpers
     /// </summary>
     public static class WPFHelper
     {
+        /// <summary>
+        /// find object ancestor of type T in visual tree
+        /// </summary>
+        /// <typeparam name="T">lookup type</typeparam>
+        /// <param name="dependencyObject">from this object</param>
+        /// <returns>object of type T or null</returns>
         public static T FindAncestor<T>(DependencyObject dependencyObject)
             where T : DependencyObject
         {
@@ -24,6 +30,12 @@ namespace WPFUtilities.Helpers
             return parentT ?? FindAncestor<T>(parent);
         }
 
+        /// <summary>
+        /// find ancestor having type T in visual tree
+        /// </summary>
+        /// <typeparam name="T">lookup type</typeparam>
+        /// <param name="dependencyObject">from object</param>
+        /// <returns>object or null</returns>
         public static T FindAncestor<T>(FrameworkElement dependencyObject)
             where T : FrameworkElement
         {
@@ -35,6 +47,12 @@ namespace WPFUtilities.Helpers
             return parentT ?? FindAncestor<T>(parent);
         }
 
+        /// <summary>
+        /// find ancestor having type T in visual tree
+        /// </summary>
+        /// <typeparam name="T">lookup type</typeparam>
+        /// <param name="dependencyObject">from object</param>
+        /// <returns>object or null</returns>
         public static T FindAncestor<T>(
             object dependencyObject)
             //where T : IInputElement
@@ -56,22 +74,22 @@ namespace WPFUtilities.Helpers
         /// <summary>
         /// string view of KeyBinding
         /// </summary>
-        /// <param name="kb">key binding</param>
+        /// <param name="keyBinding">key binding</param>
         /// <returns>string</returns>
-        public static string ToString(KeyBinding kb)
+        public static string ToString(KeyBinding keyBinding)
         {
-            string r = "[" + kb.Key + " " + kb.Modifiers + "]";
-            if (kb.CommandParameter != null)
-                r += ",p=" + kb.CommandParameter;
+            string r = "[" + keyBinding.Key + " " + keyBinding.Modifiers + "]";
+            if (keyBinding.CommandParameter != null)
+                r += ",p=" + keyBinding.CommandParameter;
             return r;
         }
 
         /// <summary>
-        /// retrouve un enfant visuel
+        /// find a visual child having type T
         /// </summary>
-        /// <typeparam name="T">type de l'objet demandé</typeparam>
-        /// <param name="depencencyObject">racine</param>
-        /// <returns>objet du type demandé ou null</returns>
+        /// <typeparam name="T">type lookup</typeparam>
+        /// <param name="depencencyObject">from object</param>
+        /// <returns>object or null</returns>
         public static T FindVisualChild<T>(DependencyObject depencencyObject) where T : DependencyObject
         {
             if (depencencyObject != null)
@@ -88,11 +106,11 @@ namespace WPFUtilities.Helpers
         }
 
         /// <summary>
-        /// retrouve un enfant visuel
+        /// find a visual child having name
         /// </summary>
-        /// <typeparam name="T">type de l'objet demandé</typeparam>
-        /// <param name="depencencyObject">racine</param>
-        /// <returns>objet du type demandé ou null</returns>
+        /// <param name="depencencyObject">from object</param>
+        /// <param name="name">lookup name</param>
+        /// <returns>object or null</returns>
         public static FrameworkElement FindByNameInVisualTree(DependencyObject depencencyObject, string name)
         {
             if (depencencyObject != null)
@@ -115,11 +133,11 @@ namespace WPFUtilities.Helpers
         }
 
         /// <summary>
-        /// trouve les éléments dans l'arbre logique de l'objet WPF
+        /// find elements in logicical tree
         /// </summary>
-        /// <param name="obj">objet racine de la recherche</param>
-        /// <param name="SearchType">type des objets recherchés</param>
-        /// <returns>liste des éléments qui possède le type IBindable</returns>
+        /// <param name="obj">from object</param>
+        /// <param name="SearchType">lookup type</param>
+        /// <returns>elements list that match criteria</returns>
         public static List<FrameworkElement> FindByTypeInLogicalTree(FrameworkElement obj, Type SearchType)
         {
             List<FrameworkElement> r = new List<FrameworkElement>();
@@ -153,11 +171,11 @@ namespace WPFUtilities.Helpers
         }
 
         /// <summary>
-        /// trouve les éléments dans l'arbre logique de l'objet WPF
+        /// find elements in logicical tree having type and name
         /// </summary>
-        /// <param name="obj">objet racine de la recherche</param>
-        /// <param name="SearchName">nom de l'objet recherché</param>
-        /// <returns>liste des éléments qui possède le type IBindable</returns>
+        /// <param name="obj">from object</param>
+        /// <param name="SearchName">lookup name</param>
+        /// <returns>elements list</returns>
         public static List<FrameworkElement> FindByNameInLogicalTree(FrameworkElement obj, string SearchName)
         {
             List<FrameworkElement> r = new List<FrameworkElement>();
@@ -188,18 +206,32 @@ namespace WPFUtilities.Helpers
             return r;
         }
 
+        /// <summary>
+        /// scroll to end of a list view
+        /// </summary>
+        /// <param name="_ListView"></param>
         public static void ScrollToEnd(ListView _ListView)
         {
             ScrollViewer _ScrollViewer = GetDescendantByType(_ListView, typeof(ScrollViewer)) as ScrollViewer;
             _ScrollViewer.ScrollToEnd();
         }
 
+        /// <summary>
+        /// scroll to end of a list box
+        /// </summary>
+        /// <param name="_ListBox"></param>
         public static void ScrollToEnd(ListBox _ListBox)
         {
             ScrollViewer _ScrollViewer = GetDescendantByType(_ListBox, typeof(ScrollViewer)) as ScrollViewer;
             _ScrollViewer.ScrollToEnd();
         }
 
+        /// <summary>
+        /// get descendant by type in visual tree
+        /// </summary>
+        /// <param name="element">from element</param>
+        /// <param name="type">lookup type</param>
+        /// <returns>object or null</returns>
         public static Visual GetDescendantByType(Visual element, Type type)
         {
             if (element == null) return null;
@@ -219,59 +251,6 @@ namespace WPFUtilities.Helpers
             return foundElement;
         }
 
-        public static Visual GetDescendants(Visual element, List<Visual> Descendants)
-        {
-            if (element == null) return null;
 
-            //if (element.GetType() == type) return element;
-            Descendants.Add(element);
-
-            Visual foundElement = null;
-            if (element is FrameworkElement)
-            {
-                (element as FrameworkElement).ApplyTemplate();
-            }
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(element); i++)
-            {
-                Visual visual = VisualTreeHelper.GetChild(element, i) as Visual;
-                foundElement = GetDescendants(visual, Descendants);
-                if (foundElement != null)
-                    break;
-            }
-            return foundElement;
-        }
-
-        /// <summary>
-        /// trouve les éléments dans l'arbre logique de l'objet WPF
-        /// </summary>
-        /// <param name="obj">objet racine de la recherche</param>
-        /// <param name="Descendants">liste des descendants</param>
-        /// <returns>liste des éléments descendants de obj dans l'arbre logique</returns>
-        public static void GetLogicalDecendants(FrameworkElement obj, List<FrameworkElement> Descendants)
-        {
-            if (obj is FrameworkElement)
-            {
-                FrameworkElement fe = (FrameworkElement)obj;
-
-                //System.Diagnostics.Debug.WriteLine("Logical Type: " + fe.GetType() + ", Name: " + fe.Name);
-
-                // recurse through the children
-                IEnumerable children = LogicalTreeHelper.GetChildren(fe);
-                foreach (object child in children)
-                {
-                    var chi = child as FrameworkElement;
-                    if (chi != null)
-                    {
-                        Descendants.Add(chi);
-                        GetLogicalDecendants(chi, Descendants);
-                    }
-                }
-            }
-            else
-            {
-                // stop recursing as we certainly can't have any more FrameworkElement children
-                //print("Logical Type: " + obj.GetType());
-            }
-        }
     }
 }
