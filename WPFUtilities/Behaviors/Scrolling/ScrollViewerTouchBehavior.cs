@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 using Microsoft.Xaml.Behaviors;
 
-namespace WPFUtilities.Behaviors.ScrollViewers
+namespace WPFUtilities.Behaviors.Scrolling
 {
     /// <summary>
     /// touch scrolling behavior

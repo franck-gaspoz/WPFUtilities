@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace WPFUtilities.Behaviors.ScrollViewers
+namespace WPFUtilities.Behaviors.Scrolling
 {
     /// <summary>
     /// scroll viewer helper feature model interface

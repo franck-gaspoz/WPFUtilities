@@ -49,14 +49,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Behaviors\ScrollViewers\IScrollViewerHelperFeature.cs" />
-    <Compile Include="Behaviors\FrameworkElements\AutoScrollBehavior.cs" />
-    <Compile Include="Behaviors\Panels\MarginSetterBehavior.cs" />
-    <Compile Include="Behaviors\FrameworkElements\PropertyChangedDelegateCommandBehavior.cs" />
-    <Compile Include="Behaviors\ScrollViewers\ScrollViewerHelperFeatureBehavior.cs" />
-    <Compile Include="Behaviors\ScrollViewers\ScrollViewerTouchBehavior.cs" />
+    <Compile Include="Behaviors\Scrolling\IScrollViewerHelperFeature.cs" />
+    <Compile Include="Behaviors\Scrolling\AutoScrollBehavior.cs" />
+    <Compile Include="Behaviors\Layout\MarginSetterBehavior.cs" />
+    <Compile Include="Behaviors\Interactivity\PropertyChangedDelegateCommandBehavior.cs" />
+    <Compile Include="Behaviors\Scrolling\ScrollViewerHelperFeatureBehavior.cs" />
+    <Compile Include="Behaviors\Scrolling\ScrollViewerTouchBehavior.cs" />
     <Compile Include="Behaviors\Windows\WindowDisplayedDelegateCommandBehavior.cs" />
-    <Compile Include="Behaviors\FrameworkElements\CollapseSplitedPanelBehavior.cs" />
+    <Compile Include="Behaviors\Layout\CollapseSplitedPanelBehavior.cs" />
     <Compile Include="Commands\AbstractCommand.cs" />
     <Compile Include="Commands\Appl\ApplCommands.cs" />
     <Compile Include="Commands\Appl\CloseApplicationCommand.cs" />

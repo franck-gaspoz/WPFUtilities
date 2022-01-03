@@ -6,7 +6,7 @@ using Microsoft.Xaml.Behaviors;
 
 using WPFUtilities.Helpers;
 
-namespace WPFUtilities.Behaviors.FrameworkElements
+namespace WPFUtilities.Behaviors.Scrolling
 {
     /// <summary>
     /// auto scroll at bottom behavior
