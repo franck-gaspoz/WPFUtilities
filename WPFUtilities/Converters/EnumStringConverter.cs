@@ -2,25 +2,24 @@
 using System.Globalization;
 using System.Windows.Data;
 
+using WPFUtilities.ComponentModel;
+
 namespace WPFUtilities.Converters
 {
+    /// <summary>
+    /// enum string converter
+    /// </summary>
     public class EnumStringConverter
-        : IValueConverter
+        : Singleton<EnumStringConverter>, IValueConverter
     {
-        static EnumStringConverter _instance;
-        public static EnumStringConverter Instance
-            => _instance = _instance ?? new EnumStringConverter();
-
-        protected EnumStringConverter() { }
-
         /// <summary>
         /// Enum -> string
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="targetType"></param>
-        /// <param name="parameter"></param>
-        /// <param name="culture"></param>
-        /// <returns></returns>
+        /// <param name="value">value</param>
+        /// <param name="targetType">target type</param>
+        /// <param name="parameter">Enum type</param>
+        /// <param name="culture">culture</param>
+        /// <returns>string value of the enum value</returns>
         public object Convert(
             object value,
             Type targetType,
@@ -37,11 +36,11 @@ namespace WPFUtilities.Converters
         /// <summary>
         /// string -> Enum
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="targetType"></param>
-        /// <param name="parameter"></param>
-        /// <param name="culture"></param>
-        /// <returns></returns>
+        /// <param name="value">value</param>
+        /// <param name="targetType">target type</param>
+        /// <param name="parameter">Enum type</param>
+        /// <param name="culture">culture</param>
+        /// <returns>enum of the string value or value if wrong parameters</returns>
         public object ConvertBack(
             object value,
             Type targetType,
