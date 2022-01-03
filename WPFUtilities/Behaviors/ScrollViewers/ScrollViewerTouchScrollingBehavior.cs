@@ -4,52 +4,91 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
+using Microsoft.Xaml.Behaviors;
+
 namespace WPFUtilities.Behaviors.ScrollViewers
 {
-    public class ScrollViewerTouchScrollingBehavior : DependencyObject
+    /// <summary>
+    /// scroll viewer touch scrolling behavior : enable scrolling with mouse + left click and drag
+    /// </summary>
+    public class ScrollViewerTouchScrollingBehavior : Behavior<ScrollViewer>
     {
+        /// <summary>
+        /// enabling trigger treshold
+        /// </summary>
         static readonly double EnableTriggerTreshold = 5;
 
-        public static bool GetIsEnabled(DependencyObject obj)
-        {
-            return (bool)obj.GetValue(IsEnabledProperty);
-        }
+        /// <summary>
+        /// get is enabled
+        /// </summary>
+        /// <param name="dependencyObject">dependency Object</param>
+        /// <returns>is enabled</returns>
+        public static bool GetIsEnabled(DependencyObject dependencyObject) => (bool)dependencyObject.GetValue(IsEnabledProperty);
 
-        public static void SetIsEnabled(DependencyObject obj, bool value)
-        {
-            obj.SetValue(IsEnabledProperty, value);
-        }
+        /// <summary>
+        /// set is enabled
+        /// </summary>
+        /// <param name="dependencyObject">dependencyObject</param>
+        /// <param name="value">value</param>
+        public static void SetIsEnabled(DependencyObject dependencyObject, bool value) => dependencyObject.SetValue(IsEnabledProperty, value);
 
+        /// <summary>
+        /// is enabled
+        /// </summary>
         public bool IsEnabled
         {
             get { return (bool)GetValue(IsEnabledProperty); }
             set { SetValue(IsEnabledProperty, value); }
         }
 
+        /// <summary>
+        /// is enabled dependency property
+        /// </summary>
         public static readonly DependencyProperty IsEnabledProperty =
             DependencyProperty.RegisterAttached(
                 "IsEnabled",
                 typeof(bool),
                 typeof(ScrollViewerTouchScrollingBehavior),
-                new UIPropertyMetadata(false, IsEnabledChanged));
+                new UIPropertyMetadata(true, IsEnabledChanged));
 
+        /// <summary>
+        /// mouses captures
+        /// </summary>
         static Dictionary<object, MouseCapture> _captures = new Dictionary<object, MouseCapture>();
 
-        static void IsEnabledChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        /// <inheritdoc/>
+        protected override void OnAttached()
         {
-            if (!(d is ScrollViewer target)) return;
+            AssociatedObject.Loaded += Target_Loaded;
+        }
 
-            if ((bool)e.NewValue)
+        /// <inheritdoc/>
+        protected override void OnDetaching()
+        {
+            Target_Unloaded(AssociatedObject, new RoutedEventArgs());
+        }
+
+        /// <summary>
+        /// is enabled changed handler
+        /// </summary>
+        /// <param name="dependencyObject">dependency Object</param>
+        /// <param name="eventArgs">event args</param>
+        static void IsEnabledChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
+        {
+            if (!(dependencyObject is ScrollViewer target)) return;
+            var isEnabled = GetIsEnabled(dependencyObject);
+            if ((bool)eventArgs.NewValue && !isEnabled)
             {
                 target.Loaded += Target_Loaded;
             }
             else
             {
-                Target_Unloaded(target, new RoutedEventArgs());
+                if (isEnabled)
+                    Target_Unloaded(target, new RoutedEventArgs());
             }
         }
 
-        static void Target_Unloaded(object sender, RoutedEventArgs e)
+        static void Target_Unloaded(object sender, RoutedEventArgs eventArgs)
         {
             if (!(sender is ScrollViewer target)) return;
 
@@ -75,7 +114,7 @@ namespace WPFUtilities.Behaviors.ScrollViewers
             };
         }
 
-        static void Target_Loaded(object sender, RoutedEventArgs e)
+        static void Target_Loaded(object sender, RoutedEventArgs eventArgs)
         {
             if (!(sender is ScrollViewer target)) return;
 
@@ -86,7 +125,7 @@ namespace WPFUtilities.Behaviors.ScrollViewers
             target.PreviewMouseLeftButtonUp += Target_PreviewMouseLeftButtonUp;
         }
 
-        static void Target_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        static void Target_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs eventArgs)
         {
             if (!(sender is ScrollViewer target)) return;
 
@@ -94,11 +133,11 @@ namespace WPFUtilities.Behaviors.ScrollViewers
         }
 
         static void Target_PreviewMouseMove(object sender,
-            MouseEventArgs e)
+            MouseEventArgs eventArgs)
         {
             if (!_captures.ContainsKey(sender)) return;
 
-            if (e.LeftButton != MouseButtonState.Pressed)
+            if (eventArgs.LeftButton != MouseButtonState.Pressed)
             {
                 (sender as ScrollViewer).Cursor = null;
                 _captures.Remove(sender);
@@ -110,7 +149,7 @@ namespace WPFUtilities.Behaviors.ScrollViewers
             target.Cursor = Cursors.SizeAll;
             var capture = _captures[sender];
 
-            var point = e.GetPosition(target);
+            var point = eventArgs.GetPosition(target);
 
             var dy = point.Y - capture.Point.Y;
             var dx = point.X - capture.Point.X;
@@ -126,8 +165,19 @@ namespace WPFUtilities.Behaviors.ScrollViewers
 
         internal class MouseCapture
         {
+            /// <summary>
+            /// horizontal offset
+            /// </summary>
             public Double HorizontalOffset { get; set; }
+
+            /// <summary>
+            /// vertical offset
+            /// </summary>
             public Double VerticalOffset { get; set; }
+
+            /// <summary>
+            /// point
+            /// </summary>
             public Point Point { get; set; }
         }
     }
