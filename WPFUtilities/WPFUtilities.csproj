@@ -56,7 +56,7 @@
     <Compile Include="Behaviors\ScrollViewers\ScrollViewerHelperFeatureBehavior.cs" />
     <Compile Include="Behaviors\ScrollViewers\ScrollViewerTouchScrollingBehavior.cs" />
     <Compile Include="Behaviors\ScrollViewers\TouchScrollingBehavior.cs" />
-    <Compile Include="Behaviors\Windows\WindowDisplayedCallBackBehavior.cs" />
+    <Compile Include="Behaviors\Windows\WindowDisplayedDelegateCommandBehavior.cs" />
     <Compile Include="Behaviors\FrameworkElements\CollapseSplitedPanelBehavior.cs" />
     <Compile Include="Commands\AbstractCommand.cs" />
     <Compile Include="Commands\Appl\ApplCommands.cs" />

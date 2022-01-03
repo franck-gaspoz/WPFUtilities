@@ -1,14 +1,18 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
-using WPFUtilities.Extensions.Appl;
+using Microsoft.Xaml.Behaviors;
 
 namespace WPFUtilities.Behaviors.Windows
 {
     /// <summary>
     /// callback app viewmodel when window is totally displayed (visible on screen)
     /// </summary>
-    public class WindowDisplayedCallBackBehavior
+    public class WindowDisplayedDelegateCommandBehavior
+        : Behavior<Window>
     {
+        #region IsEnabled
+
         /// <summary>
         /// get IsEnabled dependency property value for object
         /// </summary>
@@ -32,8 +36,16 @@ namespace WPFUtilities.Behaviors.Windows
             DependencyProperty.RegisterAttached(
                 "IsEnabled",
                 typeof(bool),
-                typeof(WindowDisplayedCallBackBehavior),
-                new PropertyMetadata(false, IsEnabledChanged));
+                typeof(WindowDisplayedDelegateCommandBehavior),
+                new PropertyMetadata(true, IsEnabledChanged));
+
+        /// <inheritdoc/>
+        protected override void OnAttached()
+            => AssociatedObject.SizeChanged += Target_SizeChanged;
+
+        /// <inheritdoc/>
+        protected override void OnDetaching()
+            => AssociatedObject.SizeChanged -= Target_SizeChanged;
 
         /// <summary>
         /// IsEnabled changed handler
@@ -43,16 +55,58 @@ namespace WPFUtilities.Behaviors.Windows
         static void IsEnabledChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
             if (!(dependencyObject is Window target)) return;
+            var isEnabled = GetIsEnabled(dependencyObject);
 
-            if ((bool)eventArgs.NewValue)
+            if ((bool)eventArgs.NewValue && !isEnabled)
             {
                 target.SizeChanged += Target_SizeChanged;
             }
             else
             {
-                target.SizeChanged -= Target_SizeChanged;
+                if (isEnabled)
+                    target.SizeChanged -= Target_SizeChanged;
             }
         }
+
+        #endregion
+
+        #region Command
+
+        /// <summary>
+        /// command
+        /// </summary>
+        public ICommand Command
+        {
+            get => (ICommand)GetValue(CommandProperty);
+            set { SetValue(CommandProperty, value); }
+        }
+
+        /// <summary>
+        /// get command
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <returns>comamnd</returns>
+        public static ICommand GetCommand(DependencyObject dependencyObject)
+            => (ICommand)dependencyObject.GetValue(CommandProperty);
+
+        /// <summary>
+        /// set command
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <param name="value">value</param>
+        public static void SetCommand(DependencyObject dependencyObject, ICommand value)
+            => dependencyObject.SetValue(CommandProperty, value);
+
+        /// <summary>
+        /// command dependency property
+        /// </summary>
+        public static readonly DependencyProperty CommandProperty =
+            DependencyProperty.RegisterAttached("Command",
+                typeof(ICommand),
+                typeof(WindowDisplayedDelegateCommandBehavior),
+                new PropertyMetadata(null));
+
+        #endregion
 
         /// <summary>
         /// window size changed
@@ -71,7 +125,7 @@ namespace WPFUtilities.Behaviors.Windows
             {
                 w.SizeChanged -= Target_SizeChanged;
 
-                Application.Current.ViewModel()?.NotifyMainWindowDisplayed(sender);
+                GetCommand(w)?.Execute(w);
             }
         }
     }
