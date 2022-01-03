@@ -3,19 +3,28 @@ using System.Windows.Controls;
 
 namespace WPFUtilities.Behaviors
 {
+    /// <summary>
+    /// margin setter behavior
+    /// </summary>
     public class MarginSetterBehavior
     {
-        public static Thickness GetMargin(DependencyObject obj)
-        {
-            return (Thickness)obj.GetValue(MarginProperty);
-        }
+        /// <summary>
+        /// get margin
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <returns></returns>
+        public static Thickness GetMargin(DependencyObject dependencyObject) => (Thickness)dependencyObject.GetValue(MarginProperty);
 
-        public static void SetMargin(DependencyObject obj, Thickness value)
-        {
+        /// <summary>
+        /// get margin
+        /// </summary>
+        /// <param name="dependencyObject">dependency Object</param>
+        /// <param name="value"></param>
+        public static void SetMargin(DependencyObject dependencyObject, Thickness value) => dependencyObject.SetValue(MarginProperty, value);
 
-            obj.SetValue(MarginProperty, value);
-        }
-
+        /// <summary>
+        /// margin property
+        /// </summary>
         public static readonly DependencyProperty MarginProperty =
             DependencyProperty.RegisterAttached(
                 "Margin", typeof(Thickness),
@@ -23,17 +32,14 @@ namespace WPFUtilities.Behaviors
                 new UIPropertyMetadata(new Thickness(),
                     Init));
 
-        public static void Init(object sender, DependencyPropertyChangedEventArgs e)
+        static void Init(object sender, DependencyPropertyChangedEventArgs e)
         {
             var panel = sender as Panel;
             if (panel == null) return;
             panel.Loaded += Panel_Loaded;
         }
 
-        private static void Panel_Loaded(object sender, RoutedEventArgs e)
-        {
-            CreateThicknessForChildrens(sender);
-        }
+        private static void Panel_Loaded(object sender, RoutedEventArgs e) => CreateThicknessForChildrens(sender);
 
         static void CreateThicknessForChildrens(
             object sender)
