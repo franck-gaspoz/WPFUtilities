@@ -7,6 +7,9 @@ using WPFUtilities.ComponentModel;
 
 namespace WPFUtilities.Converters
 {
+    /// <summary>
+    /// convert an object value to a visbibility value depending on its nullity
+    /// </summary>
     public class ObjectToVisibilityConverter
         : Singleton<ObjectToVisibilityConverter>, IValueConverter
     {
