@@ -11,11 +11,14 @@ using WPFUtilities.ComponentModel;
 namespace WPFUtilities.Components.Display
 {
     /// <summary>
-    /// zoomer interactor
+    /// zoomer interactor (TODO: complete)
     /// </summary>
     public class Zoomer : ModelBase
     {
         static Zoomer _instance;
+        /// <summary>
+        /// shared instance
+        /// </summary>
         public static Zoomer Instance => _instance ?? (_instance = new Zoomer());
 
         ScrollViewer _scrollViewer;
@@ -126,20 +129,32 @@ namespace WPFUtilities.Components.Display
             }
         }
 
-        public static double GetOffsetY(double rely, ScrollViewer scrollViewer)
-        {
-            return double.IsNaN(rely) ? scrollViewer.ScrollableHeight * 0.5d
-                : scrollViewer.ScrollableHeight * rely;
-        }
+        /// <summary>
+        /// get scroll viewer y offset
+        /// </summary>
+        /// <param name="relativeY">relative y</param>
+        /// <param name="scrollViewer">scroll viewer</param>
+        /// <returns>y offset</returns>
+        public static double GetOffsetY(double relativeY, ScrollViewer scrollViewer)
+            => double.IsNaN(relativeY) ? scrollViewer.ScrollableHeight * 0.5d
+                : scrollViewer.ScrollableHeight * relativeY;
 
-        public static double GetOffsetX(double relx, ScrollViewer scrollViewer)
-        {
-            return double.IsNaN(relx) ? scrollViewer.ScrollableWidth * 0.5d
-                                : scrollViewer.ScrollableWidth * relx;
-        }
+        /// <summary>
+        /// get scroll viewer x offset
+        /// </summary>
+        /// <param name="relativeX">relative x</param>
+        /// <param name="scrollViewer">scroll viewer</param>
+        /// <returns>x offset</returns>
+        public static double GetOffsetX(double relativeX, ScrollViewer scrollViewer)
+            => double.IsNaN(relativeX) ? scrollViewer.ScrollableWidth * 0.5d
+            : scrollViewer.ScrollableWidth * relativeX;
 
+        /// <summary>
+        /// set zoom factor
+        /// </summary>
+        /// <param name="zoomFactor">zoom factor (0..1)</param>
+        /// <param name="scaleTransform">scale transform</param>
         void SetZoom(
-            // valeur de zoom souhaité entre 0 et 1 compris
             double zoomFactor,
             ScaleTransform scaleTransform
         )
@@ -148,13 +163,17 @@ namespace WPFUtilities.Components.Display
             scaleTransform.ScaleY = zoomFactor;
         }
 
+        /// <summary>
+        /// set zoom with animation
+        /// </summary>
+        /// <param name="zoomFactor">zoom factor (0..1)</param>
+        /// <param name="scaleTransform">scale transform</param>
         void SetZoom2(
-            // valeur de zoom souhaité entre 0 et 1 compris
             double zoomFactor,
             ScaleTransform scaleTransform
         )
         {
-            // durée de l'animation souhaitée en milli secondes (150)
+            // animation duration in milli secondes (150)
             var duration =
                 new Duration(TimeSpan.FromMilliseconds(150));
             var zfx =
@@ -162,13 +181,13 @@ namespace WPFUtilities.Components.Display
                     scaleTransform.ScaleX,
                     zoomFactor,
                     duration);
-            zfx.Completed += Zf_Completed;
+            zfx.Completed += setZoomFactorAnimationCompleted;
             var zfy =
                 new DoubleAnimation(
                     scaleTransform.ScaleY,
                     zoomFactor,
                     duration);
-            zfy.Completed += Zf_Completed;
+            zfy.Completed += setZoomFactorAnimationCompleted;
             scaleTransform
                 .BeginAnimation(
                     ScaleTransform.ScaleXProperty,
@@ -179,7 +198,12 @@ namespace WPFUtilities.Components.Display
                     zfy);
         }
 
-        private void Zf_Completed(object sender, EventArgs e)
+        /// <summary>
+        /// zoom factor anim completed
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="eventArgs">event args</param>
+        private void setZoomFactorAnimationCompleted(object sender, EventArgs eventArgs)
         {
             _zfCount++;
             if (_zfCount == 2)
