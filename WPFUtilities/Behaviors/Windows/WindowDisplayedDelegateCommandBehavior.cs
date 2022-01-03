@@ -6,7 +6,7 @@ using Microsoft.Xaml.Behaviors;
 namespace WPFUtilities.Behaviors.Windows
 {
     /// <summary>
-    /// callback app viewmodel when window is totally displayed (visible on screen)
+    /// call delegate command when a window is totally displayed (visible on screen)
     /// </summary>
     public class WindowDisplayedDelegateCommandBehavior
         : Behavior<Window>

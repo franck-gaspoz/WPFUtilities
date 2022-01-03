@@ -53,7 +53,5 @@ namespace WPFUtilities.Behaviors.Layout
                 fe.Margin = childMargin;
             }
         }
-
-
     }
 }
