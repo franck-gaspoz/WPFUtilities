@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>WPF Command class implementation</Title>
+            <Author>WPFUtilities</Author>
+            <Description>command inheriting from AbstractCommand (singleton,default CanExecute,CanExecuteChanged)</Description>
+            <Shortcut>command</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp" Delimiter="~">
+<![CDATA[namespace ~Namespace~
+{
+    /// <summary>
+    /// ~CommandDescription~
+    /// </summary>
+    public class ~Name~Command : AbstractCommand<~Name~Command>, ICommand
+    {
+	    /// <inheritdoc/>
+        public bool CanExecute(object parameter)
+            => true;
+
+        /// <summary>
+        /// ~CommandDescription~
+        /// </summary>
+        /// <param name="parameter">~ParameterDescription~</param>
+        public void Execute(object parameter)
+        {
+            // ...
+        }
+    }
+}]]>
+            </Code>
+            <Declarations>
+				<Literal>
+					<ID>Namespace</ID>
+					<ToolTip>class namespace</ToolTip>
+					<Default>Commands</Default>
+				</Literal>
+                <Literal>
+                    <ID>Name</ID>
+                    <ToolTip>command name</ToolTip>
+                    <Default>Name</Default>
+                </Literal>
+				<Literal>
+					<ID>CommandDescription</ID>
+					<ToolTip>command description</ToolTip>
+					<Default>CommandDescription</Default>
+				</Literal>
+				<Literal>
+					<ID>ParameterDescription</ID>
+					<ToolTip>parameter description</ToolTip>
+					<Default>ParameterDescription</Default>
+				</Literal>
+            </Declarations> 
+            <Imports>
+				<Import>
+					<Namespace>System.ComponentModel</Namespace>
+				</Import>
+				<Import>
+					<Namespace>System.Windows</Namespace>
+				</Import>
+				<Import>
+					<Namespace>System.Windows.Controls</Namespace>
+				</Import>
+				<Import>
+					<Namespace>System.Windows.Input</Namespace>
+				</Import>
+				<Import>
+					<Namespace>WPFUtilities.Commands</Namespace>
+				</Import>
+            </Imports>           
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>
