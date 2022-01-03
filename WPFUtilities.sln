@@ -5,10 +5,6 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFUtilities", "WPFUtilities\WPFUtilities.csproj", "{7D6A0517-34E5-43CE-A5D5-C93DF9818A34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Components", "Common.Components\Common.Components.csproj", "{64DFFED0-7809-4EE9-99DB-4242A90D3D47}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.Logger", "Common.Logger\Common.Logger.csproj", "{240606FB-AD96-451E-A59C-17989EDB1A10}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,14 +15,6 @@ Global
 		{7D6A0517-34E5-43CE-A5D5-C93DF9818A34}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{7D6A0517-34E5-43CE-A5D5-C93DF9818A34}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D6A0517-34E5-43CE-A5D5-C93DF9818A34}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64DFFED0-7809-4EE9-99DB-4242A90D3D47}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{64DFFED0-7809-4EE9-99DB-4242A90D3D47}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{64DFFED0-7809-4EE9-99DB-4242A90D3D47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64DFFED0-7809-4EE9-99DB-4242A90D3D47}.Release|Any CPU.Build.0 = Release|Any CPU
-		{240606FB-AD96-451E-A59C-17989EDB1A10}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{240606FB-AD96-451E-A59C-17989EDB1A10}.Debug|Any CPU.Build.0 = Release|Any CPU
-		{240606FB-AD96-451E-A59C-17989EDB1A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{240606FB-AD96-451E-A59C-17989EDB1A10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
