@@ -20,7 +20,6 @@ namespace WPFUtilities.Converters
         /// <param name="parameter">parameter</param>
         /// <param name="culture">culture</param>
         /// <returns>transformed value or value if not a string</returns>
-
         public object Convert(
             object value,
             Type targetType,
