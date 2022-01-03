@@ -5,7 +5,7 @@ namespace WPFUtilities.Commands.Appl
     /// <summary>
     /// close application command (close main window)
     /// </summary>
-    public class ApplicationCloseCommand : AbstractCommand<ApplicationCloseCommand>
+    public class CloseApplicationCommand : AbstractCommand<CloseApplicationCommand>
     {
         /// <inheritdoc/>
         public override void Execute(object parameter)

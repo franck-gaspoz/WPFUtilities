@@ -10,7 +10,7 @@ namespace WPFUtilities.Commands.Appl
         /// <summary>
         /// close application
         /// </summary>
-        public static ICommand ApplicationClose => ApplicationCloseCommand.Instance;
+        public static ICommand ApplicationClose => CloseApplicationCommand.Instance;
 
     }
 }

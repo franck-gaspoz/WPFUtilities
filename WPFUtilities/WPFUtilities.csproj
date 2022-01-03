@@ -62,7 +62,7 @@
     <Compile Include="Behaviors\FrameworkElements\CollapseSplitedPanelBehavior.cs" />
     <Compile Include="Commands\AbstractCommand.cs" />
     <Compile Include="Commands\Appl\ApplCommands.cs" />
-    <Compile Include="Commands\Appl\ApplicationCloseCommand.cs" />
+    <Compile Include="Commands\Appl\CloseApplicationCommand.cs" />
     <Compile Include="Commands\Display\DisplayCommands.cs" />
     <Compile Include="Commands\Interactivity\InteractivityCommands.cs" />
     <Compile Include="Commands\Interactivity\OpenWindowCommand.cs" />
