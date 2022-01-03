@@ -12,16 +12,19 @@ namespace WPFUtilities.Converters
     public class DebugConverter
         : Singleton<DebugConverter>, IValueConverter
     {
-        static int _instanceCount = 0;
+        /// <summary>
+        /// instance counter
+        /// </summary>
+        public static int InstanceCount = 0;
 
-        static Action<DebugConverter> CallBack;
+        static Action<DebugConverter> CallBack = (debugConverter) => { };
 
         /// <summary>
         /// build a new instance, update instance counter
         /// </summary>
         public DebugConverter()
         {
-            _instanceCount++;
+            InstanceCount++;
         }
 
         /// <summary>
