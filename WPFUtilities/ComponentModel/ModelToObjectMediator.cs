@@ -3,7 +3,7 @@
 namespace WPFUtilities.ComponentModel
 {
     /// <summary>
-    /// a mediator that transfer a model property value to an object property value
+    /// a mediator that transfer any model property value to an object property value
     /// </summary>
     public class ModelToObjectMediator
     {
@@ -22,7 +22,7 @@ namespace WPFUtilities.ComponentModel
         /// </summary>
         /// <param name="source">mediator source</param>
         /// <param name="target">mediator target</param>
-        public void InitializeMediate(IModelBase source, object target)
+        public virtual void InitializeMediate(IModelBase source, object target)
         {
             ClearMediate();
             _source = source;
@@ -33,7 +33,7 @@ namespace WPFUtilities.ComponentModel
         /// <summary>
         /// clear the mediator bindings
         /// </summary>
-        public void ClearMediate()
+        public virtual void ClearMediate()
         {
             if (_source != null)
                 _source.PropertyChanged -= ModelBase_PropertyChanged;
@@ -46,7 +46,7 @@ namespace WPFUtilities.ComponentModel
         /// </summary>
         /// <param name="sender">sender</param>
         /// <param name="e">event args</param>
-        private void ModelBase_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        protected virtual void ModelBase_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             var sourceProperty = _source.GetType().GetProperty(e.PropertyName);
             var targetProperty = _target.GetType().GetProperty(e.PropertyName);

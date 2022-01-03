@@ -72,6 +72,7 @@
     <Compile Include="ComponentModel\IValidableModel.cs" />
     <Compile Include="ComponentModel\ModelBase.cs" />
     <Compile Include="ComponentModel\ModelToObjectMediator.cs" />
+    <Compile Include="ComponentModel\ModelToObjectPropertyMediator.cs" />
     <Compile Include="ComponentModel\Singleton.cs" />
     <Compile Include="ComponentModel\ValidableModel.cs" />
     <Compile Include="ComponentModel\ValidationAttributes\OfTypeAttribute.cs" />
