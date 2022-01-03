@@ -6,6 +6,9 @@ using WPFUtilities.ComponentModel;
 
 namespace WPFUtilities.Converters
 {
+    /// <summary>
+    /// disabled underscores in a string value (avoid underlined first words letters)
+    /// </summary>
     public class TextUnderscoreConverter
         : Singleton<TextUnderscoreConverter>, IValueConverter
     {
