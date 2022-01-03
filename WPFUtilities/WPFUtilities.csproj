@@ -54,8 +54,7 @@
     <Compile Include="Behaviors\Panels\MarginSetterBehavior.cs" />
     <Compile Include="Behaviors\FrameworkElements\PropertyChangedDelegateCommandBehavior.cs" />
     <Compile Include="Behaviors\ScrollViewers\ScrollViewerHelperFeatureBehavior.cs" />
-    <Compile Include="Behaviors\ScrollViewers\ScrollViewerTouchScrollingBehavior.cs" />
-    <Compile Include="Behaviors\ScrollViewers\TouchScrollingBehavior.cs" />
+    <Compile Include="Behaviors\ScrollViewers\ScrollViewerTouchBehavior.cs" />
     <Compile Include="Behaviors\Windows\WindowDisplayedDelegateCommandBehavior.cs" />
     <Compile Include="Behaviors\FrameworkElements\CollapseSplitedPanelBehavior.cs" />
     <Compile Include="Commands\AbstractCommand.cs" />

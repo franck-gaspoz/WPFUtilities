@@ -7,16 +7,38 @@ using Microsoft.Xaml.Behaviors;
 
 namespace WPFUtilities.Behaviors.ScrollViewers
 {
-    public class TouchScrollingBehavior :
+    /// <summary>
+    /// touch scrolling behavior
+    /// </summary>
+    public class ScrollViewerTouchBehavior :
         Behavior<ScrollViewer>
     {
+        /// <summary>
+        /// enabling trigger treshold
+        /// </summary>
         static readonly double EnableTriggerTreshold = 5;
 
+        /// <summary>
+        /// horizontal offset
+        /// </summary>
         public Double HorizontalOffset { get; set; }
+
+        /// <summary>
+        /// vertical offset
+        /// </summary>
         public Double VerticalOffset { get; set; }
+
+        /// <summary>
+        /// point
+        /// </summary>
         public Point Point { get; set; }
+
+        /// <summary>
+        /// is tracking
+        /// </summary>
         public bool IsTracking { get; set; }
 
+        /// <inheritdoc/>
         protected override void OnAttached()
         {
             AssociatedObject.PreviewMouseLeftButtonDown += Target_PreviewMouseLeftButtonDown;
@@ -24,6 +46,7 @@ namespace WPFUtilities.Behaviors.ScrollViewers
             AssociatedObject.PreviewMouseLeftButtonUp += Target_PreviewMouseLeftButtonUp;
         }
 
+        /// <inheritdoc/>
         protected override void OnDetaching()
         {
             IsTracking = false;
