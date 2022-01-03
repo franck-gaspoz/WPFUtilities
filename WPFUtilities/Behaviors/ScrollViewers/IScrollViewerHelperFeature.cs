@@ -2,14 +2,24 @@
 
 namespace WPFUtilities.Behaviors.ScrollViewers
 {
+    /// <summary>
+    /// scroll viewer helper feature model interface
+    /// </summary>
     public interface IScrollViewerHelperFeature
     {
+        /// <summary>
+        /// horizontal offset
+        /// </summary>
         double HorizontalOffset { get; set; }
 
+        /// <summary>
+        /// vertical offset
+        /// </summary>
         double VerticalOffset { get; set; }
 
-        //event ScrollChangedEventHandler ScrollChanged;
-
+        /// <summary>
+        /// scroll viewer control
+        /// </summary>
         ScrollViewer ScrollViewer { get; set; }
     }
 }
