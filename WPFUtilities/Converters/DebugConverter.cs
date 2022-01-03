@@ -17,7 +17,11 @@ namespace WPFUtilities.Converters
         /// </summary>
         public static int InstanceCount = 0;
 
-        static Action<DebugConverter> CallBack = (debugConverter) => { };
+        static Action<DebugConverter, object, object> CallBack = (debugConverter, value, parameter) =>
+          {
+              var message = $"#{InstanceCount} value={value} parameter={parameter}";
+              System.Diagnostics.Debug.WriteLine(message);
+          };
 
         /// <summary>
         /// build a new instance, update instance counter
@@ -41,7 +45,7 @@ namespace WPFUtilities.Converters
             object parameter,
             CultureInfo culture)
         {
-            CallBack?.Invoke(this);
+            CallBack?.Invoke(this, value, parameter);
             return value;
         }
 
@@ -59,7 +63,7 @@ namespace WPFUtilities.Converters
             object parameter,
             CultureInfo culture)
         {
-            CallBack?.Invoke(this);
+            CallBack?.Invoke(this, value, parameter);
             return value;
         }
     }
