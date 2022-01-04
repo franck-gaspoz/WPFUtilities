@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>WPF command property</Title>
+			<Author>WPFUtilities</Author>
+			<Description>static command getter property</Description>
+			<Shortcut>commandprop</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp" Delimiter="~">
+				<![CDATA[public static ICommand ~Name~ { get; } = ~Name~Command.Instance;
+]]>
+			</Code>
+			<Declarations>
+				<Literal>
+					<ID>Name</ID>
+					<ToolTip>command name</ToolTip>
+					<Default>Name</Default>
+				</Literal>
+			</Declarations>
+			<Imports>
+				<Import>
+					<Namespace>System.Windows.Input</Namespace>
+				</Import>
+			</Imports>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

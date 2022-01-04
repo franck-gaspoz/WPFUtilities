@@ -124,6 +124,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Snippets\behavior.snippet" />
+    <None Include="Snippets\model.property.snippet" />
+    <None Include="Snippets\command.prop.snippet" />
     <None Include="Snippets\command.snippet" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

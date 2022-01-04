@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>model notifiable property</Title>
+			<Author>WPFUtilities</Author>
+			<Description>notifiable property implementation with backing field</Description>
+			<Shortcut>modelprop</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp" Delimiter="~">
+<![CDATA[~PropType~ _~BackingFieldName~ = ~DefaultValue~;
+/// <summary>
+/// ~Summary~
+/// </summary>
+public ~PropType~ ~PropName~
+{
+    get
+    {
+        return _~BackingFieldName~;
+    }
+    set
+    {
+        _~BackingFieldName~ = value;
+        NotifyPropertyChanged();
+    }
+}]]>
+			</Code>
+			<Declarations>
+				<Literal>
+					<ID>PropType</ID>
+					<ToolTip>property type</ToolTip>
+					<Default>int</Default>
+				</Literal>
+				<Literal>
+					<ID>BackingFieldName</ID>
+					<ToolTip>backing field name</ToolTip>
+					<Default>Name</Default>
+				</Literal>
+				<Literal>
+					<ID>PropName</ID>
+					<ToolTip>property name</ToolTip>
+					<Default>Name</Default>
+				</Literal>
+				<Literal>
+					<ID>DefaultValue</ID>
+					<ToolTip>default value</ToolTip>
+					<Default>0</Default>
+				</Literal>
+				<Literal>
+					<ID>Summary</ID>
+					<ToolTip>summary</ToolTip>
+					<Default>summary</Default>
+				</Literal>
+			</Declarations>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
