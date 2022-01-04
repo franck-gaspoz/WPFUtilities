@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>model notifiable property</Title>
+			<Author>WPFUtilities</Author>
+			<Description>notifiable property implementation with backing field</Description>
+			<Shortcut>propdep</Shortcut>
+		</Header>
+		<Snippet>
+			<Code Language="CSharp" Delimiter="~">
+<![CDATA[#region ~PropName~ dependency property
+
+/// <summary>
+/// ~Summary~
+/// </summary>
+public ~PropType~ ~PropName~
+{
+    get => (~PropType~)GetValue(~PropName~Property);
+    set { SetValue(~PropName~Property,value); }
+}
+
+/// <summary>
+/// ~Summary~ dependency property getter
+/// </summary>
+public static ~PropType~ Get~PropName~(DependencyObject dependencyObject)
+	=> (~PropType~)dependencyObject.GetValue(MyPropertyProperty);
+
+/// <summary>
+/// ~Summary~ dependency property setter
+/// </summary>
+public static void SetMyProperty(DependencyObject dependencyObject, ~PropType~ value)
+    => obj.SetValue(dependencyObject, value);
+
+/// <summary>
+/// ~Summary~ dependency property
+/// </summary>
+public static readonly DependencyProperty ~PropName~Property =
+        DependencyProperty.Register("~PropName~", 
+		typeof(~PropType~), typeof(~OwnerClass~), new PropertyMetadata(~DefaultValue~));
+
+#endregion
+]]>
+			</Code>
+			<Declarations>
+				<Literal>
+					<ID>Summary</ID>
+					<ToolTip>summary</ToolTip>
+					<Default>summary</Default>
+				</Literal>
+				<Literal>
+					<ID>PropType</ID>
+					<ToolTip>property type</ToolTip>
+					<Default>int</Default>
+				</Literal>
+				<Literal>
+					<ID>PropName</ID>
+					<ToolTip>property name</ToolTip>
+					<Default>Name</Default>
+				</Literal>
+				<Literal>
+					<ID>OwnerClass</ID>
+					<ToolTip>owner class</ToolTip>
+					<Default>OwnerClass</Default>
+				</Literal>
+				<Literal>
+					<ID>DefaultValue</ID>
+					<ToolTip>default value</ToolTip>
+					<Default>0</Default>
+				</Literal>
+			</Declarations>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
