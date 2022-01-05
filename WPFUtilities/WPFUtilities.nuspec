@@ -10,16 +10,16 @@
 		<license type="expression">MIT</license>
 		<releaseNotes>1.0.0</releaseNotes>
 		<copyright>(c) 2021 Licence MIT</copyright>
-		<tags>wpf csharp c# mvvm converter behavior action component model control extension logger utilities fast prototype .net framework 4.8</tags>
+		<tags>wpf csharp c# mvvm converter behavior action component model control extension fast prototype .net framework 4.8</tags>
 		<repository type="git" url="https://github.com/franck-gaspoz/WPFUtilities.git" branch="main"/>
-		<title>WPF Utilities 1.0</title>
+		<title>WPF Utilities 1.0.0</title>
 				
 		<references></references>
 		
     </metadata>
 
 	<files>
-		<file src="bin\Release\**" />
+		<file src="**" />
 	</files>
 	
 </package>

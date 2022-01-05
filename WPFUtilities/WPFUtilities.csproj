@@ -33,6 +33,31 @@
     <DocumentationFile>bin\Release\WPFUtilities.xml</DocumentationFile>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>WPFUtilities</PackageId>
+    <Version>1.0.2</Version>
+    <Authors>Franck Gaspoz</Authors>
+    <Company>WPFUtilities</Company>
+    <Description>A C#,XAML library containing some essential and usefull classes and snippets for fast WPF application development.
+This is not a framework, the library doesn't bring any coding convention to .Net Standard and WPF conventions. By the way,
+it helps to code using the standard WPF recommended patterns (MVVM, Command, controls, components,...) and SOLID principles.
+</Description>
+    <ProjectUrl>https://github.com/franck-gaspoz/WPFUtilities</ProjectUrl>
+    <License>MIT</License>
+    <ReleaseNotes>1.0.2</ReleaseNotes>
+    <Copyright>(c) 2021 Licence MIT</Copyright>
+    <PackageTags>wpf csharp c# mvvm converter behavior action component model control extension fast prototype .net framework 4.8</PackageTags>
+    <Title>WPF Utilities 1.0.2</Title>
+    <Dependencies>
+      <Dependency id="Microsoft.Xaml.Behaviors.Wpf" version="1.1.39" />
+      <Dependency id="System.ComponentModel.Annotations" version="5.0.0" />
+    </Dependencies>
+    <PackageOutputPath>WPFUtilities.nupkg</PackageOutputPath>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.2.0" />
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -83,6 +108,8 @@
     <Compile Include="CustomBrushes\HatchRawBrush.cs" />
     <Compile Include="CustomBrushes\SpectrumBrush.cs" />
     <Compile Include="Extensions\Appl\ApplicationExtensions.cs" />
+    <Compile Include="Helpers\UIHelper.cs" />
+    <Compile Include="ViewModels\AppBaseViewModel.cs" />
     <Compile Include="ViewModels\IAppBaseViewModel.cs" />
     <Compile Include="Converters\ObjectIsNotNullToBoolConverter.cs" />
     <Compile Include="Converters\ValidDoubleValueFilterConverter.cs" />

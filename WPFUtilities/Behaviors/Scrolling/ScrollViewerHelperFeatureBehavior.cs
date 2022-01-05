@@ -18,7 +18,7 @@ namespace WPFUtilities.Behaviors.Scrolling
         /// </summary>
         public IScrollViewerHelperFeature ScrollViewerHelperFeature
         {
-            get { return (IScrollViewerHelperFeature)GetValue(ScrollViewerHelperFeatureProperty); }
+            get => (IScrollViewerHelperFeature)GetValue(ScrollViewerHelperFeatureProperty);
             set { SetValue(ScrollViewerHelperFeatureProperty, value); }
         }
 
@@ -28,9 +28,7 @@ namespace WPFUtilities.Behaviors.Scrolling
         /// <param name="dependencyObject">dependency Object</param>
         /// <returns></returns>
         public static IScrollViewerHelperFeature GetScrollViewerHelperFeatureProperty(DependencyObject dependencyObject)
-        {
-            return (IScrollViewerHelperFeature)dependencyObject.GetValue(ScrollViewerHelperFeatureProperty);
-        }
+            => (IScrollViewerHelperFeature)dependencyObject.GetValue(ScrollViewerHelperFeatureProperty);
 
         /// <summary>
         /// set scroll viewer helper feature model
@@ -38,9 +36,7 @@ namespace WPFUtilities.Behaviors.Scrolling
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="value">value</param>
         public static void SetScrollViewerHelperFeatureProperty(DependencyObject dependencyObject, IScrollViewerHelperFeature value)
-        {
-            dependencyObject.SetValue(ScrollViewerHelperFeatureProperty, value);
-        }
+            => dependencyObject.SetValue(ScrollViewerHelperFeatureProperty, value);
 
         /// <summary>
         /// scroll viewer helper feature model
