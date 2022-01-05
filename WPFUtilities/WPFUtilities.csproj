@@ -11,6 +11,9 @@
     <AssemblyName>WPFUtilities</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <Version>1.0.4.0</Version>
+    <AssemblyVersion>1.0.4.0</AssemblyVersion>
+    <FileVersion>1.0.4.0</FileVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -35,17 +38,17 @@
   </PropertyGroup>
   <PropertyGroup>
     <PackageId>WPFUtilities</PackageId>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <Authors>Franck Gaspoz</Authors>
     <Company>WPFUtilities</Company>
     <Description>A C# and XAML library containing some essential and usefull classes and snippets for fast WPF application development. This is not a framework, the library doesn't bring any coding convention to .Net Standard and WPF conventions. The library brings help to code using the standard WPF recommended patterns (MVVM, Command, controls, components,...) and SOLID principles.
 </Description>
     <ProjectUrl>https://github.com/franck-gaspoz/WPFUtilities</ProjectUrl>
     <License>MIT</License>
-    <ReleaseNotes>1.0.3</ReleaseNotes>
+    <ReleaseNotes>1.0.4</ReleaseNotes>
     <Copyright>(c) 2021 Licence MIT</Copyright>
     <PackageTags>wpf csharp c# mvvm converter behavior command action style brush component model validation annotation control extension helper fast prototype .net framework 4.8</PackageTags>
-    <Title>WPF Utilities 1.0.3</Title>
+    <Title>WPF Utilities 1.0.4</Title>
     <Dependencies>
       <Dependency id="Microsoft.Xaml.Behaviors.Wpf" version="1.1.39" />
       <Dependency id="System.ComponentModel.Annotations" version="5.0.0" />
@@ -151,6 +154,7 @@
     <Content Include="README.md" Pack="true" PackagePath="\">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\Codicons-SymbolClass.png" Pack="true" PackagePath="\" />
     <Resource Include="Resources\Codicons-SymbolClass.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -160,7 +164,6 @@
     <None Include=".editorconfig" />
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
-    <None Include="Resources\Codicons-SymbolClass.png" />
     <None Include="Snippets\behavior.snippet" />
     <None Include="Snippets\prop.dependency.snippet" />
     <None Include="Snippets\model.property.snippet" />
