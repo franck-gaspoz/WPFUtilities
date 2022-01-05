@@ -3,7 +3,6 @@ using System.Windows;
 using System.Windows.Input;
 
 using WPFUtilities.ComponentModel;
-using WPFUtilities.Components;
 
 namespace WPFUtilities.Commands
 {
@@ -30,8 +29,7 @@ namespace WPFUtilities.Commands
         /// <param name="parameter">parameter</param>
         /// <returns>true if can execute, false otherwize</returns>
         public virtual bool CanExecute(object parameter)
-            => Application.Current != null && Application.Current.MainWindow != null
-            && (!(Application.Current is IApp app) || !app.ViewModel.IsBuzy);
+            => Application.Current != null && Application.Current.MainWindow != null;
 
         /// <summary>
         /// execute command
