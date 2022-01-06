@@ -1,4 +1,4 @@
-﻿namespace WPFUtilities.ComponentModel
+﻿namespace WPFUtilities.ComponentModels
 {
     /// <summary>
     /// singleton feature

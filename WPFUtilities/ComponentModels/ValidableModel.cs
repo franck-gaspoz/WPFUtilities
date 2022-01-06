@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
-namespace WPFUtilities.ComponentModel
+namespace WPFUtilities.ComponentModels
 {
     /// <summary>
     /// validable model

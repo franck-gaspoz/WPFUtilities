@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace WPFUtilities.ComponentModel
+namespace WPFUtilities.ComponentModels
 {
     /// <summary>
     /// base model with notifiable and validable data

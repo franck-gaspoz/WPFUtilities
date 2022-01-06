@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Runtime.CompilerServices;
 
-namespace WPFUtilities.ComponentModel
+namespace WPFUtilities.ComponentModels
 {
     /// <summary>
     /// validable model interface

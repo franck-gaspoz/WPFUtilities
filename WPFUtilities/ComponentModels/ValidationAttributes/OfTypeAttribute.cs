@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace WPFUtilities.ComponentModel.ValidationAttributes
+namespace WPFUtilities.ComponentModels.ValidationAttributes
 {
     /// <summary>
     /// validates attribute type

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace WPFUtilities.ComponentModel
+namespace WPFUtilities.ComponentModels
 {
     /// <summary>
     /// model base interface

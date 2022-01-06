@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace WPFUtilities.ComponentModel
+namespace WPFUtilities.ComponentModels
 {
     /// <summary>
     /// a mediator that transfer any model property value to an object property value
