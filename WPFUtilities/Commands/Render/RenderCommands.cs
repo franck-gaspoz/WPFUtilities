@@ -1,6 +1,6 @@
 ﻿using System.Windows.Input;
 
-namespace WPFUtilities.Commands.Display
+namespace WPFUtilities.Commands.Render
 {
     /// <summary>
     /// display commands

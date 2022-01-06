@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace WPFUtilities.Commands.Display
+namespace WPFUtilities.Commands.Render
 {
     /// <summary>
     /// zoom command parameters

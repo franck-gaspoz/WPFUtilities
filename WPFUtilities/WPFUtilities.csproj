@@ -97,11 +97,11 @@
     <Compile Include="Commands\AbstractCommand.cs" />
     <Compile Include="Commands\Appl\ApplCommands.cs" />
     <Compile Include="Commands\Appl\CloseApplicationCommand.cs" />
-    <Compile Include="Commands\Display\DisplayCommands.cs" />
+    <Compile Include="Commands\Render\RenderCommands.cs" />
     <Compile Include="Commands\Interactivity\InteractivityCommands.cs" />
     <Compile Include="Commands\Interactivity\OpenWindowCommand.cs" />
-    <Compile Include="Commands\Display\ZoomCommand.cs" />
-    <Compile Include="Commands\Display\ZoomCommandParameters.cs" />
+    <Compile Include="Commands\Render\ZoomCommand.cs" />
+    <Compile Include="Commands\Render\ZoomCommandParameters.cs" />
     <Compile Include="Commands\Interactivity\CloseWindowCommand.cs" />
     <Compile Include="Commands\Interactivity\HideWindowCommand.cs" />
     <Compile Include="ComponentModels\IModelBase.cs" />

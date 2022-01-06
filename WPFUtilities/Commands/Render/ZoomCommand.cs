@@ -1,8 +1,8 @@
 ﻿using System.Windows.Media;
 
-using WPFUtilities.Components.Display;
+using WPFUtilities.Components.Render;
 
-namespace WPFUtilities.Commands.Display
+namespace WPFUtilities.Commands.Render
 {
     /// <summary>
     /// zoom
