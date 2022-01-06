@@ -121,8 +121,8 @@
     <Compile Include="CustomBrushes\SpectrumBrush.cs" />
     <Compile Include="Extensions\Appl\ApplicationExtensions.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
-    <Compile Include="ViewModels\AppViewModelBase.cs" />
-    <Compile Include="ViewModels\IAppViewModelBase.cs" />
+    <Compile Include="Components\Appl\AppViewModelBase.cs" />
+    <Compile Include="Components\Appl\IAppViewModelBase.cs" />
     <Compile Include="Converters\ObjectIsNotNullToBoolConverter.cs" />
     <Compile Include="Converters\ValidDoubleValueFilterConverter.cs" />
     <Compile Include="Converters\NotBooleanToVisibilityConverter.cs" />
@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />

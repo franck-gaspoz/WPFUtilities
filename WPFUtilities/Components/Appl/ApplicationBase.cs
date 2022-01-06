@@ -3,7 +3,6 @@ using System.Globalization;
 using System.Windows;
 
 using WPFUtilities.Helpers;
-using WPFUtilities.ViewModels;
 
 namespace WPFUtilities.Components.Appl
 {

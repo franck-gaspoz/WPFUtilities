@@ -1,7 +1,7 @@
 ﻿
 using WPFUtilities.ComponentModel;
 
-namespace WPFUtilities.ViewModels
+namespace WPFUtilities.Components.Appl
 {
     /// <summary>
     /// application base view model

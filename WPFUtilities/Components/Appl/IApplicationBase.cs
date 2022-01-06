@@ -1,7 +1,4 @@
-﻿
-using WPFUtilities.ViewModels;
-
-namespace WPFUtilities.Components.Appl
+﻿namespace WPFUtilities.Components.Appl
 {
     /// <summary>
     /// application facade base

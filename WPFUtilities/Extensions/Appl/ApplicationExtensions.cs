@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 
 using WPFUtilities.Components.Appl;
-using WPFUtilities.ViewModels;
 
 namespace WPFUtilities.Extensions.Appl
 {
