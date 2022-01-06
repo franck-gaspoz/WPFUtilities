@@ -1,6 +1,4 @@
 ﻿using System.Reflection;
-using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
@@ -8,12 +6,12 @@ using System.Windows;
 // l'ensemble d'attributs suivant. Pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("SampleApp")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("WPFUtilities sample application")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("HP Inc.")]
-[assembly: AssemblyProduct("SampleApp")]
-[assembly: AssemblyCopyright("Copyright © HP Inc. 2022")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Franck Gaspoz")]
+[assembly: AssemblyProduct("WPFUtilities SampleApp")]
+[assembly: AssemblyCopyright("Copyright © Franck Gaspoz 2022 License MIT")]
+[assembly: AssemblyTrademark("Franck Gaspoz")]
 [assembly: AssemblyCulture("")]
 
 // L'affectation de la valeur false à ComVisible rend les types invisibles dans cet assembly
