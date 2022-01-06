@@ -24,5 +24,8 @@ namespace WPFUtilities.Components.Appl
         /// default culture for threads and thread ui, set if not null
         /// </summary>
         public string DefaultCulture { get; set; } = null;
+
+        /// <inheritdoc/>
+        public Action Initialize { get; set; }
     }
 }

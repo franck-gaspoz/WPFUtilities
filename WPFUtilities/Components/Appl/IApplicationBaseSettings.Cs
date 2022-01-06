@@ -26,5 +26,10 @@ namespace WPFUtilities.Components.Appl
         /// default culture for threads and thread ui
         /// </summary>
         string DefaultCulture { get; set; }
+
+        /// <summary>
+        /// action to be launch at initialization, before main window is created
+        /// </summary>
+        Action Initialize { get; set; }
     }
 }

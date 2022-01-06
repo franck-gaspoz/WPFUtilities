@@ -17,6 +17,11 @@ namespace WPFUtilities.Components.Appl
         public IAppViewModelBase ViewModelBase { get; set; } = new AppViewModelBase();
 
         /// <summary>
+        /// creates a new instance
+        /// </summary>
+        public ApplicationBase() { }
+
+        /// <summary>
         /// launch the application, catch any exception and inform about it before terminating the app
         /// </summary>
         /// <param name="applicationBaseSettings">application base settings</param>
@@ -28,6 +33,8 @@ namespace WPFUtilities.Components.Appl
                     CultureInfo.DefaultThreadCurrentCulture =
                     CultureInfo.DefaultThreadCurrentUICulture =
                         new CultureInfo(applicationBaseSettings.DefaultCulture);
+
+                applicationBaseSettings.Initialize?.Invoke();
 
                 MainWindow = (Window)Activator.CreateInstance(applicationBaseSettings.MainWindowType);
                 if (applicationBaseSettings.ShowWindow)
