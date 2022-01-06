@@ -8,11 +8,19 @@
 			<Shortcut>commandprop</Shortcut>
 		</Header>
 		<Snippet>
-			<Code Language="CSharp" Delimiter="~">
-				<![CDATA[public static ICommand ~Name~ { get; } = ~Name~Command.Instance;
+			<Code Language="CSharp" Delimiter="~"><![CDATA[
+/// <summary>
+/// ~Summary~
+/// </summary>
+public static ICommand ~Name~ { get; } = ~Name~Command.Instance;
 ]]>
-			</Code>
+			</Code>			
 			<Declarations>
+				<Literal>
+					<ID>Summary</ID>
+					<ToolTip>summary</ToolTip>
+					<Default>summary</Default>
+				</Literal>
 				<Literal>
 					<ID>Name</ID>
 					<ToolTip>command name</ToolTip>

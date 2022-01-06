@@ -26,6 +26,13 @@ namespace WPFUtilities.Components.Appl
         /// </summary>
         /// <param name="applicationBaseSettings">application base settings</param>
         public ApplicationBase(IApplicationBaseSettings applicationBaseSettings)
+            => Start(applicationBaseSettings);
+
+        /// <summary>
+        /// starts the application
+        /// </summary>
+        /// <param name="applicationBaseSettings">application base settings</param>
+        protected void Start(IApplicationBaseSettings applicationBaseSettings)
         {
             try
             {
