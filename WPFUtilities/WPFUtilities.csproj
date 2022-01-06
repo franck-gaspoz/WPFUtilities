@@ -171,6 +171,7 @@
     <None Include="Snippets\behavior.snippet" />
     <None Include="Snippets\iproperty.snippet" />
     <None Include="Snippets\property.snippet" />
+    <None Include="Snippets\property.inherited.snippet" />
     <None Include="Snippets\prop.dependency.snippet" />
     <None Include="Snippets\model.property.snippet" />
     <None Include="Snippets\command.prop.snippet" />

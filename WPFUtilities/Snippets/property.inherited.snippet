@@ -5,21 +5,13 @@
 			<Title>property</Title>
 			<Author>WPFUtilities</Author>
 			<Description>property implementation with summary</Description>
-			<Shortcut>property</Shortcut>
+			<Shortcut>propertyinherited</Shortcut>
 		</Header>
 		<Snippet>
-<Code Language="CSharp" Delimiter="~"><![CDATA[
-/// <summary>
-/// ~Summary~
-/// </summary>
+<Code Language="CSharp" Delimiter="~"><![CDATA[/// <inheritdoc/>
 public ~PropType~ ~PropName~ { get; set; }]]>
 </Code>
 			<Declarations>
-				<Literal>
-					<ID>Summary</ID>
-					<ToolTip>summary</ToolTip>
-					<Default>summary</Default>
-				</Literal>
 				<Literal>
 					<ID>PropType</ID>
 					<ToolTip>property type</ToolTip>
