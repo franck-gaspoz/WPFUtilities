@@ -1,16 +1,16 @@
 ﻿
 using WPFUtilities.ViewModels;
 
-namespace WPFUtilities.Components
+namespace WPFUtilities.Components.Appl
 {
     /// <summary>
-    /// application facade
+    /// application facade base
     /// </summary>
-    public interface IApp
+    public interface IApplicationBase
     {
         /// <summary>
         /// application view model
         /// </summary>
-        IAppBaseViewModel ViewModel { get; set; }
+        IAppViewModelBase ViewModelBase { get; set; }
     }
 }

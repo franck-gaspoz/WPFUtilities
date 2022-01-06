@@ -6,7 +6,7 @@ namespace WPFUtilities.ViewModels
     /// <summary>
     /// application base view model
     /// </summary>
-    public class AppBaseViewModel : ModelBase, IAppBaseViewModel
+    public class AppViewModelBase : ModelBase, IAppViewModelBase
     {
         bool _isBuzy = false;
         /// <summary>

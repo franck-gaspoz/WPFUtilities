@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-using WPFUtilities.Components;
+using WPFUtilities.Components.Appl;
 using WPFUtilities.ViewModels;
 
 namespace WPFUtilities.Extensions.Appl
@@ -13,11 +13,11 @@ namespace WPFUtilities.Extensions.Appl
         /// <summary>
         /// current application facade
         /// </summary>
-        public static IApp App(this object obj) => (IApp)Application.Current;
+        public static IApplicationBase App(this object obj) => (IApplicationBase)Application.Current;
 
         /// <summary>
         /// current application view model
         /// </summary>
-        public static IAppBaseViewModel ViewModel(this Application app) => (app as IApp)?.ViewModel;
+        public static IAppViewModelBase ViewModel(this Application app) => (app as IApplicationBase)?.ViewModelBase;
     }
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>property</Title>
+			<Author>WPFUtilities</Author>
+			<Description>property implementation with summary</Description>
+			<Shortcut>property</Shortcut>
+		</Header>
+		<Snippet>
+<Code Language="CSharp" Delimiter="~"><![CDATA[/// <inheritdoc/>
+public ~PropType~ ~PropName~ { get; set; }]]>
+</Code>
+			<Declarations>
+				<Literal>
+					<ID>PropType</ID>
+					<ToolTip>property type</ToolTip>
+					<Default>bool</Default>
+				</Literal>
+				<Literal>
+					<ID>PropName</ID>
+					<ToolTip>property name</ToolTip>
+					<Default>Name</Default>
+				</Literal>
+			</Declarations>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
