@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-using WPFUtilities.ComponentModel;
+using WPFUtilities.ComponentModels;
 
 namespace WPFUtilities.Commands
 {

@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Linq;
 using System.Windows.Data;
 
-using WPFUtilities.ComponentModel;
+using WPFUtilities.ComponentModels;
 
 namespace WPFUtilities.Converters
 {

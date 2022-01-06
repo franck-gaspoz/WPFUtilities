@@ -165,7 +165,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
@@ -173,6 +172,7 @@
     <None Include=".gitignore" />
     <None Include="Snippets\CSharp\behavior.snippet" />
     <None Include="Snippets\CSharp\iproperty.snippet" />
+    <None Include="Snippets\Xaml\xmlns.addbehavior.snippet" />
     <None Include="Snippets\Xaml\xmlns.behaviors.snippet" />
     <None Include="Snippets\Xaml\xmlns.behavior.snippet" />
     <None Include="Snippets\CSharp\property.snippet" />

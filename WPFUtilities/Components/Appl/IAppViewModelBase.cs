@@ -1,4 +1,4 @@
-﻿using WPFUtilities.ComponentModel;
+﻿using WPFUtilities.ComponentModels;
 
 namespace WPFUtilities.Components.Appl
 {
