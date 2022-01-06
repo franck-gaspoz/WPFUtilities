@@ -65,7 +65,10 @@
     <ApplicationIcon>Resources\Codicons-SymbolClass.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="5.2.0" />
+    <PackageReference Include="NuGet.Build.Tasks.Pack" Version="6.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -168,14 +171,15 @@
     <None Include=".editorconfig" />
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
-    <None Include="Snippets\behavior.snippet" />
-    <None Include="Snippets\iproperty.snippet" />
-    <None Include="Snippets\property.snippet" />
-    <None Include="Snippets\property.inherited.snippet" />
-    <None Include="Snippets\prop.dependency.snippet" />
-    <None Include="Snippets\model.property.snippet" />
-    <None Include="Snippets\command.prop.snippet" />
-    <None Include="Snippets\command.snippet" />
+    <None Include="Snippets\CSharp\behavior.snippet" />
+    <None Include="Snippets\CSharp\iproperty.snippet" />
+    <None Include="Snippets\Xaml\xmlns.behavior.snippet" />
+    <None Include="Snippets\CSharp\property.snippet" />
+    <None Include="Snippets\CSharp\property.inherited.snippet" />
+    <None Include="Snippets\CSharp\prop.dependency.snippet" />
+    <None Include="Snippets\CSharp\model.property.snippet" />
+    <None Include="Snippets\CSharp\command.prop.snippet" />
+    <None Include="Snippets\CSharp\command.snippet" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
