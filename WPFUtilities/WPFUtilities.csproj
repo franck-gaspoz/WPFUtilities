@@ -173,6 +173,7 @@
     <None Include=".gitignore" />
     <None Include="Snippets\CSharp\behavior.snippet" />
     <None Include="Snippets\CSharp\iproperty.snippet" />
+    <None Include="Snippets\Xaml\xmlns.behaviors.snippet" />
     <None Include="Snippets\Xaml\xmlns.behavior.snippet" />
     <None Include="Snippets\CSharp\property.snippet" />
     <None Include="Snippets\CSharp\property.inherited.snippet" />
