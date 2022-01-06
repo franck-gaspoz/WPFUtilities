@@ -3,6 +3,8 @@ using System.Windows.Input;
 
 using Microsoft.Xaml.Behaviors;
 
+using WPFUtilities.Extensions.Behaviors;
+
 namespace WPFUtilities.Behaviors.Windows
 {
     /// <summary>
@@ -85,7 +87,7 @@ namespace WPFUtilities.Behaviors.Windows
         /// get command
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
-        /// <returns>comamnd</returns>
+        /// <returns>command</returns>
         public static ICommand GetCommand(DependencyObject dependencyObject)
             => (ICommand)dependencyObject.GetValue(CommandProperty);
 
@@ -124,8 +126,8 @@ namespace WPFUtilities.Behaviors.Windows
                 && eventArgs.NewSize.Height != 0)
             {
                 w.SizeChanged -= Target_SizeChanged;
-
-                GetCommand(w)?.Execute(w);
+                var behavior = w.GetBehavior<WindowDisplayedDelegateCommandBehavior>();
+                behavior.Command?.Execute(w);
             }
         }
     }

@@ -3,11 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SampleApp"
+        xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:commands="clr-namespace:SampleApp.Commands"
+        xmlns:wpfubehaviors="clr-namespace:WPFUtilities.Behaviors.Windows;assembly=WPFUtilities"
+        xmlns:local="clr-namespace:SampleApp" 
+        xmlns:appl="clr-namespace:WPFUtilities.Components.Appl;assembly=WPFUtilities" 
+        d:DataContext="{d:DesignInstance Type=appl:AppViewModelBase}"
         mc:Ignorable="d"
         Title="WPFUtilities sample application" 
         WindowStartupLocation="CenterScreen"
         Height="450" Width="800">
+    <Behaviors:Interaction.Behaviors>
+        <wpfubehaviors:WindowDisplayedDelegateCommandBehavior Command="{x:Static commands:Commands.OnMainWindowShown}"/>
+    </Behaviors:Interaction.Behaviors>
     <Grid>
         
     </Grid>
