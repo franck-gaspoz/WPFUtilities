@@ -12,9 +12,9 @@
         xmlns:local="clr-namespace:SampleApp" 
         xmlns:appl="clr-namespace:WPFUtilities.Components.Appl;assembly=WPFUtilities" 
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
-        d:DataContext="{d:DesignInstance Type=appl:AppViewModelBase}"
+        d:DataContext="{d:DesignInstance Type=componentsUI:MainWindowViewModel}"
         mc:Ignorable="d"
-        Title="WPFUtilities sample application" 
+        Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"
         wpfubehaviorsServices:ServiceDependencyDataContextBehavior.Resolve="{x:Type componentsUI:IMainWindowViewModel}"
 Height="350" Width="600">
