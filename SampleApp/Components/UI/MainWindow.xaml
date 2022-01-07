@@ -9,22 +9,32 @@
         xmlns:wpfucommandsAppl="clr-namespace:WPFUtilities.Commands.Appl;assembly=WPFUtilities"
         xmlns:local="clr-namespace:SampleApp" 
         xmlns:appl="clr-namespace:WPFUtilities.Components.Appl;assembly=WPFUtilities" 
+        xmlns:logging="clr-namespace:SampleApp.Components.Logging"
         d:DataContext="{d:DesignInstance Type=appl:AppViewModelBase}"
         mc:Ignorable="d"
         Title="WPFUtilities sample application" 
         WindowStartupLocation="CenterScreen"
         Height="450" Width="800">
+    
     <Behaviors:Interaction.Behaviors>
         <wpfubehaviors:WindowDisplayedDelegateCommandBehavior Command="{x:Static commands:Commands.OnMainWindowShown}"/>
     </Behaviors:Interaction.Behaviors>
+    
     <Grid Margin="8">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
+        
         <StackPanel Orientation="Horizontal">
             <Button Content="Log a message" 
                     Command="{x:Static wpfucommandsAppl:ApplCommands.Log}"
                     CommandParameter="I am a log message!"/>
         </StackPanel>
+
+        <logging:LogView Grid.Row="2"/>
+        
     </Grid>
 </Window>
