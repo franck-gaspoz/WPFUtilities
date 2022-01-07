@@ -2,7 +2,6 @@
 using System.Globalization;
 using System.Windows;
 
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using WPFUtilities.Helpers;
@@ -20,53 +19,44 @@ namespace WPFUtilities.Components.Appl
         public IAppViewModelBase ViewModelBase { get; set; } = new AppViewModelBase();
 
         /// <summary>
-        /// host
+        /// application base settings
         /// </summary>
-        protected IHost Host;
-
-        IApplicationBaseSettings _applicationBaseSettings;
+        protected IApplicationBaseSettings ApplicationBaseSettings;
 
         /// <summary>
         /// creates a new instance
         /// </summary>
-        public ApplicationBase() { }
-
-        /// <summary>
-        /// launch the application, catch any exception and inform about it before terminating the app
-        /// </summary>
-        /// <param name="applicationBaseSettings">application base settings</param>
-        public ApplicationBase(IApplicationBaseSettings applicationBaseSettings)
-            => Start(applicationBaseSettings);
+        public ApplicationBase()
+        {
+        }
 
         /// <summary>
         /// starts the application
         /// </summary>
-        /// <param name="applicationBaseSettings">application base settings</param>
-        protected void Start(IApplicationBaseSettings applicationBaseSettings)
+        protected void Start()
         {
             try
             {
-                _applicationBaseSettings = applicationBaseSettings;
-
-                if (applicationBaseSettings.DefaultCulture != null)
+                if (ApplicationBaseSettings.DefaultCulture != null)
                     CultureInfo.DefaultThreadCurrentCulture =
                     CultureInfo.DefaultThreadCurrentUICulture =
-                        new CultureInfo(applicationBaseSettings.DefaultCulture);
+                        new CultureInfo(ApplicationBaseSettings.DefaultCulture);
 
-                BuildHost(applicationBaseSettings);
+                ApplicationBaseSettings.Initialize?.Invoke();
 
-                applicationBaseSettings.Initialize?.Invoke();
-
-                MainWindow = (Window)Activator.CreateInstance(applicationBaseSettings.MainWindowType);
-
-                applicationBaseSettings.InitializeWindow?.Invoke(MainWindow);
-
-                if (applicationBaseSettings.ShowWindow)
+                if (ApplicationBaseSettings.MainWindowType != null)
                 {
-                    if (applicationBaseSettings.IsMainWindowDialog)
-                        _ = MainWindow.ShowDialog();
-                    else
-                        MainWindow.Show();
+                    MainWindow = (Window)Activator.CreateInstance(ApplicationBaseSettings.MainWindowType);
+
+                    ApplicationBaseSettings.InitializeWindow?.Invoke(MainWindow);
+
+                    if (ApplicationBaseSettings.ShowWindow)
+                    {
+                        if (ApplicationBaseSettings.IsMainWindowDialog)
+                            _ = MainWindow.ShowDialog();
+                        else
+                            MainWindow.Show();
+                    }
                 }
             }
             catch (Exception exception)
@@ -77,25 +67,14 @@ namespace WPFUtilities.Components.Appl
         }
 
         /// <summary>
-        /// build host
+        /// startup application
         /// </summary>
-        /// <param name="applicationBaseSettings">application base settings</param>
-        void BuildHost(IApplicationBaseSettings applicationBaseSettings)
+        /// <param name="eventArgs">event args</param>
+        protected async override void OnStartup(StartupEventArgs eventArgs)
         {
-            var hostBuilder = new HostBuilder()
-                    .ConfigureServices(configureServices);
-            if (_applicationBaseSettings.ConfigureServices != null)
-                hostBuilder.ConfigureServices(_applicationBaseSettings.ConfigureServices);
-            Host = hostBuilder.Build();
-        }
-
-        /// <summary>
-        /// setup default services
-        /// </summary>
-        /// <param name="services">services</param>
-        void configureServices(IServiceCollection services)
-        {
-
+            ApplicationHost.Instance.Build(ApplicationBaseSettings);
+            await ApplicationHost.Instance.Host.StartAsync();
+            Start();
         }
 
         /// <summary>
@@ -104,11 +83,11 @@ namespace WPFUtilities.Components.Appl
         /// <param name="eventArgs">event args</param>
         protected async override void OnExit(ExitEventArgs eventArgs)
         {
-            using (Host)
+            using (ApplicationHost.Instance.Host)
             {
-                await Host.StopAsync(
+                await ApplicationHost.Instance.Host.StopAsync(
                     TimeSpan.FromSeconds(
-                        _applicationBaseSettings.ShutdownTimeout));
+                        ApplicationBaseSettings.ShutdownTimeout));
             }
         }
     }

@@ -1,5 +1,6 @@
-﻿
-using System.Windows;
+﻿using System.Windows;
+
+using Microsoft.Extensions.DependencyInjection;
 
 using SampleApp.Components.UI;
 
@@ -17,13 +18,19 @@ namespace SampleApp
         /// </summary>
         public App()
         {
-            var settings = new ApplicationBaseSettings
+            ApplicationBaseSettings = new ApplicationBaseSettings
             {
                 MainWindowType = typeof(MainWindow),
                 Initialize = () => Initialize(),
-                InitializeWindow = (window) => InitializeWindow(window)
+                InitializeWindow = (window) => InitializeWindow(window),
+                ConfigureServices = (services) => ConfigureServices(services)
             };
-            Start(settings);
+            //Start(settings);
+        }
+
+        void ConfigureServices(IServiceCollection services)
+        {
+
         }
 
         void Initialize()
