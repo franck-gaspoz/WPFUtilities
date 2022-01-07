@@ -31,9 +31,9 @@ namespace WPFUtilities.Components.Services
         public ServicesDependenciesBuilder AddSingletonServices()
         {
             AppDomain.CurrentDomain.GetAssemblies()
-                    .Where(x => x.GetCustomAttribute<DependencyServicesAttribute>() != null)
-                    .ToList()
-                    .ForEach(x => AddSingletonServices(x));
+                .Where(x => x.GetCustomAttribute<DependencyServicesAttribute>() != null)
+                .ToList()
+                .ForEach(x => AddSingletonServices(x));
             return this;
         }
 
@@ -41,9 +41,9 @@ namespace WPFUtilities.Components.Services
         public ServicesDependenciesBuilder AddDependencyServices()
         {
             AppDomain.CurrentDomain.GetAssemblies()
-                    .Where(x => x.GetCustomAttribute<DependencyServicesAttribute>() != null)
-                    .ToList()
-                    .ForEach(x => AddDependencyServices(x));
+                .Where(x => x.GetCustomAttribute<DependencyServicesAttribute>() != null)
+                .ToList()
+                .ForEach(x => AddDependencyServices(x));
             return this;
         }
 
@@ -58,17 +58,44 @@ namespace WPFUtilities.Components.Services
                 switch (attribute.DependencyScope)
                 {
                     case DependencyScope.Singleton:
-                        _services.AddSingleton(type);
+                        AddSingleton(type);
                         break;
                     case DependencyScope.Transient:
-                        _services.AddTransient(type);
+                        AddTransient(type);
                         break;
                     case DependencyScope.Scoped:
-                        _services.AddScoped(type);
+                        AddScoped(type);
                         break;
                 }
             }
             return this;
+        }
+
+        void AddSingleton(Type type)
+        {
+            var interfaceType = GetDirectInterfaceType(type);
+            if (interfaceType != null)
+                _services.AddSingleton(interfaceType, type);
+            else
+                _services.AddSingleton(type);
+        }
+
+        void AddTransient(Type type)
+        {
+            var interfaceType = GetDirectInterfaceType(type);
+            if (interfaceType != null)
+                _services.AddTransient(interfaceType, type);
+            else
+                _services.AddTransient(type);
+        }
+
+        void AddScoped(Type type)
+        {
+            var interfaceType = GetDirectInterfaceType(type);
+            if (interfaceType != null)
+                _services.AddScoped(interfaceType, type);
+            else
+                _services.AddScoped(type);
         }
 
         /// <inheritdoc/>
@@ -76,8 +103,15 @@ namespace WPFUtilities.Components.Services
         {
             var types = GetTypes(assembly, typeof(SingletonService<>).Name).ToArray();
             for (int i = 0; i < types.Length; i++)
-                _services.AddSingleton(types[i]);
+                AddSingleton(types[i]);
             return this;
+        }
+
+        ///<inheritdoc/>
+        public Type GetDirectInterfaceType(Type type)
+        {
+            var interfaceTypeName = type.Namespace + "." + "I" + type.Name;
+            return type.GetInterface(interfaceTypeName);
         }
 
         List<Type> GetTypesWithAttribute(Assembly assembly, Type attributeType)

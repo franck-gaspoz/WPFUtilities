@@ -8,6 +8,7 @@
         xmlns:wpfubehaviorsWindows="clr-namespace:WPFUtilities.Behaviors.Windows;assembly=WPFUtilities"
         xmlns:wpfubehaviorsServices="clr-namespace:WPFUtilities.Behaviors.Services;assembly=WPFUtilities"
         xmlns:wpfucommandsAppl="clr-namespace:WPFUtilities.Commands.Appl;assembly=WPFUtilities"
+        xmlns:componentsUI="clr-namespace:SampleApp.Components.UI"
         xmlns:local="clr-namespace:SampleApp" 
         xmlns:appl="clr-namespace:WPFUtilities.Components.Appl;assembly=WPFUtilities" 
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
@@ -15,7 +16,8 @@
         mc:Ignorable="d"
         Title="WPFUtilities sample application" 
         WindowStartupLocation="CenterScreen"
-        Height="350" Width="600">
+        wpfubehaviorsServices:ServiceDependencyDataContextBehavior.Resolve="{x:Type componentsUI:IMainWindowViewModel}"
+Height="350" Width="600">
     
     <Behaviors:Interaction.Behaviors>
         <wpfubehaviorsWindows:WindowDisplayedDelegateCommandBehavior Command="{x:Static commands:Commands.OnMainWindowShown}"/>
