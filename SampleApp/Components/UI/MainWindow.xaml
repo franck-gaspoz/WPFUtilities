@@ -15,23 +15,27 @@
         mc:Ignorable="d"
         Title="WPFUtilities sample application" 
         WindowStartupLocation="CenterScreen"
-        Height="450" Width="800">
+        Height="350" Width="600">
     
     <Behaviors:Interaction.Behaviors>
         <wpfubehaviorsWindows:WindowDisplayedDelegateCommandBehavior Command="{x:Static commands:Commands.OnMainWindowShown}"/>
     </Behaviors:Interaction.Behaviors>
     
-    <Grid Margin="8">
+    <Grid Margin="0">
         
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
 
-        <Menu>
-            <MenuItem Header="File">
+        <Menu Padding="4">
+            <MenuItem Header="Application">
+                <MenuItem Header="Log a message"
+                          Command="{x:Static wpfucommandsAppl:ApplCommands.Log}"
+                          CommandParameter="I am a log message!"/>
+                <Separator/>
                 <MenuItem Header="Exit" Command="{x:Static wpfucommandsAppl:ApplCommands.ApplicationClose}"/>
             </MenuItem>
         </Menu>
@@ -42,7 +46,7 @@
                     CommandParameter="I am a log message!"/>
         </StackPanel>
 
-        <logging:LogView Grid.Row="2" wpfubehaviorsServices:ServiceDependencyDataContextBehavior.IsEnabled="True"/>
+        <logging:LogView Grid.Row="3" wpfubehaviorsServices:ServiceDependencyDataContextBehavior.IsEnabled="True"/>
 
     </Grid>
 </Window>
