@@ -96,6 +96,8 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\DependencyScope.cs" />
+    <Compile Include="Attributes\DependencyServiceAttribute.cs" />
     <Compile Include="Attributes\DependencyServicesAttribute.cs" />
     <Compile Include="Behaviors\Scrolling\IScrollViewerHelperFeature.cs" />
     <Compile Include="Behaviors\Scrolling\AutoScrollBehavior.cs" />
