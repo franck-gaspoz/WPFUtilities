@@ -13,9 +13,20 @@ namespace WPFUtilities.Components.Services
         ServicesDependenciesBuilder AddSingletonServices();
 
         /// <summary>
+        /// add classes with dependency service attribute to service collection
+        /// </summary>
+        ServicesDependenciesBuilder AddDependencyServices();
+
+        /// <summary>
         /// add singleton services to service collection from types in the given assembly
         /// </summary>
         /// <param name="assembly">assembly</param>
         ServicesDependenciesBuilder AddSingletonServices(Assembly assembly);
+
+        /// <summary>
+        /// add classes with dependency service attribute to service collection from types in the given assembly
+        /// </summary>
+        /// <param name="assembly">assembly</param>
+        ServicesDependenciesBuilder AddDependencyServices(Assembly assembly);
     }
 }
