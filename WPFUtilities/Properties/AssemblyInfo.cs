@@ -2,11 +2,13 @@
 using System.Resources;
 using System.Runtime.InteropServices;
 
+using WPFUtilities.Attributes;
+
 // Les informations générales relatives à un assembly dépendent de
 // l'ensemble d'attributs suivant. Changez les valeurs de ces attributs pour modifier les informations
 // associées à un assembly.
 [assembly: AssemblyTitle("WPFUtilities")]
-[assembly: AssemblyDescription("Utilities classes and components for WPF")]
+[assembly: AssemblyDescription("Utilities classes, components and snippets for WPF")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Franck Gaspoz")]
 [assembly: AssemblyProduct("WPFUtilities")]
@@ -35,3 +37,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("1.0.5.0")]
 [assembly: AssemblyFileVersion("1.0.5.0")]
 [assembly: NeutralResourcesLanguage("en")]
+
+[assembly: InjectableServices]

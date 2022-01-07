@@ -1,5 +1,4 @@
-﻿using System;
-
+﻿
 using WPFUtilities.Components.Appl;
 
 namespace WPFUtilities.ComponentModels
@@ -25,7 +24,7 @@ namespace WPFUtilities.ComponentModels
                     if (_instance == null)
                         _instance =
                             ApplicationHost.Instance.Host == null ?
-                                (T)Activator.CreateInstance(typeof(T))
+                                default(T)
                                 : (T)ApplicationHost.Instance.Host.Services.GetService(typeof(T));
                     return _instance;
                 }

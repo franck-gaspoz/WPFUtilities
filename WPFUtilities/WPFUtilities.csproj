@@ -96,6 +96,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\InjectableServicesAttribute.cs" />
     <Compile Include="Behaviors\Scrolling\IScrollViewerHelperFeature.cs" />
     <Compile Include="Behaviors\Scrolling\AutoScrollBehavior.cs" />
     <Compile Include="Behaviors\Layout\MarginSetterBehavior.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Commands\AbstractCommand.cs" />
     <Compile Include="Commands\Appl\ApplCommands.cs" />
     <Compile Include="Commands\Appl\CloseApplicationCommand.cs" />
+    <Compile Include="Commands\Appl\LogCommand.cs" />
     <Compile Include="Commands\Render\RenderCommands.cs" />
     <Compile Include="Commands\Interactivity\InteractivityCommands.cs" />
     <Compile Include="Commands\Interactivity\OpenWindowCommand.cs" />
@@ -137,6 +139,7 @@
     <Compile Include="CustomBrushes\HatchRawBrush.cs" />
     <Compile Include="CustomBrushes\SpectrumBrush.cs" />
     <Compile Include="Extensions\Appl\ApplicationExtensions.cs" />
+    <Compile Include="Extensions\Reflections\TypeExtensions.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Components\Appl\AppViewModelBase.cs" />
     <Compile Include="Components\Appl\IAppViewModelBase.cs" />

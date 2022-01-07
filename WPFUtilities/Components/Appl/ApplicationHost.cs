@@ -1,7 +1,16 @@
 ﻿
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+
+using WPFUtilities.Attributes;
+using WPFUtilities.ComponentModels;
+using WPFUtilities.Extensions.Reflections;
 
 namespace WPFUtilities.Components.Appl
 {
@@ -85,7 +94,42 @@ namespace WPFUtilities.Components.Appl
         /// <param name="services">services</param>
         void configureServices(IServiceCollection services)
         {
+            AddSingletonServices(services);
+        }
 
+        /// <summary>
+        /// add singleton services to service collection
+        /// </summary>
+        /// <param name="services">services</param>
+        public void AddSingletonServices(IServiceCollection services)
+            => AppDomain.CurrentDomain.GetAssemblies()
+                    .Where(x => x.GetCustomAttribute<InjectableServicesAttribute>() != null)
+                    .ToList()
+                    .ForEach(x => AddSingletonServices(services, x));
+
+        /// <summary>
+        /// add singleton services to service collection from types in the given assembly
+        /// </summary>
+        /// <param name="services">services</param>
+        /// <param name="assembly">assembly</param>
+        public void AddSingletonServices(IServiceCollection services, Assembly assembly)
+        {
+            var types = GetTypes(assembly, typeof(SingletonService<>).Name).ToArray();
+            for (int i = 0; i < types.Length; i++)
+                services.AddSingleton(types[i]);
+        }
+
+        List<Type> GetTypes(Assembly assembly, string inheritsFromTypeName)
+        {
+            List<Type> types = new List<Type>();
+            var assemblyTypes = assembly.GetTypes().ToArray();
+            for (int i = 0; i < assemblyTypes.Length; i++)
+            {
+                var type = assemblyTypes[i];
+                if (!type.IsAbstract && !type.IsInterface && type.InheritsFrom(inheritsFromTypeName))
+                    types.Add(type);
+            }
+            return types;
         }
     }
 }

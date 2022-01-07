@@ -12,5 +12,10 @@ namespace WPFUtilities.Commands.Appl
         /// </summary>
         public static ICommand ApplicationClose => CloseApplicationCommand.Instance;
 
+        /// <summary>
+        /// log a string or an object ToString (level Information)
+        /// </summary>
+        public static ICommand Log { get; } = LogCommand.Instance;
+
     }
 }
