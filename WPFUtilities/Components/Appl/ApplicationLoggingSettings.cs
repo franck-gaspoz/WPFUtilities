@@ -8,6 +8,9 @@ namespace WPFUtilities.Components.Appl
     public class ApplicationLoggingSettings : IApplicationLoggingSettings
     {
         /// <inheritdoc/>
-        public LogLevel MinimumLogLevel { get; set; }
+        public LogLevel MinimumLogLevel { get; set; } = LogLevel.Trace;
+
+        /// <inheritdoc/>
+        public bool LogConsole { get; set; } = true;
     }
 }

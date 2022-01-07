@@ -76,6 +76,8 @@ namespace WPFUtilities.Components.Appl
         void configureLogging(ILoggingBuilder loggingBuilder)
         {
             loggingBuilder.ClearProviders();
+            if (_applicationBaseSettings.ApplicationLoggingSettings.LogConsole)
+                loggingBuilder.AddConsole();
             loggingBuilder.SetMinimumLevel(_applicationBaseSettings.ApplicationLoggingSettings.MinimumLogLevel);
         }
 

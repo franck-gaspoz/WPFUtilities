@@ -8,6 +8,7 @@ namespace WPFUtilities.Behaviors.Services
 {
     /// <summary>
     /// service dependency data context stateless behavior: setup data context from dependency injector
+    /// <para>default resolve: {Name}View -> I{Name}ViewModel , Name{ViewModel} </para>
     /// </summary>
     public class ServiceDependencyDataContextBehavior : Behavior<FrameworkElement>
     {

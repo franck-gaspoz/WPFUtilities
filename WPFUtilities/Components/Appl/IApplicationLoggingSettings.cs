@@ -12,5 +12,10 @@ namespace WPFUtilities.Components.Appl
         /// minimum log level
         /// </summary>
         LogLevel MinimumLogLevel { get; set; }
+
+        /// <summary>
+        /// if true enable logging to console
+        /// </summary>
+        bool LogConsole { get; set; }
     }
 }
