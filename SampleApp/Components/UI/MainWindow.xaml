@@ -46,7 +46,9 @@
                     CommandParameter="I am a log message!"/>
         </StackPanel>
 
-        <logging:LogView Grid.Row="3" wpfubehaviorsServices:ServiceDependencyDataContextBehavior.IsEnabled="True"/>
+        <logging:LogView 
+            Grid.Row="3" 
+            wpfubehaviorsServices:ServiceDependencyDataContextBehavior.IsEnabled="True"/>
 
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 using Microsoft.Xaml.Behaviors;
 
@@ -9,6 +10,8 @@ namespace WPFUtilities.Behaviors.Services
     /// <summary>
     /// service dependency data context stateless behavior: setup data context from dependency injector
     /// <para>default resolve: {Name}View -> I{Name}ViewModel , Name{ViewModel} </para>
+    /// <para>fallback resolve: {Name}Window -> I{Name}ViewModel -di-> Name{ViewModel} </para>
+    /// <para>explicit resolve: {ResolveProperty} -di-> Name{ViewModel} </para>
     /// </summary>
     public class ServiceDependencyDataContextBehavior : Behavior<FrameworkElement>
     {
@@ -44,9 +47,51 @@ namespace WPFUtilities.Behaviors.Services
 
         #endregion
 
+        #region Resolve
+
+        /// <summary>
+        /// get Resolve dependency property value for object
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <returns>true if is enabled</returns>
+        public static Type GetResolve(DependencyObject dependencyObject)
+            => (Type)dependencyObject.GetValue(ResolveProperty);
+
+        /// <summary>
+        /// set Resolve dependency property value for object
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <param name="value">value</param>
+        public static void SetResolve(DependencyObject dependencyObject, Type value)
+            => dependencyObject.SetValue(ResolveProperty, value);
+
+        /// <summary>
+        /// Resolve dependency property
+        /// </summary>
+        public static readonly DependencyProperty ResolveProperty =
+            DependencyProperty.RegisterAttached(
+                "Resolve",
+                typeof(Type),
+                typeof(ServiceDependencyDataContextBehavior),
+                new PropertyMetadata(null, ResolveChanged));
+
+        #endregion
+
         #endregion
 
         #region interactivity
+
+        /// <summary>
+        /// trigger setup data context when resolve is set
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <param name="eventArgs">event args</param>
+        static void ResolveChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
+        {
+            if (!(dependencyObject is FrameworkElement target)) return;
+            if (eventArgs.NewValue is Type type)
+                SetupServiceDependencyDataContext(dependencyObject, type);
+        }
 
         /// <summary>
         /// trigger setup data context when is enabled is set to true
@@ -57,17 +102,37 @@ namespace WPFUtilities.Behaviors.Services
         {
             if (!(dependencyObject is FrameworkElement target)) return;
             if ((bool)eventArgs.NewValue)
-                Enable(dependencyObject);
+                SetupServiceDependencyDataContext(dependencyObject);
         }
 
         #endregion
 
         /// <summary>
-        /// enable service dependency data context behavior: setup data context from dependency injector
+        /// setup service dependency data context behavior: setup data context from dependency injector
+        /// <para>wpfubehaviorsServices:ServiceDependencyDataContextBehavior.Resolve="{x:Type ..}"</para>
+        /// <para>resolve a view model</para>
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <param name="type">resolve for the given type</param>
+        static void SetupServiceDependencyDataContext(DependencyObject dependencyObject, Type type)
+        {
+            if (dependencyObject is FrameworkElement frameworkElement
+                && type != null
+                && ApplicationHost.Instance.Host != null)
+            {
+                frameworkElement.DataContext =
+                    ApplicationHost.Instance.Host.Services
+                        .GetService(type);
+            }
+        }
+
+        /// <summary>
+        /// setup service dependency data context behavior: setup data context from dependency injector
         /// <para>wpfubehaviorsServices:ServiceDependencyDataContextBehavior.IsEnabled="True"</para>
         /// <para>resolve a view model</para>
         /// </summary>
-        static void Enable(DependencyObject dependencyObject)
+        /// <param name="dependencyObject">dependency object</param>
+        static void SetupServiceDependencyDataContext(DependencyObject dependencyObject)
         {
             if (dependencyObject is FrameworkElement frameworkElement
                 && ApplicationHost.Instance.Host != null)
@@ -89,6 +154,6 @@ namespace WPFUtilities.Behaviors.Services
         /// <para>Behaviors:Interaction.Behaviors</para>
         /// </summary>
         protected override void OnAttached()
-            => Enable(AssociatedObject);
+            => SetupServiceDependencyDataContext(AssociatedObject);
     }
 }
