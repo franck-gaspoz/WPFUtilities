@@ -75,8 +75,11 @@ namespace WPFUtilities.Behaviors.Services
                     + "."
                     + dependencyObject.GetType().Name + "Model";
                 var logViewModelType = dependencyObject.GetType().Assembly.GetType(logViewModelTypeName);
-                var logViewModel = ApplicationHost.Instance.Host.Services.GetService(logViewModelType);
-                frameworkElement.DataContext = logViewModel;
+                if (logViewModelType != null)
+                {
+                    var logViewModel = ApplicationHost.Instance.Host.Services.GetService(logViewModelType);
+                    frameworkElement.DataContext = logViewModel;
+                }
             }
         }
 
