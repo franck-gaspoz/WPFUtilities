@@ -134,6 +134,8 @@
     <Compile Include="Components\Dispatchable.cs" />
     <Compile Include="Components\Render\Zoomer.cs" />
     <Compile Include="Components\Appl\IApplicationBase.cs" />
+    <Compile Include="Components\Services\IServicesDependenciesBuilder.cs" />
+    <Compile Include="Components\Services\ServicesDependenciesBuilder.cs" />
     <Compile Include="Converters\SizePercentConverter.cs" />
     <Compile Include="Converters\SizePercentRectConverter.cs" />
     <Compile Include="CustomBrushes\HatchRawBrush.cs" />
