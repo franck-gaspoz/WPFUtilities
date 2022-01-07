@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel;
 
+using WPFUtilities.Attributes;
 using WPFUtilities.ComponentModels;
 
 namespace SampleApp.Components.Logging
 {
+    [DependencyService]
     public class LogViewModel : ModelBase, IModelBase, ILogViewModel
     {
         /// <inheritdoc/>

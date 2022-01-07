@@ -8,6 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="200">
     <Grid>
-        <ListView ItemsSource="{Binding Messages}"/>
+        <ListView ItemsSource="{Binding Messages}" />
     </Grid>
 </UserControl>

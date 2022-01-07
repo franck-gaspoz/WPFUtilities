@@ -105,6 +105,7 @@
     <Compile Include="Behaviors\Interactivity\PropertyChangedDelegateCommandBehavior.cs" />
     <Compile Include="Behaviors\Scrolling\ScrollViewerHelperFeatureBehavior.cs" />
     <Compile Include="Behaviors\Scrolling\ScrollViewerTouchBehavior.cs" />
+    <Compile Include="Behaviors\Services\ServiceDependencyDataContextBehavior.cs" />
     <Compile Include="Behaviors\Windows\WindowDisplayedDelegateCommandBehavior.cs" />
     <Compile Include="Behaviors\Layout\CollapseSplitedPanelBehavior.cs" />
     <Compile Include="Commands\AbstractCommand.cs" />

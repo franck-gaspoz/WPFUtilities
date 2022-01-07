@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:commands="clr-namespace:SampleApp.Commands"
-        xmlns:wpfubehaviors="clr-namespace:WPFUtilities.Behaviors.Windows;assembly=WPFUtilities"
+        xmlns:wpfubehaviorsWindows="clr-namespace:WPFUtilities.Behaviors.Windows;assembly=WPFUtilities"
+        xmlns:wpfubehaviorsServices="clr-namespace:WPFUtilities.Behaviors.Services;assembly=WPFUtilities"
         xmlns:wpfucommandsAppl="clr-namespace:WPFUtilities.Commands.Appl;assembly=WPFUtilities"
         xmlns:local="clr-namespace:SampleApp" 
         xmlns:appl="clr-namespace:WPFUtilities.Components.Appl;assembly=WPFUtilities" 
@@ -17,7 +18,7 @@
         Height="450" Width="800">
     
     <Behaviors:Interaction.Behaviors>
-        <wpfubehaviors:WindowDisplayedDelegateCommandBehavior Command="{x:Static commands:Commands.OnMainWindowShown}"/>
+        <wpfubehaviorsWindows:WindowDisplayedDelegateCommandBehavior Command="{x:Static commands:Commands.OnMainWindowShown}"/>
     </Behaviors:Interaction.Behaviors>
     
     <Grid Margin="8">
@@ -34,7 +35,7 @@
                     CommandParameter="I am a log message!"/>
         </StackPanel>
 
-        <logging:LogView Grid.Row="2"/>
-        
+        <logging:LogView Grid.Row="2" wpfubehaviorsServices:ServiceDependencyDataContextBehavior.IsEnabled="True"/>
+
     </Grid>
 </Window>

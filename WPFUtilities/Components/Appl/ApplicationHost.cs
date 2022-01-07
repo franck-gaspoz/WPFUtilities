@@ -86,7 +86,8 @@ namespace WPFUtilities.Components.Appl
         void configureServices(IServiceCollection services)
         {
             new ServicesDependenciesBuilder(services)
-                .AddSingletonServices();
+                .AddSingletonServices()
+                .AddDependencyServices();
         }
 
     }

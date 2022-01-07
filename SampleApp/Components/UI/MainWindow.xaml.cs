@@ -7,6 +7,9 @@ namespace SampleApp.Components.UI
     /// </summary>
     public partial class MainWindow : Window
     {
+        /// <summary>
+        /// creates a new instance
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
