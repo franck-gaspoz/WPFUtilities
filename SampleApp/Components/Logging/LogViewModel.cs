@@ -7,6 +7,9 @@ using WPFUtilities.ComponentModels;
 
 namespace SampleApp.Components.Logging
 {
+    /// <summary>
+    /// log view model : exposes messages to a view, plugged with the application host loggin provider to forward log messages
+    /// </summary>
     [DependencyService]
     public class LogViewModel : ModelBase, IModelBase, ILogViewModel
     {
