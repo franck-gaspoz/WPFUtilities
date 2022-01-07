@@ -2,6 +2,7 @@
 using System.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace WPFUtilities.Components.Appl
 {
@@ -31,23 +32,38 @@ namespace WPFUtilities.Components.Appl
         string DefaultCulture { get; set; }
 
         /// <summary>
-        /// action to be launch at initialization, before main window is created
+        /// action to be launch at initialization, before main window is created [initialization step 1]
         /// </summary>
         Action Initialize { get; set; }
 
         /// <summary>
-        /// action to be launch at initialization, after main window is created, before it is shown
+        /// action to be launch at initialization, after main window is created, before it is shown [initialization step 4]
         /// </summary>
-        Action<Window> InitializeWindow { get; set; }
+        Action<Window> InitializeMainWindow { get; set; }
 
         /// <summary>
-        /// host configure services callback
+        /// host configure services callback [initialization step 3]
         /// </summary>
         Action<IServiceCollection> ConfigureServices { get; set; }
+
+        /// <summary>
+        /// configure host callback [initialization step 2]
+        /// </summary>
+        Action<IHostBuilder> InitializeHost { get; set; }
+
+        /// <summary>
+        /// action callback at application shutdown
+        /// </summary>
+        Action ShutdownAction { get; set; }
 
         /// <summary>
         /// shutdown time out
         /// </summary>
         int ShutdownTimeout { get; set; }
+
+        /// <summary>
+        /// application logging settings
+        /// </summary>
+        IApplicationLoggingSettings ApplicationLoggingSettings { get; set; }
     }
 }

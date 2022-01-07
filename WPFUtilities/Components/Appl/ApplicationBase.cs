@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Windows;
 
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using WPFUtilities.Helpers;
@@ -26,29 +27,21 @@ namespace WPFUtilities.Components.Appl
         /// <summary>
         /// creates a new instance
         /// </summary>
-        public ApplicationBase()
-        {
-        }
+        public ApplicationBase() { }
 
         /// <summary>
-        /// starts the application
+        /// starts the UI
         /// </summary>
-        protected void Start()
+        void StartUI()
         {
             try
             {
-                if (ApplicationBaseSettings.DefaultCulture != null)
-                    CultureInfo.DefaultThreadCurrentCulture =
-                    CultureInfo.DefaultThreadCurrentUICulture =
-                        new CultureInfo(ApplicationBaseSettings.DefaultCulture);
-
-                ApplicationBaseSettings.Initialize?.Invoke();
-
                 if (ApplicationBaseSettings.MainWindowType != null)
                 {
-                    MainWindow = (Window)Activator.CreateInstance(ApplicationBaseSettings.MainWindowType);
+                    MainWindow = (Window)ApplicationHost.Instance.Host.Services
+                        .GetService(ApplicationBaseSettings.MainWindowType);
 
-                    ApplicationBaseSettings.InitializeWindow?.Invoke(MainWindow);
+                    ApplicationBaseSettings.InitializeMainWindow?.Invoke(MainWindow);
 
                     if (ApplicationBaseSettings.ShowWindow)
                     {
@@ -66,15 +59,38 @@ namespace WPFUtilities.Components.Appl
             }
         }
 
+
+        /// <summary>
+        /// initialize culture
+        /// </summary>
+
+        void InitializeCulture()
+        {
+            if (ApplicationBaseSettings.DefaultCulture != null)
+                CultureInfo.DefaultThreadCurrentCulture =
+                CultureInfo.DefaultThreadCurrentUICulture =
+                    new CultureInfo(ApplicationBaseSettings.DefaultCulture);
+        }
+
         /// <summary>
         /// startup application
         /// </summary>
         /// <param name="eventArgs">event args</param>
         protected async override void OnStartup(StartupEventArgs eventArgs)
         {
-            ApplicationHost.Instance.Build(ApplicationBaseSettings);
+            ApplicationBaseSettings = ApplicationBaseSettings ?? new ApplicationBaseSettings();
+            InitializeCulture();
+            ApplicationBaseSettings.Initialize?.Invoke();
+            ApplicationHost.Instance.Configure(ApplicationBaseSettings);
+            if (ApplicationBaseSettings.MainWindowType != null)
+                ApplicationHost.Instance.HostBuilder
+                    .ConfigureServices((services) =>
+                    {
+                        services.AddTransient(ApplicationBaseSettings.MainWindowType);
+                    });
+            ApplicationHost.Instance.Build();
             await ApplicationHost.Instance.Host.StartAsync();
-            Start();
+            StartUI();
         }
 
         /// <summary>
@@ -83,6 +99,7 @@ namespace WPFUtilities.Components.Appl
         /// <param name="eventArgs">event args</param>
         protected async override void OnExit(ExitEventArgs eventArgs)
         {
+            ApplicationBaseSettings.ShutdownAction?.Invoke();
             using (ApplicationHost.Instance.Host)
             {
                 await ApplicationHost.Instance.Host.StopAsync(

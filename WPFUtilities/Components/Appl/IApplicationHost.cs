@@ -13,9 +13,14 @@ namespace WPFUtilities.Components.Appl
         IHost Host { get; }
 
         /// <summary>
+        /// host builder
+        /// </summary>
+        IHostBuilder HostBuilder { get; }
+
+        /// <summary>
         /// build host
         /// </summary>
         /// <param name="applicationBaseSettings">application base settings</param>
-        void Build(IApplicationBaseSettings applicationBaseSettings);
+        void Configure(IApplicationBaseSettings applicationBaseSettings);
     }
 }

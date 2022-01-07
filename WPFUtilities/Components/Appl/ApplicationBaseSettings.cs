@@ -2,6 +2,7 @@
 using System.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace WPFUtilities.Components.Appl
 {
@@ -32,12 +33,22 @@ namespace WPFUtilities.Components.Appl
         public Action Initialize { get; set; }
 
         /// <inheritdoc/>
-        public Action<Window> InitializeWindow { get; set; }
+        public Action<Window> InitializeMainWindow { get; set; }
 
         /// <inheritdoc/>
         public Action<IServiceCollection> ConfigureServices { get; set; }
 
         /// <inheritdoc/>
+        public Action<IHostBuilder> InitializeHost { get; set; }
+
+        /// <inheritdoc/>
+        public Action ShutdownAction { get; set; }
+
+        /// <inheritdoc/>
         public int ShutdownTimeout { get; set; } = 5;
+
+        /// <inheritdoc/>
+        public IApplicationLoggingSettings ApplicationLoggingSettings { get; set; }
+            = new ApplicationLoggingSettings();
     }
 }

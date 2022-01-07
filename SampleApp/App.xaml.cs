@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 using SampleApp.Components.UI;
 
@@ -22,23 +23,52 @@ namespace SampleApp
             {
                 MainWindowType = typeof(MainWindow),
                 Initialize = () => Initialize(),
-                InitializeWindow = (window) => InitializeWindow(window),
-                ConfigureServices = (services) => ConfigureServices(services)
+                InitializeHost = (hostBuilder) => InitializeHost(hostBuilder),
+                ConfigureServices = (services) => ConfigureServices(services),
+                InitializeMainWindow = (window) => InitializeWindow(window),
+                ShutdownAction = () => ShutdownAction()
             };
-            //Start(settings);
         }
 
-        void ConfigureServices(IServiceCollection services)
-        {
-
-        }
-
+        /// <summary>
+        /// initialize application [step 1]
+        /// </summary>
         void Initialize()
         {
 
         }
 
+        /// <summary>
+        /// intialize host [step 2]
+        /// </summary>
+        /// <param name="hostBuilder"></param>
+        void InitializeHost(IHostBuilder hostBuilder)
+        {
+
+        }
+
+        /// <summary>
+        /// configure services (DI) [step 3]
+        /// </summary>
+        /// <param name="services">services</param>
+        void ConfigureServices(IServiceCollection services)
+        {
+
+        }
+
+        /// <summary>
+        /// initialize main window [step 4]
+        /// </summary>
+        /// <param name="window"></param>
         void InitializeWindow(Window window)
+        {
+
+        }
+
+        /// <summary>
+        /// shtudown action
+        /// </summary>
+        void ShutdownAction()
         {
 
         }

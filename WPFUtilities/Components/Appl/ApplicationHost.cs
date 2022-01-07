@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 using WPFUtilities.ComponentModels;
 
@@ -15,13 +16,41 @@ namespace WPFUtilities.Components.Appl
         public IHost Host { get; private set; }
 
         /// <inheritdoc/>
-        public void Build(IApplicationBaseSettings applicationBaseSettings)
+        public IHostBuilder HostBuilder { get; private set; }
+
+        IApplicationBaseSettings _applicationBaseSettings;
+
+        /// <inheritdoc/>
+        public void Configure(IApplicationBaseSettings applicationBaseSettings)
         {
-            var hostBuilder = new HostBuilder()
-                    .ConfigureServices(configureServices);
+            _applicationBaseSettings = applicationBaseSettings;
+
+            HostBuilder = new HostBuilder()
+                .ConfigureLogging(configureLogging)
+                .ConfigureServices(configureServices);
+
+            applicationBaseSettings.InitializeHost?.Invoke(HostBuilder);
+
             if (applicationBaseSettings.ConfigureServices != null)
-                hostBuilder.ConfigureServices(applicationBaseSettings.ConfigureServices);
-            Host = hostBuilder.Build();
+                HostBuilder.ConfigureServices(applicationBaseSettings.ConfigureServices);
+        }
+
+        /// <summary>
+        /// build the host
+        /// </summary>
+        public void Build()
+        {
+            Host = HostBuilder.Build();
+        }
+
+        /// <summary>
+        /// configure logging
+        /// </summary>
+        /// <param name="loggingBuilder">logging builder</param>
+        private void configureLogging(ILoggingBuilder loggingBuilder)
+        {
+            loggingBuilder.ClearProviders();
+            loggingBuilder.SetMinimumLevel(_applicationBaseSettings.ApplicationLoggingSettings.MinimumLogLevel);
         }
 
         /// <summary>

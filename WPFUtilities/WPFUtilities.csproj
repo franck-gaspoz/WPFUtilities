@@ -125,8 +125,10 @@
     <Compile Include="Components\Appl\ApplicationBase.cs" />
     <Compile Include="Components\Appl\ApplicationBaseSettings.cs" />
     <Compile Include="Components\Appl\ApplicationHost.cs" />
+    <Compile Include="Components\Appl\ApplicationLoggingSettings.cs" />
     <Compile Include="Components\Appl\IApplicationBaseSettings.cs" />
     <Compile Include="Components\Appl\IApplicationHost.cs" />
+    <Compile Include="Components\Appl\IApplicationLoggingSettings.cs" />
     <Compile Include="Components\Dispatchable.cs" />
     <Compile Include="Components\Render\Zoomer.cs" />
     <Compile Include="Components\Appl\IApplicationBase.cs" />
