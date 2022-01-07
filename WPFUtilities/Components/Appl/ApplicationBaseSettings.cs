@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Windows;
+
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WPFUtilities.Components.Appl
 {
@@ -27,5 +30,14 @@ namespace WPFUtilities.Components.Appl
 
         /// <inheritdoc/>
         public Action Initialize { get; set; }
+
+        /// <inheritdoc/>
+        public Action<Window> InitializeWindow { get; set; }
+
+        /// <inheritdoc/>
+        public Action<IServiceCollection> ConfigureServices { get; set; }
+
+        /// <inheritdoc/>
+        public int ShutdownTimeout { get; set; } = 5;
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace SampleApp
+namespace SampleApp.Components.UI
 {
     /// <summary>
     /// main window controler

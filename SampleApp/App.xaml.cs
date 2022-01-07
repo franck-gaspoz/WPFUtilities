@@ -1,4 +1,8 @@
 ﻿
+using System.Windows;
+
+using SampleApp.Components.UI;
+
 using WPFUtilities.Components.Appl;
 
 namespace SampleApp
@@ -16,11 +20,18 @@ namespace SampleApp
             var settings = new ApplicationBaseSettings
             {
                 MainWindowType = typeof(MainWindow),
-                Initialize = () => Initialize()
+                Initialize = () => Initialize(),
+                InitializeWindow = (window) => InitializeWindow(window)
             };
+            Start(settings);
         }
 
         void Initialize()
+        {
+
+        }
+
+        void InitializeWindow(Window window)
         {
 
         }

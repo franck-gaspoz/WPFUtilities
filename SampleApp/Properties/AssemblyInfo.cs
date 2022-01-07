@@ -9,7 +9,7 @@ using System.Windows;
 [assembly: AssemblyDescription("WPFUtilities sample application")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Franck Gaspoz")]
-[assembly: AssemblyProduct("WPFUtilities SampleApp")]
+[assembly: AssemblyProduct("WPFUtilities sample application")]
 [assembly: AssemblyCopyright("Copyright © Franck Gaspoz 2022 License MIT")]
 [assembly: AssemblyTrademark("Franck Gaspoz")]
 [assembly: AssemblyCulture("")]
