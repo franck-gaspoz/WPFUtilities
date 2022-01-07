@@ -31,7 +31,7 @@ namespace WPFUtilities.Components.Services
         public ServicesDependenciesBuilder AddSingletonServices()
         {
             AppDomain.CurrentDomain.GetAssemblies()
-                    .Where(x => x.GetCustomAttribute<InjectableServicesAttribute>() != null)
+                    .Where(x => x.GetCustomAttribute<DependencyServicesAttribute>() != null)
                     .ToList()
                     .ForEach(x => AddSingletonServices(x));
             return this;
