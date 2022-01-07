@@ -10,7 +10,7 @@ namespace WPFUtilities.Converters
     /// multi-purpose debug converter
     /// </summary>
     public class DebugConverter
-        : Singleton<DebugConverter>, IValueConverter
+        : SingletonService<DebugConverter>, IValueConverter
     {
         /// <summary>
         /// instance counter

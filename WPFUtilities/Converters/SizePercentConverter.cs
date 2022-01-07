@@ -10,7 +10,7 @@ namespace WPFUtilities.Converters
     /// convert a size to a double according a percent ratio (0 to 1)
     /// </summary>
     public class SizePercentConverter :
-        Singleton<SizePercentConverter>,
+        SingletonService<SizePercentConverter>,
         IMultiValueConverter
     {
         /// <summary>

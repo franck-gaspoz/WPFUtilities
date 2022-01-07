@@ -11,7 +11,7 @@ namespace WPFUtilities.Converters
     /// converts Rect sizes to a new Rect according a percent ratio (0 to 1). new rect height is int.MaxValue
     /// </summary>
     public class SizePercentRectConverter :
-        Singleton<SizePercentRectConverter>,
+        SingletonService<SizePercentRectConverter>,
         IMultiValueConverter
     {
         /// <summary>

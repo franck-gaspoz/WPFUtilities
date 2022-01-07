@@ -11,7 +11,7 @@ namespace WPFUtilities.Converters
     /// convert multi values to a value list
     /// </summary>
     public class MultiBindingConverter
-        : Singleton<MultiBindingConverter>, IMultiValueConverter
+        : SingletonService<MultiBindingConverter>, IMultiValueConverter
     {
         /// <summary>
         /// object[] to List&gt;object&gt;

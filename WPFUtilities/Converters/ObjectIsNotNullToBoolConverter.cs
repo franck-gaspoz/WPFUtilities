@@ -10,7 +10,7 @@ namespace WPFUtilities.Converters
     /// object is not null to bool converter
     /// </summary>
     public class ObjectIsNotNullToBoolConverter
-        : Singleton<ObjectIsNotNullToBoolConverter>, IValueConverter
+        : SingletonService<ObjectIsNotNullToBoolConverter>, IValueConverter
     {
         /// <summary>
         /// returns true if value is not null, false otherwize

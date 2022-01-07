@@ -10,7 +10,7 @@ namespace WPFUtilities.Converters
     /// disabled underscores in a string value (avoid underlined first words letters)
     /// </summary>
     public class TextUnderscoreConverter
-        : Singleton<TextUnderscoreConverter>, IValueConverter
+        : SingletonService<TextUnderscoreConverter>, IValueConverter
     {
         /// <summary>
         /// disable underscores in a string value

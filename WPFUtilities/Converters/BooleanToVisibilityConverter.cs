@@ -11,7 +11,7 @@ namespace WPFUtilities.Converters
     /// converts a boolean to a visibility value
     /// </summary>
     public class BooleanToVisibilityConverter :
-        Singleton<BooleanToVisibilityConverter>,
+        SingletonService<BooleanToVisibilityConverter>,
         IValueConverter
     {
         /// <summary>

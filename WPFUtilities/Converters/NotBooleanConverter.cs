@@ -10,7 +10,7 @@ namespace WPFUtilities.Converters
     /// converts a boolean to its negated value
     /// </summary>
     public class NotBooleanConverter :
-        Singleton<NotBooleanConverter>,
+        SingletonService<NotBooleanConverter>,
         IValueConverter
     {
         /// <summary>

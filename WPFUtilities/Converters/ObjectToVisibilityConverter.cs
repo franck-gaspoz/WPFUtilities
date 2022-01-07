@@ -11,7 +11,7 @@ namespace WPFUtilities.Converters
     /// convert an object value to a visbibility value depending on its nullity
     /// </summary>
     public class ObjectToVisibilityConverter
-        : Singleton<ObjectToVisibilityConverter>, IValueConverter
+        : SingletonService<ObjectToVisibilityConverter>, IValueConverter
     {
         /// <summary>
         /// convert from object to Visibility

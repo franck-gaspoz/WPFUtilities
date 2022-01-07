@@ -10,7 +10,7 @@ namespace WPFUtilities.Converters
     /// enum string converter
     /// </summary>
     public class EnumStringConverter
-        : Singleton<EnumStringConverter>, IValueConverter
+        : SingletonService<EnumStringConverter>, IValueConverter
     {
         /// <summary>
         /// Enum -> string

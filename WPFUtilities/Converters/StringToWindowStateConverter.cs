@@ -11,7 +11,7 @@ namespace WPFUtilities.Converters
     /// string to window state converter
     /// </summary>
     public class StringToWindowStateConverter
-        : Singleton<StringToWindowStateConverter>, IValueConverter
+        : SingletonService<StringToWindowStateConverter>, IValueConverter
     {
         /// <summary>
         /// transforms a string value representing a window state to a window state value, returns Normal if fail, returns collapsed if not a string value

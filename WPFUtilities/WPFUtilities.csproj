@@ -119,7 +119,7 @@
     <Compile Include="ComponentModels\ModelBase.cs" />
     <Compile Include="ComponentModels\ModelToObjectMediator.cs" />
     <Compile Include="ComponentModels\ModelToObjectPropertyMediator.cs" />
-    <Compile Include="ComponentModels\Singleton.cs" />
+    <Compile Include="ComponentModels\SingletonService.cs" />
     <Compile Include="ComponentModels\ValidableModel.cs" />
     <Compile Include="ComponentModels\ValidationAttributes\OfTypeAttribute.cs" />
     <Compile Include="Components\Appl\ApplicationBase.cs" />

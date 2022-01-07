@@ -10,7 +10,7 @@ namespace WPFUtilities.Converters
     /// transform NaN and Infinite double values to 0, emse keep value
     /// </summary>
     public class ValidDoubleValueFilterConverter
-        : Singleton<ValidDoubleValueFilterConverter>, IValueConverter
+        : SingletonService<ValidDoubleValueFilterConverter>, IValueConverter
     {
         /// <summary>
         /// transform NaN and Infinite double values to 0, emse keep value

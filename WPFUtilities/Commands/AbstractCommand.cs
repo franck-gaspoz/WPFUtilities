@@ -7,11 +7,11 @@ using WPFUtilities.ComponentModels;
 namespace WPFUtilities.Commands
 {
     /// <summary>
-    /// abstract command
+    /// abstract command singleton service
     /// </summary>
     public abstract class AbstractCommand<ConcreteType> :
-        Singleton<ConcreteType>, ICommand
-        where ConcreteType : class, ICommand, new()
+        SingletonService<ConcreteType>, ICommand
+        where ConcreteType : ICommand
     {
 
         /// <summary>

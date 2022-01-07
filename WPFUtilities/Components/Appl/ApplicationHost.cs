@@ -3,15 +3,41 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-using WPFUtilities.ComponentModels;
-
 namespace WPFUtilities.Components.Appl
 {
     /// <summary>
     /// application host
     /// </summary>
-    public class ApplicationHost : Singleton<ApplicationHost>, IApplicationHost
+    public class ApplicationHost : IApplicationHost
     {
+        #region singleton pattern
+
+        /// <summary>
+        /// private constructor 
+        /// </summary>
+        ApplicationHost() { }
+
+        static object _lock = new object();
+
+        static ApplicationHost _instance;
+        /// <summary>
+        /// singleton instance
+        /// </summary>
+        public static ApplicationHost Instance
+        {
+            get
+            {
+                lock (_lock)
+                {
+                    if (_instance == null)
+                        _instance = new ApplicationHost();
+                    return _instance;
+                }
+            }
+        }
+
+        #endregion
+
         /// <inheritdoc/>
         public IHost Host { get; private set; }
 
