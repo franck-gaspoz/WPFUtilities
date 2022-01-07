@@ -3,6 +3,7 @@ using System.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace WPFUtilities.Components.Appl
 {
@@ -34,6 +35,9 @@ namespace WPFUtilities.Components.Appl
 
         /// <inheritdoc/>
         public Action<Window> InitializeMainWindow { get; set; }
+
+        /// <inheritdoc/>
+        public Action<ILoggingBuilder> ConfigureLogging { get; set; }
 
         /// <inheritdoc/>
         public Action<IServiceCollection> ConfigureServices { get; set; }

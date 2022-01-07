@@ -2,6 +2,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 using SampleApp.Components.UI;
 
@@ -24,8 +25,9 @@ namespace SampleApp
                 MainWindowType = typeof(MainWindow),
                 Initialize = () => Initialize(),
                 InitializeHost = (hostBuilder) => InitializeHost(hostBuilder),
+                ConfigureLogging = (loggingBuilder) => ConfigureLogging(loggingBuilder),
                 ConfigureServices = (services) => ConfigureServices(services),
-                InitializeMainWindow = (window) => InitializeWindow(window),
+                InitializeMainWindow = (window) => InitializeMainWindow(window),
                 ShutdownAction = () => ShutdownAction()
             };
         }
@@ -41,14 +43,23 @@ namespace SampleApp
         /// <summary>
         /// intialize host [step 2]
         /// </summary>
-        /// <param name="hostBuilder"></param>
+        /// <param name="hostBuilder">host builder</param>
         void InitializeHost(IHostBuilder hostBuilder)
         {
 
         }
 
         /// <summary>
-        /// configure services (DI) [step 3]
+        /// configure logging [step 3]
+        /// </summary>
+        /// <param name="loggingBuilder">logging builder</param>
+        private void ConfigureLogging(ILoggingBuilder loggingBuilder)
+        {
+
+        }
+
+        /// <summary>
+        /// configure services (DI) [step 4]
         /// </summary>
         /// <param name="services">services</param>
         void ConfigureServices(IServiceCollection services)
@@ -57,10 +68,10 @@ namespace SampleApp
         }
 
         /// <summary>
-        /// initialize main window [step 4]
+        /// initialize main window [step 5]
         /// </summary>
-        /// <param name="window"></param>
-        void InitializeWindow(Window window)
+        /// <param name="mainWindow">main window</param>
+        void InitializeMainWindow(Window mainWindow)
         {
 
         }

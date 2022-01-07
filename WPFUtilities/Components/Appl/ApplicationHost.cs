@@ -59,6 +59,9 @@ namespace WPFUtilities.Components.Appl
 
             applicationBaseSettings.InitializeHost?.Invoke(HostBuilder);
 
+            if (applicationBaseSettings.ConfigureLogging != null)
+                HostBuilder.ConfigureLogging(applicationBaseSettings.ConfigureLogging);
+
             if (applicationBaseSettings.ConfigureServices != null)
                 HostBuilder.ConfigureServices(applicationBaseSettings.ConfigureServices);
         }
