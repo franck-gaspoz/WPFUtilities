@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 
+using Microsoft.Extensions.Logging;
+
 using WPFUtilities.Attributes;
 using WPFUtilities.ComponentModels;
 
@@ -15,9 +17,9 @@ namespace SampleApp.Components.Logging
         /// <summary>
         /// creates a new instance
         /// </summary>
-        public LogViewModel()
+        public LogViewModel(ILogger<LogViewModel> logger)
         {
-
+            logger.LogDebug("LogViewModel created");
         }
     }
 }
