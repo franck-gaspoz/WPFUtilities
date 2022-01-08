@@ -38,4 +38,4 @@ using WPFUtilities.Attributes;
 [assembly: AssemblyFileVersion("1.0.5.0")]
 [assembly: NeutralResourcesLanguage("en")]
 
-[assembly: DependencyServices]
+[assembly: ServiceDependencies]

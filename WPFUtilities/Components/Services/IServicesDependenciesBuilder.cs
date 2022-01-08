@@ -20,6 +20,19 @@ namespace WPFUtilities.Components.Services
         ServicesDependenciesBuilder AddDependencyServices();
 
         /// <summary>
+        /// instantiate and call dependency services initializers classes (having interface IDependencyServiceInitializer)
+        /// </summary>
+        /// <returns>the services dependencies builder that has been called</returns>
+        ServicesDependenciesBuilder AddDependencyServicesInitializers();
+
+        /// <summary>
+        /// instantiate and call dependency services initializers classes (having interface IDependencyServiceInitializer) in the given assembly
+        /// </summary>
+        /// <param name="assembly">assembly</param>
+        /// <returns>the services dependencies builder that has been called</returns>
+        ServicesDependenciesBuilder AddDependencyServicesInitializers(Assembly assembly);
+
+        /// <summary>
         /// add singleton services to service collection from types in the given assembly
         /// </summary>
         /// <param name="assembly">assembly</param>

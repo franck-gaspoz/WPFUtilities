@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 using WPFUtilities.Attributes;
 using WPFUtilities.ComponentModels;
@@ -19,22 +20,41 @@ namespace WPFUtilities.Components.Services
         readonly IServicesDependencyTypeResolver _servicesDependencyTypeResolver
             = new ServicesDependencyTypeResolver();
 
-        IServiceCollection _services;
+        readonly IHostBuilder _hostBuilder;
+        readonly IServiceCollection _services;
+        readonly HostBuilderContext _hostBuilderContext;
 
         /// <summary>
         /// creates a new instance
         /// </summary>
+        /// <param name="hostBuilder">host builder</param>
+        /// <param name="hostBuilderContext">host builder contewt</param>
         /// <param name="services">services</param>
-        public ServicesDependenciesBuilder(IServiceCollection services)
+        public ServicesDependenciesBuilder(
+            IHostBuilder hostBuilder,
+            HostBuilderContext hostBuilderContext,
+            IServiceCollection services)
         {
+            _hostBuilder = hostBuilder;
+            _hostBuilderContext = hostBuilderContext;
             _services = services;
+        }
+
+        /// <inheritdoc/>
+        public ServicesDependenciesBuilder AddDependencyServicesInitializers()
+        {
+            AppDomain.CurrentDomain.GetAssemblies()
+                .Where(x => x.GetCustomAttribute<ServiceDependenciesAttribute>() != null)
+                .ToList()
+                .ForEach(x => AddDependencyServicesInitializers(x));
+            return this;
         }
 
         /// <inheritdoc/>
         public ServicesDependenciesBuilder AddSingletonServices()
         {
             AppDomain.CurrentDomain.GetAssemblies()
-                .Where(x => x.GetCustomAttribute<DependencyServicesAttribute>() != null)
+                .Where(x => x.GetCustomAttribute<ServiceDependenciesAttribute>() != null)
                 .ToList()
                 .ForEach(x => AddSingletonServices(x));
             return this;
@@ -44,30 +64,42 @@ namespace WPFUtilities.Components.Services
         public ServicesDependenciesBuilder AddDependencyServices()
         {
             AppDomain.CurrentDomain.GetAssemblies()
-                .Where(x => x.GetCustomAttribute<DependencyServicesAttribute>() != null)
+                .Where(x => x.GetCustomAttribute<ServiceDependenciesAttribute>() != null)
                 .ToList()
                 .ForEach(x => AddDependencyServices(x));
             return this;
         }
 
         /// <inheritdoc/>
+        public ServicesDependenciesBuilder AddDependencyServicesInitializers(Assembly assembly)
+        {
+            var types = GetTypesWithInterface(assembly, typeof(IServiceDependencyInitializer)).ToArray();
+            for (int i = 0; i < types.Length; i++)
+            {
+                var instance = (IServiceDependencyInitializer)Activator.CreateInstance(types[i]);
+                instance.Initialize(_hostBuilder, _hostBuilderContext, _services);
+            }
+            return this;
+        }
+
+        /// <inheritdoc/>
         public ServicesDependenciesBuilder AddDependencyServices(Assembly assembly)
         {
-            var types = GetTypesWithAttribute(assembly, typeof(DependencyServiceAttribute)).ToArray();
+            var types = GetTypesWithAttribute(assembly, typeof(ServiceDependencyAttribute)).ToArray();
             for (int i = 0; i < types.Length; i++)
             {
                 var type = types[i];
-                var attribute = type.GetCustomAttribute<DependencyServiceAttribute>();
+                var attribute = type.GetCustomAttribute<ServiceDependencyAttribute>();
                 switch (attribute.DependencyScope)
                 {
                     case DependencyScope.Singleton:
-                        AddSingleton(type, attribute.ImplementationFactory);
+                        AddSingleton(type, null);
                         break;
                     case DependencyScope.Transient:
-                        AddTransient(type, attribute.ImplementationFactory);
+                        AddTransient(type, null);
                         break;
                     case DependencyScope.Scoped:
-                        AddScoped(type, attribute.ImplementationFactory);
+                        AddScoped(type, null);
                         break;
                 }
             }
@@ -148,6 +180,19 @@ namespace WPFUtilities.Components.Services
             {
                 var type = assemblyTypes[i];
                 if (!type.IsAbstract && !type.IsInterface && type.GetCustomAttribute(attributeType) != null)
+                    types.Add(type);
+            }
+            return types;
+        }
+
+        List<Type> GetTypesWithInterface(Assembly assembly, Type interfaceType)
+        {
+            List<Type> types = new List<Type>();
+            var assemblyTypes = assembly.GetTypes().ToArray();
+            for (int i = 0; i < assemblyTypes.Length; i++)
+            {
+                var type = assemblyTypes[i];
+                if (!type.IsAbstract && type.GetInterface(interfaceType.FullName) != null)
                     types.Add(type);
             }
             return types;

@@ -5,6 +5,7 @@ This is not a framework, the library doesn't bring any coding convention to .Net
 
 ## library contents:
 
+- Attributes
 - Behaviors
   - Interactivity
   - Layout

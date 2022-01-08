@@ -16,6 +16,7 @@ namespace WPFUtilities.Components.Logging
         /// add list logger to logging builder
         /// </summary>
         /// <param name="loggingBuilder">logging builder</param>
+        /// <param name="configure">configure action</param>
         /// <returns>the logging builder used to call this method</returns>
         public static ILoggingBuilder AddListLogger(
             this ILoggingBuilder loggingBuilder,

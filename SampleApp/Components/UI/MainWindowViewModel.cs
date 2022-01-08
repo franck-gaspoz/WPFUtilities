@@ -10,7 +10,7 @@ namespace SampleApp.Components.UI
     /// <summary>
     /// main window view model
     /// </summary>
-    [DependencyService]
+    [ServiceDependency]
     public class MainWindowViewModel : ModelBase, IModelBase, IMainWindowViewModel
     {
         /// <inheritdoc/>

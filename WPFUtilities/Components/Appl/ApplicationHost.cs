@@ -54,8 +54,11 @@ namespace WPFUtilities.Components.Appl
             _applicationBaseSettings = applicationBaseSettings;
 
             HostBuilder = new HostBuilder()
-                .ConfigureLogging(configureLogging)
-                .ConfigureServices(configureServices);
+                .ConfigureLogging(ConfigureLogging);
+
+            HostBuilder
+                .ConfigureServices((hostBuilderContext, services)
+                    => ConfigureServices(hostBuilderContext, services));
 
             applicationBaseSettings.InitializeHost?.Invoke(HostBuilder);
 
@@ -76,7 +79,7 @@ namespace WPFUtilities.Components.Appl
         /// configure logging
         /// </summary>
         /// <param name="loggingBuilder">logging builder</param>
-        void configureLogging(ILoggingBuilder loggingBuilder)
+        void ConfigureLogging(ILoggingBuilder loggingBuilder)
         {
             loggingBuilder.ClearProviders();
             if (_applicationBaseSettings.ApplicationLoggingSettings.LogConsole)
@@ -87,12 +90,14 @@ namespace WPFUtilities.Components.Appl
         /// <summary>
         /// setup default services
         /// </summary>
+        /// <param name="hostBuilderContext">host builder context</param>
         /// <param name="services">services</param>
-        void configureServices(IServiceCollection services)
+        void ConfigureServices(HostBuilderContext hostBuilderContext, IServiceCollection services)
         {
-            new ServicesDependenciesBuilder(services)
+            new ServicesDependenciesBuilder(HostBuilder, hostBuilderContext, services)
                 .AddSingletonServices()
-                .AddDependencyServices();
+                .AddDependencyServices()
+                .AddDependencyServicesInitializers();
         }
 
     }

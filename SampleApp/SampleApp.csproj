@@ -79,6 +79,7 @@
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Logging\LogViewModel.cs" />
+    <Compile Include="Components\Logging\LogViewModelServiceDependencyInitializer.cs" />
     <Compile Include="Components\UI\IMainWindowViewModel.cs" />
     <Compile Include="Components\UI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
