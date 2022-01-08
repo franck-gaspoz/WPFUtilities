@@ -22,7 +22,7 @@ namespace SampleApp.Components.Logging
         /// </summary>
         public LogViewModel(ILogger<LogViewModel> logger)
         {
-            logger.LogDebug("LogViewModel created");
+            logger.LogDebug($"{this.GetType().Name} created");
         }
     }
 }

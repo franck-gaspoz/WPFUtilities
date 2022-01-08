@@ -4,14 +4,15 @@ using System.Windows;
 using Microsoft.Xaml.Behaviors;
 
 using WPFUtilities.Components.Appl;
+using WPFUtilities.Components.Services;
 
 namespace WPFUtilities.Behaviors.Services
 {
     /// <summary>
     /// service dependency data context stateless behavior: setup data context from dependency injector
+    /// <para>explicit resolve: {ResolveProperty} -di-> {ResolveProperty} </para>
     /// <para>default resolve: {Name}View -> I{Name}ViewModel , Name{ViewModel} </para>
-    /// <para>fallback resolve: {Name}Window -> I{Name}ViewModel -di-> Name{ViewModel} </para>
-    /// <para>explicit resolve: {ResolveProperty} -di-> Name{ViewModel} </para>
+    /// <para>fallback resolve: {Name} -> I{Name}ViewModel -di-> Name{ViewModel} </para>
     /// </summary>
     public class ServiceDependencyDataContextBehavior : Behavior<FrameworkElement>
     {
@@ -77,6 +78,9 @@ namespace WPFUtilities.Behaviors.Services
 
         #endregion
 
+        static readonly IServicesDependencyTypeResolver _servicesDependencyTypeResolver
+            = new ServicesDependencyTypeResolver();
+
         #endregion
 
         #region interactivity
@@ -137,15 +141,25 @@ namespace WPFUtilities.Behaviors.Services
             if (dependencyObject is FrameworkElement frameworkElement
                 && ApplicationHost.Instance.Host != null)
             {
-                var logViewModelTypeName = dependencyObject.GetType().Namespace
-                    + "."
-                    + dependencyObject.GetType().Name + "Model";
-                var logViewModelType = dependencyObject.GetType().Assembly.GetType(logViewModelTypeName);
-                if (logViewModelType != null)
+                // {ResolveProperty}
+
+                var resolve = GetResolve(dependencyObject);
+                if (resolve != null)
                 {
-                    var logViewModel = ApplicationHost.Instance.Host.Services.GetService(logViewModelType);
-                    frameworkElement.DataContext = logViewModel;
+                    frameworkElement.DataContext = ApplicationHost.Instance.Host.Services
+                        .GetService(resolve);
+                    return;
                 }
+
+                // interface lookup
+
+                var type = dependencyObject.GetType();
+                var interfaceType = _servicesDependencyTypeResolver
+                    .GetViewModelInterfaceType(dependencyObject.GetType());
+                if (interfaceType != null)
+                    frameworkElement.DataContext =
+                        ApplicationHost.Instance.Host.Services
+                        .GetService(interfaceType);
             }
         }
 

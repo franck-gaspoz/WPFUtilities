@@ -39,7 +39,10 @@ namespace WPFUtilities.Components.Logging
         {
             if (!IsEnabled(logLevel)) return;
             var config = _getCurrentConfiguration();
-
+            var s = $"[{eventId.Id,2}: {logLevel,-12}]";
+            s += Environment.NewLine + $"     {_name} - ";
+            s += Environment.NewLine + $"{formatter(state, exception)}";
+            config.Target.Add(s);
         }
     }
 }

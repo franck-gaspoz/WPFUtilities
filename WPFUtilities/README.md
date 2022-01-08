@@ -9,15 +9,19 @@ This is not a framework, the library doesn't bring any coding convention to .Net
   - Interactivity
   - Layout
   - Scrolling
-  - Windows 
+  - Services
+  - Windows
 - Commands
   - Application
-  - Display
   - Interactivity
+  - Render
 - Components Models
-  - Validation Attributes
+  - Validation Attributes  
 - Components
-  - Display
+  - Application
+  - Logging
+  - Render
+  - Services
 - Controls
 - Converters
 - Custom Brushes
@@ -27,11 +31,14 @@ This is not a framework, the library doesn't bring any coding convention to .Net
   - Components
   - Geometry
   - Image
+  - Reflections
   - Windows
 - Helpers
+- Resources
 - Snippets
+  - CSharp
+  - Xaml
 - Sample application
-- View Models
 
 ## dependencies
 

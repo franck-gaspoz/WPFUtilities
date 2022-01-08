@@ -14,6 +14,11 @@ namespace WPFUtilities.Attributes
         public DependencyScope DependencyScope { get; private set; }
 
         /// <summary>
+        /// implementation factory function (optionnal)
+        /// </summary>
+        public Func<IServiceProvider, object> ImplementationFactory { get; private set; }
+
+        /// <summary>
         /// register a singleton dependency for interface {IClassName} and class {ClassName}
         /// </summary>
         public DependencyServiceAttribute()
