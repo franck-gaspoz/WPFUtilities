@@ -64,6 +64,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\UI\ButtonBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\UI\MainMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\UI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -80,7 +88,13 @@
     </Compile>
     <Compile Include="Components\Logging\LogViewModel.cs" />
     <Compile Include="Components\Logging\LogViewModelServiceDependencyInitializer.cs" />
+    <Compile Include="Components\UI\ButtonBar.xaml.cs">
+      <DependentUpon>ButtonBar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\UI\IMainWindowViewModel.cs" />
+    <Compile Include="Components\UI\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\UI\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
