@@ -20,9 +20,11 @@ namespace SampleApp.Components.Logging
         /// <summary>
         /// creates a new instance
         /// </summary>
-        public LogViewModel(ILogger<LogViewModel> logger)
+        public LogViewModel(
+            ILogger<LogViewModel> logger
+            )
         {
-            logger.LogDebug($"{this.GetType().Name} created");
+            //logger.LogDebug($"{this.GetType().Name} created");
         }
     }
 }

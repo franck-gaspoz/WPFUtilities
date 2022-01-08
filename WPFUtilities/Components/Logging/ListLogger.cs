@@ -7,11 +7,12 @@ namespace WPFUtilities.Components.Logging
     /// <summary>
     /// logging to a list
     /// </summary>
-    public class ListLogger : ILogger
+    public sealed class ListLogger : ILogger, IListLogger
     {
         string _name;
 
-        Func<ListLoggerConfiguration> _getCurrentConfiguration;
+        /// <inheritdoc/>
+        public Func<ListLoggerConfiguration> GetCurrentConfiguration { get; set; }
 
         /// <summary>
         /// creates a new instance
@@ -19,7 +20,7 @@ namespace WPFUtilities.Components.Logging
         public ListLogger(
             string name,
             Func<ListLoggerConfiguration> getCurrentConfiguration)
-            => (_name, _getCurrentConfiguration) = (name, getCurrentConfiguration);
+            => (_name, GetCurrentConfiguration) = (name, getCurrentConfiguration);
 
         /// <inheritdoc/>
         public IDisposable BeginScope<TState>(TState state)
@@ -27,7 +28,7 @@ namespace WPFUtilities.Components.Logging
 
         /// <inheritdoc/>
         public bool IsEnabled(LogLevel logLevel)
-            => _getCurrentConfiguration().LogLevels.Contains(logLevel);
+            => GetCurrentConfiguration().LogLevels.Contains(logLevel);
 
         /// <inheritdoc/>
         public void Log<TState>(
@@ -38,11 +39,15 @@ namespace WPFUtilities.Components.Logging
             Func<TState, Exception, string> formatter)
         {
             if (!IsEnabled(logLevel)) return;
-            var config = _getCurrentConfiguration();
+            var config = GetCurrentConfiguration();
+
+            if (config.Target == null)
+                config.Target = config.GetTarget(this);
+
             var s = $"[{eventId.Id,2}: {logLevel,-12}]";
-            s += Environment.NewLine + $"     {_name} - ";
+            s += $"     {_name} - ";
             s += Environment.NewLine + $"{formatter(state, exception)}";
-            config.Target.Add(s);
+            config.Target?.Add(s);
         }
     }
 }

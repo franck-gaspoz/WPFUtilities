@@ -1,4 +1,6 @@
 ﻿
+using System.Collections;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -14,6 +16,10 @@ namespace SampleApp.Components.Logging
     public class LogViewModelServiceDependencyInitializer
         : IServiceDependencyInitializer
     {
+        IHostBuilder _hostBuilder;
+        HostBuilderContext _hostBuilderContext;
+        IServiceCollection _services;
+
         /// <summary>
         /// add service logger for LogViewModel
         /// </summary>
@@ -25,6 +31,9 @@ namespace SampleApp.Components.Logging
             HostBuilderContext hostBuilderContext,
             IServiceCollection services)
         {
+            _hostBuilder = hostBuilder;
+            _hostBuilderContext = hostBuilderContext;
+            _services = services;
             services.AddLogging(AddLogging);
         }
 
@@ -35,7 +44,14 @@ namespace SampleApp.Components.Logging
 
         void ConfigureLogging(ListLoggerConfiguration configure)
         {
+            configure.GetTarget = GetTarget;
+        }
 
+        IList GetTarget(IListLogger listLogger)
+        {
+            var host = (IHost)_hostBuilderContext.Properties[typeof(IHost)];
+            var logViewModel = host.Services.GetService<ILogViewModel>();
+            return logViewModel.Messages;
         }
     }
 }

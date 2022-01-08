@@ -99,6 +99,8 @@
     <Compile Include="Attributes\DependencyScope.cs" />
     <Compile Include="Attributes\ServiceDependencyAttribute.cs" />
     <Compile Include="Attributes\ServiceDependenciesAttribute.cs" />
+    <Compile Include="Components\Logging\IListLogger.cs" />
+    <Compile Include="Components\Logging\ListLoggerProvider.cs" />
     <Compile Include="Components\Services\IServiceDependencyInitializer.cs" />
     <Compile Include="Behaviors\Scrolling\IScrollViewerHelperFeature.cs" />
     <Compile Include="Behaviors\Scrolling\AutoScrollBehavior.cs" />

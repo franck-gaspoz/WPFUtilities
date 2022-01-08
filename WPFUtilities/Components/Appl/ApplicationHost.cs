@@ -46,6 +46,9 @@ namespace WPFUtilities.Components.Appl
         /// <inheritdoc/>
         public IHostBuilder HostBuilder { get; private set; }
 
+        /// <inheritdoc/>
+        public HostBuilderContext HostBuilderContext { get; private set; }
+
         IApplicationBaseSettings _applicationBaseSettings;
 
         /// <inheritdoc/>
@@ -73,6 +76,7 @@ namespace WPFUtilities.Components.Appl
         public void Build()
         {
             Host = HostBuilder.Build();
+            HostBuilderContext.Properties.Add(typeof(IHost), Host);
         }
 
         /// <summary>
@@ -94,6 +98,7 @@ namespace WPFUtilities.Components.Appl
         /// <param name="services">services</param>
         void ConfigureServices(HostBuilderContext hostBuilderContext, IServiceCollection services)
         {
+            HostBuilderContext = hostBuilderContext;
             new ServicesDependenciesBuilder(HostBuilder, hostBuilderContext, services)
                 .AddSingletonServices()
                 .AddDependencyServices()
