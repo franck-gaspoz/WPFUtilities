@@ -31,6 +31,7 @@ This is not a framework, the library doesn't bring any coding convention to .Net
   - Behaviors
   - Components
   - Geometry
+  - Host
   - Image
   - Reflections
   - Windows
