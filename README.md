@@ -1,10 +1,9 @@
-# ![wpf utilities](Codicons-SymbolClass.png) WPF Utilities
+# ![wpf utilities](Codicons-SymbolClass.png) WPF Utilities: Sample WPF application project
 
 WPF Utilities | essential useful classes for SOLID MVVM/Command
 
-A C# and XAML library containing some essential and usefull classes and snippets for fast WPF application development.
-This is not a framework, the library doesn't bring any coding convention to .Net Standard and WPF conventions. The library brings help to code using the standard WPF recommended patterns (MVVM, Command, controls, components,...) and SOLID principles.
+A C# and XAML WPF application that show the usage of WPF Utilities
 
-[WPFUtilies project documentation](/WPFUtilities/README.md "link to WPFUtilies project documentation")
+[WPFUtilies repository documentation](../README.md "link to WPFUtilies repository documentation")
 
-[WPFUtilies sample WPF application project](/SampleApp/README.md "WPFUtilies sample WPF application project")
+[WPFUtilies project documentation](../WPFUtilities/README.md "link to WPFUtilies project documentation")
