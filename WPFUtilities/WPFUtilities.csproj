@@ -188,7 +188,6 @@
     <Content Include="Codicons-SymbolClass.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Doc\dependency-injection.svg" />
     <Content Include="LICENSE" Pack="true" PackagePath="\">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -200,6 +199,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
+    <Folder Include="Doc\" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
