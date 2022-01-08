@@ -188,6 +188,9 @@
     <Content Include="Codicons-SymbolClass.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Doc\Codicons-SymbolClass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="LICENSE" Pack="true" PackagePath="\">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -199,12 +202,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
-    <Folder Include="Doc\" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />
     <None Include=".gitattributes" />
     <None Include=".gitignore" />
+    <None Include="Doc\README.md" />
     <None Include="Snippets\CSharp\behavior.snippet" />
     <None Include="Snippets\CSharp\iproperty.snippet" />
     <None Include="Snippets\Xaml\xmlns.addbehavior.snippet" />
