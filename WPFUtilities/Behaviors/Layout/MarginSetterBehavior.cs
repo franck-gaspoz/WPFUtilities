@@ -11,6 +11,15 @@ namespace WPFUtilities.Behaviors.Layout
     public class ChildMarginSetterBehavior : Behavior<Panel>
     {
         /// <summary>
+        /// command
+        /// </summary>
+        public Thickness ChildMargin
+        {
+            get => (Thickness)GetValue(ChildMarginProperty);
+            set { SetValue(ChildMarginProperty, value); }
+        }
+
+        /// <summary>
         /// get margin
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
@@ -43,13 +52,11 @@ namespace WPFUtilities.Behaviors.Layout
 
         void CreateThicknessForChildrens()
         {
-            var childMargin = GetChildMargin(AssociatedObject);
+            var childMargin = ChildMargin;
             foreach (var child in AssociatedObject.Children)
             {
                 var fe = child as FrameworkElement;
-
                 if (fe == null) continue;
-
                 fe.Margin = childMargin;
             }
         }

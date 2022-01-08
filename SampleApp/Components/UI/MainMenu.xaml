@@ -5,12 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.UI"
              xmlns:wpfucommandsAppl="clr-namespace:WPFUtilities.Commands.Appl;assembly=WPFUtilities"
+             xmlns:wpfucommandsInteractivity="clr-namespace:WPFUtilities.Commands.Interactivity;assembly=WPFUtilities"
+             xmlns:componentDialog="clr-namespace:SampleApp.Components.Dialog"
              mc:Ignorable="d" 
              d:DesignHeight="32" 
              d:DesignWidth="800">
     
     <Grid>
         <Menu Padding="4">
+            
             <MenuItem Header="Application">
                 <MenuItem Header="Log a message"
                           Command="{x:Static wpfucommandsAppl:ApplCommands.Log}"
@@ -18,6 +21,13 @@
                 <Separator/>
                 <MenuItem Header="Exit" Command="{x:Static wpfucommandsAppl:ApplCommands.ApplicationClose}"/>
             </MenuItem>
+
+            <MenuItem Header="Dialog">
+                <MenuItem Header="Open dialog"
+                          Command="{x:Static wpfucommandsInteractivity:InteractivityCommands.OpenWindow}"
+                          CommandParameter="{x:Type componentDialog:DialogWindow}"/>
+            </MenuItem>
+            
         </Menu>
     </Grid>
     

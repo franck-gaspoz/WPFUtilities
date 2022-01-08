@@ -15,7 +15,7 @@
         mc:Ignorable="d"
         Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"
-        Topmost="True"
+        Topmost="False"
         wpfubehaviorsServices:ServiceDependencyDataContextBehavior.Resolve="{x:Type componentsUI:IMainWindowViewModel}"
         Height="600" Width="800"
         >
@@ -52,6 +52,9 @@
             </TabItem>
 
             <TabItem Header="Converters">
+            </TabItem>
+
+            <TabItem Header="Brushes">
             </TabItem>
 
         </TabControl>

@@ -68,6 +68,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\Dialog\DialogWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\UI\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -90,6 +94,9 @@
     <Compile Include="Components\Logging\LogViewModelServiceDependencyInitializer.cs" />
     <Compile Include="Components\UI\ButtonBar.xaml.cs">
       <DependentUpon>ButtonBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Dialog\DialogWindow.xaml.cs">
+      <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\UI\IMainWindowViewModel.cs" />
     <Compile Include="Components\UI\MainMenu.xaml.cs">

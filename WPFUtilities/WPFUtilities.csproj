@@ -185,6 +185,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Codicons-SymbolClass.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="LICENSE" Pack="true" PackagePath="\">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
