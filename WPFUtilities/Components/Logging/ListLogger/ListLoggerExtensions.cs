@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Configuration;
 
-namespace WPFUtilities.Components.Logging
+namespace WPFUtilities.Components.Logging.ListLogger
 {
     /// <summary>
     /// list logger extensions

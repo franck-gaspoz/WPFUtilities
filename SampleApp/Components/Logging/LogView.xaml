@@ -4,10 +4,28 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.Logging" 
+             xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:wpfubehaviorsScrolling="clr-namespace:WPFUtilities.Behaviors.Scrolling;assembly=WPFUtilities"             
              d:DataContext="{d:DesignInstance Type=local:LogViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="200">
     <Grid>
-        <ListView ItemsSource="{Binding Messages}" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border Background="DodgerBlue">
+            <TextBlock Text="Log" Padding="4" Foreground="White"/>
+        </Border>
+
+        <ListView ItemsSource="{Binding Messages}" 
+                  FontFamily="Courier New"
+                  Grid.Row="1"
+                  >
+            <Behaviors:Interaction.Behaviors>
+                <wpfubehaviorsScrolling:AutoScrollBehavior BindingList="{Binding Messages}"/>
+            </Behaviors:Interaction.Behaviors>
+        </ListView>
     </Grid>
 </UserControl>

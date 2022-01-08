@@ -18,7 +18,8 @@
         WindowStartupLocation="CenterScreen"
         Topmost="True"
         wpfubehaviorsServices:ServiceDependencyDataContextBehavior.Resolve="{x:Type componentsUI:IMainWindowViewModel}"
-Height="350" Width="600">
+        Height="400" Width="800"
+        >
     
     <Behaviors:Interaction.Behaviors>
         <wpfubehaviorsWindows:WindowDisplayedDelegateCommandBehavior Command="{x:Static commands:Commands.OnMainWindowShown}"/>
@@ -30,7 +31,6 @@ Height="350" Width="600">
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
 
         <Menu Padding="4">
@@ -50,7 +50,9 @@ Height="350" Width="600">
         </StackPanel>
 
         <logging:LogView 
-            Grid.Row="3" 
+            Grid.Row="2" 
+            Padding="8"
+            
             wpfubehaviorsServices:ServiceDependencyDataContextBehavior.IsEnabled="True"/>
 
     </Grid>

@@ -4,7 +4,7 @@ using System.Collections.Concurrent;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace WPFUtilities.Components.Logging
+namespace WPFUtilities.Components.Logging.ListLogger
 {
     /// <summary>
     /// list logger provider

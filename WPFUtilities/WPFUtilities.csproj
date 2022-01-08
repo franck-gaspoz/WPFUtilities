@@ -99,8 +99,8 @@
     <Compile Include="Attributes\DependencyScope.cs" />
     <Compile Include="Attributes\ServiceDependencyAttribute.cs" />
     <Compile Include="Attributes\ServiceDependenciesAttribute.cs" />
-    <Compile Include="Components\Logging\IListLogger.cs" />
-    <Compile Include="Components\Logging\ListLoggerProvider.cs" />
+    <Compile Include="Components\Logging\ListLogger\IListLogger.cs" />
+    <Compile Include="Components\Logging\ListLogger\ListLoggerProvider.cs" />
     <Compile Include="Components\Services\IServiceDependencyInitializer.cs" />
     <Compile Include="Behaviors\Scrolling\IScrollViewerHelperFeature.cs" />
     <Compile Include="Behaviors\Scrolling\AutoScrollBehavior.cs" />
@@ -138,9 +138,9 @@
     <Compile Include="Components\Appl\IApplicationHost.cs" />
     <Compile Include="Components\Appl\IApplicationLoggingSettings.cs" />
     <Compile Include="Components\Dispatchable.cs" />
-    <Compile Include="Components\Logging\ListLogger.cs" />
-    <Compile Include="Components\Logging\ListLoggerConfiguration.cs" />
-    <Compile Include="Components\Logging\ListLoggerExtensions.cs" />
+    <Compile Include="Components\Logging\ListLogger\ListLogger.cs" />
+    <Compile Include="Components\Logging\ListLogger\ListLoggerConfiguration.cs" />
+    <Compile Include="Components\Logging\ListLogger\ListLoggerExtensions.cs" />
     <Compile Include="Components\Render\Zoomer.cs" />
     <Compile Include="Components\Appl\IApplicationBase.cs" />
     <Compile Include="Components\Services\IServicesDependenciesBuilder.cs" />

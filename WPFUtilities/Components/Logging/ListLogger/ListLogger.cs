@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.Logging;
 
-namespace WPFUtilities.Components.Logging
+namespace WPFUtilities.Components.Logging.ListLogger
 {
     /// <summary>
     /// logging to a list
@@ -44,9 +44,9 @@ namespace WPFUtilities.Components.Logging
             if (config.Target == null)
                 config.Target = config.GetTarget(this);
 
-            var s = $"[{eventId.Id,2}: {logLevel,-12}]";
-            s += $"     {_name} - ";
-            s += Environment.NewLine + $"{formatter(state, exception)}";
+            var s = $"[{logLevel,-11}]";
+            s += $" {_name} |";
+            s += $" {formatter(state, exception)}";
             config.Target?.Add(s);
         }
     }

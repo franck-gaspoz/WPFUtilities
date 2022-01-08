@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.Logging;
 
-namespace WPFUtilities.Components.Logging
+namespace WPFUtilities.Components.Logging.ListLogger
 {
     /// <summary>
     /// logging to a list

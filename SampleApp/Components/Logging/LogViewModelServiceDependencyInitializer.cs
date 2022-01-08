@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-using WPFUtilities.Components.Logging;
+using WPFUtilities.Components.Logging.ListLogger;
 using WPFUtilities.Components.Services;
 
 namespace SampleApp.Components.Logging
@@ -16,9 +16,7 @@ namespace SampleApp.Components.Logging
     public class LogViewModelServiceDependencyInitializer
         : IServiceDependencyInitializer
     {
-        IHostBuilder _hostBuilder;
         HostBuilderContext _hostBuilderContext;
-        IServiceCollection _services;
 
         /// <summary>
         /// add service logger for LogViewModel
@@ -31,22 +29,33 @@ namespace SampleApp.Components.Logging
             HostBuilderContext hostBuilderContext,
             IServiceCollection services)
         {
-            _hostBuilder = hostBuilder;
             _hostBuilderContext = hostBuilderContext;
-            _services = services;
             services.AddLogging(AddLogging);
         }
 
+        /// <summary>
+        /// add logging service
+        /// </summary>
+        /// <param name="loggingBuilder">logging builder</param>
         void AddLogging(ILoggingBuilder loggingBuilder)
         {
             loggingBuilder.AddListLogger(ConfigureLogging);
         }
 
-        void ConfigureLogging(ListLoggerConfiguration configure)
+        /// <summary>
+        /// setup logger configuration
+        /// </summary>
+        /// <param name="configuration">logger configuration</param>
+        void ConfigureLogging(ListLoggerConfiguration configuration)
         {
-            configure.GetTarget = GetTarget;
+            configuration.GetTarget = GetTarget;
         }
 
+        /// <summary>
+        /// get the view model from the creating host builder context
+        /// </summary>
+        /// <param name="listLogger">list logger caller</param>
+        /// <returns>IList target</returns>
         IList GetTarget(IListLogger listLogger)
         {
             var host = (IHost)_hostBuilderContext.Properties[typeof(IHost)];
