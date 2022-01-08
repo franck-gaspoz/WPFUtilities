@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 
 using WPFUtilities.Components.Logging.ListLogger;
 using WPFUtilities.Components.Services;
+using WPFUtilities.Extensions.Host;
 
 namespace SampleApp.Components.Logging
 {
@@ -58,7 +59,7 @@ namespace SampleApp.Components.Logging
         /// <returns>IList target</returns>
         IList GetTarget(IListLogger listLogger)
         {
-            var host = (IHost)_hostBuilderContext.Properties[typeof(IHost)];
+            var host = _hostBuilderContext.GetHost();
             var logViewModel = host.Services.GetService<ILogViewModel>();
             return logViewModel.Messages;
         }
