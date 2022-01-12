@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 
-using WPFUtilities.Components.Appl;
+using WPFUtilities.Components.Application;
 
-namespace WPFUtilities.Extensions.Appl
+namespace WPFUtilities.Extensions.App
 {
     /// <summary>
     /// application extensions
@@ -17,6 +17,6 @@ namespace WPFUtilities.Extensions.Appl
         /// <summary>
         /// current application view model
         /// </summary>
-        public static IAppViewModelBase ViewModel(this Application app) => (app as IApplicationBase)?.ViewModelBase;
+        public static IApplicationViewModelBase ViewModel(this Application app) => (app as IApplicationBase)?.ViewModelBase;
     }
 }

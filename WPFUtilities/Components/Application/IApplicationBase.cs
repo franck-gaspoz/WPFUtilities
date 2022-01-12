@@ -1,4 +1,4 @@
-﻿namespace WPFUtilities.Components.Appl
+﻿namespace WPFUtilities.Components.Application
 {
     /// <summary>
     /// application facade base
@@ -8,6 +8,6 @@
         /// <summary>
         /// application view model
         /// </summary>
-        IAppViewModelBase ViewModelBase { get; set; }
+        IApplicationViewModelBase ViewModelBase { get; set; }
     }
 }

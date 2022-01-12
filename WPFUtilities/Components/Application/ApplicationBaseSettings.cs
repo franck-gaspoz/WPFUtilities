@@ -3,7 +3,7 @@ using System.Windows;
 
 using Microsoft.Extensions.Hosting;
 
-namespace WPFUtilities.Components.Appl
+namespace WPFUtilities.Components.Application
 {
     /// <summary>
     /// application base settings

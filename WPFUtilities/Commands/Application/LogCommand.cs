@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.Logging;
 
-namespace WPFUtilities.Commands.Appl
+namespace WPFUtilities.Commands.Application
 {
     /// <summary>
     /// log a string or an object ToString (level Information)

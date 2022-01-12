@@ -6,12 +6,15 @@ using Microsoft.Extensions.Logging;
 using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.Services;
 
-namespace WPFUtilities.Components.Appl
+namespace WPFUtilities.Components.Application
 {
     /// <summary>
     /// application host
     /// </summary>
-    public sealed class ApplicationHost : IApplicationHost, IConfigureHostServices
+    public sealed class ApplicationHost :
+        IApplicationHost,
+        IHostServicesConfigurator,
+        IHostLoggingConfigurator
     {
         /// <inheritdoc/>
         public IHost Host { get; private set; }
@@ -44,11 +47,8 @@ namespace WPFUtilities.Components.Appl
             HostBuilderContext.Properties.Add(typeof(IHost), Host);
         }
 
-        /// <summary>
-        /// configure logging
-        /// </summary>
-        /// <param name="loggingBuilder">logging builder</param>
-        public void ConfigureLogging(ILoggingBuilder loggingBuilder)
+        /// <inheritdoc/>
+        public void ConfigureLogging(HostBuilderContext context, ILoggingBuilder loggingBuilder)
         {
             loggingBuilder.ClearProviders();
             if (_applicationBaseSettings.ApplicationLoggingSettings.LogConsole)
@@ -56,11 +56,7 @@ namespace WPFUtilities.Components.Appl
             loggingBuilder.SetMinimumLevel(_applicationBaseSettings.ApplicationLoggingSettings.MinimumLogLevel);
         }
 
-        /// <summary>
-        /// setup default services
-        /// </summary>
-        /// <param name="hostBuilderContext">host builder context</param>
-        /// <param name="services">services</param>
+        /// <inheritdoc/>
         public void Configure(HostBuilderContext hostBuilderContext, IServiceCollection services)
         {
             HostBuilderContext = hostBuilderContext;

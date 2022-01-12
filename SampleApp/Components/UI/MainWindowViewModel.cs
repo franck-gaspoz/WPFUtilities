@@ -2,15 +2,13 @@
 using System.Reflection;
 
 using WPFUtilities.ComponentModels;
-using WPFUtilities.Components.Appl;
-using WPFUtilities.Components.Services;
+using WPFUtilities.Components.Application;
 
 namespace SampleApp.Components.UI
 {
     /// <summary>
     /// main window view model
     /// </summary>
-    [ServiceDependency]
     public class MainWindowViewModel : ModelBase, IModelBase, IMainWindowViewModel
     {
         /// <inheritdoc/>

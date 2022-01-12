@@ -1,11 +1,11 @@
 ﻿using WPFUtilities.ComponentModels;
 
-namespace WPFUtilities.Components.Appl
+namespace WPFUtilities.Components.Application
 {
     /// <summary>
     /// application view model
     /// </summary>
-    public interface IAppViewModelBase : IModelBase
+    public interface IApplicationViewModelBase : IModelBase
     {
         /// <summary>
         /// indicates if app is busy or not. when buzy, any standard ui command may not be executable

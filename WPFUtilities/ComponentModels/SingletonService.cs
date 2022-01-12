@@ -1,7 +1,7 @@
 ﻿
 using System.Windows;
 
-using WPFUtilities.Components.Appl;
+using WPFUtilities.Components.Application;
 
 namespace WPFUtilities.ComponentModels
 {

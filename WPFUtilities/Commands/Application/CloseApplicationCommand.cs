@@ -1,6 +1,6 @@
-﻿using System.Windows;
+﻿using syswin = System.Windows;
 
-namespace WPFUtilities.Commands.Appl
+namespace WPFUtilities.Commands.Application
 {
     /// <summary>
     /// close application command (close main window)
@@ -9,6 +9,6 @@ namespace WPFUtilities.Commands.Appl
     {
         /// <inheritdoc/>
         public override void Execute(object parameter)
-            => Application.Current.MainWindow.Close();
+            => syswin.Application.Current.MainWindow.Close();
     }
 }

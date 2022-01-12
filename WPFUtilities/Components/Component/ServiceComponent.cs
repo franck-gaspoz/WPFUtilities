@@ -9,7 +9,7 @@ namespace WPFUtilities.Components.Component
     /// <summary>
     /// service component abstraction
     /// </summary>
-    public abstract class ServiceComponent : IServiceComponent, IConfigureHostServices
+    public abstract class ServiceComponent : IServiceComponent, IHostServicesConfigurator
     {
         /// <summary>
         /// component host

@@ -1,12 +1,12 @@
 ﻿using System.Windows.Input;
 
-namespace WPFUtilities.Commands.Appl
+namespace WPFUtilities.Commands.Application
 {
     /// <summary>
     /// application commands (application scope: created by application host)
     /// <para>application scope commands can be referenced directly thought their static instance (SingletonService)</para>
     /// </summary>
-    public static class ApplCommands
+    public static class ApplicationCommands
     {
         /// <summary>
         /// close application

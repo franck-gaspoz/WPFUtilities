@@ -5,9 +5,9 @@ using Microsoft.Extensions.Hosting;
 namespace WPFUtilities.ComponentModels
 {
     /// <summary>
-    /// configure host services
+    /// host services configurator
     /// </summary>
-    public interface IConfigureHostServices
+    public interface IHostServicesConfigurator
     {
         /// <summary>
         /// configure host services

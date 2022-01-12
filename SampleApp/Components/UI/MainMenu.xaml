@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.UI"
-             xmlns:wpfucommandsAppl="clr-namespace:WPFUtilities.Commands.Appl;assembly=WPFUtilities"
+             xmlns:wpfucommandsAppl="clr-namespace:WPFUtilities.Commands.Application;assembly=WPFUtilities"
              xmlns:wpfucommandsInteractivity="clr-namespace:WPFUtilities.Commands.Interactivity;assembly=WPFUtilities"
              xmlns:componentDialog="clr-namespace:SampleApp.Components.Dialog"
              mc:Ignorable="d" 
@@ -16,10 +16,10 @@
             
             <MenuItem Header="Application">
                 <MenuItem Header="Log a message"
-                          Command="{x:Static wpfucommandsAppl:ApplCommands.Log}"
+                          Command="{x:Static wpfucommandsAppl:ApplicationCommands.Log}"
                           CommandParameter="I am a log message!"/>
                 <Separator/>
-                <MenuItem Header="Exit" Command="{x:Static wpfucommandsAppl:ApplCommands.ApplicationClose}"/>
+                <MenuItem Header="Exit" Command="{x:Static wpfucommandsAppl:ApplicationCommands.ApplicationClose}"/>
             </MenuItem>
 
             <MenuItem Header="Dialog">

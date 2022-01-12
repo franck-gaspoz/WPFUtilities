@@ -9,15 +9,17 @@ using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.Component;
 using WPFUtilities.Helpers;
 
-namespace WPFUtilities.Components.Appl
+using syswin = System.Windows;
+
+namespace WPFUtilities.Components.Application
 {
     /// <summary>
     /// application base
     /// </summary>
     public class ApplicationBase :
-        Application,
+        syswin.Application,
         IApplicationBase,
-        IConfigureHostServices
+        IHostServicesConfigurator
     {
         /// <summary>
         /// application host
@@ -28,8 +30,8 @@ namespace WPFUtilities.Components.Appl
         /// <summary>
         /// application base view model
         /// </summary>
-        public IAppViewModelBase ViewModelBase { get; set; }
-            = new AppViewModelBase();
+        public IApplicationViewModelBase ViewModelBase { get; set; }
+            = new ApplicationViewModelBase();
 
         /// <summary>
         /// application base settings
@@ -141,7 +143,7 @@ namespace WPFUtilities.Components.Appl
         }
 
         /// <summary>
-        /// intialize main window if any
+        /// initialize main window if any
         /// </summary>
         /// <param name="window">main window</param>
         protected virtual void InitializeMainWindow(Window window)

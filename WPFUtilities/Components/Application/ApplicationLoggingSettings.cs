@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 
-namespace WPFUtilities.Components.Appl
+namespace WPFUtilities.Components.Application
 {
     /// <summary>
     /// application logging settings

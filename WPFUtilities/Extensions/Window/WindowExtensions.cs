@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Threading;
 
-namespace WPFUtilities.Extensions.Windows
+using syswin = System.Windows;
+
+namespace WPFUtilities.Extensions.Window
 {
     /// <summary>
     /// window extensions
@@ -13,7 +14,7 @@ namespace WPFUtilities.Extensions.Windows
         /// wait until ui is ready (any display operation finished)
         /// </summary>
         /// <param name="window">window</param>
-        public static void WaitForUI(this Window window)
+        public static void WaitForUI(this syswin.Window window)
             => window.Dispatcher.BeginInvoke(
                 new Action(() => { }),
                 DispatcherPriority.ContextIdle,

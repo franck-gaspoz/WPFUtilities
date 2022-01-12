@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Windows;
 using System.Windows.Input;
 
 using WPFUtilities.ComponentModels;
+
+using syswin = System.Windows;
 
 namespace WPFUtilities.Commands
 {
@@ -29,7 +30,7 @@ namespace WPFUtilities.Commands
         /// <param name="parameter">parameter</param>
         /// <returns>true if can execute, false otherwize</returns>
         public virtual bool CanExecute(object parameter)
-            => Application.Current != null && Application.Current.MainWindow != null;
+            => syswin.Application.Current != null && syswin.Application.Current.MainWindow != null;
 
         /// <summary>
         /// execute command

@@ -15,8 +15,7 @@ namespace SampleApp.Components.Logging
     /// log view model implementation factory
     /// </summary>
     public class LogViewModelServiceDependencyInitializer
-        : IConfigureHostServices
-    //    : ISingletonServiceDependencyInitializer
+        : IHostServicesConfigurator
     {
         HostBuilderContext _hostBuilderContext;
 

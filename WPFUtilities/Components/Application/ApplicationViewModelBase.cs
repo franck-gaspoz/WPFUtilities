@@ -1,12 +1,12 @@
 ﻿
 using WPFUtilities.ComponentModels;
 
-namespace WPFUtilities.Components.Appl
+namespace WPFUtilities.Components.Application
 {
     /// <summary>
     /// application base view model
     /// </summary>
-    public class AppViewModelBase : ModelBase, IAppViewModelBase
+    public class ApplicationViewModelBase : ModelBase, IApplicationViewModelBase
     {
         bool _isBuzy = false;
         /// <summary>

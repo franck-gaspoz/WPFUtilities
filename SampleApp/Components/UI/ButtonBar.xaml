@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.UI"
-             xmlns:wpfucommandsAppl="clr-namespace:WPFUtilities.Commands.Appl;assembly=WPFUtilities"
+             xmlns:wpfucommandsAppl="clr-namespace:WPFUtilities.Commands.Application;assembly=WPFUtilities"
              mc:Ignorable="d" 
              d:DesignHeight="48" 
              d:DesignWidth="800">
@@ -12,7 +12,7 @@
     <Grid>
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="8">
             <Button Content="Log a message" 
-                    Command="{x:Static wpfucommandsAppl:ApplCommands.Log}"
+                    Command="{x:Static wpfucommandsAppl:ApplicationCommands.Log}"
                     CommandParameter="I am a log message!"/>
         </StackPanel>
     </Grid>

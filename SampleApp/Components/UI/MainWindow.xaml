@@ -9,7 +9,7 @@
         
         xmlns:componentsUI="clr-namespace:SampleApp.Components.UI"
         xmlns:local="clr-namespace:SampleApp" 
-        xmlns:appl="clr-namespace:WPFUtilities.Components.Appl;assembly=WPFUtilities" 
+        xmlns:appl="clr-namespace:WPFUtilities.Components.Application;assembly=WPFUtilities" 
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
         d:DataContext="{d:DesignInstance Type=componentsUI:MainWindowViewModel}"
         mc:Ignorable="d"
