@@ -7,7 +7,7 @@ namespace WPFUtilities.Components.Services
     /// <summary>
     /// dependency service initializer. allows a class to be instantiated and called at host initialization time
     /// </summary>
-    public interface IServiceDependencyInitializer
+    public interface ISingletonServiceDependencyInitializer
     {
         /// <summary>
         /// creates instance

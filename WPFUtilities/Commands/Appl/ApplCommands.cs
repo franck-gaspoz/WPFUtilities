@@ -3,7 +3,8 @@
 namespace WPFUtilities.Commands.Appl
 {
     /// <summary>
-    /// application commands
+    /// application commands (application scope: created by application host)
+    /// <para>application scope commands can be referenced directly thought their static instance (SingletonService)</para>
     /// </summary>
     public static class ApplCommands
     {

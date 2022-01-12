@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace WPFUtilities.Components.Appl
 {
@@ -12,6 +10,11 @@ namespace WPFUtilities.Components.Appl
     /// </summary>
     public class ApplicationBaseSettings : IApplicationBaseSettings
     {
+        /// <summary>
+        /// main window component service type
+        /// </summary>
+        public Type MainWindowComponentType { get; set; }
+
         /// <inheritdoc/>
         public Type MainWindowType { get; set; }
 
@@ -37,16 +40,7 @@ namespace WPFUtilities.Components.Appl
         public Action<Window> InitializeMainWindow { get; set; }
 
         /// <inheritdoc/>
-        public Action<ILoggingBuilder> ConfigureLogging { get; set; }
-
-        /// <inheritdoc/>
-        public Action<IServiceCollection> ConfigureServices { get; set; }
-
-        /// <inheritdoc/>
         public Action<IHostBuilder> InitializeHost { get; set; }
-
-        /// <inheritdoc/>
-        public Action ShutdownAction { get; set; }
 
         /// <inheritdoc/>
         public int ShutdownTimeout { get; set; } = 5;

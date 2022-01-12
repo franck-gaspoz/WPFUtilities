@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WPFUtilities.Attributes
+namespace WPFUtilities.Components.Services
 {
     /// <summary>
     /// dependency service attributes: allow a class to be auto registered in dependency injector

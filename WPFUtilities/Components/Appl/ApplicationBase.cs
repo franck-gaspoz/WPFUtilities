@@ -5,6 +5,7 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using WPFUtilities.Components.Component;
 using WPFUtilities.Helpers;
 
 namespace WPFUtilities.Components.Appl
@@ -12,12 +13,21 @@ namespace WPFUtilities.Components.Appl
     /// <summary>
     /// application base
     /// </summary>
-    public class ApplicationBase : Application, IApplicationBase
+    public class ApplicationBase :
+        Application,
+        IApplicationBase
     {
+        /// <summary>
+        /// application host
+        /// </summary>
+        public IApplicationHost ApplicationHost { get; protected set; }
+            = new ApplicationHost();
+
         /// <summary>
         /// application base view model
         /// </summary>
-        public IAppViewModelBase ViewModelBase { get; set; } = new AppViewModelBase();
+        public IAppViewModelBase ViewModelBase { get; set; }
+            = new AppViewModelBase();
 
         /// <summary>
         /// application base settings
@@ -36,12 +46,25 @@ namespace WPFUtilities.Components.Appl
         {
             try
             {
+                IServiceProvider serviceProvider = ApplicationHost.Host.Services;
+
+                if (ApplicationBaseSettings.MainWindowComponentType != null)
+                {
+                    var _mainWindowComponent = (IServiceComponent)ApplicationHost.Host.Services
+                        .GetRequiredService(ApplicationBaseSettings.MainWindowComponentType);
+                    _mainWindowComponent.Configure();
+                    _mainWindowComponent.Build();
+                    serviceProvider = _mainWindowComponent.Host.Services;
+                }
+
+                OnStartUI();
+
                 if (ApplicationBaseSettings.MainWindowType != null)
                 {
-                    MainWindow = (Window)ApplicationHost.Instance.Host.Services
+                    MainWindow = (Window)serviceProvider
                         .GetService(ApplicationBaseSettings.MainWindowType);
 
-                    ApplicationBaseSettings.InitializeMainWindow?.Invoke(MainWindow);
+                    InitializeMainWindow(MainWindow);
 
                     if (ApplicationBaseSettings.ShowWindow)
                     {
@@ -58,7 +81,6 @@ namespace WPFUtilities.Components.Appl
                 Environment.Exit(1);
             }
         }
-
 
         /// <summary>
         /// initialize culture
@@ -80,17 +102,52 @@ namespace WPFUtilities.Components.Appl
         {
             ApplicationBaseSettings = ApplicationBaseSettings ?? new ApplicationBaseSettings();
             InitializeCulture();
-            ApplicationBaseSettings.Initialize?.Invoke();
-            ApplicationHost.Instance.Configure(ApplicationBaseSettings);
-            if (ApplicationBaseSettings.MainWindowType != null)
-                ApplicationHost.Instance.HostBuilder
-                    .ConfigureServices((services) =>
-                    {
-                        services.AddTransient(ApplicationBaseSettings.MainWindowType);
-                    });
-            ApplicationHost.Instance.Build();
-            await ApplicationHost.Instance.Host.StartAsync();
+
+            Initialize();
+
+            ApplicationHost.Configure(ApplicationBaseSettings);
+
+            ApplicationHost.HostBuilder
+                .ConfigureServices(
+                    (services) => Configure(services));
+
+            ApplicationHost.Build();
+
+            await ApplicationHost.Host.StartAsync();
+
             StartUI();
+        }
+
+        /// <summary>
+        /// initialize before host builder [init step 1]
+        /// </summary>
+        protected virtual void Initialize()
+        {
+
+        }
+
+        /// <summary>
+        /// configure application component
+        /// </summary>
+        /// <param name="services">services</param>
+        public virtual void Configure(IServiceCollection services)
+        {
+            if (ApplicationBaseSettings.MainWindowComponentType != null)
+                services.AddSingleton(ApplicationBaseSettings.MainWindowComponentType);
+            else
+            {
+                if (ApplicationBaseSettings.MainWindowType != null)
+                    services.AddSingleton(ApplicationBaseSettings.MainWindowType);
+            }
+        }
+
+        /// <summary>
+        /// intialize main window if any
+        /// </summary>
+        /// <param name="window">main window</param>
+        protected virtual void InitializeMainWindow(Window window)
+        {
+
         }
 
         /// <summary>
@@ -99,13 +156,29 @@ namespace WPFUtilities.Components.Appl
         /// <param name="eventArgs">event args</param>
         protected async override void OnExit(ExitEventArgs eventArgs)
         {
-            ApplicationBaseSettings.ShutdownAction?.Invoke();
-            using (ApplicationHost.Instance.Host)
+            OnShutdown();
+            using (ApplicationHost.Host)
             {
-                await ApplicationHost.Instance.Host.StopAsync(
+                await ApplicationHost.Host.StopAsync(
                     TimeSpan.FromSeconds(
                         ApplicationBaseSettings.ShutdownTimeout));
             }
+        }
+
+        /// <summary>
+        /// on shut down
+        /// </summary>
+        protected virtual void OnShutdown()
+        {
+
+        }
+
+        /// <summary>
+        /// on start ui
+        /// </summary>
+        protected virtual void OnStartUI()
+        {
+
         }
     }
 }

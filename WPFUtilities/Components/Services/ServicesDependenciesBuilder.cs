@@ -6,7 +6,6 @@ using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using WPFUtilities.Attributes;
 using WPFUtilities.ComponentModels;
 using WPFUtilities.Extensions.Reflections;
 
@@ -73,10 +72,10 @@ namespace WPFUtilities.Components.Services
         /// <inheritdoc/>
         public ServicesDependenciesBuilder AddDependencyServicesInitializers(Assembly assembly)
         {
-            var types = GetTypesWithInterface(assembly, typeof(IServiceDependencyInitializer)).ToArray();
+            var types = GetTypesWithInterface(assembly, typeof(ISingletonServiceDependencyInitializer)).ToArray();
             for (int i = 0; i < types.Length; i++)
             {
-                var instance = (IServiceDependencyInitializer)Activator.CreateInstance(types[i]);
+                var instance = (ISingletonServiceDependencyInitializer)Activator.CreateInstance(types[i]);
                 instance.Initialize(_hostBuilder, _hostBuilderContext, _services);
             }
             return this;

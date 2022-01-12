@@ -1,4 +1,4 @@
-﻿namespace WPFUtilities.Attributes
+﻿namespace WPFUtilities.Components.Services
 {
     /// <summary>
     /// dependency scope

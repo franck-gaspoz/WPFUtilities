@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace SampleApp.Components.UI
 {
@@ -10,7 +11,7 @@ namespace SampleApp.Components.UI
         /// <summary>
         /// creates a new instance
         /// </summary>
-        public MainWindow()
+        public MainWindow(IServiceProvider serviceProvider)
         {
             InitializeComponent();
         }

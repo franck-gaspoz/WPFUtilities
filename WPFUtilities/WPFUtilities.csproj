@@ -96,19 +96,21 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\DependencyScope.cs" />
-    <Compile Include="Attributes\ServiceDependencyAttribute.cs" />
-    <Compile Include="Attributes\ServiceDependenciesAttribute.cs" />
+    <Compile Include="Components\Component\ServiceComponent.cs" />
+    <Compile Include="Components\Component\IServiceComponent.cs" />
+    <Compile Include="Components\Services\DependencyScope.cs" />
+    <Compile Include="Components\Services\ServiceDependencyAttribute.cs" />
+    <Compile Include="Components\Services\ServiceDependenciesAttribute.cs" />
+    <Compile Include="Components\Component\ComponentProvider.cs" />
     <Compile Include="Components\Logging\ListLogger\IListLogger.cs" />
     <Compile Include="Components\Logging\ListLogger\ListLoggerProvider.cs" />
-    <Compile Include="Components\Services\IServiceDependencyInitializer.cs" />
+    <Compile Include="Components\Services\ISingletonServiceDependencyInitializer.cs" />
     <Compile Include="Behaviors\Scrolling\IScrollViewerHelperFeature.cs" />
     <Compile Include="Behaviors\Scrolling\AutoScrollBehavior.cs" />
     <Compile Include="Behaviors\Layout\MarginSetterBehavior.cs" />
     <Compile Include="Behaviors\Interactivity\PropertyChangedDelegateCommandBehavior.cs" />
     <Compile Include="Behaviors\Scrolling\ScrollViewerHelperFeatureBehavior.cs" />
     <Compile Include="Behaviors\Scrolling\ScrollViewerTouchBehavior.cs" />
-    <Compile Include="Behaviors\Services\ServiceDependencyDataContextBehavior.cs" />
     <Compile Include="Behaviors\Windows\WindowDisplayedDelegateCommandBehavior.cs" />
     <Compile Include="Behaviors\Layout\CollapseSplitedPanelBehavior.cs" />
     <Compile Include="Commands\AbstractCommand.cs" />
@@ -201,6 +203,7 @@
     <Resource Include="Resources\Codicons-SymbolClass.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Behaviors\Services\" />
     <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>

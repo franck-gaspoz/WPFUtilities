@@ -65,7 +65,8 @@ namespace WPFUtilities.Behaviors.Scrolling
             if (_scrollViewer != null && !IsInitiliazed)
             {
                 AssociatedObject.Loaded -= AssociatedObject_Loaded;
-                BindingList.ListChanged += BindingList_ListChanged;
+                if (BindingList != null)
+                    BindingList.ListChanged += BindingList_ListChanged;
                 IsInitiliazed = true;
             }
         }
@@ -76,7 +77,7 @@ namespace WPFUtilities.Behaviors.Scrolling
         /// <inheritdoc/>
         protected override void OnDetaching()
         {
-            if (IsInitiliazed)
+            if (IsInitiliazed && BindingList != null)
                 BindingList.ListChanged -= BindingList_ListChanged;
         }
     }

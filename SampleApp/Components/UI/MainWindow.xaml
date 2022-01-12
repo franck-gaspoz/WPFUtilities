@@ -6,7 +6,7 @@
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:commands="clr-namespace:SampleApp.Commands"
         xmlns:wpfubehaviorsWindows="clr-namespace:WPFUtilities.Behaviors.Windows;assembly=WPFUtilities"
-        xmlns:wpfubehaviorsServices="clr-namespace:WPFUtilities.Behaviors.Services;assembly=WPFUtilities"
+        
         xmlns:componentsUI="clr-namespace:SampleApp.Components.UI"
         xmlns:local="clr-namespace:SampleApp" 
         xmlns:appl="clr-namespace:WPFUtilities.Components.Appl;assembly=WPFUtilities" 
@@ -16,9 +16,13 @@
         Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"
         Topmost="False"
-        wpfubehaviorsServices:ServiceDependencyDataContextBehavior.Resolve="{x:Type componentsUI:IMainWindowViewModel}"
+        
         Height="600" Width="800"
         >
+    <!-- 
+    xmlns:wpfubehaviorsServices="clr-namespace:WPFUtilities.Behaviors.Services;assembly=WPFUtilities"
+    wpfubehaviorsServices:ServiceDependencyDataContextBehavior.Resolve="{x:Type componentsUI:IMainWindowViewModel}" 
+    -->
     
     <Behaviors:Interaction.Behaviors>
         <wpfubehaviorsWindows:WindowDisplayedDelegateCommandBehavior Command="{x:Static commands:Commands.OnMainWindowShown}"/>
@@ -62,7 +66,10 @@
         <logging:LogView
             Margin="8,0,8,8"
             Grid.Row="3"
-            wpfubehaviorsServices:ServiceDependencyDataContextBehavior.IsEnabled="True"/>
+            />
+        <!--
+        wpfubehaviorsServices:ServiceDependencyDataContextBehavior.IsEnabled="True"
+        -->
 
     </Grid>
 </Window>

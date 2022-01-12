@@ -1,9 +1,9 @@
 ﻿
 using System.Reflection;
 
-using WPFUtilities.Attributes;
 using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.Appl;
+using WPFUtilities.Components.Services;
 
 namespace SampleApp.Components.UI
 {

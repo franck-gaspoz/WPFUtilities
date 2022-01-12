@@ -6,7 +6,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using WPFUtilities.Components.Logging.ListLogger;
-using WPFUtilities.Components.Services;
 using WPFUtilities.Extensions.Host;
 
 namespace SampleApp.Components.Logging
@@ -15,23 +14,21 @@ namespace SampleApp.Components.Logging
     /// log view model implementation factory
     /// </summary>
     public class LogViewModelServiceDependencyInitializer
-        : IServiceDependencyInitializer
+    //    : ISingletonServiceDependencyInitializer
     {
         HostBuilderContext _hostBuilderContext;
 
         /// <summary>
         /// add service logger for LogViewModel
         /// </summary>
-        /// <param name="hostBuilder">host builder</param>
-        /// <param name="hostBuilderContext">host builder context</param>
-        /// <param name="services">services</param>
-        public void Initialize(
-            IHostBuilder hostBuilder,
+        /// <param name = "hostBuilderContext" > host builder context</param>
+        /// <param name ="services">services</param>
+        public void Configure(
             HostBuilderContext hostBuilderContext,
             IServiceCollection services)
         {
-            _hostBuilderContext = hostBuilderContext;
             services.AddLogging(AddLogging);
+            _hostBuilderContext = hostBuilderContext;
         }
 
         /// <summary>

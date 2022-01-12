@@ -1,8 +1,6 @@
 ﻿using System.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 using SampleApp.Components.UI;
 
@@ -13,7 +11,9 @@ namespace SampleApp
     /// <summary>
     /// Application interactor
     /// </summary>
-    public partial class App : ApplicationBase
+    public partial class App :
+        ApplicationBase,
+        IApplicationBase
     {
         /// <summary>
         /// creates a new instance, start the app, build and display window
@@ -23,63 +23,48 @@ namespace SampleApp
             ApplicationBaseSettings = new ApplicationBaseSettings
             {
                 MainWindowType = typeof(MainWindow),
-                Initialize = () => Initialize(),
-                InitializeHost = (hostBuilder) => InitializeHost(hostBuilder),
-                ConfigureLogging = (loggingBuilder) => ConfigureLogging(loggingBuilder),
-                ConfigureServices = (services) => ConfigureServices(services),
-                InitializeMainWindow = (window) => InitializeMainWindow(window),
-                ShutdownAction = () => ShutdownAction()
+                MainWindowComponentType = typeof(MainWindowComponent)
             };
         }
 
         /// <summary>
         /// initialize application [step 1]
         /// </summary>
-        void Initialize()
+        protected override void Initialize()
         {
-
+            base.Initialize();
         }
 
         /// <summary>
-        /// intialize host [step 2]
-        /// </summary>
-        /// <param name="hostBuilder">host builder</param>
-        void InitializeHost(IHostBuilder hostBuilder)
-        {
-
-        }
-
-        /// <summary>
-        /// configure logging [step 3]
-        /// </summary>
-        /// <param name="loggingBuilder">logging builder</param>
-        private void ConfigureLogging(ILoggingBuilder loggingBuilder)
-        {
-
-        }
-
-        /// <summary>
-        /// configure services (DI) [step 4]
+        /// configure component [step 2]
         /// </summary>
         /// <param name="services">services</param>
-        void ConfigureServices(IServiceCollection services)
+        public override void Configure(IServiceCollection services)
         {
-
+            base.Configure(services);
         }
 
         /// <summary>
         /// initialize main window [step 5]
         /// </summary>
         /// <param name="mainWindow">main window</param>
-        void InitializeMainWindow(Window mainWindow)
+        protected override void InitializeMainWindow(Window mainWindow)
         {
-
+            base.InitializeMainWindow(mainWindow);
         }
 
         /// <summary>
-        /// shtudown action
+        /// on start ui
         /// </summary>
-        void ShutdownAction()
+        protected override void OnStartUI()
+        {
+            base.OnStartUI();
+        }
+
+        /// <summary>
+        /// on shtudown
+        /// </summary>
+        protected override void OnShutdown()
         {
 
         }

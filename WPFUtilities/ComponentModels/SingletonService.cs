@@ -1,12 +1,16 @@
 ﻿
+using System.Windows;
+
 using WPFUtilities.Components.Appl;
 
 namespace WPFUtilities.ComponentModels
 {
     /// <summary>
-    /// singleton feature using ApplicationHost and Dependency Injector
+    /// singleton feature 
+    /// <para>created by ApplicationHost</para>
+    /// <para>application scoped singleton service</para>
     /// </summary>
-    /// <typeparam name="T">class</typeparam>
+    /// <typeparam name="T">service type</typeparam>
     public abstract class SingletonService<T>
     {
         static object _lock = new object();
@@ -23,9 +27,11 @@ namespace WPFUtilities.ComponentModels
                 {
                     if (_instance == null)
                         _instance =
-                            ApplicationHost.Instance.Host == null ?
-                                default(T)
-                                : (T)ApplicationHost.Instance.Host.Services.GetService(typeof(T));
+                            (Application.Current is ApplicationBase app
+                            && app != null &&
+                            app.ApplicationHost != null) ?
+                                (T)app.ApplicationHost.Host.Services.GetService(typeof(T))
+                                : default(T);
                     return _instance;
                 }
             }
