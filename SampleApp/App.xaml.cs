@@ -13,7 +13,7 @@ namespace SampleApp
         IApplicationBase
     {
         /// <summary>
-        /// creates a new instance, start the app, build and display window
+        /// creates a new instance, starts the app, build and display window
         /// </summary>
         public App()
         {

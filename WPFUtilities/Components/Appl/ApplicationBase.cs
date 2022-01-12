@@ -88,7 +88,7 @@ namespace WPFUtilities.Components.Appl
         /// initialize culture
         /// </summary>
 
-        void InitializeCulture()
+        protected void InitializeCulture()
         {
             if (ApplicationBaseSettings.DefaultCulture != null)
                 CultureInfo.DefaultThreadCurrentCulture =
