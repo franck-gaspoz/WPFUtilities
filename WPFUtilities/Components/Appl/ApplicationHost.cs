@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.Services;
 
 namespace WPFUtilities.Components.Appl
@@ -10,7 +11,7 @@ namespace WPFUtilities.Components.Appl
     /// <summary>
     /// application host
     /// </summary>
-    public class ApplicationHost : IApplicationHost
+    public sealed class ApplicationHost : IApplicationHost, IConfigureHostServices
     {
         /// <inheritdoc/>
         public IHost Host { get; private set; }
@@ -33,7 +34,7 @@ namespace WPFUtilities.Components.Appl
 
             HostBuilder
                 .ConfigureServices((hostBuilderContext, services)
-                    => ConfigureServices(hostBuilderContext, services));
+                    => Configure(hostBuilderContext, services));
         }
 
         /// <inheritdoc/>
@@ -47,7 +48,7 @@ namespace WPFUtilities.Components.Appl
         /// configure logging
         /// </summary>
         /// <param name="loggingBuilder">logging builder</param>
-        void ConfigureLogging(ILoggingBuilder loggingBuilder)
+        public void ConfigureLogging(ILoggingBuilder loggingBuilder)
         {
             loggingBuilder.ClearProviders();
             if (_applicationBaseSettings.ApplicationLoggingSettings.LogConsole)
@@ -60,7 +61,7 @@ namespace WPFUtilities.Components.Appl
         /// </summary>
         /// <param name="hostBuilderContext">host builder context</param>
         /// <param name="services">services</param>
-        void ConfigureServices(HostBuilderContext hostBuilderContext, IServiceCollection services)
+        public void Configure(HostBuilderContext hostBuilderContext, IServiceCollection services)
         {
             HostBuilderContext = hostBuilderContext;
             new ServicesDependenciesBuilder(HostBuilder, hostBuilderContext, services)

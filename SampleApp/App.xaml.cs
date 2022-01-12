@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 using SampleApp.Components.UI;
 
@@ -39,9 +40,9 @@ namespace SampleApp
         /// configure component [step 2]
         /// </summary>
         /// <param name="services">services</param>
-        public override void Configure(IServiceCollection services)
+        public override void Configure(HostBuilderContext context, IServiceCollection services)
         {
-            base.Configure(services);
+            base.Configure(context, services);
         }
 
         /// <summary>

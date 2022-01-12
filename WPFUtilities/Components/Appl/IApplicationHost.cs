@@ -1,11 +1,14 @@
 ﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+
+using WPFUtilities.ComponentModels;
 
 namespace WPFUtilities.Components.Appl
 {
     /// <summary>
     /// application host
     /// </summary>
-    public interface IApplicationHost
+    public interface IApplicationHost : IConfigureHostServices
     {
         /// <summary>
         /// host
@@ -21,6 +24,12 @@ namespace WPFUtilities.Components.Appl
         /// host builder context
         /// </summary>
         HostBuilderContext HostBuilderContext { get; }
+
+        /// <summary>
+        /// configure logging
+        /// </summary>
+        /// <param name="loggingBuilder">logging builder</param>
+        void ConfigureLogging(ILoggingBuilder loggingBuilder);
 
         /// <summary>
         /// configure the host

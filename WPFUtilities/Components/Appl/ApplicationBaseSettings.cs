@@ -34,9 +34,6 @@ namespace WPFUtilities.Components.Appl
         public string DefaultCulture { get; set; } = null;
 
         /// <inheritdoc/>
-        public Action Initialize { get; set; }
-
-        /// <inheritdoc/>
         public Action<Window> InitializeMainWindow { get; set; }
 
         /// <inheritdoc/>

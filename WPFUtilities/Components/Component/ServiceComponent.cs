@@ -2,12 +2,14 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using WPFUtilities.ComponentModels;
+
 namespace WPFUtilities.Components.Component
 {
     /// <summary>
     /// service component abstraction
     /// </summary>
-    public abstract class ServiceComponent : IServiceComponent
+    public abstract class ServiceComponent : IServiceComponent, IConfigureHostServices
     {
         /// <summary>
         /// component host

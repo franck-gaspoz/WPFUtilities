@@ -96,6 +96,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComponentModels\IConfigureHostServices.cs" />
     <Compile Include="Components\Component\ServiceComponent.cs" />
     <Compile Include="Components\Component\IServiceComponent.cs" />
     <Compile Include="Components\Services\DependencyScope.cs" />
@@ -139,7 +140,6 @@
     <Compile Include="Components\Appl\IApplicationBaseSettings.cs" />
     <Compile Include="Components\Appl\IApplicationHost.cs" />
     <Compile Include="Components\Appl\IApplicationLoggingSettings.cs" />
-    <Compile Include="Components\Dispatchable.cs" />
     <Compile Include="Components\Logging\ListLogger\ListLogger.cs" />
     <Compile Include="Components\Logging\ListLogger\ListLoggerConfiguration.cs" />
     <Compile Include="Components\Logging\ListLogger\ListLoggerExtensions.cs" />

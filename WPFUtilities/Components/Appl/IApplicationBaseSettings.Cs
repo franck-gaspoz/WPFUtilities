@@ -35,11 +35,6 @@ namespace WPFUtilities.Components.Appl
         string DefaultCulture { get; set; }
 
         /// <summary>
-        /// action to be launch at initialization, before main window is created [initialization step 1]
-        /// </summary>
-        Action Initialize { get; set; }
-
-        /// <summary>
         /// configure host callback [initialization step 2]
         /// </summary>
         Action<IHostBuilder> InitializeHost { get; set; }

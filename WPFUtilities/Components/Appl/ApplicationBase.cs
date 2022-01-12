@@ -5,6 +5,7 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.Component;
 using WPFUtilities.Helpers;
 
@@ -15,7 +16,8 @@ namespace WPFUtilities.Components.Appl
     /// </summary>
     public class ApplicationBase :
         Application,
-        IApplicationBase
+        IApplicationBase,
+        IConfigureHostServices
     {
         /// <summary>
         /// application host
@@ -109,7 +111,7 @@ namespace WPFUtilities.Components.Appl
 
             ApplicationHost.HostBuilder
                 .ConfigureServices(
-                    (services) => Configure(services));
+                    (context, services) => Configure(context, services));
 
             ApplicationHost.Build();
 
@@ -126,11 +128,8 @@ namespace WPFUtilities.Components.Appl
 
         }
 
-        /// <summary>
-        /// configure application component
-        /// </summary>
-        /// <param name="services">services</param>
-        public virtual void Configure(IServiceCollection services)
+        /// <inheritdoc/>
+        public virtual void Configure(HostBuilderContext context, IServiceCollection services)
         {
             if (ApplicationBaseSettings.MainWindowComponentType != null)
                 services.AddSingleton(ApplicationBaseSettings.MainWindowComponentType);
