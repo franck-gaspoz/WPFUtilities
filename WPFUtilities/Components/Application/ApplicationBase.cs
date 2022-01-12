@@ -58,6 +58,7 @@ namespace WPFUtilities.Components.Application
                         .GetRequiredService(ApplicationBaseSettings.MainWindowComponentType);
                     _mainWindowComponent.ConfigureServices();
                     _mainWindowComponent.Build();
+                    //var _mainWindowComponent = ApplicationHost.Serv
                     serviceProvider = _mainWindowComponent.ComponentHost.Host.Services;
                 }
 

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using WPFUtilities.ComponentModels;
+using WPFUtilities.Components.Component;
 using WPFUtilities.Components.Services;
 
 namespace WPFUtilities.Components.Application
@@ -11,19 +12,12 @@ namespace WPFUtilities.Components.Application
     /// <summary>
     /// application host
     /// </summary>
-    public sealed class ApplicationHost :
+    public sealed class ApplicationHost : ComponentHost,
+        IComponentHost,
         IApplicationHost,
         IHostServicesConfigurator,
         IHostLoggingConfigurator
     {
-        /// <inheritdoc/>
-        public IHost Host { get; private set; }
-
-        /// <inheritdoc/>
-        public IHostBuilder HostBuilder { get; private set; }
-
-        /// <inheritdoc/>
-        public HostBuilderContext HostBuilderContext { get; private set; }
 
         IApplicationBaseSettings _applicationBaseSettings;
 
@@ -41,15 +35,9 @@ namespace WPFUtilities.Components.Application
         }
 
         /// <inheritdoc/>
-        public void Build()
+        public override void ConfigureLogging(HostBuilderContext context, ILoggingBuilder loggingBuilder)
         {
-            Host = HostBuilder.Build();
-            HostBuilderContext.Properties.Add(typeof(IHost), Host);
-        }
-
-        /// <inheritdoc/>
-        public void ConfigureLogging(HostBuilderContext context, ILoggingBuilder loggingBuilder)
-        {
+            base.ConfigureLogging(context, loggingBuilder);
             loggingBuilder.ClearProviders();
             if (_applicationBaseSettings.ApplicationLoggingSettings.LogConsole)
                 loggingBuilder.AddConsole();
@@ -57,10 +45,11 @@ namespace WPFUtilities.Components.Application
         }
 
         /// <inheritdoc/>
-        public void ConfigureServices(HostBuilderContext hostBuilderContext, IServiceCollection services)
+        public override void ConfigureServices(HostBuilderContext context, IServiceCollection services)
         {
-            HostBuilderContext = hostBuilderContext;
-            new ServicesDependenciesBuilder(HostBuilder, hostBuilderContext, services)
+            base.ConfigureServices(context, services);
+            HostBuilderContext = context;
+            new ServicesDependenciesBuilder(HostBuilder, context, services)
                 .AddSingletonServices()
                 .AddDependencyServices()
                 .AddDependencyServicesInitializers();

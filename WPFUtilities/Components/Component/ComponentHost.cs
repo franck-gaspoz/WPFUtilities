@@ -19,29 +19,19 @@ namespace WPFUtilities.Components.Component
     {
         #region properties
 
-        /// <summary>
-        /// host
-        /// </summary>
+        /// <inheritdoc/>
         public IHost Host { get; protected set; }
 
-        /// <summary>
-        /// component host builder
-        /// </summary>
+        /// <inheritdoc/>
         public IHostBuilder HostBuilder { get; protected set; }
 
-        /// <summary>
-        /// host builder context
-        /// </summary>
+        /// <inheritdoc/>
         public HostBuilderContext HostBuilderContext { get; protected set; }
 
-        /// <summary>
-        /// component service provider
-        /// </summary>
+        /// <inheritdoc/>
         public IComponentServiceProvider Services { get; protected set; }
 
-        /// <summary>
-        /// parent host or null if this is a root component host
-        /// </summary>
+        /// <inheritdoc/>
         public IComponentHost ParentHost { get; set; }
 
         /// <summary>
@@ -72,9 +62,7 @@ namespace WPFUtilities.Components.Component
             HostBuilder.ConfigureLogging((context, loggingBuilder) => ConfigureLogging(context, loggingBuilder));
         }
 
-        /// <summary>
-        /// build the component host
-        /// </summary>
+        /// <inheritdoc/>
         public void Build()
         {
             Host = HostBuilder.Build();
