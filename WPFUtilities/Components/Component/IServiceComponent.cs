@@ -1,21 +1,17 @@
-﻿using Microsoft.Extensions.Hosting;
-
-namespace WPFUtilities.Components.Component
+﻿namespace WPFUtilities.Components.Component
 {
     /// <summary>
     /// a service type (DI) component
     /// </summary>
     public interface IServiceComponent
     {
-        /// <summary>
-        /// component host
-        /// </summary>
-        IHost Host { get; }
+        /// <inheritdoc/>
+        IComponentHost ComponentHost { get; }
 
         /// <summary>
         /// configure services dependencies for owned host
         /// </summary>
-        void Configure();
+        void ConfigureServices();
 
         /// <summary>
         /// build the owned host

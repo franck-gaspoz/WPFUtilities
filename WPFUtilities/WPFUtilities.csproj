@@ -99,8 +99,11 @@
     <Compile Include="ComponentModels\IHostLoggingConfigurator.cs" />
     <Compile Include="ComponentModels\IHostServicesConfigurator.cs" />
     <Compile Include="Components\Component\ComponentHost.cs" />
+    <Compile Include="Components\Component\IComponentServiceProvider.cs" />
+    <Compile Include="Components\Component\IComponentHost.cs" />
     <Compile Include="Components\Component\ServiceComponent.cs" />
     <Compile Include="Components\Component\IServiceComponent.cs" />
+    <Compile Include="Components\Component\ComponentServiceProvider.cs" />
     <Compile Include="Components\Services\DependencyScope.cs" />
     <Compile Include="Components\Services\ServiceDependencyAttribute.cs" />
     <Compile Include="Components\Services\ServiceDependenciesAttribute.cs" />

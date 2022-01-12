@@ -37,7 +37,7 @@ namespace WPFUtilities.Components.Application
 
             HostBuilder
                 .ConfigureServices((hostBuilderContext, services)
-                    => Configure(hostBuilderContext, services));
+                    => ConfigureServices(hostBuilderContext, services));
         }
 
         /// <inheritdoc/>
@@ -57,7 +57,7 @@ namespace WPFUtilities.Components.Application
         }
 
         /// <inheritdoc/>
-        public void Configure(HostBuilderContext hostBuilderContext, IServiceCollection services)
+        public void ConfigureServices(HostBuilderContext hostBuilderContext, IServiceCollection services)
         {
             HostBuilderContext = hostBuilderContext;
             new ServicesDependenciesBuilder(HostBuilder, hostBuilderContext, services)

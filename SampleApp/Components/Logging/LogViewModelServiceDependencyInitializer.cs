@@ -24,7 +24,7 @@ namespace SampleApp.Components.Logging
         /// </summary>
         /// <param name = "hostBuilderContext" > host builder context</param>
         /// <param name ="services">services</param>
-        public void Configure(
+        public void ConfigureServices(
             HostBuilderContext hostBuilderContext,
             IServiceCollection services)
         {

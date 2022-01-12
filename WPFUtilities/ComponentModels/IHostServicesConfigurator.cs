@@ -14,6 +14,6 @@ namespace WPFUtilities.ComponentModels
         /// </summary>
         /// <param name="context">host builder context</param>
         /// <param name="services">services</param>
-        void Configure(HostBuilderContext context, IServiceCollection services);
+        void ConfigureServices(HostBuilderContext context, IServiceCollection services);
     }
 }

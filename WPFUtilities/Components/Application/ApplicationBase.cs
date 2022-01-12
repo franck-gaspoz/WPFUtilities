@@ -56,9 +56,9 @@ namespace WPFUtilities.Components.Application
                 {
                     var _mainWindowComponent = (IServiceComponent)ApplicationHost.Host.Services
                         .GetRequiredService(ApplicationBaseSettings.MainWindowComponentType);
-                    _mainWindowComponent.Configure();
+                    _mainWindowComponent.ConfigureServices();
                     _mainWindowComponent.Build();
-                    serviceProvider = _mainWindowComponent.Host.Services;
+                    serviceProvider = _mainWindowComponent.ComponentHost.Host.Services;
                 }
 
                 OnStartUI();
@@ -113,7 +113,7 @@ namespace WPFUtilities.Components.Application
 
             ApplicationHost.HostBuilder
                 .ConfigureServices(
-                    (context, services) => Configure(context, services));
+                    (context, services) => ConfigureServices(context, services));
 
             ApplicationHost.Build();
 
@@ -131,7 +131,7 @@ namespace WPFUtilities.Components.Application
         }
 
         /// <inheritdoc/>
-        public virtual void Configure(HostBuilderContext context, IServiceCollection services)
+        public virtual void ConfigureServices(HostBuilderContext context, IServiceCollection services)
         {
             if (ApplicationBaseSettings.MainWindowComponentType != null)
                 services.AddSingleton(ApplicationBaseSettings.MainWindowComponentType);

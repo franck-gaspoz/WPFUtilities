@@ -14,48 +14,36 @@ namespace WPFUtilities.Components.Component
         /// <summary>
         /// component host
         /// </summary>
-        public IHost Host { get; protected set; }
+        public IComponentHost ComponentHost { get; protected set; }
+            = new ComponentHost();
 
         /// <summary>
-        /// component host builder
-        /// </summary>
-        readonly protected IHostBuilder _hostBuilder;
-
-        /// <summary>
-        /// host builder context
-        /// </summary>
-        protected HostBuilderContext _hostBuilderContext;
-
-        /// <summary>
-        /// creates a new instance
+        /// create a new service component instance
+        /// <para>can get services dependencies trought constructor</para>
+        /// <para>get parent scope dependencies</para>
         /// </summary>
         public ServiceComponent()
         {
-            _hostBuilder = Microsoft.Extensions.Hosting.Host.CreateDefaultBuilder();
+
         }
 
         /// <summary>
         /// configure services dependencies for owned host
         /// </summary>
-        public void Configure()
+        public void ConfigureServices()
         {
-            _hostBuilder.ConfigureServices((context, services) =>
+            ComponentHost.HostBuilder.ConfigureServices((context, services) =>
             {
-                _hostBuilderContext = context;
-                Configure(context, services);
+                ConfigureServices(context, services);
             });
         }
 
         /// <summary>
         /// build the owned host
         /// </summary>
-        public void Build()
-        {
-            Host = _hostBuilder.Build();
-            _hostBuilderContext.Properties.Add(typeof(IHost), Host);
-        }
+        public void Build() => ComponentHost.Build();
 
         /// <inheritdoc/>
-        public abstract void Configure(HostBuilderContext context, IServiceCollection services);
+        public abstract void ConfigureServices(HostBuilderContext context, IServiceCollection services);
     }
 }
