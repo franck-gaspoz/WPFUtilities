@@ -15,13 +15,11 @@ namespace SampleApp
         /// <summary>
         /// creates a new instance, starts the app, build and display window
         /// </summary>
-        public App()
+        public App() : base(new ApplicationBaseSettings
         {
-            ApplicationBaseSettings = new ApplicationBaseSettings
-            {
-                MainWindowType = typeof(MainWindow),
-                MainWindowComponentType = typeof(MainWindowComponent)
-            };
-        }
+            MainWindowType = typeof(MainWindow),
+            MainWindowComponentType = typeof(MainWindowComponent)
+        })
+        { }
     }
 }

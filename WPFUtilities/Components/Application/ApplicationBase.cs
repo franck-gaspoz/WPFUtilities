@@ -39,9 +39,16 @@ namespace WPFUtilities.Components.Application
         protected IApplicationBaseSettings ApplicationBaseSettings;
 
         /// <summary>
-        /// creates a new instance
+        /// creates a new instance with default settings
         /// </summary>
         public ApplicationBase() { }
+
+        /// <summary>
+        /// creates a new instance with settings
+        /// </summary>
+        /// <param name="applicationBaseSettings"></param>
+        public ApplicationBase(ApplicationBaseSettings applicationBaseSettings)
+            => ApplicationBaseSettings = applicationBaseSettings;
 
         /// <summary>
         /// starts the UI
