@@ -21,5 +21,12 @@ namespace WPFUtilities.Components.Component
         /// <returns>component or null if no dependency has been found</returns>
         IServiceComponent GetComponent(Type type);
 
+        /// <summary>
+        /// resolve a service by the type
+        /// </summary>
+        /// <param name="type">component type</param>
+        /// <returns>service or null if no dependency has been found</returns>
+        object GetService(Type type);
+
     }
 }

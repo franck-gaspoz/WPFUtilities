@@ -22,14 +22,14 @@ namespace SampleApp.Components.Logging
         /// <summary>
         /// add service logger for LogViewModel
         /// </summary>
-        /// <param name = "hostBuilderContext" > host builder context</param>
+        /// <param name ="context"> host builder context</param>
         /// <param name ="services">services</param>
         public void ConfigureServices(
-            HostBuilderContext hostBuilderContext,
+            HostBuilderContext context,
             IServiceCollection services)
         {
             services.AddLogging(AddLogging);
-            _hostBuilderContext = hostBuilderContext;
+            _hostBuilderContext = context;
         }
 
         /// <summary>

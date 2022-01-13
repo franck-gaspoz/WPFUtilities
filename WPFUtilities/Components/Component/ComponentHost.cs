@@ -22,10 +22,14 @@ namespace WPFUtilities.Components.Component
         /// <inheritdoc/>
         public IHost Host { get; protected set; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// component host builder
+        /// </summary>
         public IHostBuilder HostBuilder { get; protected set; }
 
-        /// <inheritdoc/>
+        /// <summary>
+        /// host builder context
+        /// </summary>
         public HostBuilderContext HostBuilderContext { get; protected set; }
 
         /// <inheritdoc/>

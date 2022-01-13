@@ -35,11 +35,7 @@ namespace WPFUtilities.Components.Component
             return component;
         }
 
-        /// <summary>
-        /// resolve a component by the type. it is configured and built before it is returned
-        /// </summary>
-        /// <param name="type">component type</param>
-        /// <returns>component or null if no dependency has been found</returns>
+        /// <inheritdoc/>
         public IServiceComponent GetComponent(Type type)
         {
             var component = (IServiceComponent)_host.Host.Services.GetService(type);
@@ -47,6 +43,16 @@ namespace WPFUtilities.Components.Component
                 return _host.ParentHost.Services.GetComponent(type);
             InitializeComponent(component);
             return component;
+        }
+
+        /// <inheritdoc/>
+        public object GetService(Type type)
+        {
+            var service = (IServiceComponent)_host.Host.Services.GetService(type);
+            if (service == null && _host.ParentHost != null)
+                return _host.ParentHost.Services.GetService(type);
+            InitializeComponent(service);
+            return service;
         }
 
         void InitializeComponent(IServiceComponent component)

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿
+using Microsoft.Extensions.Hosting;
 
 using WPFUtilities.ComponentModels;
 
