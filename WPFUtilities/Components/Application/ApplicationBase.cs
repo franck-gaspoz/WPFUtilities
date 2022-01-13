@@ -71,8 +71,7 @@ namespace WPFUtilities.Components.Application
 
                 if (ApplicationBaseSettings.MainWindowType != null)
                 {
-                    MainWindow = (Window)serviceProvider
-                        .GetService(ApplicationBaseSettings.MainWindowType);
+                    MainWindow = getWindow();
 
                     InitializeMainWindow(MainWindow);
 
