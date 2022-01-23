@@ -8,7 +8,7 @@ namespace WPFUtilities.ComponentModels
     /// </summary>
     public interface IHostLoggingConfigurator
     {
-        // <summary>
+        /// <summary>
         /// configure logging
         /// </summary>
         /// <param name="context">host builder context</param>

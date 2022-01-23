@@ -35,8 +35,6 @@ namespace SampleApp.Components.UI
         public override void Build()
         {
             base.Build();
-            base.ComponentHost.Services.GetRequiredService<MainWindow>()
-                .DataContext = base.ComponentHost.Services.GetRequiredService<IMainWindowViewModel>();
         }
     }
 }

@@ -6,12 +6,14 @@
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:commands="clr-namespace:SampleApp.Commands"
         xmlns:wpfubehaviorsWindows="clr-namespace:WPFUtilities.Behaviors.Windows;assembly=WPFUtilities"
+        xmlns:service="clr-namespace:WPFUtilities.Behaviors.Services;assembly=WPFUtilities"
         xmlns:component="clr-namespace:WPFUtilities.Components.Component;assembly=WPFUtilities"
         xmlns:componentsUI="clr-namespace:SampleApp.Components.UI"
         xmlns:local="clr-namespace:SampleApp" 
         xmlns:appl="clr-namespace:WPFUtilities.Components.Application;assembly=WPFUtilities" 
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
         d:DataContext="{d:DesignInstance Type=componentsUI:MainWindowViewModel}"
+        service:DataContextBehavior.IsEnabled="True"
         mc:Ignorable="d"
         Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"
@@ -19,7 +21,7 @@
         Height="600" Width="800"
         >
     <!-- 
-    xmlns:wpfubehaviorsServices="clr-namespace:WPFUtilities.Behaviors.Services;assembly=WPFUtilities"
+    
     wpfubehaviorsServices:ServiceDependencyDataContextBehavior.Resolve="{x:Type componentsUI:IMainWindowViewModel}" 
     -->
     
