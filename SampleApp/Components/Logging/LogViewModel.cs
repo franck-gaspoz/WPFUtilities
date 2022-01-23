@@ -9,6 +9,23 @@ namespace SampleApp.Components.Logging
     /// </summary>    
     public class LogViewModel : ModelBase, IModelBase, ILogViewModel
     {
+        string _title = "";
+        /// <summary>
+        /// view title
+        /// </summary>
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                _title = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         /// <inheritdoc/>
         public BindingList<string> Messages { get; protected set; }
             = new BindingList<string>();

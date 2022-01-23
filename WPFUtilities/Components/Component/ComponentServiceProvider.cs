@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -21,11 +22,7 @@ namespace WPFUtilities.Components.Component
             _host = host;
         }
 
-        /// <summary>
-        /// resolve a component by the type. it is configured and built before it is returned
-        /// </summary>
-        /// <typeparam name="T">component type</typeparam>
-        /// <returns>component or null if no dependency has been found</returns>
+        /// <inheritdoc/>
         public T GetComponent<T>() where T : IServiceComponent
         {
             var component = _host.Host.Services.GetService<T>();
@@ -52,6 +49,87 @@ namespace WPFUtilities.Components.Component
             if (service == null && _host.ParentHost != null)
                 return _host.ParentHost.Services.GetService(type);
             return service;
+        }
+
+        /// <inheritdoc/>
+        public T GetService<T>()
+        {
+            var service = _host.Host.Services.GetService<T>();
+            if (service == null && _host.ParentHost != null)
+                return _host.ParentHost.Services.GetService<T>();
+            return service;
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<object> GetServices(Type type)
+        {
+            var services = _host.Host.Services.GetServices(type);
+            if (services == null && _host.ParentHost != null)
+                return _host.ParentHost.Services.GetServices(type);
+            return services;
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<T> GetServices<T>()
+        {
+            var services = _host.Host.Services.GetServices<T>();
+            if (services == null && _host.ParentHost != null)
+                return _host.ParentHost.Services.GetServices<T>();
+            return services;
+        }
+
+        /// <inheritdoc/>
+        public T GetRequiredComponent<T>() where T : IServiceComponent
+        {
+            var component = GetComponent<T>();
+            if (component == null) throw new InvalidOperationException($"no service of type {typeof(T).Name} has been found");
+            return component;
+        }
+
+        /// <inheritdoc/>
+        public IServiceComponent GetRequiredComponent(Type type)
+        {
+            var component = (IServiceComponent)_host.Host.Services.GetService(type);
+            if (component == null && _host.ParentHost != null)
+                return _host.ParentHost.Services.GetComponent(type);
+            InitializeComponent(component);
+            return component;
+        }
+
+        /// <inheritdoc/>
+        public object GetRequiredService(Type type)
+        {
+            var service = _host.Host.Services.GetService(type);
+            if (service == null && _host.ParentHost != null)
+                return _host.ParentHost.Services.GetService(type);
+            return service;
+        }
+
+        /// <inheritdoc/>
+        public T GetRequiredService<T>()
+        {
+            var service = _host.Host.Services.GetService<T>();
+            if (service == null && _host.ParentHost != null)
+                return _host.ParentHost.Services.GetService<T>();
+            return service;
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<object> GetRequiredServices(Type type)
+        {
+            var services = _host.Host.Services.GetServices(type);
+            if (services == null && _host.ParentHost != null)
+                return _host.ParentHost.Services.GetServices(type);
+            return services;
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<T> GetRequiredServices<T>()
+        {
+            var services = _host.Host.Services.GetServices<T>();
+            if (services == null && _host.ParentHost != null)
+                return _host.ParentHost.Services.GetServices<T>();
+            return services;
         }
 
         void InitializeComponent(IServiceComponent component)

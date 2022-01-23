@@ -63,10 +63,27 @@
 
         </TabControl>
 
-        <logging:LogView
-            Margin="8,0,8,8"
-            Grid.Row="3"
+        <Grid Grid.Row="3">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+
+           <!-- pumped from the parent identified scope -->
+            <logging:LogView
+                Margin="8,0,8,8"
+                Title="application log"
             />
+
+            <logging:LogView
+                Margin="8,0,8,8"
+                Grid.Column="1"
+                Title="window log"
+            />
+
+        </Grid>
+
         <!--
         wpfubehaviorsServices:ServiceDependencyDataContextBehavior.IsEnabled="True"
         -->

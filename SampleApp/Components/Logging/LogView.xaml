@@ -16,7 +16,7 @@
         </Grid.RowDefinitions>
 
         <Border Background="DodgerBlue">
-            <TextBlock Text="Log" Padding="4" Foreground="White"/>
+            <TextBlock Text="{Binding Title,RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=local:LogView}}" Padding="4" Foreground="White"/>
         </Border>
 
         <ListView ItemsSource="{Binding Messages}" 

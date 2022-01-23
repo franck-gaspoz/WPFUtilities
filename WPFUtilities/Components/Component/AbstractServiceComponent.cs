@@ -9,7 +9,7 @@ namespace WPFUtilities.Components.Component
     /// <summary>
     /// service component abstraction
     /// </summary>
-    public abstract class ServiceComponent : IServiceComponent, IHostServicesConfigurator
+    public abstract class AbstractServiceComponent : IServiceComponent, IHostServicesConfigurator
     {
         /// <summary>
         /// component host
@@ -22,7 +22,7 @@ namespace WPFUtilities.Components.Component
         /// <para>can get services dependencies trought constructor</para>
         /// <para>get parent scope dependencies</para>
         /// </summary>
-        public ServiceComponent()
+        public AbstractServiceComponent()
         {
 
         }
@@ -41,7 +41,7 @@ namespace WPFUtilities.Components.Component
         /// <summary>
         /// build the owned host
         /// </summary>
-        public void Build() => ComponentHost.Build();
+        public virtual void Build() => ComponentHost.Build();
 
         /// <inheritdoc/>
         public abstract void ConfigureServices(HostBuilderContext context, IServiceCollection services);

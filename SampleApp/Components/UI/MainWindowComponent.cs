@@ -12,28 +12,31 @@ namespace SampleApp.Components.UI
     /// UI component
     /// </summary>
     public class MainWindowComponent :
-        ServiceComponent,
+        AbstractServiceComponent,
         IServiceComponent
     {
-        /// <summary>
-        /// dependencies needed by the component
-        /// <para>declares component scope depdendencies</para>
-        /// </summary>
-        /// <param name="hostBuilderContext">host builder context</param>
-        /// <param name="serviceCollection">services</param>
+        /// <inheritdoc/>
         public override void ConfigureServices(
             HostBuilderContext hostBuilderContext,
             IServiceCollection services
         )
         {
+            // main window dependencies
+
             services.AddSingleton<MainWindow>();
             services.AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
-            services.AddSingleton<ILogViewModel, LogViewModel>();
-            new LogViewModelServiceDependencyInitializer()
-                .ConfigureServices(
-                    hostBuilderContext,
-                    services
-                );
+
+            // log view model component
+
+            services.AddSingleton<LogComponent>();
+        }
+
+        /// <inheritdoc/>
+        public override void Build()
+        {
+            base.Build();
+            base.ComponentHost.Services.GetRequiredService<MainWindow>()
+                .DataContext = base.ComponentHost.Services.GetRequiredService<IMainWindowViewModel>();
         }
     }
 }
