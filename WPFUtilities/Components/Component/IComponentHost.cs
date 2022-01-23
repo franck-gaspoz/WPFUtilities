@@ -30,7 +30,7 @@ namespace WPFUtilities.Components.Component
         /// <summary>
         /// component service provider
         /// </summary>
-        IComponentServiceProvider Services { get; }
+        IServiceComponentProvider Services { get; }
 
         /// <summary>
         /// parent host or null if this is a root component host

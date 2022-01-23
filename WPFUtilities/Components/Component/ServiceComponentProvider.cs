@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
 
@@ -8,8 +9,8 @@ namespace WPFUtilities.Components.Component
     /// <summary>
     /// component host service provider
     /// </summary>
-    public class ComponentServiceProvider
-        : IComponentServiceProvider
+    public class ServiceComponentProvider
+        : IServiceComponentProvider
     {
         IComponentHost _host;
 
@@ -17,7 +18,7 @@ namespace WPFUtilities.Components.Component
         /// service provider
         /// </summary>
         /// <param name="host"></param>
-        public ComponentServiceProvider(IComponentHost host)
+        public ServiceComponentProvider(IComponentHost host)
         {
             _host = host;
         }
@@ -48,6 +49,7 @@ namespace WPFUtilities.Components.Component
             var service = _host.Host.Services.GetService(type);
             if (service == null && _host.ParentHost != null)
                 return _host.ParentHost.Services.GetService(type);
+            InitializeService(service);
             return service;
         }
 
@@ -57,6 +59,7 @@ namespace WPFUtilities.Components.Component
             var service = _host.Host.Services.GetService<T>();
             if (service == null && _host.ParentHost != null)
                 return _host.ParentHost.Services.GetService<T>();
+            InitializeService(service);
             return service;
         }
 
@@ -66,6 +69,8 @@ namespace WPFUtilities.Components.Component
             var services = _host.Host.Services.GetServices(type);
             if (services == null && _host.ParentHost != null)
                 return _host.ParentHost.Services.GetServices(type);
+            foreach (var service in services)
+                InitializeService(service);
             return services;
         }
 
@@ -75,6 +80,8 @@ namespace WPFUtilities.Components.Component
             var services = _host.Host.Services.GetServices<T>();
             if (services == null && _host.ParentHost != null)
                 return _host.ParentHost.Services.GetServices<T>();
+            foreach (var service in services)
+                InitializeService(service);
             return services;
         }
 
@@ -83,6 +90,7 @@ namespace WPFUtilities.Components.Component
         {
             var component = GetComponent<T>();
             if (component == null) throw new InvalidOperationException($"no service of type {typeof(T).Name} has been found");
+            InitializeComponent(component);
             return component;
         }
 
@@ -102,6 +110,7 @@ namespace WPFUtilities.Components.Component
             var service = _host.Host.Services.GetService(type);
             if (service == null && _host.ParentHost != null)
                 return _host.ParentHost.Services.GetService(type);
+            InitializeService(service);
             return service;
         }
 
@@ -111,6 +120,7 @@ namespace WPFUtilities.Components.Component
             var service = _host.Host.Services.GetService<T>();
             if (service == null && _host.ParentHost != null)
                 return _host.ParentHost.Services.GetService<T>();
+            InitializeService(service);
             return service;
         }
 
@@ -120,6 +130,8 @@ namespace WPFUtilities.Components.Component
             var services = _host.Host.Services.GetServices(type);
             if (services == null && _host.ParentHost != null)
                 return _host.ParentHost.Services.GetServices(type);
+            foreach (var service in services)
+                InitializeService(service);
             return services;
         }
 
@@ -129,7 +141,17 @@ namespace WPFUtilities.Components.Component
             var services = _host.Host.Services.GetServices<T>();
             if (services == null && _host.ParentHost != null)
                 return _host.ParentHost.Services.GetServices<T>();
+            foreach (var service in services)
+                InitializeService(service);
             return services;
+        }
+
+        void InitializeService(object service)
+        {
+            if (service is DependencyObject dependencyObject)
+            {
+                AttachedProperties.SetComponentHost(dependencyObject, _host);
+            }
         }
 
         void InitializeComponent(IServiceComponent component)

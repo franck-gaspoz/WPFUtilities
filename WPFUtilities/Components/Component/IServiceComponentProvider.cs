@@ -6,7 +6,7 @@ namespace WPFUtilities.Components.Component
     /// <summary>
     /// component host service provider
     /// </summary>
-    public interface IComponentServiceProvider
+    public interface IServiceComponentProvider
     {
         /// <summary>
         /// get a component by the type. it is configured and built before it is returned

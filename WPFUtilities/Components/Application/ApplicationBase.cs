@@ -57,13 +57,12 @@ namespace WPFUtilities.Components.Application
         {
             try
             {
-                IServiceProvider serviceProvider = ApplicationHost.Host.Services;
-                Func<Window> getWindow = () => (Window)ApplicationHost.Host.Services
+                Func<Window> getWindow = () => (Window)ApplicationHost.Services
                     .GetRequiredService(ApplicationBaseSettings.MainWindowType);
 
                 if (ApplicationBaseSettings.MainWindowComponentType != null)
                 {
-                    var _mainWindowComponent = (IServiceComponent)ApplicationHost.Host.Services
+                    var _mainWindowComponent = (IServiceComponent)ApplicationHost.Services
                         .GetRequiredService(ApplicationBaseSettings.MainWindowComponentType);
                     _mainWindowComponent.ConfigureServices();
                     _mainWindowComponent.Build();

@@ -33,7 +33,7 @@ namespace WPFUtilities.Components.Component
         public HostBuilderContext HostBuilderContext { get; protected set; }
 
         /// <inheritdoc/>
-        public IComponentServiceProvider Services { get; protected set; }
+        public IServiceComponentProvider Services { get; protected set; }
 
         /// <inheritdoc/>
         public IComponentHost ParentHost { get; set; }
@@ -60,7 +60,7 @@ namespace WPFUtilities.Components.Component
         /// </summary>
         void Initialize()
         {
-            Services = new ComponentServiceProvider(this);
+            Services = new ServiceComponentProvider(this);
             HostBuilder = mshosting.Host.CreateDefaultBuilder();
             HostBuilder.ConfigureServices((context, services) => ConfigureServices(context, services));
             HostBuilder.ConfigureLogging((context, loggingBuilder) => ConfigureLogging(context, loggingBuilder));

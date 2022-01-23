@@ -6,7 +6,7 @@
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:commands="clr-namespace:SampleApp.Commands"
         xmlns:wpfubehaviorsWindows="clr-namespace:WPFUtilities.Behaviors.Windows;assembly=WPFUtilities"
-        
+        xmlns:component="clr-namespace:WPFUtilities.Components.Component;assembly=WPFUtilities"
         xmlns:componentsUI="clr-namespace:SampleApp.Components.UI"
         xmlns:local="clr-namespace:SampleApp" 
         xmlns:appl="clr-namespace:WPFUtilities.Components.Application;assembly=WPFUtilities" 
@@ -16,7 +16,6 @@
         Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"
         Topmost="False"
-        
         Height="600" Width="800"
         >
     <!-- 
@@ -70,7 +69,6 @@
                 <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
 
-           <!-- pumped from the parent identified scope -->
             <logging:LogView
                 Margin="8,0,8,8"
                 Title="application log"
