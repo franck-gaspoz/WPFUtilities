@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace WPFUtilities.Components.Component
 {
     /// <summary>
-    /// component host service provider
+    /// component service provider
     /// </summary>
     public interface IServiceComponentProvider
     {
