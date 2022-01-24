@@ -2,9 +2,8 @@
 using System.Windows;
 
 using WPFUtilities.Components.Component;
-using WPFUtilities.Components.Services;
 
-namespace WPFUtilities.Behaviors.Services
+namespace WPFUtilities.Components.Services.Properties
 {
     /// <summary>
     /// service dependency data context stateless behavior: setup data context from dependency injector

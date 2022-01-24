@@ -96,9 +96,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Behaviors\Services\DataContextResolveSetter.cs" />
-    <Compile Include="Behaviors\Services\DataContextApplicationBehavior.cs" />
-    <Compile Include="Behaviors\Services\DataContextBehavior.cs" />
+    <Compile Include="Components\Services\Properties\DataContextResolveSetter.cs" />
+    <Compile Include="Components\Services\Properties\DataContextApplication.cs" />
+    <Compile Include="Components\Services\Properties\DataContext.cs" />
     <Compile Include="ComponentModels\IComponentHostServicesConfigurator.cs" />
     <Compile Include="ComponentModels\IHostLoggingConfigurator.cs" />
     <Compile Include="ComponentModels\IHostServicesConfigurator.cs" />
@@ -213,6 +213,7 @@
     <Resource Include="Resources\Codicons-SymbolClass.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Behaviors\Services\" />
     <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Windows;
 
-using Microsoft.Xaml.Behaviors;
-
-using WPFUtilities.Components.Application;
 using WPFUtilities.Components.Component;
 
-namespace WPFUtilities.Behaviors.Services
+namespace WPFUtilities.Components.Services.Properties
 {
     /// <summary>
-    /// setup data context from application host
+    /// setup data context from component host
     /// </summary>
-    public class DataContextApplicationBehavior : Behavior<FrameworkElement>
+    public class DataContext
     {
         #region IsAuto
 
@@ -38,7 +35,7 @@ namespace WPFUtilities.Behaviors.Services
             DependencyProperty.RegisterAttached(
                 "IsAuto",
                 typeof(bool),
-                typeof(DataContextApplicationBehavior),
+                typeof(DataContext),
                 new PropertyMetadata(false, IsAutoChanged));
 
         #endregion
@@ -68,7 +65,7 @@ namespace WPFUtilities.Behaviors.Services
             DependencyProperty.RegisterAttached(
                 "Resolve",
                 typeof(Type),
-                typeof(DataContextApplicationBehavior),
+                typeof(DataContext),
                 new PropertyMetadata(null, ResolveChanged));
 
         #endregion
@@ -82,13 +79,19 @@ namespace WPFUtilities.Behaviors.Services
         /// <param name="eventArgs">event args</param>
         public static void ResolveChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if (!(dependencyObject is FrameworkElement target)) return;
-            if (eventArgs.NewValue is Type type)
-                DataContextResolveSetter.
-                    SetupServiceDependencyDataContext(
-                        dependencyObject,
-                        type,
-                        (o) => GetComponentHost());
+            if (!(dependencyObject is FrameworkElement target)
+                || !(eventArgs.NewValue is Type type)) return;
+
+            void Initialize(object src, EventArgs e)
+            {
+                target.Loaded -= Initialize;
+                DataContextResolveSetter.SetupServiceDependencyDataContext(
+                    target,
+                    type,
+                    (o) => GetComponentHost(o));
+            }
+
+            target.Loaded += Initialize;
         }
 
         /// <summary>
@@ -98,31 +101,23 @@ namespace WPFUtilities.Behaviors.Services
         /// <param name="eventArgs">event args</param>
         public static void IsAutoChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if (!(dependencyObject is FrameworkElement target)) return;
-            if ((bool)eventArgs.NewValue)
-                DataContextResolveSetter
-                    .SetupServiceDependencyDataContext(
-                        dependencyObject,
-                        (o) => GetComponentHost());
-        }
+            if (!(dependencyObject is FrameworkElement target)
+                || !((bool)eventArgs.NewValue)) return;
 
-        /// <summary>
-        /// trigger setup data context when attached
-        /// <para>Behaviors:Interaction.Behaviors</para>
-        /// </summary>
-        protected override void OnAttached()
-            => DataContextResolveSetter.SetupServiceDependencyDataContext(
-                AssociatedObject,
-                (o) => GetComponentHost());
+            void Initialize(object src, EventArgs e)
+            {
+                target.Loaded -= Initialize;
+                DataContextResolveSetter.SetupServiceDependencyDataContext(
+                    dependencyObject,
+                    (o) => GetComponentHost(o));
+            }
+
+            target.Loaded += Initialize;
+        }
 
         #endregion
 
-        static IComponentHost GetComponentHost()
-        {
-            var application = System.Windows.Application.Current as
-                ApplicationBase;
-            if (application != null) return application.ApplicationHost;
-            return null;
-        }
+        static IComponentHost GetComponentHost(DependencyObject dependencyObject)
+            => (IComponentHost)dependencyObject.GetValue(AttachedProperties.ComponentHostProperty);
     }
 }
