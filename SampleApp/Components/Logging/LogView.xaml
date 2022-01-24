@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.Logging" 
              xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
-             xmlns:wpfubehaviorsScrolling="clr-namespace:WPFUtilities.Behaviors.Scrolling;assembly=WPFUtilities"             
+             xmlns:wpfuscrolling="clr-namespace:WPFUtilities.AttachedProperties.Scrolling;assembly=WPFUtilities"             
              d:DataContext="{d:DesignInstance Type=local:LogViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="200">
@@ -22,10 +22,7 @@
         <ListView ItemsSource="{Binding Messages}" 
                   FontFamily="Courier New"
                   Grid.Row="1"
-                  >
-            <Behaviors:Interaction.Behaviors>
-                <wpfubehaviorsScrolling:AutoScrollBehavior BindingList="{Binding Messages}"/>
-            </Behaviors:Interaction.Behaviors>
-        </ListView>
+                  wpfuscrolling:ScrollDownProperty.IsAuto="True"
+                  />
     </Grid>
 </UserControl>
