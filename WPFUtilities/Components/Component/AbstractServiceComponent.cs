@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using WPFUtilities.ComponentModels;
+using WPFUtilities.Components.Services;
 
 namespace WPFUtilities.Components.Component
 {

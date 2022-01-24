@@ -5,8 +5,8 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.Component;
+using WPFUtilities.Components.Services;
 using WPFUtilities.Helpers;
 
 using syswin = System.Windows;

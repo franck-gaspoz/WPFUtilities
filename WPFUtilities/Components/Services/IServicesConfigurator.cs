@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace WPFUtilities.ComponentModels
+namespace WPFUtilities.Components.Services
 {
     /// <summary>
     /// host services configurator

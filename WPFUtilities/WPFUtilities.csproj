@@ -96,15 +96,17 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\Component\IServiceComponentCollection.cs" />
+    <Compile Include="Components\Component\IServiceComponentsConfigurator.cs" />
+    <Compile Include="Components\Component\ServiceComponentCollection.cs" />
     <Compile Include="Components\Services\Properties\DataContextResolveSetter.cs" />
     <Compile Include="Components\Services\Properties\DataContextApplication.cs" />
     <Compile Include="Components\Services\Properties\DataContext.cs" />
     <Compile Include="ComponentModels\IComponentHostServicesConfigurator.cs" />
     <Compile Include="ComponentModels\IHostLoggingConfigurator.cs" />
-    <Compile Include="Components\Component\IServicesConfigurator.cs" />
+    <Compile Include="Components\Services\IServicesConfigurator.cs" />
     <Compile Include="Components\Component\ComponentHost.cs" />
     <Compile Include="Components\Component\AttachedProperties.cs" />
-    <Compile Include="Components\Component\IComponentHostService.cs" />
     <Compile Include="Components\Component\IComponentHost.cs" />
     <Compile Include="Components\Component\AbstractServiceComponent.cs" />
     <Compile Include="Components\Component\IServiceComponentProvider.cs" />

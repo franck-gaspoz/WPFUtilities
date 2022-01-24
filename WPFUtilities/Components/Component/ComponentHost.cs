@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using WPFUtilities.ComponentModels;
+using WPFUtilities.Components.Services;
 
 using mshosting = Microsoft.Extensions.Hosting;
 

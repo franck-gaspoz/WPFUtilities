@@ -1,6 +1,5 @@
-﻿
-using WPFUtilities.ComponentModels;
-using WPFUtilities.Components.Component;
+﻿using WPFUtilities.Components.Component;
+using WPFUtilities.Components.Services;
 
 namespace WPFUtilities.Components.Application
 {
