@@ -43,13 +43,14 @@ namespace WPFUtilities.AttachedProperties.Scrolling
 
         static void IsAutoChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if (dependencyObject is FrameworkElement element)
+            if (dependencyObject is ListBox element)
             {
                 void EnableAutoScrollDown(object src, EventArgs e)
                 {
                     element.Loaded -= EnableAutoScrollDown;
                     var scrollViewer = WPFHelper.FindVisualChild<ScrollViewer>(element);
-                    scrollViewer.ScrollChanged += (o, ea) =>
+
+                    element.ItemContainerGenerator.ItemsChanged += (o, ea) =>
                     {
                         scrollViewer.ScrollToBottom();
                     };
