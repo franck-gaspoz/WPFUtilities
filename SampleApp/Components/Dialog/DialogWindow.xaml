@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:wpfubehaviorsLayout="clr-namespace:WPFUtilities.Behaviors.Layout;assembly=WPFUtilities"
+        xmlns:wpfulayout="clr-namespace:WPFUtilities.Behaviors.Layout;assembly=WPFUtilities"
         xmlns:local="clr-namespace:SampleApp.Components.UI"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
@@ -33,10 +33,9 @@
         <StackPanel Grid.Row="1"
                     Margin="4"
                     HorizontalAlignment="Center"
-                    Orientation="Horizontal">
-            <Behaviors:Interaction.Behaviors>
-                <wpfubehaviorsLayout:ChildMarginSetterBehavior ChildMargin="4" />
-            </Behaviors:Interaction.Behaviors>
+                    Orientation="Horizontal"
+                    wpfulayout:ChildMarginProperty.Value="4"
+                    >
             <Button Content="Yes"/>
             <Button Content="No" IsDefault="True"/>
             <Button Content="Cancel" IsCancel="True"/>
