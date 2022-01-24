@@ -9,7 +9,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="DialogWindow" 
-        Height="191.737" Width="296.842">
+        Height="191.737" Width="281.296">
     
     <Grid>
         <Grid.Resources>
@@ -28,6 +28,20 @@
                 <ColumnDefinition Width="50*"/>
                 <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
+
+            <Image Source="../../Resources/Codicons-SymbolClass.png" Margin="0,16,32,16"/>
+
+            <RichTextBox Grid.Column="1" IsReadOnly="True" BorderThickness="0">
+                <FlowDocument>
+                    <Paragraph FontSize="22" Margin="0">
+                        <Bold>WPF Utilities</Bold>
+                    </Paragraph>
+                    <Paragraph>
+                        sample application
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+
         </Grid>
 
         <StackPanel Grid.Row="1"
