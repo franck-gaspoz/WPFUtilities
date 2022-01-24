@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace WPFUtilities.Components.Component
 {
@@ -11,14 +12,7 @@ namespace WPFUtilities.Components.Component
         /// <summary>
         /// components with an identifier (multitons)
         /// </summary>
-        readonly Dictionary<string, IServiceComponent> _identifiedComponents = new Dictionary<string, IServiceComponent>();
-
-        /// <summary>
-        /// components without an identifier (singleton and transients)
-        /// </summary>
-        readonly IList<IServiceComponent> _anonymousComponents = new List<IServiceComponent>();
-
-
+        readonly Dictionary<string, Type> _identifiedComponents = new Dictionary<string, Type>();
 
     }
 }

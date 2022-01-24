@@ -109,31 +109,12 @@ namespace WPFUtilities.Components.Component
         /// <returns>services component collection</returns>
         public IServiceComponentCollection AddComponent<TService>(string componentId) where TService : class
         {
+            //_componentHost.ServiceComponentRegister.AddComponent();
             Services.AddSingleton<TService>((serviceProvider) =>
             {
                 return (TService)null;
             });
             return this;
-        }
-
-        /// <summary>
-        /// add a singleton service component of the type specified in TService
-        /// </summary>
-        /// <typeparam name="TService">service type</typeparam>
-        /// <returns>services component collection</returns>
-        public IServiceComponentCollection AddSingletonComponent<TService>() where TService : class
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// add a transient service component of the type specified in TService
-        /// </summary>
-        /// <typeparam name="TService">service type</typeparam>
-        /// <returns>services component collection</returns>
-        public IServiceComponentCollection AddTransientComponent<TService>() where TService : class
-        {
-            throw new NotImplementedException();
         }
 
         #endregion

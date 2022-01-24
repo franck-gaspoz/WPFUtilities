@@ -104,7 +104,6 @@
     <Compile Include="Components\Services\Properties\DataContextResolveSetter.cs" />
     <Compile Include="Components\Services\Properties\DataContextApplication.cs" />
     <Compile Include="Components\Services\Properties\DataContext.cs" />
-    <Compile Include="ComponentModels\IComponentHostServicesConfigurator.cs" />
     <Compile Include="ComponentModels\IHostLoggingConfigurator.cs" />
     <Compile Include="Components\Services\IServicesConfigurator.cs" />
     <Compile Include="Components\Component\ComponentHost.cs" />

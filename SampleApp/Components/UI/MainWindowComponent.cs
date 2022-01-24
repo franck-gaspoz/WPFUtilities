@@ -24,7 +24,7 @@ namespace SampleApp.Components.UI
             services.AddSingleton<MainWindow>()
                     .AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
 
-            // log view model component
+            // log component
 
             services.AddComponent<LogComponent>("application-log");
         }
