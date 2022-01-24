@@ -24,7 +24,12 @@ namespace WPFUtilities.Components.Logging.ListLogger
             IOptionsMonitor<ListLoggerConfiguration> config)
         {
             _currentConfig = config.CurrentValue;
-            _onChangeToken = config.OnChange(updatedConfig => _currentConfig = updatedConfig);
+            _onChangeToken = config.OnChange(ConfigChanged);
+        }
+
+        void ConfigChanged(ListLoggerConfiguration updatedConfig)
+        {
+            _currentConfig = updatedConfig;
         }
 
         /// <summary>

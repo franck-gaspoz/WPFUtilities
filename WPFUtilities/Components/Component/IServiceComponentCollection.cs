@@ -16,6 +16,11 @@ namespace WPFUtilities.Components.Component
         /// </summary>
         IServiceCollection Services { get; }
 
+        /// <summary>
+        /// component host that owns this services components collection
+        /// </summary>
+        IComponentHost ComponentHost { get; }
+
         #endregion
 
         #region services registration

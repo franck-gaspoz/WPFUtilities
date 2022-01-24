@@ -39,6 +39,18 @@ namespace WPFUtilities.Components.Component
         /// <inheritdoc/>
         public IComponentHost ParentHost { get; set; }
 
+        /// <inheritdoc/>
+        public IComponentHost RootHost
+        {
+            get
+            {
+                IComponentHost rootHost = this;
+                while (rootHost.ParentHost != null)
+                    rootHost = rootHost.ParentHost;
+                return rootHost;
+            }
+        }
+
         #endregion
 
         /// <summary>

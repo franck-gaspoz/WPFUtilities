@@ -39,6 +39,11 @@ namespace WPFUtilities.Components.Component
         IComponentHost ParentHost { get; set; }
 
         /// <summary>
+        /// root component host
+        /// </summary>
+        IComponentHost RootHost { get; }
+
+        /// <summary>
         /// build the component host
         /// </summary>
         void Build();

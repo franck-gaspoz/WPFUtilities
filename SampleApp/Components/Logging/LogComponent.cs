@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 using WPFUtilities.Components.Component;
 
@@ -18,11 +19,19 @@ namespace SampleApp.Components.Logging
         {
             services.AddSingleton<ILogViewModel, LogViewModel>();
 
-            new LogViewModelServiceDependencyInitializer()
+            /*new LogViewModelServiceDependencyInitializer()
                 .ConfigureServices(
                     context,
                     services.Services
-                );
+                );*/
+        }
+
+        /// <inheritdoc/>
+        public override void Build()
+        {
+            base.Build();
+            // need to get the list logger provider
+            var loggers = ComponentHost.RootHost.Services.GetServices<ILoggerProvider>();
         }
     }
 }

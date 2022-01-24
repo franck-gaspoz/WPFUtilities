@@ -1,7 +1,5 @@
 ﻿using System;
 
-using Microsoft.Extensions.Hosting;
-
 namespace WPFUtilities.Components.Application
 {
     /// <summary>
@@ -33,11 +31,6 @@ namespace WPFUtilities.Components.Application
         /// default culture for threads and thread ui
         /// </summary>
         string DefaultCulture { get; set; }
-
-        /// <summary>
-        /// configure host callback [initialization step 2]
-        /// </summary>
-        Action<IHostBuilder> InitializeHost { get; set; }
 
         /// <summary>
         /// shutdown time out

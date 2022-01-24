@@ -56,7 +56,12 @@ namespace WPFUtilities.Components.Component
         /// <inheritdoc/>
         public T GetService<T>()
         {
-            var service = _host.Host.Services.GetService<T>();
+            T service = default;
+            try
+            {
+                service = _host.Host.Services.GetService<T>();
+            }
+            catch { }
             if (service == null && _host.ParentHost != null)
                 return _host.ParentHost.Services.GetService<T>();
             InitializeService(service);

@@ -5,7 +5,6 @@ using System.Windows;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using WPFUtilities.Components.Component;
 using WPFUtilities.Components.Services;
 using WPFUtilities.Helpers;
 
@@ -55,43 +54,33 @@ namespace WPFUtilities.Components.Application
         /// </summary>
         void StartUI()
         {
-            try
+            Func<Window> getWindow = () => (Window)ApplicationHost.Services
+                .GetRequiredService(ApplicationBaseSettings.MainWindowType);
+
+            if (ApplicationBaseSettings.MainWindowComponentType != null)
             {
-                Func<Window> getWindow = () => (Window)ApplicationHost.Services
-                    .GetRequiredService(ApplicationBaseSettings.MainWindowType);
+                var _mainWindowComponent = ApplicationHost.Services.GetRequiredComponent(
+                    ApplicationBaseSettings.MainWindowComponentType);
 
-                if (ApplicationBaseSettings.MainWindowComponentType != null)
-                {
-                    var _mainWindowComponent = (IServiceComponent)ApplicationHost.Services
-                        .GetRequiredService(ApplicationBaseSettings.MainWindowComponentType);
-                    _mainWindowComponent.Configure();
-                    _mainWindowComponent.Build();
-
-                    getWindow = () => (Window)_mainWindowComponent.ComponentHost.Services
-                        .GetService(ApplicationBaseSettings.MainWindowType);
-                }
-
-                OnStartUI();
-
-                if (ApplicationBaseSettings.MainWindowType != null)
-                {
-                    MainWindow = getWindow();
-
-                    InitializeMainWindow(MainWindow);
-
-                    if (ApplicationBaseSettings.ShowWindow)
-                    {
-                        if (ApplicationBaseSettings.IsMainWindowDialog)
-                            _ = MainWindow.ShowDialog();
-                        else
-                            MainWindow.Show();
-                    }
-                }
+                getWindow = () => (Window)_mainWindowComponent.ComponentHost.Services
+                    .GetService(ApplicationBaseSettings.MainWindowType);
             }
-            catch (Exception exception)
+
+            OnStartUI();
+
+            if (ApplicationBaseSettings.MainWindowType != null)
             {
-                UIHelper.ShowError(exception);
-                Environment.Exit(1);
+                MainWindow = getWindow();
+
+                InitializeMainWindow(MainWindow);
+
+                if (ApplicationBaseSettings.ShowWindow)
+                {
+                    if (ApplicationBaseSettings.IsMainWindowDialog)
+                        _ = MainWindow.ShowDialog();
+                    else
+                        MainWindow.Show();
+                }
             }
         }
 
@@ -113,31 +102,45 @@ namespace WPFUtilities.Components.Application
         /// <param name="eventArgs">event args</param>
         protected async override void OnStartup(StartupEventArgs eventArgs)
         {
-            ApplicationBaseSettings = ApplicationBaseSettings ?? new ApplicationBaseSettings();
-            InitializeCulture();
+            try
+            {
+                ApplicationBaseSettings = ApplicationBaseSettings ?? new ApplicationBaseSettings();
+                InitializeCulture();
 
-            Initialize();
+                Initialize();
 
-            ApplicationHost.Configure(ApplicationBaseSettings);
+                ApplicationHost.Configure(ApplicationBaseSettings);
 
-            ApplicationHost.HostBuilder
-                .ConfigureServices(
-                    (context, services) => ConfigureServices(context, services));
+                ApplicationHost.HostBuilder
+                    .ConfigureServices(
+                        (context, services) => ConfigureServices(context, services));
 
-            ApplicationHost.Build();
+                ApplicationHost.Build();
 
-            await ApplicationHost.Host.StartAsync();
+                await ApplicationHost.Host.StartAsync();
 
-            StartUI();
+                StartUI();
+            }
+            catch (Exception exception)
+            {
+                OnFatalError(exception);
+            }
         }
 
         /// <summary>
-        /// initialize before host builder [init step 1]
+        /// called if a fatal error occurs
         /// </summary>
-        protected virtual void Initialize()
+        /// <param name="exception">exception</param>
+        protected virtual void OnFatalError(Exception exception)
         {
-
+            UIHelper.ShowError(exception);
+            Environment.Exit(1);
         }
+
+        /// <summary>
+        /// initialize before host builder
+        /// </summary>
+        protected virtual void Initialize() { }
 
         /// <inheritdoc/>
         public virtual void ConfigureServices(HostBuilderContext context, IServiceCollection services)

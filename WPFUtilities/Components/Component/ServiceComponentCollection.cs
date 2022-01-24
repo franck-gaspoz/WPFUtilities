@@ -14,7 +14,8 @@ namespace WPFUtilities.Components.Component
         /// <inheritdoc/>
         public IServiceCollection Services { get; }
 
-        readonly IComponentHost _componentHost;
+        /// <inheritdoc/>
+        public IComponentHost ComponentHost { get; }
 
         #endregion
 
@@ -30,7 +31,7 @@ namespace WPFUtilities.Components.Component
             IServiceCollection services)
         {
             Services = services;
-            _componentHost = componentHost;
+            ComponentHost = componentHost;
         }
 
         #endregion

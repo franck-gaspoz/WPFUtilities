@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows;
 
-using Microsoft.Extensions.Hosting;
-
 namespace WPFUtilities.Components.Application
 {
     /// <summary>
@@ -35,9 +33,6 @@ namespace WPFUtilities.Components.Application
 
         /// <inheritdoc/>
         public Action<Window> InitializeMainWindow { get; set; }
-
-        /// <inheritdoc/>
-        public Action<IHostBuilder> InitializeHost { get; set; }
 
         /// <inheritdoc/>
         public int ShutdownTimeout { get; set; } = 5;
