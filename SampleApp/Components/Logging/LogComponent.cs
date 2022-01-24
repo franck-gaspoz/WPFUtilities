@@ -28,6 +28,7 @@ namespace SampleApp.Components.Logging
         public override void Build()
         {
             base.Build();
+            // instantiate the log model mediator
             ComponentHost.Services.GetService<LogModelMediator>();
         }
     }
