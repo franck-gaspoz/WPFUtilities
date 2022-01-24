@@ -12,14 +12,14 @@ namespace WPFUtilities.Behaviors.Layout
         /// get margin
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
-        /// <returns></returns>
+        /// <returns>value</returns>
         public static Thickness GetValue(DependencyObject dependencyObject) => (Thickness)dependencyObject.GetValue(ValueProperty);
 
         /// <summary>
         /// get margin
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
-        /// <param name="value"></param>
+        /// <param name="value">value</param>
         public static void SetValue(DependencyObject dependencyObject, Thickness value) => dependencyObject.SetValue(ValueProperty, value);
 
         /// <summary>
