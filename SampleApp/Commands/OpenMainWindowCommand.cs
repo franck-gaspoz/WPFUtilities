@@ -32,8 +32,7 @@ namespace SampleApp.Commands
                 if (componentHost != null)
                 {
                     var application = this.GetApplication();
-                    var mainWindowComponent = new MainWindowComponent();
-                    mainWindowComponent.ComponentHost.ParentHost = componentHost;
+                    var mainWindowComponent = new MainWindowComponent(componentHost);
                     mainWindowComponent.Configure();
                     mainWindowComponent.Build();
                     var window = (Window)mainWindowComponent.ComponentHost.Services.GetService(application.ApplicationBaseSettings.MainWindowType);
