@@ -1,16 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System.ComponentModel;
+
+using WPFUtilities.ComponentModels;
 
 namespace WPFUtilities.Components.Logging.ListLogger
 {
     /// <summary>
     /// list logger model
     /// </summary>
-    public class ListLoggerModel
+    public class ListLoggerModel : ModelBase, IModelBase, IListLoggerModel
     {
-        /// <summary>
-        /// log items
-        /// </summary>
-        public List<string> LogItems { get; }
-            = new List<string>();
+        /// <inheritdoc/>
+        public BindingList<string> LogItems { get; }
+            = new BindingList<string>();
     }
 }

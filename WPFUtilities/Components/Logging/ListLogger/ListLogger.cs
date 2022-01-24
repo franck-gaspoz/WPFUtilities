@@ -45,12 +45,7 @@ namespace WPFUtilities.Components.Logging.ListLogger
             s += $" {_name} |";
             s += $" {formatter(state, exception)}";
 
-            try
-            {
-                for (int i = 0; i < config.Targets.Count; i++)
-                    config.Targets[i].Add(s);
-            }
-            catch (ArgumentOutOfRangeException) { }
+            config.Target?.Add(s);
         }
     }
 }

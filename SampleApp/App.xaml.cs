@@ -35,14 +35,17 @@ namespace SampleApp
         public override void ConfigureServices(HostBuilderContext context, IServiceCollection services)
         {
             base.ConfigureServices(context, services);
+
+            // add list logger
+
             var listLoggerModel = new ListLoggerModel();
-            services.AddSingleton<ListLoggerModel>((sp) => listLoggerModel);
+            services.AddSingleton<IListLoggerModel>((sp) => listLoggerModel);
             services.AddLogging((loggingBuilder) =>
             {
                 loggingBuilder.AddListLogger(
                     (listLoggerConfiguration) =>
                     {
-                        listLoggerConfiguration.Targets.Add(listLoggerModel.LogItems);
+                        listLoggerConfiguration.Target = listLoggerModel.LogItems;
                     });
             });
         }

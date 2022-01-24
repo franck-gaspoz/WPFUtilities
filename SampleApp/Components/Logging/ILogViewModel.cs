@@ -12,6 +12,6 @@ namespace SampleApp.Components.Logging
         /// <summary>
         /// messages
         /// </summary>
-        BindingList<string> Messages { get; }
+        BindingList<string> Messages { get; set; }
     }
 }
