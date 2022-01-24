@@ -1,9 +1,9 @@
-# ![wpf utilities](Codicons-SymbolClass.png) WPF Utilities
+# WPF Utilities
 
 A C# and XAML library containing some essential and usefull classes and snippets for fast WPF application development.
 This is not a framework, the library doesn't bring any coding convention to .Net Standard and WPF conventions. The library brings help to code using the standard WPF recommended patterns (MVVM, Command, controls, components,...) and SOLID principles.
 
-## library contents:
+## library contents
 
 - Attributes
 - Behaviors
@@ -40,6 +40,12 @@ This is not a framework, the library doesn't bring any coding convention to .Net
 - Snippets
   - CSharp
   - Xaml
+
+## project contents
+
+get sources from: [project repository on GitHub](https://github.com/franck-gaspoz/WPFUtilities)
+
+- WPFUtilities library
 - Sample application
 
 ## dependencies
