@@ -20,5 +20,22 @@ namespace SampleApp.Components.UI
                 return $"WPFUtilities samples application | WPFUtilites v{wpfuVersion}";
             }
         }
+
+        int _number = 1;
+        /// <summary>
+        /// window number
+        /// </summary>
+        public int Number
+        {
+            get
+            {
+                return _number;
+            }
+            set
+            {
+                _number = value;
+                NotifyPropertyChanged();
+            }
+        }
     }
 }

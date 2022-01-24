@@ -12,5 +12,11 @@ namespace SampleApp.Commands
         /// </summary>
         public static ICommand OnMainWindowShown { get; } = OnMainWindowShownCommand.Instance;
 
+        /// <summary>
+        /// open a new window
+        /// </summary>
+        public static ICommand OpenMainWindow { get; } = OpenMainWindowCommand.Instance;
+
+
     }
 }

@@ -5,9 +5,13 @@
     /// </summary>
     public interface IApplicationBase
     {
-        /// <summary>
-        /// application view model
-        /// </summary>
+        /// <inheritdoc/>
+        IApplicationHost ApplicationHost { get; }
+
+        /// <inheritdoc/>
         IApplicationViewModelBase ViewModelBase { get; set; }
+
+        /// <inheritdoc/>
+        IApplicationBaseSettings ApplicationBaseSettings { get; }
     }
 }

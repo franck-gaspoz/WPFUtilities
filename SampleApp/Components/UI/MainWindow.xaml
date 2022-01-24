@@ -13,7 +13,7 @@
         xmlns:appl="clr-namespace:WPFUtilities.Components.Application;assembly=WPFUtilities" 
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
         d:DataContext="{d:DesignInstance Type=componentsUI:MainWindowViewModel}"
-        service:DataContextBehavior.IsEnabled="True"
+        service:DataContextBehavior.IsAuto="True"
         mc:Ignorable="d"
         Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"

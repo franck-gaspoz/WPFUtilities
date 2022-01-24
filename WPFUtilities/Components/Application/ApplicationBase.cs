@@ -36,7 +36,7 @@ namespace WPFUtilities.Components.Application
         /// <summary>
         /// application base settings
         /// </summary>
-        protected IApplicationBaseSettings ApplicationBaseSettings;
+        public IApplicationBaseSettings ApplicationBaseSettings { get; protected set; }
 
         /// <summary>
         /// creates a new instance with default settings

@@ -13,33 +13,33 @@ namespace WPFUtilities.Behaviors.Services
     /// </summary>
     public class DataContextApplicationBehavior : Behavior<FrameworkElement>
     {
-        #region IsEnabled
+        #region IsAuto
 
         /// <summary>
-        /// get IsEnabled dependency property value for object
+        /// get IsAuto dependency property value for object
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>true if is enabled</returns>
-        public static bool GetIsEnabled(DependencyObject dependencyObject)
-            => (bool)dependencyObject.GetValue(IsEnabledProperty);
+        public static bool GetIsAuto(DependencyObject dependencyObject)
+            => (bool)dependencyObject.GetValue(IsAutoProperty);
 
         /// <summary>
-        /// set IsEnabled dependency property value for object
+        /// set IsAuto dependency property value for object
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <param name="value">value</param>
-        public static void SetIsEnabled(DependencyObject dependencyObject, bool value)
-            => dependencyObject.SetValue(IsEnabledProperty, value);
+        public static void SetIsAuto(DependencyObject dependencyObject, bool value)
+            => dependencyObject.SetValue(IsAutoProperty, value);
 
         /// <summary>
-        /// IsEnabled dependency property
+        /// IsAuto dependency property
         /// </summary>
-        public static readonly DependencyProperty IsEnabledProperty =
+        public static readonly DependencyProperty IsAutoProperty =
             DependencyProperty.RegisterAttached(
-                "IsEnabled",
+                "IsAuto",
                 typeof(bool),
                 typeof(DataContextApplicationBehavior),
-                new PropertyMetadata(false, IsEnabledChanged));
+                new PropertyMetadata(false, IsAutoChanged));
 
         #endregion
 
@@ -96,7 +96,7 @@ namespace WPFUtilities.Behaviors.Services
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <param name="eventArgs">event args</param>
-        public static void IsEnabledChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
+        public static void IsAutoChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
             if (!(dependencyObject is FrameworkElement target)) return;
             if ((bool)eventArgs.NewValue)

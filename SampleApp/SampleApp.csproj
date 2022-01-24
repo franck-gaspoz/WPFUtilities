@@ -86,6 +86,7 @@
     </Compile>
     <Compile Include="Commands\Commands.cs" />
     <Compile Include="Commands\OnMainWindowShownCommand.cs" />
+    <Compile Include="Commands\OpenMainWindowCommand.cs" />
     <Compile Include="Components\Logging\ILogViewModel.cs" />
     <Compile Include="Components\Logging\LogComponent.cs" />
     <Compile Include="Components\Logging\LogView.xaml.cs">
