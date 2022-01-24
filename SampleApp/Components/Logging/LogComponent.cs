@@ -4,6 +4,9 @@ using WPFUtilities.Components.Component;
 
 namespace SampleApp.Components.Logging
 {
+    /// <summary>
+    /// log component
+    /// </summary>
     public class LogComponent :
         AbstractServiceComponent,
         IServiceComponent
@@ -14,6 +17,7 @@ namespace SampleApp.Components.Logging
             IServiceComponentCollection services)
         {
             services.AddSingleton<ILogViewModel, LogViewModel>();
+
             new LogViewModelServiceDependencyInitializer()
                 .ConfigureServices(
                     context,
