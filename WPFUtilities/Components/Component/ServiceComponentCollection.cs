@@ -99,24 +99,38 @@ namespace WPFUtilities.Components.Component
 
         #endregion
 
+#if no
         #region components registration
 
-        /// <summary>
-        /// add a multiton service component of the type specified in TService, identified by a component id
-        /// </summary>
-        /// <typeparam name="TService">service type</typeparam>
-        /// <param name="componentId">component identifier</param>
-        /// <returns>services component collection</returns>
-        public IServiceComponentCollection AddComponent<TService>(string componentId) where TService : class
+        /// <inheritdoc/>
+        public IServiceComponentCollection AddSingletonComponent<TService>() where TService : class
         {
-            //_componentHost.ServiceComponentRegister.AddComponent();
-            Services.AddSingleton<TService>((serviceProvider) =>
-            {
-                return (TService)null;
-            });
-            return this;
+            throw new NotImplementedException();
+        }
+
+        /// <inheritdoc/>
+        public IServiceComponentCollection AddTransientComponent<TService>() where TService : class
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <inheritdoc/>
+        public IServiceComponentCollection AddSingletonComponent<TService, TImplementation>()
+            where TService : class
+            where TImplementation : class, TService
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <inheritdoc/>
+        public IServiceComponentCollection AddTransientComponent<TService, TImplementation>()
+            where TService : class
+            where TImplementation : class, TService
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
+#endif
     }
 }

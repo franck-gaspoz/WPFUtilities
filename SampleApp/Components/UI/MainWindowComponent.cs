@@ -26,7 +26,7 @@ namespace SampleApp.Components.UI
 
             // log component
 
-            services.AddComponent<LogComponent>("application-log");
+            services.AddSingleton<LogComponent>();
         }
     }
 }

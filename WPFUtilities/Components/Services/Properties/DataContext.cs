@@ -3,6 +3,8 @@ using System.Windows;
 
 using WPFUtilities.Components.Component;
 
+using properties = WPFUtilities.Components.Component.Properties;
+
 namespace WPFUtilities.Components.Services.Properties
 {
     /// <summary>
@@ -122,7 +124,7 @@ namespace WPFUtilities.Components.Services.Properties
             IComponentHost componentHost = null;
             while (dependencyObject != null &&
                 (componentHost = (IComponentHost)dependencyObject
-                    .GetValue(AttachedProperties.ComponentHostProperty)) == null)
+                    .GetValue(properties.ComponentHostProperty)) == null)
             {
                 dependencyObject = LogicalTreeHelper.GetParent(dependencyObject);
             }

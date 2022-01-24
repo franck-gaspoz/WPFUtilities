@@ -150,7 +150,7 @@ namespace WPFUtilities.Components.Component
         {
             if (service is DependencyObject dependencyObject)
             {
-                AttachedProperties.SetComponentHost(dependencyObject, _host);
+                Properties.SetComponentHost(dependencyObject, _host);
             }
         }
 

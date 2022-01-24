@@ -39,10 +39,6 @@ namespace WPFUtilities.Components.Component
         /// <inheritdoc/>
         public IComponentHost ParentHost { get; set; }
 
-        /// <inheritdoc/>
-        public IServiceComponentRegister ServiceComponentRegister { get; }
-            = new ServiceComponentRegister();
-
         #endregion
 
         /// <summary>

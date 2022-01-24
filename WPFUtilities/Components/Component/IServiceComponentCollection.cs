@@ -86,16 +86,44 @@ namespace WPFUtilities.Components.Component
 
         #endregion
 
+#if no
         #region components registration
 
         /// <summary>
-        /// add a multiton service component of the type specified in TService, identified by a component id
+        /// add a singleton service component of the type specified in TService
         /// </summary>
         /// <typeparam name="TService">service type</typeparam>
-        /// <param name="componentId">component identifier</param>
         /// <returns>services component collection</returns>
-        IServiceComponentCollection AddComponent<TService>(string componentId) where TService : class;
+        IServiceComponentCollection AddSingletonComponent<TService>() where TService : class;
+
+        /// <summary>
+        /// add a transient service component of the type specified in TService
+        /// </summary>
+        /// <typeparam name="TService">service type</typeparam>
+        /// <returns>services component collection</returns>
+        IServiceComponentCollection AddTransientComponent<TService>() where TService : class;
+
+        /// <summary>
+        /// add a singleton service component of the type specified in TService
+        /// </summary>
+        /// <typeparam name="TService">service type of interface</typeparam>
+        /// <typeparam name="TImplementation">service type of implementation</typeparam>
+        /// <returns>services component collection</returns>
+        IServiceComponentCollection AddSingletonComponent<TService, TImplementation>()
+            where TService : class
+            where TImplementation : class, TService;
+
+        /// <summary>
+        /// add a transient service component of the type specified in TService
+        /// </summary>
+        /// <typeparam name="TService">service type</typeparam>
+        /// <typeparam name="TImplementation">service type of implementation</typeparam>
+        /// <returns>services component collection</returns>
+        IServiceComponentCollection AddTransientComponent<TService, TImplementation>()
+            where TService : class
+            where TImplementation : class, TService;
 
         #endregion
+#endif
     }
 }

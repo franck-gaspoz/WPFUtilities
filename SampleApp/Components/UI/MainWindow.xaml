@@ -8,11 +8,11 @@
         xmlns:wpfubehaviorsWindows="clr-namespace:WPFUtilities.Behaviors.Windows;assembly=WPFUtilities"
         xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
         xmlns:component="clr-namespace:WPFUtilities.Components.Component;assembly=WPFUtilities"
-        xmlns:componentsUI="clr-namespace:SampleApp.Components.UI"
+        xmlns:ui="clr-namespace:SampleApp.Components.UI"
         xmlns:local="clr-namespace:SampleApp" 
         xmlns:appl="clr-namespace:WPFUtilities.Components.Application;assembly=WPFUtilities" 
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
-        d:DataContext="{d:DesignInstance Type=componentsUI:MainWindowViewModel}"
+        d:DataContext="{d:DesignInstance Type=ui:MainWindowViewModel}"
         service:DataContext.IsAuto="True"
         mc:Ignorable="d"
         Title="{Binding Title,FallbackValue=title}" 
@@ -34,9 +34,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <componentsUI:MainMenu/>
+        <ui:MainMenu/>
 
-        <componentsUI:ButtonBar Grid.Row="1"/>
+        <ui:ButtonBar Grid.Row="1"/>
 
         <TabControl Grid.Row="2" Margin="8,0,8,8" >
 
@@ -70,19 +70,17 @@
             <logging:LogView
                 Margin="8,0,8,8"
                 Title="application log"
+                component:Properties.Type="{x:Type logging:LogComponent}"
             />
 
             <logging:LogView
                 Margin="8,0,8,8"
                 Grid.Column="1"
                 Title="window log"
+                component:Properties.Type="{x:Type logging:LogComponent}"
             />
 
         </Grid>
-
-        <!--
-        wpfubehaviorsServices:ServiceDependencyDataContextBehavior.IsEnabled="True"
-        -->
-
+        
     </Grid>
 </Window>
