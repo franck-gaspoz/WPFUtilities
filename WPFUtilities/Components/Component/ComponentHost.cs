@@ -39,12 +39,16 @@ namespace WPFUtilities.Components.Component
         /// <inheritdoc/>
         public IComponentHost ParentHost { get; set; }
 
+        /// <inheritdoc/>
+        public IServiceComponentRegister ServiceComponentRegister { get; }
+            = new ServiceComponentRegister();
+
+        #endregion
+
         /// <summary>
         /// creates a new root component host
         /// </summary>
         public ComponentHost() => Initialize();
-
-        #endregion
 
         /// <summary>
         /// creates a new component host having a parent component host
@@ -72,6 +76,7 @@ namespace WPFUtilities.Components.Component
         {
             Host = HostBuilder.Build();
             HostBuilderContext.Properties.Add(typeof(IHost), Host);
+            HostBuilderContext.Properties.Add(typeof(IComponentHost), this);
         }
 
         #region IHostServicesConfigurator

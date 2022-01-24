@@ -89,7 +89,7 @@ namespace WPFUtilities.Components.Component
         #region components registration
 
         /// <summary>
-        /// add a singleton service component of the type specified in TService, identified by a component id
+        /// add a multiton service component of the type specified in TService, identified by a component id
         /// </summary>
         /// <typeparam name="TService">service type</typeparam>
         /// <param name="componentId">component identifier</param>

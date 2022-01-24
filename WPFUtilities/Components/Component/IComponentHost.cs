@@ -39,6 +39,11 @@ namespace WPFUtilities.Components.Component
         IComponentHost ParentHost { get; set; }
 
         /// <summary>
+        /// register of services components
+        /// </summary>
+        IServiceComponentRegister ServiceComponentRegister { get; }
+
+        /// <summary>
         /// build the component host
         /// </summary>
         void Build();

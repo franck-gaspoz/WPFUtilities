@@ -97,8 +97,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Component\IServiceComponentCollection.cs" />
+    <Compile Include="Components\Component\IServiceComponentRegister.cs" />
     <Compile Include="Components\Component\IServiceComponentsConfigurator.cs" />
     <Compile Include="Components\Component\ServiceComponentCollection.cs" />
+    <Compile Include="Components\Component\ServiceComponentRegister.cs" />
     <Compile Include="Components\Services\Properties\DataContextResolveSetter.cs" />
     <Compile Include="Components\Services\Properties\DataContextApplication.cs" />
     <Compile Include="Components\Services\Properties\DataContext.cs" />
