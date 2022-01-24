@@ -17,7 +17,7 @@ namespace WPFUtilities.Components.Component
         /// <summary>
         /// service provider
         /// </summary>
-        /// <param name="host"></param>
+        /// <param name="host">component host that owns this provider</param>
         public ServiceComponentProvider(IComponentHost host)
         {
             _host = host;

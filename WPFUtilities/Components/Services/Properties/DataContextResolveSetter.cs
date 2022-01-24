@@ -42,7 +42,7 @@ namespace WPFUtilities.Components.Services.Properties
 
         /// <summary>
         /// setup service dependency data context behavior: setup data context from dependency injector
-        /// <para>IsEnabled="True"</para>
+        /// <para>IsAuto="True"</para>
         /// <para>resolve a view model from naming rules IServicesDependencyTypeResolver</para>
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>

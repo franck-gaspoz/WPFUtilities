@@ -22,11 +22,11 @@ namespace SampleApp.Components.UI
             // main window dependencies
 
             services.AddSingleton<MainWindow>()
-                    .AddSingleton<IMainWindowViewModel, MainWindowViewModel>();
+                    .AddSingleton<IMainWindowViewModel, MainWindowViewModel>()
 
             // log component
 
-            services.AddSingleton<LogComponent>();
+                    .AddSingleton<LogComponent>();
         }
     }
 }
