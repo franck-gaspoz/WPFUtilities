@@ -74,8 +74,6 @@ namespace WPFUtilities.Behaviors.Services
 
         #region interactivity
 
-        static bool _isInitialized = false;
-
         /// <summary>
         /// trigger setup data context when resolve is set
         /// </summary>
@@ -86,17 +84,16 @@ namespace WPFUtilities.Behaviors.Services
             if (!(dependencyObject is FrameworkElement target)
                 || !(eventArgs.NewValue is Type type)) return;
 
-            target.Loaded += (src, e) =>
+            void Initialize(object src, EventArgs e)
             {
-                if (!_isInitialized)
-                {
-                    DataContextResolveSetter.SetupServiceDependencyDataContext(
-                        target,
-                        type,
-                        (o) => GetComponentHost(o));
-                    _isInitialized = true;
-                }
-            };
+                target.Loaded -= Initialize;
+                DataContextResolveSetter.SetupServiceDependencyDataContext(
+                    target,
+                    type,
+                    (o) => GetComponentHost(o));
+            }
+
+            target.Loaded += Initialize;
         }
 
         /// <summary>
@@ -109,16 +106,15 @@ namespace WPFUtilities.Behaviors.Services
             if (!(dependencyObject is FrameworkElement target)
                 || !((bool)eventArgs.NewValue)) return;
 
-            target.Loaded += (src, e) =>
+            void Initialize(object src, EventArgs e)
             {
-                if (!_isInitialized)
-                {
-                    DataContextResolveSetter.SetupServiceDependencyDataContext(
-                        dependencyObject,
-                        (o) => GetComponentHost(o));
-                    _isInitialized = true;
-                }
-            };
+                target.Loaded -= Initialize;
+                DataContextResolveSetter.SetupServiceDependencyDataContext(
+                    dependencyObject,
+                    (o) => GetComponentHost(o));
+            }
+
+            target.Loaded += Initialize;
         }
 
         /// <summary>
@@ -127,16 +123,15 @@ namespace WPFUtilities.Behaviors.Services
         /// </summary>
         protected override void OnAttached()
         {
-            AssociatedObject.Loaded += (src, e) =>
+            void Initialize(object src, EventArgs e)
             {
-                if (!_isInitialized)
-                {
-                    DataContextResolveSetter.SetupServiceDependencyDataContext(
-                        AssociatedObject,
-                        (o) => GetComponentHost(o));
-                    _isInitialized = true;
-                }
-            };
+                AssociatedObject.Loaded -= Initialize;
+                DataContextResolveSetter.SetupServiceDependencyDataContext(
+                    AssociatedObject,
+                    (o) => GetComponentHost(o));
+            }
+
+            AssociatedObject.Loaded += Initialize;
         }
 
         #endregion
