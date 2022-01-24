@@ -41,8 +41,8 @@ namespace SampleApp.Components.Logging
                 .OfType<ListLoggerProvider>()
                 .FirstOrDefault();
 
-            var listLoggerModel1 = componentHost.Services.GetService<ListLoggerModel>();
-            Messages = new BindingList<string>(listLoggerModel1.LogItems.ToList());
+            var listLoggerModel = componentHost.Services.GetService<ListLoggerModel>();
+            Messages = new BindingList<string>(listLoggerModel.LogItems.ToList());
 
             if (loggerProvider != null)
             {

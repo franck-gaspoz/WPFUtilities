@@ -6,6 +6,7 @@ namespace WPFUtilities.Commands.Application
 {
     /// <summary>
     /// log a string or an object ToString (level Information)
+    /// <para>use application logging services</para>
     /// </summary>
     public class LogCommand : AbstractCommand<LogCommand>, ICommand
     {
