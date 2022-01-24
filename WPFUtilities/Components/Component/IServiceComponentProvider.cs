@@ -40,15 +40,17 @@ namespace WPFUtilities.Components.Component
         /// get an enumeration of services of type
         /// </summary>
         /// <param name="type">component type</param>
+        /// <param name="inherited">if true, includes parent host services</param>
         /// <returns>services enumeration. empty if no dependency has been found</returns>
-        IEnumerable<object> GetServices(Type type);
+        IEnumerable<object> GetServices(Type type, bool inherited = true);
 
         /// <summary>
         /// get an enumeration of services of type
         /// </summary>
         /// <typeparam name="T">component type</typeparam>
+        /// <param name="inherited">if true, includes parent host services</param>
         /// <returns>services enumeration. empty if no dependency has been found</returns>
-        IEnumerable<T> GetServices<T>();
+        IEnumerable<T> GetServices<T>(bool inherited = true);
 
         /// <summary>
         /// get a component by the type. it is configured and built before it is returned
@@ -86,17 +88,19 @@ namespace WPFUtilities.Components.Component
         /// get an enumeration of services of type
         /// </summary>
         /// <param name="type">component type</param>
+        /// <param name="inherited">if true, includes parent host services</param>
         /// <exception cref="System.InvalidOperationException">there is not service of given type</exception>
         /// <returns>services</returns>
-        IEnumerable<object> GetRequiredServices(Type type);
+        IEnumerable<object> GetRequiredServices(Type type, bool inherited = true);
 
         /// <summary>
         /// get an enumeration of services of type
         /// </summary>
         /// <typeparam name="T">component type</typeparam>
+        /// <param name="inherited">if true, includes parent host services</param>
         /// <exception cref="System.InvalidOperationException">there is not service of given type</exception>
         /// <returns>services enumeration</returns>
-        IEnumerable<T> GetRequiredServices<T>();
+        IEnumerable<T> GetRequiredServices<T>(bool inherited = true);
 
     }
 }

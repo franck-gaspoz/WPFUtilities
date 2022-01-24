@@ -1,7 +1,11 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿
+using System.Linq;
+
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using WPFUtilities.Components.Component;
+using WPFUtilities.Components.Logging.ListLogger;
 
 namespace SampleApp.Components.Logging
 {
@@ -31,7 +35,9 @@ namespace SampleApp.Components.Logging
         {
             base.Build();
             // need to get the list logger provider
-            var loggers = ComponentHost.RootHost.Services.GetServices<ILoggerProvider>();
+            var loggerProvider = ComponentHost.Services.GetServices<ILoggerProvider>()
+                .OfType<ListLoggerProvider>()
+                .FirstOrDefault();
         }
     }
 }

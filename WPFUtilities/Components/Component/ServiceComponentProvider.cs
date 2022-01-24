@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -56,12 +57,7 @@ namespace WPFUtilities.Components.Component
         /// <inheritdoc/>
         public T GetService<T>()
         {
-            T service = default;
-            try
-            {
-                service = _host.Host.Services.GetService<T>();
-            }
-            catch { }
+            var service = _host.Host.Services.GetService<T>();
             if (service == null && _host.ParentHost != null)
                 return _host.ParentHost.Services.GetService<T>();
             InitializeService(service);
@@ -69,22 +65,31 @@ namespace WPFUtilities.Components.Component
         }
 
         /// <inheritdoc/>
-        public IEnumerable<object> GetServices(Type type)
+        public IEnumerable<object> GetServices(Type type, bool inherited = true)
         {
             var services = _host.Host.Services.GetServices(type);
-            if (services == null && _host.ParentHost != null)
-                return _host.ParentHost.Services.GetServices(type);
+
+            if (inherited && _host.ParentHost != null)
+                _host.ParentHost.Services.GetServices(type)
+                    .ToList()
+                    .ForEach(x => services.Append(x));
+
             foreach (var service in services)
                 InitializeService(service);
+
             return services;
         }
 
         /// <inheritdoc/>
-        public IEnumerable<T> GetServices<T>()
+        public IEnumerable<T> GetServices<T>(bool inherited = true)
         {
             var services = _host.Host.Services.GetServices<T>();
-            if (services == null && _host.ParentHost != null)
-                return _host.ParentHost.Services.GetServices<T>();
+
+            if (inherited && _host.ParentHost != null)
+                _host.ParentHost.Services.GetServices<T>()
+                    .ToList()
+                    .ForEach(x => services.Append(x));
+
             foreach (var service in services)
                 InitializeService(service);
             return services;
@@ -94,7 +99,7 @@ namespace WPFUtilities.Components.Component
         public T GetRequiredComponent<T>() where T : IServiceComponent
         {
             var component = GetComponent<T>();
-            if (component == null) throw new InvalidOperationException($"no service of type {typeof(T).Name} has been found");
+            if (component == null) throw GetServiceRequiredNotFoundException(typeof(T).FullName);
             InitializeComponent(component);
             return component;
         }
@@ -114,7 +119,8 @@ namespace WPFUtilities.Components.Component
         {
             var service = _host.Host.Services.GetService(type);
             if (service == null && _host.ParentHost != null)
-                return _host.ParentHost.Services.GetService(type);
+                service = _host.ParentHost.Services.GetService(type);
+            if (service == null) throw GetServiceRequiredNotFoundException(type.FullName);
             InitializeService(service);
             return service;
         }
@@ -124,28 +130,41 @@ namespace WPFUtilities.Components.Component
         {
             var service = _host.Host.Services.GetService<T>();
             if (service == null && _host.ParentHost != null)
-                return _host.ParentHost.Services.GetService<T>();
+                service = _host.ParentHost.Services.GetService<T>();
+            if (service == null) throw GetServiceRequiredNotFoundException(typeof(T).FullName);
             InitializeService(service);
             return service;
         }
 
         /// <inheritdoc/>
-        public IEnumerable<object> GetRequiredServices(Type type)
+        public IEnumerable<object> GetRequiredServices(Type type, bool inherited = true)
         {
             var services = _host.Host.Services.GetServices(type);
-            if (services == null && _host.ParentHost != null)
-                return _host.ParentHost.Services.GetServices(type);
+
+            if (inherited && _host.ParentHost != null)
+                _host.ParentHost.Services.GetServices(type)
+                    .ToList()
+                    .ForEach(x => services.Append(x));
+
+            if (!services.Any()) throw GetServiceRequiredNotFoundException(type.FullName);
+
             foreach (var service in services)
                 InitializeService(service);
             return services;
         }
 
         /// <inheritdoc/>
-        public IEnumerable<T> GetRequiredServices<T>()
+        public IEnumerable<T> GetRequiredServices<T>(bool inherited = true)
         {
             var services = _host.Host.Services.GetServices<T>();
-            if (services == null && _host.ParentHost != null)
-                return _host.ParentHost.Services.GetServices<T>();
+
+            if (inherited && _host.ParentHost != null)
+                _host.ParentHost.Services.GetServices<T>()
+                    .ToList()
+                    .ForEach(x => services.Append(x));
+
+            if (!services.Any()) throw GetServiceRequiredNotFoundException(typeof(T).FullName);
+
             foreach (var service in services)
                 InitializeService(service);
             return services;
@@ -167,5 +186,7 @@ namespace WPFUtilities.Components.Component
             component.Build();
         }
 
+        InvalidOperationException GetServiceRequiredNotFoundException(string typeName)
+            => new InvalidOperationException($"no service of type {typeName} has been found");
     }
 }
