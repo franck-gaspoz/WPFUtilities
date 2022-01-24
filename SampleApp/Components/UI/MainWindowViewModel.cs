@@ -11,6 +11,8 @@ namespace SampleApp.Components.UI
     /// </summary>
     public class MainWindowViewModel : ModelBase, IModelBase, IMainWindowViewModel
     {
+        static int MainWindowViewModelCounter = 0;
+
         /// <inheritdoc/>
         public string Title
         {
@@ -34,6 +36,11 @@ namespace SampleApp.Components.UI
                 _number = value;
                 NotifyPropertyChanged();
             }
+        }
+
+        public MainWindowViewModel()
+        {
+            Number = ++MainWindowViewModelCounter;
         }
     }
 }

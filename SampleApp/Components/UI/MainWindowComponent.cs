@@ -15,8 +15,6 @@ namespace SampleApp.Components.UI
         AbstractServiceComponent,
         IServiceComponent
     {
-        static int MainWindowComponentCounter = 0;
-
         /// <inheritdoc/>
         public override void ConfigureServices(
             HostBuilderContext hostBuilderContext,
@@ -37,9 +35,6 @@ namespace SampleApp.Components.UI
         public override void Build()
         {
             base.Build();
-            var mainWindowViewModel = ComponentHost.Services.GetService<IMainWindowViewModel>();
-            MainWindowComponentCounter++;
-            mainWindowViewModel.Number = MainWindowComponentCounter;
         }
     }
 }
