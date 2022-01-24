@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 using SampleApp.Components.Logging;
 
 using WPFUtilities.Components.Component;
+using WPFUtilities.Components.Logging.ListLogger;
 
 namespace SampleApp.Components.UI
 {
@@ -41,6 +43,17 @@ namespace SampleApp.Components.UI
             // log component
 
                     .AddSingleton<LogComponent>();
+
+            // 'window' list logger
+
+            var listLoggerModel = new ListLoggerModel();
+            services.Services.AddSingleton<IListLoggerModel>((sp) => listLoggerModel);
+            services.Services.AddLogging((loggingBuilder) =>
+            {
+                loggingBuilder.AddListLogger((config) =>
+                    config.Target = listLoggerModel.LogItems);
+            });
+
         }
     }
 }
