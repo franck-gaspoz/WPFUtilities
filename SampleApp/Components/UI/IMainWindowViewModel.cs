@@ -12,5 +12,10 @@ namespace SampleApp.Components.UI
         /// main window title
         /// </summary>
         string Title { get; }
+
+        /// <summary>
+        /// window number
+        /// </summary>
+        int Number { get; set; }
     }
 }

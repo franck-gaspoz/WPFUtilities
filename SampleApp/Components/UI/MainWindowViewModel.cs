@@ -22,9 +22,7 @@ namespace SampleApp.Components.UI
         }
 
         int _number = 1;
-        /// <summary>
-        /// window number
-        /// </summary>
+        /// <inheritdoc/>
         public int Number
         {
             get
