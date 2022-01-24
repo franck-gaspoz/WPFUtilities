@@ -19,7 +19,7 @@ namespace WPFUtilities.Components.Application
     public class ApplicationBase :
         syswin.Application,
         IApplicationBase,
-        IHostServicesConfigurator
+        IServicesConfigurator
     {
         /// <summary>
         /// application host
@@ -64,7 +64,7 @@ namespace WPFUtilities.Components.Application
                 {
                     var _mainWindowComponent = (IServiceComponent)ApplicationHost.Services
                         .GetRequiredService(ApplicationBaseSettings.MainWindowComponentType);
-                    _mainWindowComponent.ConfigureServices();
+                    _mainWindowComponent.Configure();
                     _mainWindowComponent.Build();
 
                     getWindow = () => (Window)_mainWindowComponent.ComponentHost.Services

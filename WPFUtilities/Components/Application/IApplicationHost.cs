@@ -9,7 +9,7 @@ namespace WPFUtilities.Components.Application
     /// </summary>
     public interface IApplicationHost :
         IComponentHost,
-        IHostServicesConfigurator
+        IServicesConfigurator
     {
         /// <summary>
         /// configure the host

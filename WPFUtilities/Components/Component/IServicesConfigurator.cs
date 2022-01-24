@@ -7,7 +7,7 @@ namespace WPFUtilities.ComponentModels
     /// <summary>
     /// host services configurator
     /// </summary>
-    public interface IHostServicesConfigurator
+    public interface IServicesConfigurator
     {
         /// <summary>
         /// configure host services

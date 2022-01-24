@@ -11,7 +11,7 @@
         /// <summary>
         /// configure services dependencies for owned host
         /// </summary>
-        void ConfigureServices();
+        void Configure();
 
         /// <summary>
         /// build the owned host

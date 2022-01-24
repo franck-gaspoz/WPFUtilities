@@ -31,7 +31,7 @@ namespace SampleApp.Commands
                 {
                     var application = this.GetApplication();
                     var mainWindowComponent = new MainWindowComponent();
-                    mainWindowComponent.ConfigureServices();
+                    mainWindowComponent.Configure();
                     mainWindowComponent.Build();
                     var window = (Window)mainWindowComponent.ComponentHost.Services.GetService(application.ApplicationBaseSettings.MainWindowType);
                     window.Show();

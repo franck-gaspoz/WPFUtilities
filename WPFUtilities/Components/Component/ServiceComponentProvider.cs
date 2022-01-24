@@ -158,7 +158,7 @@ namespace WPFUtilities.Components.Component
         {
             if (component == null) return;
             component.ComponentHost.ParentHost = _host;
-            component.ConfigureServices();
+            component.Configure();
             component.Build();
         }
 

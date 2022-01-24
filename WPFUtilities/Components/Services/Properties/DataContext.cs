@@ -118,6 +118,15 @@ namespace WPFUtilities.Components.Services.Properties
         #endregion
 
         static IComponentHost GetComponentHost(DependencyObject dependencyObject)
-            => (IComponentHost)dependencyObject.GetValue(AttachedProperties.ComponentHostProperty);
+        {
+            IComponentHost componentHost = null;
+            while (dependencyObject != null &&
+                (componentHost = (IComponentHost)dependencyObject
+                    .GetValue(AttachedProperties.ComponentHostProperty)) == null)
+            {
+                dependencyObject = LogicalTreeHelper.GetParent(dependencyObject);
+            }
+            return (IComponentHost)componentHost;
+        }
     }
 }

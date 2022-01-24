@@ -15,7 +15,7 @@ namespace WPFUtilities.Components.Application
     public sealed class ApplicationHost : ComponentHost,
         IComponentHost,
         IApplicationHost,
-        IHostServicesConfigurator,
+        IServicesConfigurator,
         IHostLoggingConfigurator
     {
 

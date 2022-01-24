@@ -101,7 +101,7 @@
     <Compile Include="Components\Services\Properties\DataContext.cs" />
     <Compile Include="ComponentModels\IComponentHostServicesConfigurator.cs" />
     <Compile Include="ComponentModels\IHostLoggingConfigurator.cs" />
-    <Compile Include="ComponentModels\IHostServicesConfigurator.cs" />
+    <Compile Include="Components\Component\IServicesConfigurator.cs" />
     <Compile Include="Components\Component\ComponentHost.cs" />
     <Compile Include="Components\Component\AttachedProperties.cs" />
     <Compile Include="Components\Component\IComponentHostService.cs" />
@@ -213,7 +213,6 @@
     <Resource Include="Resources\Codicons-SymbolClass.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Behaviors\Services\" />
     <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@ namespace WPFUtilities.Components.Component
     /// <summary>
     /// service component abstraction
     /// </summary>
-    public abstract class AbstractServiceComponent : IServiceComponent, IHostServicesConfigurator
+    public abstract class AbstractServiceComponent : IServiceComponent, IServicesConfigurator
     {
         /// <summary>
         /// component host
@@ -27,10 +27,8 @@ namespace WPFUtilities.Components.Component
 
         }
 
-        /// <summary>
-        /// configure services dependencies for owned host
-        /// </summary>
-        public void ConfigureServices()
+        /// <inheritdoc/>
+        public void Configure()
         {
             ComponentHost.HostBuilder.ConfigureServices((context, services) =>
             {
@@ -38,9 +36,7 @@ namespace WPFUtilities.Components.Component
             });
         }
 
-        /// <summary>
-        /// build the owned host
-        /// </summary>
+        /// <inheritdoc/>
         public virtual void Build() => ComponentHost.Build();
 
         /// <inheritdoc/>

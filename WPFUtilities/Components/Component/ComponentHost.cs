@@ -14,7 +14,7 @@ namespace WPFUtilities.Components.Component
     /// </summary>
     public class ComponentHost :
         IComponentHost,
-        IHostServicesConfigurator,
+        IServicesConfigurator,
         IHostLoggingConfigurator
     {
         #region properties
