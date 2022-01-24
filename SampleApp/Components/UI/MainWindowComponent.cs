@@ -1,6 +1,4 @@
-﻿
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Hosting;
 
 using SampleApp.Components.Logging;
 
@@ -18,7 +16,7 @@ namespace SampleApp.Components.UI
         /// <inheritdoc/>
         public override void ConfigureServices(
             HostBuilderContext hostBuilderContext,
-            IServiceCollection services
+            IServiceComponentCollection services
         )
         {
             // main window dependencies

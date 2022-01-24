@@ -1,4 +1,6 @@
-﻿namespace WPFUtilities.Components.Component
+﻿using Microsoft.Extensions.Hosting;
+
+namespace WPFUtilities.Components.Component
 {
     /// <summary>
     /// services components configurator
@@ -8,7 +10,8 @@
         /// <summary>
         /// configure host services
         /// </summary>
+        /// <param name="context">host builder context</param>
         /// <param name="services">services</param>
-        void ConfigureServices(IServiceComponentCollection services);
+        void ConfigureServices(HostBuilderContext context, IServiceComponentCollection services);
     }
 }

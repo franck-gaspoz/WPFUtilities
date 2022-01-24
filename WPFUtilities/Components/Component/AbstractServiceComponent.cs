@@ -1,15 +1,11 @@
-﻿
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
-using WPFUtilities.Components.Services;
+﻿using Microsoft.Extensions.Hosting;
 
 namespace WPFUtilities.Components.Component
 {
     /// <summary>
     /// service component abstraction
     /// </summary>
-    public abstract class AbstractServiceComponent : IServiceComponent, IServicesConfigurator
+    public abstract class AbstractServiceComponent : IServiceComponent, IServiceComponentsConfigurator
     {
         /// <summary>
         /// component host
@@ -32,7 +28,10 @@ namespace WPFUtilities.Components.Component
         {
             ComponentHost.HostBuilder.ConfigureServices((context, services) =>
             {
-                ConfigureServices(context, services);
+                ConfigureServices(
+                    context,
+                    new ServiceComponentCollection(services)
+                    );
             });
         }
 
@@ -40,6 +39,6 @@ namespace WPFUtilities.Components.Component
         public virtual void Build() => ComponentHost.Build();
 
         /// <inheritdoc/>
-        public abstract void ConfigureServices(HostBuilderContext context, IServiceCollection services);
+        public abstract void ConfigureServices(HostBuilderContext context, IServiceComponentCollection services);
     }
 }

@@ -9,41 +9,74 @@ namespace WPFUtilities.Components.Component
     /// </summary>
     public sealed class ServiceComponentCollection : IServiceComponentCollection
     {
-        readonly IServiceCollection _services;
+        /// <inheritdoc/>
+        public IServiceCollection Services { get; }
 
         /// <summary>
         /// build a new instance
         /// </summary>
         public ServiceComponentCollection(IServiceCollection services)
         {
-            _services = services;
+            Services = services;
         }
 
         /// <inheritdoc/>
         public IServiceComponentCollection AddSingleton<TService>() where TService : class
         {
-            _services.AddSingleton<TService>();
+            Services.AddSingleton<TService>();
             return this;
         }
 
         /// <inheritdoc/>
         public IServiceComponentCollection AddSingleton(Type tservice)
         {
-            _services.AddSingleton(tservice);
+            Services.AddSingleton(tservice);
+            return this;
+        }
+
+        /// <inheritdoc/>
+        public IServiceComponentCollection AddSingleton<TService, TImplementation>()
+            where TService : class
+            where TImplementation : class, TService
+        {
+            Services.AddSingleton<TService, TImplementation>();
+            return this;
+        }
+
+        /// <inheritdoc/>
+        public IServiceComponentCollection AddSingleton(Type tservice, Type timplementation)
+        {
+            Services.AddSingleton(tservice, timplementation);
             return this;
         }
 
         /// <inheritdoc/>
         public IServiceComponentCollection AddTransient<TService>() where TService : class
         {
-            _services.AddTransient<TService>();
+            Services.AddTransient<TService>();
             return this;
         }
 
         /// <inheritdoc/>
         public IServiceComponentCollection AddTransient(Type tservice)
         {
-            _services.AddTransient(tservice);
+            Services.AddTransient(tservice);
+            return this;
+        }
+
+        /// <inheritdoc/>
+        public IServiceComponentCollection AddTransient<TService, TImplementation>()
+            where TService : class
+            where TImplementation : class, TService
+        {
+            Services.AddTransient<TService, TImplementation>();
+            return this;
+        }
+
+        /// <inheritdoc/>
+        public IServiceComponentCollection AddTransient(Type tservice, Type timplementation)
+        {
+            Services.AddTransient(tservice, timplementation);
             return this;
         }
     }
