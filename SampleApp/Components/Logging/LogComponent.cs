@@ -25,6 +25,7 @@ namespace SampleApp.Components.Logging
                 (sp) => ComponentHost.RootHost.Services.GetService<IListLoggerModel>());
         }
 
+        /// <inheritdoc/>
         public override void Build()
         {
             base.Build();
