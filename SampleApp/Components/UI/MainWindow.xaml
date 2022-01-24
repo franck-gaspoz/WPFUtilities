@@ -62,10 +62,10 @@
 
         <Grid Grid.Row="3">
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="50*"/>
-            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50*"/>
+                <RowDefinition Height="50*"/>
+            </Grid.RowDefinitions>
 
             <logging:LogView
                 Margin="8,0,8,8"
@@ -76,7 +76,7 @@
 
             <logging:LogView
                 Margin="8,0,8,8"
-                Grid.Column="1"
+                Grid.Row="1"
                 Title="window log"
                 component:Properties.Type="{x:Type logging:LogComponent}"
             />

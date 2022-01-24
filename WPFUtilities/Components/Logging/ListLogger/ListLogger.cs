@@ -41,13 +41,17 @@ namespace WPFUtilities.Components.Logging.ListLogger
             if (!IsEnabled(logLevel)) return;
             var config = GetCurrentConfiguration();
 
-            if (config.Target == null && config.GetTarget != null)
-                config.Target = config.GetTarget(this);
-
             var s = $"[{logLevel,-11}]";
             s += $" {_name} |";
             s += $" {formatter(state, exception)}";
-            config.Target?.Add(s);
+
+            try
+            {
+                for (int i = 0; i < config.Targets.Count; i++)
+                    config.Targets[i].Add(s);
+            }
+            catch (ArgumentOutOfRangeException) { }
         }
     }
 }
+

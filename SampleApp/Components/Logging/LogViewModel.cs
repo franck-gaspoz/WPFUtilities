@@ -1,7 +1,11 @@
 ﻿using System.ComponentModel;
+using System.Linq;
+
+using Microsoft.Extensions.Logging;
 
 using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.Component;
+using WPFUtilities.Components.Logging.ListLogger;
 
 namespace SampleApp.Components.Logging
 {
@@ -29,11 +33,22 @@ namespace SampleApp.Components.Logging
 
         /// <inheritdoc/>
         public BindingList<string> Messages { get; protected set; }
-            = new BindingList<string>();
 
         public LogViewModel(IComponentHost componentHost)
         {
+            // need to get the list logger configuration
+            var loggerProvider = componentHost.Services.GetServices<ILoggerProvider>()
+                .OfType<ListLoggerProvider>()
+                .FirstOrDefault();
 
+            var listLoggerModel1 = componentHost.Services.GetService<ListLoggerModel>();
+            Messages = new BindingList<string>(listLoggerModel1.LogItems.ToList());
+
+            if (loggerProvider != null)
+            {
+                var loggerConfig = loggerProvider.GetCurrentConfig();
+                loggerConfig.Targets.Add(this.Messages);
+            }
         }
     }
 }

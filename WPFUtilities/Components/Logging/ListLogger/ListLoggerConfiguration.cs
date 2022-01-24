@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 using Microsoft.Extensions.Logging;
@@ -14,7 +13,8 @@ namespace WPFUtilities.Components.Logging.ListLogger
         /// <summary>
         /// target list
         /// </summary>
-        public IList Target { get; set; }
+        public List<IList> Targets { get; set; }
+            = new List<IList>();
 
         /// <summary>
         /// enabled log levels
@@ -28,10 +28,5 @@ namespace WPFUtilities.Components.Logging.ListLogger
                 LogLevel.Critical,
                 LogLevel.Trace
             };
-
-        /// <summary>
-        /// get log target function
-        /// </summary>
-        public Func<IListLogger, IList> GetTarget;
     }
 }
