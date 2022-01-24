@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Configuration;
+using Microsoft.Extensions.Options;
 
 namespace WPFUtilities.Components.Logging.ListLogger
 {
@@ -28,6 +29,13 @@ namespace WPFUtilities.Components.Logging.ListLogger
 
             LoggerProviderOptions.RegisterProviderOptions
                 <ListLoggerConfiguration, ListLoggerProvider>(builder.Services);
+
+            builder.Services.TryAddEnumerable(
+                ServiceDescriptor.Singleton<IConfigureOptions<ListLoggerConfiguration>, ListLoggerConfigurationSetup>());
+
+            builder.Services.TryAddEnumerable(
+                ServiceDescriptor.Singleton<IOptionsChangeTokenSource<ListLoggerConfiguration>,
+                    LoggerProviderOptionsChangeTokenSource<ListLoggerConfiguration, ListLoggerProvider>>());
 
             return builder;
         }

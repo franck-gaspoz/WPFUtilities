@@ -20,8 +20,7 @@ namespace WPFUtilities.Components.Logging.ListLogger
         /// creates a new list logger provider
         /// </summary>
         /// <param name="config">list logger configuration</param>
-        public ListLoggerProvider(
-            IOptionsMonitor<ListLoggerConfiguration> config)
+        public ListLoggerProvider(IOptionsMonitor<ListLoggerConfiguration> config)
         {
             _currentConfig = config.CurrentValue;
             _onChangeToken = config.OnChange(ConfigChanged);
@@ -41,7 +40,11 @@ namespace WPFUtilities.Components.Logging.ListLogger
             _loggers.GetOrAdd(categoryName, name =>
                 new ListLogger(name, GetCurrentConfig));
 
-        private ListLoggerConfiguration GetCurrentConfig() => _currentConfig;
+        /// <summary>
+        /// get current config
+        /// </summary>
+        /// <returns>list logger configuration</returns>
+        public ListLoggerConfiguration GetCurrentConfig() => _currentConfig;
 
         /// <summary>
         /// dispose

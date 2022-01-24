@@ -93,6 +93,7 @@ namespace WPFUtilities.Components.Component
         public virtual void ConfigureServices(HostBuilderContext hostBuilderContext, IServiceCollection services)
         {
             HostBuilderContext = hostBuilderContext;
+            services.AddSingleton<IComponentHost, ComponentHost>((serviceProvider) => this);
         }
 
         #endregion
