@@ -9,16 +9,33 @@ namespace WPFUtilities.Components.Component
     /// </summary>
     public sealed class ServiceComponentCollection : IServiceComponentCollection
     {
+        #region properties
+
         /// <inheritdoc/>
         public IServiceCollection Services { get; }
+
+        readonly IComponentHost _componentHost;
+
+        #endregion
+
+        #region build & init
 
         /// <summary>
         /// build a new instance
         /// </summary>
-        public ServiceComponentCollection(IServiceCollection services)
+        /// <param name="componentHost">component host that owns the service component collection</param>
+        /// <param name="services">the wrapped host services collection</param>
+        public ServiceComponentCollection(
+            IComponentHost componentHost,
+            IServiceCollection services)
         {
             Services = services;
+            _componentHost = componentHost;
         }
+
+        #endregion
+
+        #region services registration
 
         /// <inheritdoc/>
         public IServiceComponentCollection AddSingleton<TService>() where TService : class
@@ -79,5 +96,42 @@ namespace WPFUtilities.Components.Component
             Services.AddTransient(tservice, timplementation);
             return this;
         }
+
+        #endregion
+
+        #region components registration
+
+        /// <summary>
+        /// add a singleton service component of the type specified in TService, identified by a component id
+        /// </summary>
+        /// <typeparam name="TService">service type</typeparam>
+        /// <param name="componentId">component identifier</param>
+        /// <returns>services component collection</returns>
+        public IServiceComponentCollection AddComponent<TService>(string componentId) where TService : class
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// add a singleton service component of the type specified in TService
+        /// </summary>
+        /// <typeparam name="TService">service type</typeparam>
+        /// <returns>services component collection</returns>
+        public IServiceComponentCollection AddSingletonComponent<TService>() where TService : class
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// add a transient service component of the type specified in TService
+        /// </summary>
+        /// <typeparam name="TService">service type</typeparam>
+        /// <returns>services component collection</returns>
+        public IServiceComponentCollection AddTransientComponent<TService>() where TService : class
+        {
+            throw new NotImplementedException();
+        }
+
+        #endregion
     }
 }

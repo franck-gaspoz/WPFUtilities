@@ -9,23 +9,29 @@ namespace WPFUtilities.Components.Component
     /// </summary>
     public interface IServiceComponentCollection
     {
+        #region properties
+
         /// <summary>
         /// wrapped service collection
         /// </summary>
         IServiceCollection Services { get; }
 
+        #endregion
+
+        #region services registration
+
         /// <summary>
         /// add a singleton service of the type specified in TService
         /// </summary>
         /// <typeparam name="TService">service type</typeparam>
-        /// <returns>services compponent collection</returns>
+        /// <returns>services component collection</returns>
         IServiceComponentCollection AddSingleton<TService>() where TService : class;
 
         /// <summary>
         /// add a singleton service of the type specified in TService
         /// </summary>
         /// <param name="tservice">type of the service</param>
-        /// <returns>services compponent collection</returns>
+        /// <returns>services component collection</returns>
         IServiceComponentCollection AddSingleton(Type tservice);
 
         /// <summary>
@@ -33,7 +39,7 @@ namespace WPFUtilities.Components.Component
         /// </summary>
         /// <typeparam name="TService">service interface type</typeparam>
         /// <typeparam name="TImplementation">service implementation type</typeparam>
-        /// <returns>services compponent collection</returns>
+        /// <returns>services component collection</returns>
         IServiceComponentCollection AddSingleton<TService, TImplementation>()
             where TService : class
             where TImplementation : class, TService;
@@ -43,21 +49,21 @@ namespace WPFUtilities.Components.Component
         /// </summary>
         /// <param name="tservice">type of the service interface</param>
         /// <param name="timplementation">type of the service implementation</param>
-        /// <returns>services compponent collection</returns>
+        /// <returns>services component collection</returns>
         IServiceComponentCollection AddSingleton(Type tservice, Type timplementation);
 
         /// <summary>
         /// add a transient service of the type specified in TService
         /// </summary>
         /// <typeparam name="TService">service type</typeparam>
-        /// <returns>services compponent collection</returns>
+        /// <returns>services component collection</returns>
         IServiceComponentCollection AddTransient<TService>() where TService : class;
 
         /// <summary>
         /// add a transient service of the type specified in TService
         /// </summary>
         /// <param name="tservice">type of the service</param>
-        /// <returns>services compponent collection</returns>
+        /// <returns>services component collection</returns>
         IServiceComponentCollection AddTransient(Type tservice);
 
         /// <summary>
@@ -65,7 +71,7 @@ namespace WPFUtilities.Components.Component
         /// </summary>
         /// <typeparam name="TService">service interface type</typeparam>
         /// <typeparam name="TImplementation">service implementation type</typeparam>
-        /// <returns>services compponent collection</returns>
+        /// <returns>services component collection</returns>
         IServiceComponentCollection AddTransient<TService, TImplementation>()
             where TService : class
             where TImplementation : class, TService;
@@ -75,7 +81,35 @@ namespace WPFUtilities.Components.Component
         /// </summary>
         /// <param name="tservice">type of the service interface</param>
         /// <param name="timplementation">type of the service implementation</param>
-        /// <returns>services compponent collection</returns>
+        /// <returns>services component collection</returns>
         IServiceComponentCollection AddTransient(Type tservice, Type timplementation);
+
+        #endregion
+
+        #region components registration
+
+        /// <summary>
+        /// add a singleton service component of the type specified in TService, identified by a component id
+        /// </summary>
+        /// <typeparam name="TService">service type</typeparam>
+        /// <param name="componentId">component identifier</param>
+        /// <returns>services component collection</returns>
+        IServiceComponentCollection AddComponent<TService>(string componentId) where TService : class;
+
+        /// <summary>
+        /// add a singleton service component of the type specified in TService
+        /// </summary>
+        /// <typeparam name="TService">service type</typeparam>
+        /// <returns>services component collection</returns>
+        IServiceComponentCollection AddSingletonComponent<TService>() where TService : class;
+
+        /// <summary>
+        /// add a transient service component of the type specified in TService
+        /// </summary>
+        /// <typeparam name="TService">service type</typeparam>
+        /// <returns>services component collection</returns>
+        IServiceComponentCollection AddTransientComponent<TService>() where TService : class;
+
+        #endregion
     }
 }

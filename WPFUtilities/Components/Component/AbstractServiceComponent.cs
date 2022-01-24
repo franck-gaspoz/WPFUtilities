@@ -30,7 +30,7 @@ namespace WPFUtilities.Components.Component
             {
                 ConfigureServices(
                     context,
-                    new ServiceComponentCollection(services)
+                    new ServiceComponentCollection(ComponentHost, services)
                     );
             });
         }
