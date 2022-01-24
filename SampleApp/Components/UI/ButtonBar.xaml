@@ -5,6 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.UI"
              xmlns:wpfucommandsAppl="clr-namespace:WPFUtilities.Commands.Application;assembly=WPFUtilities" 
+             xmlns:wpfulayout="clr-namespace:WPFUtilities.Behaviors.Layout;assembly=WPFUtilities"
+             xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
              d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="48" 
@@ -18,10 +20,17 @@
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
         
-        <StackPanel Orientation="Horizontal" Grid.Row="1">
-            <Button Content="Log a message" 
+        <StackPanel Orientation="Horizontal" Grid.Row="1" 
+                    wpfulayout:ChildMarginProperty.Value="0,0,8,0">
+
+            <Button Content="Log application message" 
                     Command="{x:Static wpfucommandsAppl:ApplicationCommands.Log}"
                     CommandParameter="I am a log message!"/>
+
+            <Button Content="Log window message" 
+                    Command="{x:Static wpfucommandsAppl:ApplicationCommands.Log}"
+                    CommandParameter="I am a log message!"/>
+            
         </StackPanel>
 
         <TextBlock Grid.Column="1" Text="window number: #" VerticalAlignment="Center"/>

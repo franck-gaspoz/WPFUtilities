@@ -122,7 +122,7 @@
     <Compile Include="Components\Services\ISingletonServiceDependencyInitializer.cs" />
     <Compile Include="Behaviors\Scrolling\IScrollViewerHelperFeature.cs" />
     <Compile Include="Behaviors\Scrolling\AutoScrollBehavior.cs" />
-    <Compile Include="Behaviors\Layout\MarginSetterBehavior.cs" />
+    <Compile Include="Behaviors\Layout\ChildMarginProperty.cs" />
     <Compile Include="Behaviors\Interactivity\PropertyChangedDelegateCommandBehavior.cs" />
     <Compile Include="Behaviors\Scrolling\ScrollViewerHelperFeatureBehavior.cs" />
     <Compile Include="Behaviors\Scrolling\ScrollViewerTouchBehavior.cs" />
