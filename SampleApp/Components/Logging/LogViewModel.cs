@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 
 using WPFUtilities.ComponentModels;
+using WPFUtilities.Components.Component;
 
 namespace SampleApp.Components.Logging
 {
@@ -30,7 +31,7 @@ namespace SampleApp.Components.Logging
         public BindingList<string> Messages { get; protected set; }
             = new BindingList<string>();
 
-        public LogViewModel()
+        public LogViewModel(IComponentHost componentHost)
         {
 
         }

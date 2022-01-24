@@ -38,7 +38,10 @@ namespace SampleApp.Components.Logging
             var loggerProvider = ComponentHost.Services.GetServices<ILoggerProvider>()
                 .OfType<ListLoggerProvider>()
                 .FirstOrDefault();
-            var loggerConfig = loggerProvider.GetCurrentConfig();
+            if (loggerProvider != null)
+            {
+                var loggerConfig = loggerProvider.GetCurrentConfig();
+            }
         }
     }
 }
