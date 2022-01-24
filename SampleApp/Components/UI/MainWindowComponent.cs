@@ -28,11 +28,5 @@ namespace SampleApp.Components.UI
 
             services.AddSingleton<LogComponent>();
         }
-
-        /// <inheritdoc/>
-        public override void Build()
-        {
-            base.Build();
-        }
     }
 }

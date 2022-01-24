@@ -20,10 +20,6 @@
         Topmost="False"
         Height="600" Width="800"        
         >
-    <!-- 
-    
-    wpfubehaviorsServices:ServiceDependencyDataContextBehavior.Resolve="{x:Type componentsUI:IMainWindowViewModel}" 
-    -->
     
     <Behaviors:Interaction.Behaviors>
         <wpfubehaviorsWindows:WindowDisplayedDelegateCommandBehavior Command="{x:Static commands:Commands.OnMainWindowShown}"/>
