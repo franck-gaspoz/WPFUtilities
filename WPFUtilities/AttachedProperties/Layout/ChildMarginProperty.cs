@@ -1,12 +1,12 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace WPFUtilities.Behaviors.Layout
+namespace WPFUtilities.AttachedProperties.Layout
 {
     /// <summary>
     /// margin setter property behavior
     /// </summary>
-    public class ChildMarginProperty
+    public static class ChildMarginProperty
     {
         /// <summary>
         /// get margin

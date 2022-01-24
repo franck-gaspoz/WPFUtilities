@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:wpfulayout="clr-namespace:WPFUtilities.Behaviors.Layout;assembly=WPFUtilities"
+        xmlns:wpfulayout="clr-namespace:WPFUtilities.AttachedProperties.Layout;assembly=WPFUtilities"
         xmlns:local="clr-namespace:SampleApp.Components.UI"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"

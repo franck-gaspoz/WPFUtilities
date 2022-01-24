@@ -11,7 +11,7 @@ namespace WPFUtilities.Components.Services.Properties
     /// <para>default resolve: {Name}View -> I{Name}ViewModel , Name{ViewModel} </para>
     /// <para>fallback resolve: {Name} -> I{Name}ViewModel -di-> Name{ViewModel} </para>
     /// </summary>
-    public abstract class DataContextResolveSetter
+    public static class DataContextResolveSetter
     {
         static readonly IServicesDependencyTypeResolver _servicesDependencyTypeResolver
             = new ServicesDependencyTypeResolver();

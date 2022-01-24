@@ -6,6 +6,7 @@
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:commands="clr-namespace:SampleApp.Commands"
         xmlns:wpfubehaviorsWindows="clr-namespace:WPFUtilities.Behaviors.Windows;assembly=WPFUtilities"
+        xmlns:wpfuscrolling="clr-namespace:WPFUtilities.AttachedProperties.Scrolling;assembly=WPFUtilities"
         xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
         xmlns:component="clr-namespace:WPFUtilities.Components.Component;assembly=WPFUtilities"
         xmlns:ui="clr-namespace:SampleApp.Components.UI"
@@ -72,6 +73,7 @@
                 Title="application log"
                 component:Properties.Type="{x:Type logging:LogComponent}"
                 service:DataContext.IsAuto="True"
+                wpfuscrolling:ScrollDownProperty.IsAuto="True"
             />
 
             <logging:LogView
@@ -79,6 +81,7 @@
                 Grid.Row="1"
                 Title="window log"
                 component:Properties.Type="{x:Type logging:LogComponent}"
+                wpfuscrolling:ScrollDownProperty.IsAuto="True"
             />
 
         </Grid>

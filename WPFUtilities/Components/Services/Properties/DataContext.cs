@@ -10,7 +10,7 @@ namespace WPFUtilities.Components.Services.Properties
     /// <summary>
     /// setup data context from component host
     /// </summary>
-    public class DataContext
+    public static class DataContext
     {
         #region IsAuto
 
