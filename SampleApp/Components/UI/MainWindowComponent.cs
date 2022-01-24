@@ -27,14 +27,6 @@ namespace SampleApp.Components.UI
             // log component
 
                     .AddSingleton<LogComponent>();
-
-            // logger
-
-            /*new LogViewModelServiceDependencyInitializer()
-                .ConfigureServices(
-                    hostBuilderContext,
-                    services.Services
-                );*/
         }
     }
 }
