@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.UI"
              xmlns:logging="clr-namespace:SampleApp.Components.Logging"
-             xmlns:wpfucommandsAppl="clr-namespace:WPFUtilities.Commands.Application;assembly=WPFUtilities" 
+             xmlns:command="clr-namespace:WPFUtilities.Commands.Application;assembly=WPFUtilities" 
              xmlns:wpfulayout="clr-namespace:WPFUtilities.AttachedProperties.Layout;assembly=WPFUtilities"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
@@ -26,12 +26,12 @@
                     wpfulayout:ChildMargin.Value="0,0,8,0">
 
             <Button Content="Log application message" 
-                    service:Command.Type="{x:Type wpfucommandsAppl:LogCommand}"
+                    service:Command.Type="{x:Type command:LogCommand}"
                     CommandParameter="This is an application log message!"/>
 
             <Button Content="Log window message"                      
                     service:Scope.Value="Local"
-                    service:Command.Type="{x:Type wpfucommandsAppl:LogCommand}"
+                    service:Command.Type="{x:Type command:LogCommand}"
                     CommandParameter="This is a window log message!"/>
             
         </StackPanel>

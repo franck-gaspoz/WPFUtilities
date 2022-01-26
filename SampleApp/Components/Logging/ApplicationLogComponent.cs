@@ -21,6 +21,8 @@ namespace SampleApp.Components.Logging
         {
             services.AddSingleton<ILogViewModel, LogViewModel>();
             services.AddSingleton<LogModelMediator>();
+            // there is no inheritance from components hosts when DI creates a service
+            // thus we have here to bring the model to the local scope
             services.Services.AddSingleton<IListLoggerModel>(
                 (sp) => ComponentHost.RootHost.Services.GetService<IListLoggerModel>());
         }
