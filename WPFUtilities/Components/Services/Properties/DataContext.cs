@@ -97,7 +97,7 @@ namespace WPFUtilities.Components.Services.Properties
         }
 
         /// <summary>
-        /// trigger setup data context when is enabled is set to true
+        /// trigger setup data context when is auto is set to true
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <param name="eventArgs">event args</param>
