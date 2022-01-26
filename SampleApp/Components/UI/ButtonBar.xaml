@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
         
         <StackPanel Orientation="Horizontal" Grid.Row="1" 
-                    wpfulayout:ChildMarginProperty.Value="0,0,8,0">
+                    wpfulayout:ChildMargin.Value="0,0,8,0">
 
             <Button Content="Log application message" 
                     Command="{x:Static wpfucommandsAppl:ApplicationCommands.Log}"

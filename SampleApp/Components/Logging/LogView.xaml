@@ -22,7 +22,7 @@
         <ListView ItemsSource="{Binding Messages}" 
                   FontFamily="Courier New"
                   Grid.Row="1"
-                  wpfuscrolling:ScrollDownProperty.IsAuto="True"
+                  wpfuscrolling:ScrollDown.IsAuto="True"
                   />
     </Grid>
 </UserControl>

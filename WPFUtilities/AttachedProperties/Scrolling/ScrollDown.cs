@@ -9,7 +9,7 @@ namespace WPFUtilities.AttachedProperties.Scrolling
     /// <summary>
     /// auto scroll down
     /// </summary>
-    public static class ScrollDownProperty
+    public static class ScrollDown
     {
         /// <summary>
         /// get is auto
@@ -38,7 +38,7 @@ namespace WPFUtilities.AttachedProperties.Scrolling
             DependencyProperty.RegisterAttached(
                 "IsAuto",
                 typeof(bool),
-                typeof(ScrollDownProperty),
+                typeof(ScrollDown),
                 new PropertyMetadata(false, IsAutoChanged));
 
         static void IsAutoChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)

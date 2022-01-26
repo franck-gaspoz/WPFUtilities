@@ -48,7 +48,7 @@
                     Margin="4"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal"
-                    wpfulayout:ChildMarginProperty.Value="4"
+                    wpfulayout:ChildMargin.Value="4"
                     >
             <Button Content="Yes"/>
             <Button Content="No" IsDefault="True"/>

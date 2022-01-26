@@ -6,7 +6,7 @@ namespace WPFUtilities.AttachedProperties.Layout
     /// <summary>
     /// margin setter property behavior
     /// </summary>
-    public static class ChildMarginProperty
+    public static class ChildMargin
     {
         /// <summary>
         /// get margin
@@ -29,7 +29,7 @@ namespace WPFUtilities.AttachedProperties.Layout
             DependencyProperty.RegisterAttached(
                 "Value",
                 typeof(Thickness),
-                typeof(ChildMarginProperty),
+                typeof(ChildMargin),
                 new UIPropertyMetadata(new Thickness(), ChildMarginChanged));
 
         static void ChildMarginChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
