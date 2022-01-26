@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-using properties = WPFUtilities.Components.ServiceComponent.Properties;
+using properties = WPFUtilities.Components.Services.Properties;
 
 namespace WPFUtilities.Components.ServiceComponent
 {
@@ -20,7 +20,7 @@ namespace WPFUtilities.Components.ServiceComponent
             IComponentHost componentHost = null;
             while (dependencyObject != null &&
                 (componentHost = (IComponentHost)dependencyObject
-                    .GetValue(properties.ComponentHostProperty)) == null)
+                    .GetValue(properties.Component.ComponentHostProperty)) == null)
             {
                 dependencyObject = LogicalTreeHelper.GetParent(dependencyObject);
             }
@@ -37,7 +37,7 @@ namespace WPFUtilities.Components.ServiceComponent
             void ResolveAndSetComponent(object src, EventArgs e)
             {
                 frameworkElement.Loaded -= ResolveAndSetComponent;
-                var componentType = (Type)frameworkElement.GetValue(properties.TypeProperty);
+                var componentType = (Type)frameworkElement.GetValue(properties.Component.TypeProperty);
                 if (componentType != null)
                 {
                     // resolve the component
@@ -48,7 +48,7 @@ namespace WPFUtilities.Components.ServiceComponent
                         var component = host.Services.GetComponent(componentType);
                         // assign contextual host to the framework element
                         frameworkElement.SetValue(
-                            properties.ComponentHostProperty,
+                            properties.Component.ComponentHostProperty,
                             component.ComponentHost);
                     }
                 }

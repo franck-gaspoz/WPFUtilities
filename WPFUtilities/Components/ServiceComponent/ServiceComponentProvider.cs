@@ -5,6 +5,8 @@ using System.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
 
+using properties = WPFUtilities.Components.Services.Properties;
+
 namespace WPFUtilities.Components.ServiceComponent
 {
     /// <summary>
@@ -170,7 +172,7 @@ namespace WPFUtilities.Components.ServiceComponent
         {
             if (service is DependencyObject dependencyObject)
             {
-                Properties.SetComponentHost(dependencyObject, _host);
+                properties.Component.SetComponentHost(dependencyObject, _host);
             }
         }
 

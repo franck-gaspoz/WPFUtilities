@@ -99,7 +99,7 @@
     <Compile Include="Components\Services\Properties\Command.cs" />
     <Compile Include="AttachedProperties\Scrolling\ScrollDown.cs" />
     <Compile Include="Components\ServiceComponent\ComponentHostLookup.cs" />
-    <Compile Include="Components\ServiceComponent\Properties.cs" />
+    <Compile Include="Components\Services\Properties\Component.cs" />
     <Compile Include="Components\ServiceComponent\IServiceComponentCollection.cs" />
     <Compile Include="Components\ServiceComponent\IServiceComponentsConfigurator.cs" />
     <Compile Include="Components\ServiceComponent\ServiceComponentCollection.cs" />

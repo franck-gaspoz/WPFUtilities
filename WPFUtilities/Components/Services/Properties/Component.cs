@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Windows;
 
-namespace WPFUtilities.Components.ServiceComponent
+using WPFUtilities.Components.ServiceComponent;
+
+namespace WPFUtilities.Components.Services.Properties
 {
     /// <summary>
     /// component type value dependency property
     /// </summary>
-    public static class Properties
+    public static class Component
     {
         #region component host
 
@@ -37,7 +39,7 @@ namespace WPFUtilities.Components.ServiceComponent
             DependencyProperty.RegisterAttached(
                 "ComponentHost",
                 typeof(IComponentHost),
-                typeof(Properties),
+                typeof(Component),
                 new PropertyMetadata(null));
 
         #endregion
@@ -71,7 +73,7 @@ namespace WPFUtilities.Components.ServiceComponent
             DependencyProperty.RegisterAttached(
                 "Type",
                 typeof(Type),
-                typeof(Properties),
+                typeof(Component),
                 new PropertyMetadata(null));
 
         #endregion
