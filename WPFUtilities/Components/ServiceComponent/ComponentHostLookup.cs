@@ -28,8 +28,11 @@ namespace WPFUtilities.Components.ServiceComponent
         }
 
         /// <summary>
-        /// resolve any associated component when framework element is loaded, before data context is initialized
+        /// resolve the component host the element belongs to when the element is loaded
         /// <para>does nothing if component host is already set</para>
+        /// <para>does nothing if component host is set in dependency object component host property</para>
+        /// <para>if component type is set in dependency object type property, try to find and init component property from inherited component host, then set component property</para>
+        /// <para>if no type property, try to set component host property from inherited (logical tree parents) component host</para>
         /// </summary>
         /// <param name="frameworkElement">framework element</param>
         public static void SetComponentHostPropertyFromResolvedComponentWhenLoaded(FrameworkElement frameworkElement)
@@ -51,10 +54,15 @@ namespace WPFUtilities.Components.ServiceComponent
                         // resolve the component (that build and init it)
                         var component = host.Services.GetComponent(componentType);
                         // assign contextual host to the framework element
-                        frameworkElement.SetValue(
-                            properties.Component.ComponentHostProperty,
-                            component.ComponentHost);
+                        properties.Component.SetComponentHost(frameworkElement, host);
                     }
+                }
+                else
+                {
+                    // no type provided, set from inherited if any
+                    host = GetComponentHost(frameworkElement);
+                    if (host != null)
+                        properties.Component.SetComponentHost(frameworkElement, host);
                 }
             }
 

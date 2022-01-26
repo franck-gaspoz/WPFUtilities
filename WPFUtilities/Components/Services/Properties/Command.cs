@@ -51,16 +51,13 @@ namespace WPFUtilities.Components.Services.Properties
 
             ComponentHostLookup.SetComponentHostPropertyFromResolvedComponentWhenLoaded(target);
 
-            /*void Initialize(object src, EventArgs e)
+            void InitializeAtLoaded(object src, EventArgs e)
             {
-                target.Loaded -= Initialize;
-                DataContextResolveSetter.SetupServiceDependencyDataContext(
-                    target,
-                    type,
-                    (o) => GetComponentHost(o));
+                target.Loaded -= InitializeAtLoaded;
+
             }
 
-            target.Loaded += Initialize;*/
+            target.Loaded += InitializeAtLoaded;
         }
     }
 }
