@@ -72,8 +72,6 @@ namespace WPFUtilities.Components.Application
             {
                 MainWindow = getWindow();
 
-                InitializeMainWindow(MainWindow);
-
                 if (ApplicationBaseSettings.ShowWindow)
                 {
                     if (ApplicationBaseSettings.IsMainWindowDialog)
@@ -152,15 +150,6 @@ namespace WPFUtilities.Components.Application
                 if (ApplicationBaseSettings.MainWindowType != null)
                     services.AddSingleton(ApplicationBaseSettings.MainWindowType);
             }
-        }
-
-        /// <summary>
-        /// initialize main window if any
-        /// </summary>
-        /// <param name="window">main window</param>
-        protected virtual void InitializeMainWindow(Window window)
-        {
-
         }
 
         /// <summary>
