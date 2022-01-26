@@ -7,6 +7,9 @@ namespace WPFUtilities.Components.Services.Properties
 {
     /// <summary>
     /// setup data context from component host
+    /// <para>requires the Component.Host property to be set in the dependency object</para>
+    /// <para>or require the property Component.Type to be setted in the dependency object</para>
+    /// <para>and performs a lookup of the component host in parents logical tree, then sets the component host property</para>
     /// </summary>
     public static class DataContext
     {

@@ -29,19 +29,23 @@ namespace WPFUtilities.Components.ServiceComponent
 
         /// <summary>
         /// resolve any associated component when framework element is loaded, before data context is initialized
-        /// <para>does nothing if component host ais already set</para>
+        /// <para>does nothing if component host is already set</para>
         /// </summary>
         /// <param name="frameworkElement">framework element</param>
         public static void SetComponentHostPropertyFromResolvedComponentWhenLoaded(FrameworkElement frameworkElement)
         {
             void ResolveAndSetComponent(object src, EventArgs e)
             {
+                IComponentHost host;
+                host = properties.Component.GetComponentHost(frameworkElement);
+                if (host != null) return;
+
                 frameworkElement.Loaded -= ResolveAndSetComponent;
                 var componentType = (Type)frameworkElement.GetValue(properties.Component.TypeProperty);
                 if (componentType != null)
                 {
                     // resolve the component
-                    var host = ComponentHostLookup.GetComponentHost(frameworkElement);
+                    host = ComponentHostLookup.GetComponentHost(frameworkElement);
                     if (host != null)
                     {
                         // resolve the component (that build and init it)
