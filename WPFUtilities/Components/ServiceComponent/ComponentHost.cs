@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -19,6 +21,14 @@ namespace WPFUtilities.Components.ServiceComponent
         IHostLoggingConfigurator
     {
         #region properties
+
+        string _name;
+        /// <inheritdoc/>
+        public string Name
+        {
+            get => _name ?? GetType().Name;
+            set => _name = value;
+        }
 
         /// <inheritdoc/>
         public IHost Host { get; protected set; }
@@ -85,6 +95,23 @@ namespace WPFUtilities.Components.ServiceComponent
             Host = HostBuilder.Build();
             HostBuilderContext.Properties.Add(typeof(IHost), Host);
             HostBuilderContext.Properties.Add(typeof(IComponentHost), this);
+        }
+
+        /// <inheritdoc/>
+        public string FullName
+        {
+            get
+            {
+                var parts = new List<string>();
+                IComponentHost host = this;
+                while (host != null)
+                {
+                    parts.Add(host.Name);
+                    host = host.ParentHost;
+                }
+                parts.Reverse();
+                return string.Join(".", parts);
+            }
         }
 
         #region IHostServicesConfigurator

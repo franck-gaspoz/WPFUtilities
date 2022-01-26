@@ -48,5 +48,14 @@ namespace WPFUtilities.Components.ServiceComponent
         /// </summary>
         void Build();
 
+        /// <summary>
+        /// concrete type name of the component this host belongs to
+        /// </summary>
+        string Name { get; set; }
+
+        /// <summary>
+        /// get the type name of the component this host belongs to with the hierarchy of its parents type names
+        /// </summary>
+        string FullName { get; }
     }
 }

@@ -20,7 +20,7 @@ namespace WPFUtilities.Components.ServiceComponent
         /// </summary>
         public AbstractServiceComponent()
         {
-
+            ComponentHost.Name = this.GetType().Name;
         }
 
         /// <inheritdoc/>

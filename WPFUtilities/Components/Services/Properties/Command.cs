@@ -3,6 +3,8 @@ using System.Windows;
 
 using WPFUtilities.Components.ServiceComponent;
 
+using properties = WPFUtilities.Components.Services.Properties;
+
 namespace WPFUtilities.Components.Services.Properties
 {
     /// <summary>
@@ -54,7 +56,8 @@ namespace WPFUtilities.Components.Services.Properties
             void InitializeAtLoaded(object src, EventArgs e)
             {
                 target.Loaded -= InitializeAtLoaded;
-
+                var host = properties.Component.GetComponentHost(dependencyObject);
+                var fn = host.FullName;
             }
 
             target.Loaded += InitializeAtLoaded;
