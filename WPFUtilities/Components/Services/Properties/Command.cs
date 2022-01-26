@@ -14,6 +14,8 @@ namespace WPFUtilities.Components.Services.Properties
     /// </summary>
     public static class Command
     {
+        #region type
+
         /// <summary>
         /// get Type dependency property value for object
         /// <para>requires the Component.Host property to be set in the dependency object</para>
@@ -42,6 +44,8 @@ namespace WPFUtilities.Components.Services.Properties
                 typeof(Type),
                 typeof(Command),
                 new PropertyMetadata(null, TypeChanged));
+
+        #endregion
 
         /// <summary>
         /// trigger setup command when type is set
