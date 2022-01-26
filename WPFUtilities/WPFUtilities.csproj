@@ -119,6 +119,8 @@
     <Compile Include="Components\ServiceComponent\IServiceComponent.cs" />
     <Compile Include="Components\ServiceComponent\ServiceComponentProvider.cs" />
     <Compile Include="Components\Services\DependencyScope.cs" />
+    <Compile Include="Components\Services\Properties\Scope.cs" />
+    <Compile Include="Components\Services\Scopes.cs" />
     <Compile Include="Components\Services\ServiceDependencyAttribute.cs" />
     <Compile Include="Components\Services\ServiceDependenciesAttribute.cs" />
     <Compile Include="Components\Logging\ListLogger\IListLogger.cs" />

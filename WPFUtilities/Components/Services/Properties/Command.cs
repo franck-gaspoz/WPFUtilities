@@ -11,6 +11,11 @@ namespace WPFUtilities.Components.Services.Properties
 {
     /// <summary>
     /// resolve a command from di scope
+    /// <para>use application host if Scope value property is not defined or set to Global</para>
+    /// <para>else:</para>
+    /// <para>requires the Component.Host property to be set in the dependency object</para>
+    /// <para>or require the property Component.Type to be setted in the dependency object</para>
+    /// <para>and performs a lookup of the component host in parents logical tree, then sets the component host property</para>
     /// </summary>
     public static class Command
     {
@@ -18,9 +23,6 @@ namespace WPFUtilities.Components.Services.Properties
 
         /// <summary>
         /// get Type dependency property value for object
-        /// <para>requires the Component.Host property to be set in the dependency object</para>
-        /// <para>or require the property Component.Type to be setted in the dependency object</para>
-        /// <para>and performs a lookup of the component host in parents logical tree, then sets the component host property</para>
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>true if is enabled</returns>
@@ -65,8 +67,15 @@ namespace WPFUtilities.Components.Services.Properties
             void InitializeAtLoaded(object src, EventArgs e)
             {
                 target.Loaded -= InitializeAtLoaded;
+
+                var scope = properties.Scope.GetValue(dependencyObject);
+
                 var host = properties.Component.GetComponentHost(dependencyObject)
                     ?? throw new InvalidOperationException("target host is null");
+
+                if (scope == Scopes.Global)
+                    host = host.RootHost;
+
                 var command = host.Services.GetRequiredService(type);
                 var commandSource = target as ICommandSource
                     ?? throw new InvalidOperationException("target is not ICommandSource");

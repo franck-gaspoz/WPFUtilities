@@ -26,10 +26,11 @@
                     wpfulayout:ChildMargin.Value="0,0,8,0">
 
             <Button Content="Log application message" 
-                    Command="{x:Static wpfucommandsAppl:ApplicationCommands.Log}"
+                    service:Command.Type="{x:Type wpfucommandsAppl:LogCommand}"
                     CommandParameter="This is an application log message!"/>
 
             <Button Content="Log window message"                      
+                    service:Scope.Value="Local"
                     service:Command.Type="{x:Type wpfucommandsAppl:LogCommand}"
                     CommandParameter="This is a window log message!"/>
             
