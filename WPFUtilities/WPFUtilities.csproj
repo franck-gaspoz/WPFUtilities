@@ -96,7 +96,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttachedProperties\Command\Command.cs" />
+    <Compile Include="Components\Services\Properties\Command.cs" />
     <Compile Include="AttachedProperties\Scrolling\ScrollDown.cs" />
     <Compile Include="Components\ServiceComponent\ComponentHostLookup.cs" />
     <Compile Include="Components\ServiceComponent\Properties.cs" />

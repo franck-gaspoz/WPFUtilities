@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace WPFUtilities.AttachedProperties.Command
+namespace WPFUtilities.Components.Services.Properties
 {
     /// <summary>
     /// resolve a command from di scope
