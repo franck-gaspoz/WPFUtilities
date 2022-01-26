@@ -57,7 +57,6 @@ namespace WPFUtilities.Components.Services.Properties
             {
                 target.Loaded -= InitializeAtLoaded;
                 var host = properties.Component.GetComponentHost(dependencyObject);
-                var fn = host.FullName;
             }
 
             target.Loaded += InitializeAtLoaded;

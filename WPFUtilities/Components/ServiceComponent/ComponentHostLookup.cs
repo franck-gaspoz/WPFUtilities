@@ -39,11 +39,12 @@ namespace WPFUtilities.Components.ServiceComponent
         {
             void ResolveAndSetComponent(object src, EventArgs e)
             {
+                frameworkElement.Loaded -= ResolveAndSetComponent;
+
                 IComponentHost host;
                 host = properties.Component.GetComponentHost(frameworkElement);
                 if (host != null) return;
 
-                frameworkElement.Loaded -= ResolveAndSetComponent;
                 var componentType = (Type)frameworkElement.GetValue(properties.Component.TypeProperty);
                 if (componentType != null)
                 {
@@ -54,7 +55,10 @@ namespace WPFUtilities.Components.ServiceComponent
                         // resolve the component (that build and init it)
                         var component = host.Services.GetComponent(componentType);
                         // assign contextual host to the framework element
-                        properties.Component.SetComponentHost(frameworkElement, host);
+                        // from the associated component if found, otherwize to the context owner
+                        properties.Component.SetComponentHost(
+                            frameworkElement,
+                            component != null ? component.ComponentHost : host);
                     }
                 }
                 else

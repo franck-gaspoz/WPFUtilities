@@ -134,5 +134,9 @@ namespace WPFUtilities.Components.ServiceComponent
         }
 
         #endregion
+
+        /// <inheritdoc/>
+        public override string ToString()
+            => this.FullName;
     }
 }
