@@ -29,6 +29,7 @@ namespace WPFUtilities.Components.ServiceComponent
 
         /// <summary>
         /// resolve any associated component when framework element is loaded, before data context is initialized
+        /// <para>does nothing if component host ais already set</para>
         /// </summary>
         /// <param name="frameworkElement">framework element</param>
         public static void SetComponentHostPropertyFromResolvedComponentWhenLoaded(FrameworkElement frameworkElement)
