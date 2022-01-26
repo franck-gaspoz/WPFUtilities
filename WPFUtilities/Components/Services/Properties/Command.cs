@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
+using System.Windows.Input;
 
 using WPFUtilities.Components.ServiceComponent;
 
@@ -48,6 +50,9 @@ namespace WPFUtilities.Components.Services.Properties
         /// <param name="eventArgs">event args</param>
         public static void TypeChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
+            if (DesignerProperties.GetIsInDesignMode(dependencyObject))
+                return;
+
             if (!(dependencyObject is FrameworkElement target)
                 || !(eventArgs.NewValue is Type type)) return;
 
@@ -56,7 +61,14 @@ namespace WPFUtilities.Components.Services.Properties
             void InitializeAtLoaded(object src, EventArgs e)
             {
                 target.Loaded -= InitializeAtLoaded;
-                var host = properties.Component.GetComponentHost(dependencyObject);
+                var host = properties.Component.GetComponentHost(dependencyObject)
+                    ?? throw new InvalidOperationException("target host is null");
+                var command = host.Services.GetRequiredService(type);
+                var commandSource = target as ICommandSource
+                    ?? throw new InvalidOperationException("target is not ICommandSource");
+                var commandProperty = target.GetType().GetProperty("Command")
+                    ?? throw new InvalidOperationException("target has no property Command");
+                commandProperty.SetValue(target, command);
             }
 
             target.Loaded += InitializeAtLoaded;

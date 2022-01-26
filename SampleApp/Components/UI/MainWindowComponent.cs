@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 
 using SampleApp.Components.Logging;
 
+using WPFUtilities.Commands.Application;
 using WPFUtilities.Components.Logging.ListLogger;
 using WPFUtilities.Components.ServiceComponent;
 
@@ -42,9 +43,10 @@ namespace SampleApp.Components.UI
 
             // log component
 
-                    .AddSingleton<LogComponent>();
+                    .AddSingleton<ApplicationLogComponent>()
+                    .AddSingleton<WindowLogComponent>();
 
-            // 'window' list logger
+            // 'window' scopped logger
 
             var listLoggerModel = new ListLoggerModel();
             services.Services.AddSingleton<IListLoggerModel>((sp) => listLoggerModel);
@@ -54,6 +56,9 @@ namespace SampleApp.Components.UI
                     config.Target = listLoggerModel.LogItems);
             });
 
+            // window scoped command
+
+            services.Services.AddSingleton<LogCommand>();
         }
     }
 }

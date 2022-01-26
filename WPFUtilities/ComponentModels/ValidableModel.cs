@@ -13,6 +13,25 @@ namespace WPFUtilities.ComponentModels
     /// </summary>
     public class ValidableModel : INotifyDataErrorInfo, IValidableModel
     {
+        static InstanceCounter _instanceCounter = new InstanceCounter();
+        string _name;
+
+        /// <summary>
+        /// creates a new instance
+        /// </summary>
+        public ValidableModel()
+        {
+            var type = this.GetType();
+            _instanceCounter.Increment(type);
+            _name = type.Name + $"[#{_instanceCounter[type]}]";
+        }
+
+        /// <summary>
+        /// get a name for the model
+        /// </summary>
+        /// <returns>string based on type and instance number</returns>
+        public override string ToString() => _name;
+
         /// <summary>
         /// property errors
         /// </summary>

@@ -8,9 +8,9 @@ using WPFUtilities.Components.ServiceComponent;
 namespace SampleApp.Components.Logging
 {
     /// <summary>
-    /// log component
+    /// application log component
     /// </summary>
-    public class LogComponent :
+    public class ApplicationLogComponent :
         AbstractServiceComponent,
         IServiceComponent
     {

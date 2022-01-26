@@ -4,7 +4,6 @@ using System.Windows.Input;
 using SampleApp.Components.UI;
 
 using WPFUtilities.Commands;
-using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Extensions.App;
 
 using properties = WPFUtilities.Components.Services.Properties;
@@ -28,11 +27,11 @@ namespace SampleApp.Commands
         {
             if (parameter is DependencyObject dependencyObject)
             {
-                var componentHost = (IComponentHost)dependencyObject.GetValue(properties.Component.ComponentHostProperty);
+                var componentHost = properties.Component.GetComponentHost(dependencyObject);
                 if (componentHost != null)
                 {
                     var application = this.GetApplication();
-                    var mainWindowComponent = new MainWindowComponent(componentHost);
+                    var mainWindowComponent = new MainWindowComponent(componentHost.RootHost);
                     mainWindowComponent.Configure();
                     mainWindowComponent.Build();
                     var window = (Window)mainWindowComponent.ComponentHost.Services.GetService(application.ApplicationBaseSettings.MainWindowType);

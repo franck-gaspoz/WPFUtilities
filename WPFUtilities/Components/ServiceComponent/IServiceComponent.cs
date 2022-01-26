@@ -17,5 +17,11 @@
         /// build the owned host
         /// </summary>
         void Build();
+
+        /// <summary>
+        /// indicates if the component has been built
+        /// </summary>
+        /// <returns>true if the component is built, false otherwize</returns>
+        bool IsBuilt { get; }
     }
 }

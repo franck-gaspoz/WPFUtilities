@@ -70,7 +70,7 @@
             <logging:LogView
                 Margin="8,0,8,8"
                 Title="application log"
-                service:Component.Type="{x:Type logging:LogComponent}"
+                service:Component.Type="{x:Type logging:ApplicationLogComponent}"
                 service:DataContext.IsAuto="True"
             />
 
@@ -78,7 +78,8 @@
                 Margin="8,0,8,8"
                 Grid.Row="1"
                 Title="window log"
-                service:Component.Type="{x:Type logging:LogComponent}"
+                service:Component.Type="{x:Type logging:WindowLogComponent}"
+                service:DataContext.IsAuto="True"
             />
 
         </Grid>
