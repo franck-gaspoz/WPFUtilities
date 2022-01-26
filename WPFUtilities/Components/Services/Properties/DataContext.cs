@@ -3,8 +3,6 @@ using System.Windows;
 
 using WPFUtilities.Components.ServiceComponent;
 
-using properties = WPFUtilities.Components.ServiceComponent.Properties;
-
 namespace WPFUtilities.Components.Services.Properties
 {
     /// <summary>
@@ -84,7 +82,7 @@ namespace WPFUtilities.Components.Services.Properties
             if (!(dependencyObject is FrameworkElement target)
                 || !(eventArgs.NewValue is Type type)) return;
 
-            DelayedResolveComponent(target);
+            ComponentHostLookup.SetComponentHostPropertyFromResolvedComponentWhenLoaded(target);
 
             void Initialize(object src, EventArgs e)
             {
@@ -92,7 +90,7 @@ namespace WPFUtilities.Components.Services.Properties
                 DataContextResolveSetter.SetupServiceDependencyDataContext(
                     target,
                     type,
-                    (o) => GetComponentHost(o));
+                    (o) => ComponentHostLookup.GetComponentHost(o));
             }
 
             target.Loaded += Initialize;
@@ -108,14 +106,14 @@ namespace WPFUtilities.Components.Services.Properties
             if (!(dependencyObject is FrameworkElement target)
                 || !((bool)eventArgs.NewValue)) return;
 
-            DelayedResolveComponent(target);
+            ComponentHostLookup.SetComponentHostPropertyFromResolvedComponentWhenLoaded(target);
 
             void Initialize(object src, EventArgs e)
             {
                 target.Loaded -= Initialize;
                 DataContextResolveSetter.SetupServiceDependencyDataContext(
                     dependencyObject,
-                    (o) => GetComponentHost(o));
+                    (o) => ComponentHostLookup.GetComponentHost(o));
             }
 
             target.Loaded += Initialize;
@@ -123,45 +121,5 @@ namespace WPFUtilities.Components.Services.Properties
 
         #endregion
 
-        /// <summary>
-        /// resolve any associated component when framework element is loaded, before data context is initialized
-        /// </summary>
-        /// <param name="frameworkElement">framework element</param>
-        static void DelayedResolveComponent(FrameworkElement frameworkElement)
-        {
-            void ResolveComponent(object src, EventArgs e)
-            {
-                frameworkElement.Loaded -= ResolveComponent;
-                var componentType = (Type)frameworkElement.GetValue(properties.TypeProperty);
-                if (componentType != null)
-                {
-                    // resolve the component
-                    var host = GetComponentHost(frameworkElement);
-                    if (host != null)
-                    {
-                        // resolve the component (that build and init it)
-                        var component = host.Services.GetComponent(componentType);
-                        // assign contextual host to the framework element
-                        frameworkElement.SetValue(
-                            properties.ComponentHostProperty,
-                            component.ComponentHost);
-                    }
-                }
-            }
-
-            frameworkElement.Loaded += ResolveComponent;
-        }
-
-        static IComponentHost GetComponentHost(DependencyObject dependencyObject)
-        {
-            IComponentHost componentHost = null;
-            while (dependencyObject != null &&
-                (componentHost = (IComponentHost)dependencyObject
-                    .GetValue(properties.ComponentHostProperty)) == null)
-            {
-                dependencyObject = LogicalTreeHelper.GetParent(dependencyObject);
-            }
-            return (IComponentHost)componentHost;
-        }
     }
 }
