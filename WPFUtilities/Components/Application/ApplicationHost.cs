@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using WPFUtilities.ComponentModels;
-using WPFUtilities.Components.Component;
+using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Components.Services;
 
 namespace WPFUtilities.Components.Application

@@ -8,7 +8,7 @@ using WPFUtilities.Components.Services;
 
 using mshosting = Microsoft.Extensions.Hosting;
 
-namespace WPFUtilities.Components.Component
+namespace WPFUtilities.Components.ServiceComponent
 {
     /// <summary>
     /// abstraction of a component

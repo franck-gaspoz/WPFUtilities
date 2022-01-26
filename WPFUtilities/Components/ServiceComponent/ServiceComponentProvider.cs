@@ -5,7 +5,7 @@ using System.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WPFUtilities.Components.Component
+namespace WPFUtilities.Components.ServiceComponent
 {
     /// <summary>
     /// component host service provider

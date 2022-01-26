@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 
-namespace WPFUtilities.Components.Component
+namespace WPFUtilities.Components.ServiceComponent
 {
     /// <summary>
     /// service component abstraction

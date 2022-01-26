@@ -3,8 +3,8 @@ using Microsoft.Extensions.Hosting;
 
 using SampleApp.Components.Logging;
 
-using WPFUtilities.Components.Component;
 using WPFUtilities.Components.Logging.ListLogger;
+using WPFUtilities.Components.ServiceComponent;
 
 namespace SampleApp.Components.UI
 {

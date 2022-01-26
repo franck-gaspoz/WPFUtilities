@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace WPFUtilities.Components.Component
+namespace WPFUtilities.Components.ServiceComponent
 {
     /// <summary>
     /// collection of services components

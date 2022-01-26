@@ -2,7 +2,7 @@
 using System.Windows;
 
 using WPFUtilities.Components.Application;
-using WPFUtilities.Components.Component;
+using WPFUtilities.Components.ServiceComponent;
 
 namespace WPFUtilities.Components.Services.Properties
 {

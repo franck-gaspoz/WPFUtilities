@@ -1,4 +1,4 @@
-﻿namespace WPFUtilities.Components.Component
+﻿namespace WPFUtilities.Components.ServiceComponent
 {
     /// <summary>
     /// a service type (DI) component

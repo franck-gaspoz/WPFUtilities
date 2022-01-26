@@ -4,10 +4,10 @@ using System.Windows.Input;
 using SampleApp.Components.UI;
 
 using WPFUtilities.Commands;
-using WPFUtilities.Components.Component;
+using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Extensions.App;
 
-using properties = WPFUtilities.Components.Component.Properties;
+using properties = WPFUtilities.Components.ServiceComponent.Properties;
 
 namespace SampleApp.Commands
 {

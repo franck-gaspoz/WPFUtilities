@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace WPFUtilities.Components.Component
+namespace WPFUtilities.Components.ServiceComponent
 {
     /// <summary>
     /// component service provider

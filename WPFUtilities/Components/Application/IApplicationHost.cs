@@ -1,4 +1,4 @@
-﻿using WPFUtilities.Components.Component;
+﻿using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Components.Services;
 
 namespace WPFUtilities.Components.Application

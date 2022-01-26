@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
 
-namespace WPFUtilities.Components.Component
+namespace WPFUtilities.Components.ServiceComponent
 {
     /// <summary>
     /// component type value dependency property

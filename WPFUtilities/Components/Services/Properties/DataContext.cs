@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows;
 
-using WPFUtilities.Components.Component;
+using WPFUtilities.Components.ServiceComponent;
 
-using properties = WPFUtilities.Components.Component.Properties;
+using properties = WPFUtilities.Components.ServiceComponent.Properties;
 
 namespace WPFUtilities.Components.Services.Properties
 {

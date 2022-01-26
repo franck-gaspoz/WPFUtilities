@@ -98,10 +98,10 @@
   <ItemGroup>
     <Compile Include="AttachedProperties\Command\Command.cs" />
     <Compile Include="AttachedProperties\Scrolling\ScrollDown.cs" />
-    <Compile Include="Components\Component\Properties.cs" />
-    <Compile Include="Components\Component\IServiceComponentCollection.cs" />
-    <Compile Include="Components\Component\IServiceComponentsConfigurator.cs" />
-    <Compile Include="Components\Component\ServiceComponentCollection.cs" />
+    <Compile Include="Components\ServiceComponent\Properties.cs" />
+    <Compile Include="Components\ServiceComponent\IServiceComponentCollection.cs" />
+    <Compile Include="Components\ServiceComponent\IServiceComponentsConfigurator.cs" />
+    <Compile Include="Components\ServiceComponent\ServiceComponentCollection.cs" />
     <Compile Include="Components\Logging\ListLogger\IListLoggerModel.cs" />
     <Compile Include="Components\Logging\ListLogger\ListLoggerConfigurationSetup.cs" />
     <Compile Include="Components\Logging\ListLogger\ListLoggerModel.cs" />
@@ -110,12 +110,12 @@
     <Compile Include="Components\Services\Properties\DataContext.cs" />
     <Compile Include="ComponentModels\IHostLoggingConfigurator.cs" />
     <Compile Include="Components\Services\IServicesConfigurator.cs" />
-    <Compile Include="Components\Component\ComponentHost.cs" />
-    <Compile Include="Components\Component\IComponentHost.cs" />
-    <Compile Include="Components\Component\AbstractServiceComponent.cs" />
-    <Compile Include="Components\Component\IServiceComponentProvider.cs" />
-    <Compile Include="Components\Component\IServiceComponent.cs" />
-    <Compile Include="Components\Component\ServiceComponentProvider.cs" />
+    <Compile Include="Components\ServiceComponent\ComponentHost.cs" />
+    <Compile Include="Components\ServiceComponent\IComponentHost.cs" />
+    <Compile Include="Components\ServiceComponent\AbstractServiceComponent.cs" />
+    <Compile Include="Components\ServiceComponent\IServiceComponentProvider.cs" />
+    <Compile Include="Components\ServiceComponent\IServiceComponent.cs" />
+    <Compile Include="Components\ServiceComponent\ServiceComponentProvider.cs" />
     <Compile Include="Components\Services\DependencyScope.cs" />
     <Compile Include="Components\Services\ServiceDependencyAttribute.cs" />
     <Compile Include="Components\Services\ServiceDependenciesAttribute.cs" />

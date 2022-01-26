@@ -2,8 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using WPFUtilities.Components.Component;
 using WPFUtilities.Components.Logging.ListLogger;
+using WPFUtilities.Components.ServiceComponent;
 
 namespace SampleApp.Components.Logging
 {
