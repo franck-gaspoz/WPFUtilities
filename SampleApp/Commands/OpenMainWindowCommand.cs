@@ -7,7 +7,7 @@ using WPFUtilities.Commands;
 using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Extensions.App;
 
-using properties = WPFUtilities.Components.ServiceComponent.Properties;
+using properties = WPFUtilities.Components.Services.Properties;
 
 namespace SampleApp.Commands
 {
@@ -28,7 +28,7 @@ namespace SampleApp.Commands
         {
             if (parameter is DependencyObject dependencyObject)
             {
-                var componentHost = (IComponentHost)dependencyObject.GetValue(properties.ComponentHostProperty);
+                var componentHost = (IComponentHost)dependencyObject.GetValue(properties.Component.ComponentHostProperty);
                 if (componentHost != null)
                 {
                     var application = this.GetApplication();
