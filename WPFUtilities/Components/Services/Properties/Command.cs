@@ -106,7 +106,7 @@ namespace WPFUtilities.Components.Services.Properties
 
         static void SetupFrameworkElementFromCommandType(
             FrameworkElement source,
-            object target,
+            DependencyObject target,
             Type type)
         {
             ComponentHostLookup.SetComponentHostPropertyFromResolvedComponentWhenLoaded(source);
@@ -115,7 +115,7 @@ namespace WPFUtilities.Components.Services.Properties
             {
                 source.Loaded -= InitializeAtLoaded;
 
-                var scope = properties.Scope.GetValue(source);
+                var scope = properties.Scope.GetValue(target);
 
                 var host = properties.Component.GetComponentHost(source)
                     ?? throw new InvalidOperationException("target host is null");

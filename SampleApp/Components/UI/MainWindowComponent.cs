@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using SampleApp.Commands;
 using SampleApp.Components.Logging;
 
 using WPFUtilities.Commands.Application;
@@ -56,9 +57,10 @@ namespace SampleApp.Components.UI
                     config.Target = listLoggerModel.LogItems);
             });
 
-            // window scoped command
+            // window scoped commands
 
             services.Services.AddSingleton<LogCommand>();
+            services.Services.AddSingleton<OnMainWindowShownCommand>();
         }
     }
 }
