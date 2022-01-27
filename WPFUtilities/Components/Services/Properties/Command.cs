@@ -6,6 +6,7 @@ using System.Windows;
 using Microsoft.Xaml.Behaviors;
 
 using WPFUtilities.Components.ServiceComponent;
+using WPFUtilities.Extensions.Behaviors;
 
 using properties = WPFUtilities.Components.Services.Properties;
 
@@ -74,12 +75,10 @@ namespace WPFUtilities.Components.Services.Properties
         }
 
         static void SetupBehaviorFromCommandType(Behavior behavior, Type type)
-        {
-            var changedEventInfo = behavior.GetType().GetEvent("Changed");
-            var changedEventHandler = typeof(Command).GetMethod(nameof(BehaviorAssociatedObjectChanged), BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
-            var handler = Delegate.CreateDelegate(changedEventInfo.EventHandlerType, changedEventHandler);
-            changedEventInfo.AddEventHandler(behavior, handler);
-        }
+            =>
+            behavior.AddChangedEventHandler
+                (typeof(Command),
+                nameof(BehaviorAssociatedObjectChanged));
 
         static void BehaviorAssociatedObjectChanged(object sender, EventArgs e)
         {
@@ -89,6 +88,9 @@ namespace WPFUtilities.Components.Services.Properties
                 var associatedObject = getAssociatedObject.Invoke(behavior, new object[] { });
                 if (associatedObject != null)
                 {
+                    behavior.RemoveChangedEventHandler
+                        (typeof(Command),
+                        nameof(BehaviorAssociatedObjectChanged));
                     if (associatedObject is FrameworkElement frameworkElement)
                     {
                         Type type = GetType(behavior);
