@@ -125,9 +125,6 @@ namespace WPFUtilities.Components.Services.Properties
 
                 var command = host.Services.GetRequiredService(type);
 
-                //var commandSource = source as ICommandSource
-                //    ?? throw new InvalidOperationException("target is not ICommandSource");
-
                 var commandProperty = target.GetType().GetProperty("Command")
                     ?? throw new InvalidOperationException("target has no property Command");
 

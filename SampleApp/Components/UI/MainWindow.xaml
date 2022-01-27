@@ -23,8 +23,8 @@
     
     <Behaviors:Interaction.Behaviors>
         <wpfubehaviorsWindows:WindowDisplayedDelegateCommandBehavior 
+            service:Scope.Value="Local"
             service:Command.Type="{x:Type commands:OnMainWindowShownCommand}"
-            
             />
     </Behaviors:Interaction.Behaviors>
     
