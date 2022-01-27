@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 
 using Microsoft.Xaml.Behaviors;
@@ -110,16 +111,6 @@ namespace WPFUtilities.Behaviors.Windows
 
         #endregion
 
-        public WindowDisplayedDelegateCommandBehavior()
-        {
-            //this.Changed += WindowDisplayedDelegateCommandBehavior_Changed;
-        }
-
-        private void WindowDisplayedDelegateCommandBehavior_Changed(object sender, System.EventArgs e)
-        {
-            //throw new System.NotImplementedException();
-        }
-
         /// <summary>
         /// window size changed
         /// </summary>
@@ -136,8 +127,15 @@ namespace WPFUtilities.Behaviors.Windows
                 && eventArgs.NewSize.Height != 0)
             {
                 w.SizeChanged -= Target_SizeChanged;
-                var behavior = w.GetBehavior<WindowDisplayedDelegateCommandBehavior>();
-                behavior.Command?.Execute(w);
+
+                void InvokeCommand(object o, EventArgs e)
+                {
+                    w.Loaded -= InvokeCommand;
+                    var behavior = w.GetBehavior<WindowDisplayedDelegateCommandBehavior>();
+                    behavior.Command?.Execute(w);
+                }
+
+                w.Loaded += InvokeCommand;
             }
         }
     }

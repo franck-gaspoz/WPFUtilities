@@ -23,7 +23,9 @@
     
     <Behaviors:Interaction.Behaviors>
         <wpfubehaviorsWindows:WindowDisplayedDelegateCommandBehavior 
-            service:Command.Type="{x:Type commands:OnMainWindowShownCommand}"/>
+            service:Command.Type="{x:Type commands:OnMainWindowShownCommand}"
+            
+            />
     </Behaviors:Interaction.Behaviors>
     
     <Grid>

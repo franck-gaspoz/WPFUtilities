@@ -8,7 +8,7 @@ namespace WPFUtilities.Extensions.Behaviors
     /// <summary>
     /// interaction extensions
     /// </summary>
-    internal static class InteractionExtensions
+    public static class InteractionExtensions
     {
         /// <summary>
         /// get a behavior of type T from an object
