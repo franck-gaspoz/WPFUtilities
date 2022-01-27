@@ -98,7 +98,6 @@ namespace WPFUtilities.Components.Services.Properties
                     }
                     else
                         throw new Exception($"associated object '{associatedObject}' is not of type FrameworkElement");
-
                 }
             }
             else
