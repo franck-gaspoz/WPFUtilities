@@ -110,6 +110,16 @@ namespace WPFUtilities.Behaviors.Windows
 
         #endregion
 
+        public WindowDisplayedDelegateCommandBehavior()
+        {
+            //this.Changed += WindowDisplayedDelegateCommandBehavior_Changed;
+        }
+
+        private void WindowDisplayedDelegateCommandBehavior_Changed(object sender, System.EventArgs e)
+        {
+            //throw new System.NotImplementedException();
+        }
+
         /// <summary>
         /// window size changed
         /// </summary>

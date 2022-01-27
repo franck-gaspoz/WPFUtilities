@@ -1,7 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Reflection;
 using System.Windows;
-using System.Windows.Input;
+
+using Microsoft.Xaml.Behaviors;
 
 using WPFUtilities.Components.ServiceComponent;
 
@@ -59,32 +61,79 @@ namespace WPFUtilities.Components.Services.Properties
             if (DesignerProperties.GetIsInDesignMode(dependencyObject))
                 return;
 
-            if (!(dependencyObject is FrameworkElement target)
-                || !(eventArgs.NewValue is Type type)) return;
+            if (!(eventArgs.NewValue is Type type)) return;
+            if (dependencyObject is FrameworkElement frameworkElement)
+                SetupFrameworkElementFromCommandType(frameworkElement, frameworkElement, type);
+            else
+            {
+                if (dependencyObject is Behavior behavior)
+                    SetupBehaviorFromCommandType(behavior, type);
+                else
+                    throw new InvalidOperationException($"can't setup Command property on element '{dependencyObject}' of Type '{dependencyObject.GetType().Name}'");
+            }
+        }
 
-            ComponentHostLookup.SetComponentHostPropertyFromResolvedComponentWhenLoaded(target);
+        static void SetupBehaviorFromCommandType(Behavior behavior, Type type)
+        {
+            var changedEventInfo = behavior.GetType().GetEvent("Changed");
+            var changedEventHandler = typeof(Command).GetMethod(nameof(BehaviorAssociatedObjectChanged), BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            var handler = Delegate.CreateDelegate(changedEventInfo.EventHandlerType, changedEventHandler);
+            changedEventInfo.AddEventHandler(behavior, handler);
+        }
+
+        static void BehaviorAssociatedObjectChanged(object sender, EventArgs e)
+        {
+            if (sender is Behavior behavior)
+            {
+                var getAssociatedObject = behavior.GetType().GetMethod("get_AssociatedObject", BindingFlags.NonPublic | BindingFlags.Instance);
+                var associatedObject = getAssociatedObject.Invoke(behavior, new object[] { });
+                if (associatedObject != null)
+                {
+                    if (associatedObject is FrameworkElement frameworkElement)
+                    {
+                        Type type = GetType(behavior);
+                        SetupFrameworkElementFromCommandType(frameworkElement, behavior, type);
+                    }
+                    else
+                        throw new Exception($"associated object '{associatedObject}' is not of type FrameworkElement");
+
+                }
+            }
+            else
+                throw new InvalidOperationException($"sender '{sender}' is not of type Behavior");
+        }
+
+        static void SetupFrameworkElementFromCommandType(
+            FrameworkElement source,
+            object target,
+            Type type)
+        {
+            ComponentHostLookup.SetComponentHostPropertyFromResolvedComponentWhenLoaded(source);
 
             void InitializeAtLoaded(object src, EventArgs e)
             {
-                target.Loaded -= InitializeAtLoaded;
+                source.Loaded -= InitializeAtLoaded;
 
-                var scope = properties.Scope.GetValue(dependencyObject);
+                var scope = properties.Scope.GetValue(source);
 
-                var host = properties.Component.GetComponentHost(dependencyObject)
+                var host = properties.Component.GetComponentHost(source)
                     ?? throw new InvalidOperationException("target host is null");
 
                 if (scope == Scopes.Global)
                     host = host.RootHost;
 
                 var command = host.Services.GetRequiredService(type);
-                var commandSource = target as ICommandSource
-                    ?? throw new InvalidOperationException("target is not ICommandSource");
+
+                //var commandSource = source as ICommandSource
+                //    ?? throw new InvalidOperationException("target is not ICommandSource");
+
                 var commandProperty = target.GetType().GetProperty("Command")
                     ?? throw new InvalidOperationException("target has no property Command");
+
                 commandProperty.SetValue(target, command);
             }
 
-            target.Loaded += InitializeAtLoaded;
+            source.Loaded += InitializeAtLoaded;
         }
     }
 }
