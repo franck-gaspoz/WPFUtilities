@@ -59,7 +59,7 @@
 
             </MenuItem>
 
-            <!-- dialog -->
+            <!-- about -->
             
             <MenuItem Header="About">
                 <MenuItem Header="About..."
