@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 
+using WPFUtilities.Commands.Abstract;
+
 namespace WPFUtilities.Commands.Interactivity
 {
     /// <summary>

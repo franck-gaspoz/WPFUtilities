@@ -3,6 +3,8 @@ using System.Linq;
 using System.Reflection;
 using System.Windows;
 
+using WPFUtilities.Commands.Abstract;
+
 namespace WPFUtilities.Commands.Interactivity
 {
     /// <summary>

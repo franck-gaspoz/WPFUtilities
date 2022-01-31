@@ -1,4 +1,6 @@
-﻿using syswin = System.Windows;
+﻿using WPFUtilities.Commands.Abstract;
+
+using syswin = System.Windows;
 
 namespace WPFUtilities.Commands.Application
 {

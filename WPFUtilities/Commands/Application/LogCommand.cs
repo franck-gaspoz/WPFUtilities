@@ -2,6 +2,8 @@
 
 using Microsoft.Extensions.Logging;
 
+using WPFUtilities.Commands.Abstract;
+
 namespace WPFUtilities.Commands.Application
 {
     /// <summary>

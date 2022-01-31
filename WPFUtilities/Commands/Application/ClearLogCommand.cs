@@ -1,5 +1,6 @@
 ﻿using System.Windows.Input;
 
+using WPFUtilities.Commands.Abstract;
 using WPFUtilities.Components.Logging.ListLogger;
 
 namespace WPFUtilities.Commands.Application

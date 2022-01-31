@@ -5,7 +5,7 @@ using WPFUtilities.ComponentModels;
 
 using syswin = System.Windows;
 
-namespace WPFUtilities.Commands
+namespace WPFUtilities.Commands.Abstract
 {
     /// <summary>
     /// abstract command singleton service

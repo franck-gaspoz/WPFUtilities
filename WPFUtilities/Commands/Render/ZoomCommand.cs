@@ -1,5 +1,6 @@
 ﻿using System.Windows.Media;
 
+using WPFUtilities.Commands.Abstract;
 using WPFUtilities.Components.Render;
 
 namespace WPFUtilities.Commands.Render

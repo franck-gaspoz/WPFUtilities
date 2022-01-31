@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
+using WPFUtilities.Commands.Abstract;
 using WPFUtilities.Extensions.App;
 
 namespace WPFUtilities.Commands.Application
