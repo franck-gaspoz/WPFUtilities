@@ -99,6 +99,7 @@
     <Compile Include="Commands\Abstract\AbstractServiceCommand.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceParametricCommand.cs" />
     <Compile Include="Commands\Application\ClearLogCommand.cs" />
+    <Compile Include="Commands\Application\OpenWindowCommand.cs" />
     <Compile Include="Commands\Application\CloseWindowCommand.cs" />
     <Compile Include="Commands\Application\OpenMainWindowCommand.cs" />
     <Compile Include="ComponentModels\InstanceCounter.cs" />

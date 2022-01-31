@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-using Microsoft.Extensions.DependencyInjection;
+using WPFUtilities.Components.ServiceComponent;
 
 namespace WPFUtilities.Commands.Abstract
 {
@@ -16,8 +16,8 @@ namespace WPFUtilities.Commands.Abstract
         /// <summary>
         /// creates a new instance
         /// </summary>
-        /// <param name="serviceProvider">service provider</param>
-        public AbstractServiceParametricCommand(IServiceProvider serviceProvider)
+        /// <param name="serviceProvider">service component provider</param>
+        public AbstractServiceParametricCommand(IServiceComponentProvider serviceProvider)
             : base(serviceProvider) { }
 
         /// <summary>

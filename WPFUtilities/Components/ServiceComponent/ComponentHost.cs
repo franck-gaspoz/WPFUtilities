@@ -121,6 +121,7 @@ namespace WPFUtilities.Components.ServiceComponent
         {
             HostBuilderContext = hostBuilderContext;
             services.AddSingleton<IComponentHost, ComponentHost>((serviceProvider) => this);
+            services.AddSingleton<IServiceComponentProvider>((serviceProvider) => Services);
         }
 
         #endregion

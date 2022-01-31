@@ -32,5 +32,10 @@ namespace WPFUtilities.Commands.Application
         /// close a window
         /// </summary>
         public static ICommand CloseWindow { get; } = CloseWindowCommand.Instance;
+
+        /// <summary>
+        /// open a window
+        /// </summary>
+        public static ICommand OpenWindow { get; } = OpenMainWindowCommand.Instance;
     }
 }

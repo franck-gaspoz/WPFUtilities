@@ -1,5 +1,6 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
+
+using WPFUtilities.Components.ServiceComponent;
 
 namespace WPFUtilities.Commands.Abstract
 {
@@ -14,13 +15,13 @@ namespace WPFUtilities.Commands.Abstract
         /// <summary>
         /// service provider
         /// </summary>
-        protected IServiceProvider ServiceProvider;
+        protected IServiceComponentProvider ServiceProvider;
 
         /// <summary>
         /// creates a new instance
         /// </summary>
-        /// <param name="serviceProvider">service provider</param>
-        public AbstractServiceCommand(IServiceProvider serviceProvider)
+        /// <param name="serviceProvider">service component provider</param>
+        public AbstractServiceCommand(IServiceComponentProvider serviceProvider)
         {
             ServiceProvider = serviceProvider;
         }

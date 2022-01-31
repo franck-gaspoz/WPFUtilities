@@ -8,8 +8,9 @@
         xmlns:local="clr-namespace:SampleApp.Components.UI"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="DialogWindow" 
-        Height="191.737" Width="281.296">
+        Title="DialogWindow"         
+        Height="191.737" 
+        Width="281.296">
     
     <Grid>
         <Grid.Resources>
