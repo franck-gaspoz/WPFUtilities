@@ -28,10 +28,10 @@ namespace WPFUtilities.AttachedProperties.Window
         /// margin property
         /// </summary>
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register(
+            DependencyProperty.RegisterAttached(
                 "IsEnabled",
                 typeof(bool),
-                typeof(win.Window),
+                typeof(HideOnClose),
                 new UIPropertyMetadata(new bool(), IsEnabledChanged));
 
         static void IsEnabledChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)

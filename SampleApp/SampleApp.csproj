@@ -60,7 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Components\Dialog\AboutWindow.xaml">
+    <Page Include="Windows\AboutWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -89,7 +89,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\OnMainWindowShownCommand.cs" />
-    <Compile Include="Components\Dialog\AboutWindow.xaml.cs">
+    <Compile Include="Windows\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Logging\WindowLogComponent.cs" />
@@ -173,5 +173,6 @@
   <ItemGroup>
     <Resource Include="Resources\Codicons-SymbolClass.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

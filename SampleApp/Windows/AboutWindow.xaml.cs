@@ -2,7 +2,7 @@
 
 using WPFUtilities.Components.Services;
 
-namespace SampleApp.Components.Dialog
+namespace SampleApp.Windows
 {
     /// <summary>
     /// AboutWindow controller
