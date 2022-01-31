@@ -1,37 +1,27 @@
 ﻿using System;
 using System.Windows;
 
-using Microsoft.Extensions.DependencyInjection;
+using WPFUtilities.Commands.Abstract;
 
 namespace WPFUtilities.Commands.Application
 {
     /// <summary>
     /// close a window
     /// </summary>
-    public class CloseWindowCommand : AbstractCommand<CloseWindowCommand>
+    public class CloseWindowCommand : AbstractServiceParametricCommand<CloseWindowCommand, Window>
     {
-        IServiceProvider _serviceProvider;
-
         /// <summary>
         /// creates a new command working with the specified service provider
         /// </summary>
         /// <param name="serviceProvider">service provider</param>
         public CloseWindowCommand(IServiceProvider serviceProvider)
-        {
-            _serviceProvider = serviceProvider;
-        }
+            : base(serviceProvider) { }
 
         /// <summary>
-        /// close a window belonging a services scope
+        /// close a window
         /// </summary>
-        /// <param name="parameter">array of: [dependency object caller,window interface type]</param>
-        public override void Execute(object parameter)
-        {
-            if (parameter is Type type)
-            {
-                var window = (Window)_serviceProvider.GetRequiredService(type);
-                window.Close();
-            }
-        }
+        /// <param name="window">window</param>
+        public override void Execute(Window window)
+            => window.Close();
     }
 }
