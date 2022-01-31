@@ -64,7 +64,7 @@
             <MenuItem Header="About">
                 <MenuItem Header="About..."
                           service:Command.Type="{x:Type interactivityCommand:OpenWindowCommand}"
-                          CommandParameter="{x:Type componentDialog:DialogWindow}"/>
+                          CommandParameter="{x:Type componentDialog:AboutWindow}"/>
             </MenuItem>
             
         </Menu>
