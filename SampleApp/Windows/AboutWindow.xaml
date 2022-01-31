@@ -10,7 +10,7 @@
         Title="About ..." 
         Height="191.737" 
         Width="338.296"
-        window:HideOnClose.IsEnabled="True"
+        window:Properties.HideOnClose="True"
         >
     
     <Grid>
