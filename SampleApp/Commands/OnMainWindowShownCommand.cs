@@ -2,7 +2,7 @@
 
 using Microsoft.Extensions.Logging;
 
-using WPFUtilities.Commands;
+using WPFUtilities.Commands.Abstract;
 
 namespace SampleApp.Commands
 {
