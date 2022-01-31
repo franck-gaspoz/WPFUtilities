@@ -85,7 +85,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commands\OnMainWindowShownCommand.cs" />
-    <Compile Include="Commands\OpenMainWindowCommand.cs" />
     <Compile Include="Components\Logging\WindowLogComponent.cs" />
     <Compile Include="Components\Logging\ILogViewModel.cs" />
     <Compile Include="Components\Logging\ApplicationLogComponent.cs" />

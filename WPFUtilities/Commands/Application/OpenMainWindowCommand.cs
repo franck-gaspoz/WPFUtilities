@@ -1,10 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-using WPFUtilities.Commands;
 using WPFUtilities.Extensions.App;
 
-namespace SampleApp.Commands
+namespace WPFUtilities.Commands.Application
 {
     /// <summary>
     /// open a new main window from application base settings

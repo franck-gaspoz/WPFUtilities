@@ -18,5 +18,9 @@ namespace WPFUtilities.Commands.Application
         /// </summary>
         public static ICommand Log { get; } = LogCommand.Instance;
 
+        /// <summary>
+        /// open a new main window from application base settings
+        /// </summary>
+        public static ICommand OpenMainWindow { get; } = OpenMainWindowCommand.Instance;
     }
 }

@@ -18,8 +18,7 @@
             <MenuItem Header="Application">
 
                 <MenuItem Header="Open a new distinct main window"
-                          service:Command.Type="{x:Type command:OpenMainWindowCommand}"
-                          CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorType={x:Type Window}}}"/>
+                          service:Command.Type="{x:Type applicationCommand:OpenMainWindowCommand}"/>
 
                 <MenuItem Header="Log a message"
                           service:Command.Type="{x:Type applicationCommand:LogCommand}"
