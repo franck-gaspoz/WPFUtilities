@@ -23,6 +23,7 @@
                 <Separator/>
                 
                 <MenuItem Header="Log an application message"
+                          service:Scope.Value="Global"
                           service:Command.Type="{x:Type applicationCommand:LogCommand}"
                           CommandParameter="I am a log message!"/>
         
