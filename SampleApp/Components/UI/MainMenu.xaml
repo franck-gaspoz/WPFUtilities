@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:applicationCommand="clr-namespace:WPFUtilities.Commands.Application;assembly=WPFUtilities"
              xmlns:interactivityCommand="clr-namespace:WPFUtilities.Commands.Interactivity;assembly=WPFUtilities"
-             xmlns:command="clr-namespace:SampleApp.Commands"
              xmlns:componentDialog="clr-namespace:SampleApp.Components.Dialog"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d" 
@@ -14,6 +13,8 @@
     
     <Grid>
         <Menu Padding="4">
+            
+            <!-- application -->
             
             <MenuItem Header="Application">
 
@@ -25,9 +26,10 @@
                 <MenuItem Header="Log an application message"
                           service:Scope.Value="Global"
                           service:Command.Type="{x:Type applicationCommand:LogCommand}"
-                          CommandParameter="I am a log message!"/>
+                          CommandParameter="I am an application log message!"/>
         
                 <MenuItem Header="Clear application log"
+                          service:Scope.Value="Global"
                           service:Command.Type="{x:Type applicationCommand:ClearLogCommand}"/>
 
                 <Separator/>
@@ -35,7 +37,22 @@
                 <MenuItem Header="Exit"
                           service:Command.Type="{x:Type applicationCommand:CloseApplicationCommand}"/>
             </MenuItem>
+            
+            <!-- window -->
 
+            <MenuItem Header="Window">
+
+                <MenuItem Header="Log a window message"
+                          service:Command.Type="{x:Type applicationCommand:LogCommand}"
+                          CommandParameter="I am a window log message!"/>
+
+                <MenuItem Header="Clear window log"
+                          service:Command.Type="{x:Type applicationCommand:ClearLogCommand}"/>
+
+            </MenuItem>
+
+            <!-- dialog -->
+            
             <MenuItem Header="Dialog">
                 <MenuItem Header="Open dialog"
                           service:Command.Type="{x:Type interactivityCommand:OpenWindowCommand}"

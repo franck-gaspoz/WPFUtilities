@@ -64,6 +64,7 @@ namespace SampleApp.Components.UI
             // window scope commands
 
             services.Services.AddSingleton<LogCommand>();
+            services.Services.AddSingleton<ClearLogCommand>();
             services.Services.AddSingleton<OnMainWindowShownCommand>();
         }
     }
