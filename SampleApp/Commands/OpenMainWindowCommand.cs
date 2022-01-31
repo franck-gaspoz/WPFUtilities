@@ -1,17 +1,13 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 
-using SampleApp.Components.UI;
-
 using WPFUtilities.Commands;
 using WPFUtilities.Extensions.App;
-
-using properties = WPFUtilities.Components.Services.Properties;
 
 namespace SampleApp.Commands
 {
     /// <summary>
-    /// open a main window
+    /// open a new main window from application base settings
     /// </summary>
     public class OpenMainWindowCommand : AbstractCommand<OpenMainWindowCommand>, ICommand
     {
@@ -22,22 +18,16 @@ namespace SampleApp.Commands
         /// <summary>
         /// open a main window
         /// </summary>
-        /// <param name="parameter">the window that launched the command : a dependency object with ComponentHost attached property</param>
+        /// <param name="parameter">not used</param>
         public override void Execute(object parameter)
         {
-            if (parameter is DependencyObject dependencyObject)
-            {
-                var componentHost = properties.Component.GetComponentHost(dependencyObject);
-                if (componentHost != null)
-                {
-                    var application = this.GetApplication();
-                    var mainWindowComponent = new MainWindowComponent(componentHost.RootHost);
-                    mainWindowComponent.Configure();
-                    mainWindowComponent.Build();
-                    var window = (Window)mainWindowComponent.ComponentHost.Services.GetService(application.ApplicationBaseSettings.MainWindowType);
-                    window.Show();
-                }
-            }
+            var application = this.GetApplication();
+            var mainWindowComponent = application.ApplicationHost.Services.GetComponent(
+                application.ApplicationBaseSettings.MainWindowComponentInterfaceType
+                );
+            var window = (Window)mainWindowComponent.ComponentHost.Services.GetService(
+                application.ApplicationBaseSettings.MainWindowType);
+            window.Show();
         }
     }
 }

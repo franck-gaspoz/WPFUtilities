@@ -8,9 +8,14 @@ namespace WPFUtilities.Components.Application
     public interface IApplicationBaseSettings
     {
         /// <summary>
-        /// main window component service type
+        /// main window component service interface type
         /// </summary>
-        Type MainWindowComponentType { get; set; }
+        Type MainWindowComponentInterfaceType { get; set; }
+
+        /// <summary>
+        /// main window component service implementation type
+        /// </summary>
+        Type MainWindowComponentImplementationType { get; set; }
 
         /// <summary>
         /// main window type

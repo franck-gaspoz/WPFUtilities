@@ -100,6 +100,7 @@
     <Compile Include="Components\Dialog\DialogWindow.xaml.cs">
       <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\UI\IMainWindowComponent.cs" />
     <Compile Include="Components\UI\IMainWindowViewModel.cs" />
     <Compile Include="Components\UI\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>

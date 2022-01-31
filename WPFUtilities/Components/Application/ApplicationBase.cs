@@ -57,10 +57,10 @@ namespace WPFUtilities.Components.Application
             Func<Window> getWindow = () => (Window)ApplicationHost.Services
                 .GetRequiredService(ApplicationBaseSettings.MainWindowType);
 
-            if (ApplicationBaseSettings.MainWindowComponentType != null)
+            if (ApplicationBaseSettings.MainWindowComponentInterfaceType != null)
             {
                 var _mainWindowComponent = ApplicationHost.Services.GetRequiredComponent(
-                    ApplicationBaseSettings.MainWindowComponentType);
+                    ApplicationBaseSettings.MainWindowComponentInterfaceType);
 
                 getWindow = () => (Window)_mainWindowComponent.ComponentHost.Services
                     .GetService(ApplicationBaseSettings.MainWindowType);
@@ -143,12 +143,13 @@ namespace WPFUtilities.Components.Application
         /// <inheritdoc/>
         public virtual void ConfigureServices(HostBuilderContext context, IServiceCollection services)
         {
-            if (ApplicationBaseSettings.MainWindowComponentType != null)
-                services.AddSingleton(ApplicationBaseSettings.MainWindowComponentType);
+            if (ApplicationBaseSettings.MainWindowComponentInterfaceType != null)
+                services.AddTransient(ApplicationBaseSettings.MainWindowComponentInterfaceType,
+                    ApplicationBaseSettings.MainWindowComponentImplementationType);
             else
             {
                 if (ApplicationBaseSettings.MainWindowType != null)
-                    services.AddSingleton(ApplicationBaseSettings.MainWindowType);
+                    services.AddTransient(ApplicationBaseSettings.MainWindowType);
             }
         }
 

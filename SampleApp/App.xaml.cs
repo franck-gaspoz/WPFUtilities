@@ -23,7 +23,8 @@ namespace SampleApp
             new ApplicationBaseSettings
             {
                 MainWindowType = typeof(MainWindow),
-                MainWindowComponentType = typeof(MainWindowComponent),
+                MainWindowComponentInterfaceType = typeof(IMainWindowComponent),
+                MainWindowComponentImplementationType = typeof(MainWindowComponent),
             })
         { }
 

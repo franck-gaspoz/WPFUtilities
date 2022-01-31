@@ -13,10 +13,14 @@ namespace SampleApp.Components.UI
     /// <summary>
     /// UI component
     /// </summary>
-    public class MainWindowComponent :
+    public sealed class MainWindowComponent :
         AbstractServiceComponent,
+        IMainWindowComponent,
         IServiceComponent
     {
+        /// <inheritdoc/>
+        public IListLoggerModel ListLoggerModel { get; private set; }
+
         /// <summary>
         /// build a new instance
         /// </summary>
@@ -49,15 +53,15 @@ namespace SampleApp.Components.UI
 
             // 'window' scopped logger
 
-            var listLoggerModel = new ListLoggerModel();
-            services.Services.AddSingleton<IListLoggerModel>((sp) => listLoggerModel);
+            ListLoggerModel = new ListLoggerModel();
+            services.Services.AddSingleton<IListLoggerModel>((sp) => ListLoggerModel);
             services.Services.AddLogging((loggingBuilder) =>
             {
                 loggingBuilder.AddListLogger((config) =>
-                    config.Target = listLoggerModel.LogItems);
+                    config.Target = ListLoggerModel.LogItems);
             });
 
-            // window scoped commands
+            // window scope commands
 
             services.Services.AddSingleton<LogCommand>();
             services.Services.AddSingleton<OnMainWindowShownCommand>();
