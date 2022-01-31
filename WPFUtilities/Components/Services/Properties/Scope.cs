@@ -34,7 +34,7 @@ namespace WPFUtilities.Components.Services.Properties
                 "Value",
                 typeof(Scopes),
                 typeof(Scope),
-                new PropertyMetadata(Scopes.Global));
+                new PropertyMetadata(Scopes.Local));
 
         #endregion
     }

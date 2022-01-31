@@ -25,12 +25,12 @@
         <StackPanel Orientation="Horizontal" Grid.Row="1" 
                     wpfulayout:ChildMargin.Value="0,0,8,0">
 
-            <Button Content="Log application message" 
+            <Button Content="Log application message"                                 
+                    service:Scope.Value="Global"
                     service:Command.Type="{x:Type command:LogCommand}"
                     CommandParameter="This is an application log message!"/>
 
-            <Button Content="Log window message"                      
-                    service:Scope.Value="Local"
+            <Button Content="Log window message"         
                     service:Command.Type="{x:Type command:LogCommand}"
                     CommandParameter="This is a window log message!"/>
             
