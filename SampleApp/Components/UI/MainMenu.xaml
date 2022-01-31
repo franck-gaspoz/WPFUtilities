@@ -17,13 +17,18 @@
             
             <MenuItem Header="Application">
 
-                <MenuItem Header="Open a new distinct main window"
+                <MenuItem Header="Open a new independent main window"
                           service:Command.Type="{x:Type applicationCommand:OpenMainWindowCommand}"/>
 
-                <MenuItem Header="Log a message"
+                <Separator/>
+                
+                <MenuItem Header="Log an application message"
                           service:Command.Type="{x:Type applicationCommand:LogCommand}"
                           CommandParameter="I am a log message!"/>
-                
+        
+                <MenuItem Header="Clear application log"
+                          service:Command.Type="{x:Type applicationCommand:ClearLogCommand}"/>
+
                 <Separator/>
                 
                 <MenuItem Header="Exit"

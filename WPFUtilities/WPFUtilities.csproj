@@ -96,6 +96,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Application\ClearLogCommand.cs" />
     <Compile Include="Commands\Application\OpenMainWindowCommand.cs" />
     <Compile Include="ComponentModels\InstanceCounter.cs" />
     <Compile Include="Components\Services\Properties\Command.cs" />
