@@ -10,10 +10,6 @@ namespace WPFUtilities.Commands.Application
     /// </summary>
     public class OpenMainWindowCommand : AbstractCommand<OpenMainWindowCommand>, ICommand
     {
-        /// <inheritdoc/>
-        public override bool CanExecute(object parameter)
-            => true;
-
         /// <summary>
         /// open a main window
         /// </summary>

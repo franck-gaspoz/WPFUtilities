@@ -7,6 +7,7 @@
              xmlns:interactivityCommand="clr-namespace:WPFUtilities.Commands.Interactivity;assembly=WPFUtilities"
              xmlns:componentDialog="clr-namespace:SampleApp.Components.Dialog"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
+             xmlns:ui="clr-namespace:SampleApp.Components.UI"
              mc:Ignorable="d" 
              d:DesignHeight="32" 
              d:DesignWidth="800">
@@ -48,6 +49,13 @@
 
                 <MenuItem Header="Clear window log"
                           service:Command.Type="{x:Type applicationCommand:ClearLogCommand}"/>
+
+                <Separator/>
+
+                <MenuItem Header="Close window"
+                          service:Command.Type="{x:Type applicationCommand:CloseWindowCommand}"
+                          CommandParameter="{x:Type ui:MainWindow}"
+                          />
 
             </MenuItem>
 
