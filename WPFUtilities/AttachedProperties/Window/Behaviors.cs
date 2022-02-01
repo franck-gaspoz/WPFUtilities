@@ -19,14 +19,14 @@ namespace WPFUtilities.AttachedProperties.Window
         public static bool GetHideOnClose(DependencyObject dependencyObject) => (bool)dependencyObject.GetValue(HideOnCloseProperty);
 
         /// <summary>
-        /// get margin
+        /// set HideOnClose
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="value">value</param>
         public static void SetHideOnClose(DependencyObject dependencyObject, bool value) => dependencyObject.SetValue(HideOnCloseProperty, value);
 
         /// <summary>
-        /// margin property
+        /// HideOnClose property
         /// </summary>
         public static readonly DependencyProperty HideOnCloseProperty =
             DependencyProperty.Register(
@@ -37,7 +37,7 @@ namespace WPFUtilities.AttachedProperties.Window
 
         static void HideOnCloseChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if (dependencyObject is win.Window window)
+            if ((bool)eventArgs.NewValue && dependencyObject is win.Window window)
             {
                 window.Closing += (o, e) =>
                 {
@@ -77,7 +77,7 @@ namespace WPFUtilities.AttachedProperties.Window
 
         static void RestoreInitialLocationOnShowChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if (dependencyObject is win.Window window)
+            if ((bool)eventArgs.NewValue && dependencyObject is win.Window window)
             {
                 window.StateChanged += (o, e) =>
                 {

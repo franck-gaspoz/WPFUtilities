@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttachedProperties\Window\Behaviors.cs" />
+    <Compile Include="AttachedProperties\Window\Location.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceCommand.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceParametricCommand.cs" />
     <Compile Include="Commands\Application\ClearLogCommand.cs" />
