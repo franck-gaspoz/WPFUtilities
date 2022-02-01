@@ -16,7 +16,7 @@ namespace WPFUtilities.AttachedProperties.Layout
         public static Thickness GetValue(DependencyObject dependencyObject) => (Thickness)dependencyObject.GetValue(ValueProperty);
 
         /// <summary>
-        /// get margin
+        /// set margin
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="value">value</param>
