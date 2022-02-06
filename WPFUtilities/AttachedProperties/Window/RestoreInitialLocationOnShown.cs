@@ -7,7 +7,7 @@ namespace WPFUtilities.AttachedProperties.Window
     /// <summary>
     /// restore initial location on show
     /// </summary>
-    public static partial class Behaviors
+    public static partial class Features
     {
         #region restore initial location on show
 

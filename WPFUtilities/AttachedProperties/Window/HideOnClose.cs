@@ -7,7 +7,7 @@ namespace WPFUtilities.AttachedProperties.Window
     /// <summary>
     /// hide on close
     /// </summary>
-    public static partial class Behaviors
+    public static partial class Features
     {
         #region hide on close
 

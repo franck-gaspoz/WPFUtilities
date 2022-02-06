@@ -10,8 +10,8 @@
         Title="About ..." 
         Height="191.737" 
         Width="338.296"
-        window:Behaviors.HideOnClose="True"
-        window:Behaviors.RestoreInitialLocationOnShow="True"
+        window:Features.HideOnClose="True"
+        window:Features.RestoreInitialLocationOnShow="True"
         >
     
     <Grid>
