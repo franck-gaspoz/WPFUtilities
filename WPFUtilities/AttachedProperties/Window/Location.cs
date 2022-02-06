@@ -9,6 +9,11 @@ namespace WPFUtilities.AttachedProperties.Window
     /// </summary>
     public static class Location
     {
+        /// <summary>
+        /// initial left,top value when not initialized
+        /// </summary>
+        public const double NotInitializedLocation = double.MinValue;
+
         #region initial left
 
         /// <summary>
@@ -16,14 +21,14 @@ namespace WPFUtilities.AttachedProperties.Window
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
-        public static bool GetInitialLeft(DependencyObject dependencyObject) => (bool)dependencyObject.GetValue(InitialLeftProperty);
+        public static double GetInitialLeft(DependencyObject dependencyObject) => (double)dependencyObject.GetValue(InitialLeftProperty);
 
         /// <summary>
         /// set InitialLeft
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="value">value</param>
-        public static void SetInitialLeft(DependencyObject dependencyObject, bool value) => dependencyObject.SetValue(InitialLeftProperty, value);
+        public static void SetInitialLeft(DependencyObject dependencyObject, double value) => dependencyObject.SetValue(InitialLeftProperty, value);
 
         /// <summary>
         /// InitialLeft property
@@ -33,35 +38,35 @@ namespace WPFUtilities.AttachedProperties.Window
                 "InitialLeft",
                 typeof(double),
                 typeof(win.Window),
-                new UIPropertyMetadata(0));
+                new UIPropertyMetadata(NotInitializedLocation));
 
         #endregion
 
-        #region initial right
+        #region initial top
 
         /// <summary>
-        /// get InitialRight
+        /// get InitialTop
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
-        public static bool GetInitialRight(DependencyObject dependencyObject) => (bool)dependencyObject.GetValue(InitialRightProperty);
+        public static double GetInitialTop(DependencyObject dependencyObject) => (double)dependencyObject.GetValue(InitialTopProperty);
 
         /// <summary>
-        /// set InitialRight
+        /// set InitialTop
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="value">value</param>
-        public static void SetInitialRight(DependencyObject dependencyObject, bool value) => dependencyObject.SetValue(InitialRightProperty, value);
+        public static void SetInitialTop(DependencyObject dependencyObject, double value) => dependencyObject.SetValue(InitialTopProperty, value);
 
         /// <summary>
-        /// InitialRight property
+        /// InitialTop property
         /// </summary>
-        public static readonly DependencyProperty InitialRightProperty =
+        public static readonly DependencyProperty InitialTopProperty =
             DependencyProperty.Register(
-                "InitialRight",
+                "InitialTop",
                 typeof(double),
                 typeof(win.Window),
-                new UIPropertyMetadata(0));
+                new UIPropertyMetadata(NotInitializedLocation));
 
         #endregion
     }

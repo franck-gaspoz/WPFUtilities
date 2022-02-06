@@ -5,7 +5,7 @@ using win = System.Windows;
 namespace WPFUtilities.AttachedProperties.Window
 {
     /// <summary>
-    /// hide on close a window
+    /// window behaviors defined as properties
     /// </summary>
     public static class Behaviors
     {
@@ -79,10 +79,25 @@ namespace WPFUtilities.AttachedProperties.Window
         {
             if ((bool)eventArgs.NewValue && dependencyObject is win.Window window)
             {
-                window.StateChanged += (o, e) =>
-                {
+                window.IsVisibleChanged += Window_IsVisibleChanged;
+            }
+        }
 
-                };
+        private static void Window_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            if ((bool)e.NewValue && sender is win.Window win)
+            {
+                var initialLeft = Location.GetInitialLeft(win);
+                if (initialLeft == Location.NotInitializedLocation)
+                    Location.SetInitialLeft(win, win.Left);
+                else
+                    win.Left = initialLeft;
+
+                var initialTop = Location.GetInitialTop(win);
+                if (initialTop == Location.NotInitializedLocation)
+                    Location.SetInitialTop(win, win.Top);
+                else
+                    win.Top = initialTop;
             }
         }
 
