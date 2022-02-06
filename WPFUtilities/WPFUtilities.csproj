@@ -96,8 +96,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttachedProperties\Window\Behaviors.cs" />
+    <Compile Include="AttachedProperties\Window\HideOnClose.cs" />
+    <Compile Include="AttachedProperties\Window\RestoreInitialLocationOnShown.cs" />
     <Compile Include="AttachedProperties\Window\Location.cs" />
+    <Compile Include="Behaviors\Window\OnDisplayInvokeCommand.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceCommand.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceParametricCommand.cs" />
     <Compile Include="Commands\Application\ClearLogCommand.cs" />
@@ -140,7 +142,6 @@
     <Compile Include="Behaviors\Interactivity\PropertyChangedDelegateCommandBehavior.cs" />
     <Compile Include="Behaviors\Scrolling\ScrollViewerHelperFeatureBehavior.cs" />
     <Compile Include="Behaviors\Scrolling\ScrollViewerTouchBehavior.cs" />
-    <Compile Include="Behaviors\Windows\WindowDisplayedDelegateCommandBehavior.cs" />
     <Compile Include="Behaviors\Layout\CollapseSplitedPanelBehavior.cs" />
     <Compile Include="Commands\Abstract\AbstractCommand.cs" />
     <Compile Include="Commands\Application\ApplicationCommands.cs" />

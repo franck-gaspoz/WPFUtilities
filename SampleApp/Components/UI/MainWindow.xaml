@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:commands="clr-namespace:SampleApp.Commands"
-        xmlns:wpfubehaviorsWindows="clr-namespace:WPFUtilities.Behaviors.Windows;assembly=WPFUtilities"
+        xmlns:window="clr-namespace:WPFUtilities.Behaviors.Window;assembly=WPFUtilities"
         xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
         xmlns:ui="clr-namespace:SampleApp.Components.UI"
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
@@ -15,16 +15,17 @@
         Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"
         Topmost="False"
-        Height="600" Width="800"        
+        Height="600" 
+        Width="800"        
         >
-    
+
     <Behaviors:Interaction.Behaviors>
-        <wpfubehaviorsWindows:WindowDisplayedDelegateCommandBehavior 
+        <window:OnDisplayInvokeCommand 
             service:Scope.Value="Local"
             service:Command.Type="{x:Type commands:OnMainWindowShownCommand}"
             />
     </Behaviors:Interaction.Behaviors>
-    
+
     <Grid>
         
         <Grid.RowDefinitions>
