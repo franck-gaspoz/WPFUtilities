@@ -11,6 +11,7 @@
         Height="191.737" 
         Width="338.296"
         window:Behaviors.HideOnClose="True"
+        window:Behaviors.RestoreInitialLocationOnShow="True"
         >
     
     <Grid>
