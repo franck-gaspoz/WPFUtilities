@@ -10,13 +10,13 @@
         xmlns:ui="clr-namespace:SampleApp.Components.UI"
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
         d:DataContext="{d:DesignInstance Type=ui:MainWindowViewModel}"
-        service:DataContext.IsAuto="True"
         mc:Ignorable="d"
         Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"
         Topmost="False"
         Height="600" 
         Width="800"        
+        service:DataContext.IsAuto="True"
         >
 
     <Behaviors:Interaction.Behaviors>
