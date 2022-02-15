@@ -1,7 +1,7 @@
 ﻿using System.Windows.Media;
 
 using WPFUtilities.Commands.Abstract;
-using WPFUtilities.Components.Render;
+using WPFUtilities.Components.UI.Render;
 
 namespace WPFUtilities.Commands.Render
 {

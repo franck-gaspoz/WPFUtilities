@@ -3,15 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:layout="clr-namespace:WPFUtilities.AttachedProperties.Layout;assembly=WPFUtilities"
-        xmlns:window="clr-namespace:WPFUtilities.AttachedProperties.Window;assembly=WPFUtilities"
+        xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="About ..." 
         Height="191.737" 
         Width="338.296"
-        window:Features.HideOnClose="True"
-        window:Features.RestoreInitialLocationOnShow="True"
+        ui:Window.HideOnClose="True"
+        ui:Window.RestoreInitialLocationOnShow="True"
         >
     
     <Grid>
@@ -51,7 +50,7 @@
                     Margin="4"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal"
-                    layout:ChildMargin.Value="4"
+                    ui:Layout.ChildMargin="4"
                     >
             <Button Content="Ok" IsDefault="True"/>
         </StackPanel>

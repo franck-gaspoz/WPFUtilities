@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.Logging" 
-             xmlns:wpfuscrolling="clr-namespace:WPFUtilities.AttachedProperties.Scrolling;assembly=WPFUtilities"             
+             xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"             
              d:DataContext="{d:DesignInstance Type=local:LogViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="200">
@@ -21,7 +21,7 @@
         <ListView ItemsSource="{Binding Messages}" 
                   FontFamily="Courier New"
                   Grid.Row="1"
-                  wpfuscrolling:ScrollDown.IsAuto="True"
+                  ui:Scrolling.IsAuto="True"
                   />
     </Grid>
 </UserControl>

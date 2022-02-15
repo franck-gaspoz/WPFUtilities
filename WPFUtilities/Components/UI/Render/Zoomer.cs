@@ -8,7 +8,7 @@ using System.Windows.Media.Animation;
 
 using WPFUtilities.ComponentModels;
 
-namespace WPFUtilities.Components.Render
+namespace WPFUtilities.Components.UI.Render
 {
     /// <summary>
     /// zoomer interactor (TODO: complete)

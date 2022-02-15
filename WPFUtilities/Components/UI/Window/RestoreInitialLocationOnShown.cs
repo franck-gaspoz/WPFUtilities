@@ -2,12 +2,12 @@
 
 using win = System.Windows;
 
-namespace WPFUtilities.AttachedProperties.Window
+namespace WPFUtilities.Components.UI
 {
     /// <summary>
     /// restore initial location on show
     /// </summary>
-    public static partial class Features
+    public static partial class Window
     {
         #region restore initial location on show
 
@@ -49,15 +49,15 @@ namespace WPFUtilities.AttachedProperties.Window
         {
             if ((bool)e.NewValue && sender is win.Window win)
             {
-                var initialLeft = Location.GetInitialLeft(win);
-                if (initialLeft == Location.NotInitializedLocation)
-                    Location.SetInitialLeft(win, win.Left);
+                var initialLeft = Window.GetInitialLeft(win);
+                if (initialLeft == Window.NotInitializedLocation)
+                    Window.SetInitialLeft(win, win.Left);
                 else
                     win.Left = initialLeft;
 
-                var initialTop = Location.GetInitialTop(win);
-                if (initialTop == Location.NotInitializedLocation)
-                    Location.SetInitialTop(win, win.Top);
+                var initialTop = Window.GetInitialTop(win);
+                if (initialTop == Window.NotInitializedLocation)
+                    Window.SetInitialTop(win, win.Top);
                 else
                     win.Top = initialTop;
             }

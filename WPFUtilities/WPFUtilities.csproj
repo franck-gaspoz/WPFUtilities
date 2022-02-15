@@ -96,10 +96,13 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AttachedProperties\Window\HideOnClose.cs" />
-    <Compile Include="AttachedProperties\Window\RestoreInitialLocationOnShown.cs" />
-    <Compile Include="AttachedProperties\Window\Location.cs" />
-    <Compile Include="Behaviors\Window\OnDisplayInvokeCommand.cs" />
+    <Compile Include="Components\Services\Properties\FrameworkElementExtensions.cs" />
+    <Compile Include="Components\UI\Scrolling\ScrollDown.cs" />
+    <Compile Include="Components\UI\Window\HideOnClose.cs" />
+    <Compile Include="Components\UI\Window\OnDisplayCommand.cs" />
+    <Compile Include="Components\UI\Window\RestoreInitialLocationOnShown.cs" />
+    <Compile Include="Components\UI\Window\Location.cs" />
+    <Compile Include="Components\UI\Window\OnDisplayInvokeCommand.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceCommand.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceParametricCommand.cs" />
     <Compile Include="Commands\Application\ClearLogCommand.cs" />
@@ -109,7 +112,6 @@
     <Compile Include="Commands\Application\OpenMainWindowCommand.cs" />
     <Compile Include="ComponentModels\InstanceCounter.cs" />
     <Compile Include="Components\Services\Properties\Command.cs" />
-    <Compile Include="AttachedProperties\Scrolling\ScrollDown.cs" />
     <Compile Include="Components\ServiceComponent\ComponentHostLookup.cs" />
     <Compile Include="Components\Services\Properties\Component.cs" />
     <Compile Include="Components\ServiceComponent\IServiceComponentCollection.cs" />
@@ -138,11 +140,11 @@
     <Compile Include="Components\Logging\ListLogger\ListLoggerProvider.cs" />
     <Compile Include="Components\Services\ISingletonServiceDependencyInitializer.cs" />
     <Compile Include="Behaviors\Scrolling\IScrollViewerHelperFeature.cs" />
-    <Compile Include="AttachedProperties\Layout\ChildMargin.cs" />
+    <Compile Include="Components\UI\Layout\ChildMargin.cs" />
     <Compile Include="Behaviors\Interactivity\PropertyChangedDelegateCommandBehavior.cs" />
     <Compile Include="Behaviors\Scrolling\ScrollViewerHelperFeatureBehavior.cs" />
     <Compile Include="Behaviors\Scrolling\ScrollViewerTouchBehavior.cs" />
-    <Compile Include="Behaviors\Layout\CollapseSplitedPanelBehavior.cs" />
+    <Compile Include="Components\UI\Layout\CollapseSplitedPanelBehavior.cs" />
     <Compile Include="Commands\Abstract\AbstractCommand.cs" />
     <Compile Include="Commands\Application\ApplicationCommands.cs" />
     <Compile Include="Commands\Application\CloseApplicationCommand.cs" />
@@ -172,7 +174,7 @@
     <Compile Include="Components\Logging\ListLogger\ListLogger.cs" />
     <Compile Include="Components\Logging\ListLogger\ListLoggerConfiguration.cs" />
     <Compile Include="Components\Logging\ListLogger\ListLoggerExtensions.cs" />
-    <Compile Include="Components\Render\Zoomer.cs" />
+    <Compile Include="Components\UI\Render\Zoomer.cs" />
     <Compile Include="Components\Application\IApplicationBase.cs" />
     <Compile Include="Components\Services\IServicesDependenciesBuilder.cs" />
     <Compile Include="Components\Services\IServicesDependencyTypeResolver.cs" />
@@ -232,6 +234,8 @@
     <Resource Include="Resources\Codicons-SymbolClass.ico" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Behaviors\Layout\" />
+    <Folder Include="Behaviors\Window\" />
     <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>

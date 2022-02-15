@@ -2,12 +2,12 @@
 
 using win = System.Windows;
 
-namespace WPFUtilities.AttachedProperties.Window
+namespace WPFUtilities.Components.UI
 {
     /// <summary>
     /// hide on close
     /// </summary>
-    public static partial class Features
+    public static partial class Window
     {
         #region hide on close
 

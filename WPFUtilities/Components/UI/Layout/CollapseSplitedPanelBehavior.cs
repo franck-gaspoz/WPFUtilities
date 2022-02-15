@@ -5,7 +5,7 @@ using Microsoft.Xaml.Behaviors;
 
 using WPFUtilities.Helpers;
 
-namespace WPFUtilities.Behaviors.Layout
+namespace WPFUtilities.Components.UI
 {
     /// <summary>
     /// collapse a split panel behavior

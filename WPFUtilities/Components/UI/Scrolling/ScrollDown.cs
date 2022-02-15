@@ -4,12 +4,12 @@ using System.Windows.Controls;
 
 using WPFUtilities.Helpers;
 
-namespace WPFUtilities.AttachedProperties.Scrolling
+namespace WPFUtilities.Components.UI
 {
     /// <summary>
     /// auto scroll down
     /// </summary>
-    public static class ScrollDown
+    public static partial class Scrolling
     {
         /// <summary>
         /// get is auto
@@ -38,7 +38,7 @@ namespace WPFUtilities.AttachedProperties.Scrolling
             DependencyProperty.RegisterAttached(
                 "IsAuto",
                 typeof(bool),
-                typeof(ScrollDown),
+                typeof(Scrolling),
                 new PropertyMetadata(false, IsAutoChanged));
 
         static void IsAutoChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)

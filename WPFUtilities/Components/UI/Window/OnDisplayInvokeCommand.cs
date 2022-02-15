@@ -8,11 +8,12 @@ using WPFUtilities.Extensions.Behaviors;
 
 using win = System.Windows;
 
-namespace WPFUtilities.Behaviors.Window
+namespace WPFUtilities.Components.UI
 {
     /// <summary>
     /// call delegate command when a window is totally displayed (visible on screen)
     /// </summary>
+    [Obsolete]
     public class OnDisplayInvokeCommand
         : Behavior<win.Window>
     {

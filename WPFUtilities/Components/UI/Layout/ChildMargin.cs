@@ -1,35 +1,35 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace WPFUtilities.AttachedProperties.Layout
+namespace WPFUtilities.Components.UI
 {
     /// <summary>
     /// margin setter property behavior
     /// </summary>
-    public static class ChildMargin
+    public static partial class Layout
     {
         /// <summary>
         /// get margin
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
-        public static Thickness GetValue(DependencyObject dependencyObject) => (Thickness)dependencyObject.GetValue(ValueProperty);
+        public static Thickness GetChildMargin(DependencyObject dependencyObject) => (Thickness)dependencyObject.GetValue(ChildMarginProperty);
 
         /// <summary>
         /// set margin
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
-        /// <param name="value">value</param>
-        public static void SetValue(DependencyObject dependencyObject, Thickness value) => dependencyObject.SetValue(ValueProperty, value);
+        /// <param name="ChildMargin">ChildMargin</param>
+        public static void SetChildMargin(DependencyObject dependencyObject, Thickness ChildMargin) => dependencyObject.SetValue(ChildMarginProperty, ChildMargin);
 
         /// <summary>
         /// margin property
         /// </summary>
-        public static readonly DependencyProperty ValueProperty =
+        public static readonly DependencyProperty ChildMarginProperty =
             DependencyProperty.RegisterAttached(
-                "Value",
+                "ChildMargin",
                 typeof(Thickness),
-                typeof(ChildMargin),
+                typeof(Layout),
                 new UIPropertyMetadata(new Thickness(), ChildMarginChanged));
 
         static void ChildMarginChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
@@ -37,12 +37,11 @@ namespace WPFUtilities.AttachedProperties.Layout
             if (dependencyObject is Panel panel)
                 panel.Loaded += (o, e) =>
                     CreateThicknessForChildrens(panel);
-
         }
 
         static void CreateThicknessForChildrens(Panel panel)
         {
-            var childMargin = (Thickness)panel.GetValue(ValueProperty);
+            var childMargin = (Thickness)panel.GetValue(ChildMarginProperty);
             foreach (var child in panel.Children)
             {
                 var fe = child as FrameworkElement;

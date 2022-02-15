@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:commands="clr-namespace:SampleApp.Commands"
-        xmlns:window="clr-namespace:WPFUtilities.Behaviors.Window;assembly=WPFUtilities"
+        xmlns:window="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
         xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
         xmlns:ui="clr-namespace:SampleApp.Components.UI"
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
@@ -17,14 +17,8 @@
         Height="600" 
         Width="800"        
         service:DataContext.IsAuto="True"
+        window:OnDisplayCommand.Type="{x:Type commands:OnMainWindowShownCommand}"
         >
-
-    <Behaviors:Interaction.Behaviors>
-        <window:OnDisplayInvokeCommand 
-            service:Scope.Value="Local"
-            service:Command.Type="{x:Type commands:OnMainWindowShownCommand}"
-            />
-    </Behaviors:Interaction.Behaviors>
 
     <Grid>
         

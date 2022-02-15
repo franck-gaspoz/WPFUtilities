@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:wpfulayout="clr-namespace:WPFUtilities.AttachedProperties.Layout;assembly=WPFUtilities"
+        xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
         xmlns:local="clr-namespace:SampleApp.Components.UI"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
@@ -49,7 +49,7 @@
                     Margin="4"
                     HorizontalAlignment="Center"
                     Orientation="Horizontal"
-                    wpfulayout:ChildMargin.Value="4"
+                    ui:Layout.ChildMargin="4"
                     >
             <Button Content="Yes"/>
             <Button Content="No" IsDefault="True"/>

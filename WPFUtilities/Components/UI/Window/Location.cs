@@ -2,12 +2,12 @@
 
 using win = System.Windows;
 
-namespace WPFUtilities.AttachedProperties.Window
+namespace WPFUtilities.Components.UI
 {
     /// <summary>
     /// window location properties
     /// </summary>
-    public static class Location
+    public static partial class Window
     {
         /// <summary>
         /// initial left,top value when not initialized

@@ -5,10 +5,7 @@ using System.Windows;
 
 using Microsoft.Xaml.Behaviors;
 
-using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Extensions.Behaviors;
-
-using properties = WPFUtilities.Components.Services.Properties;
 
 namespace WPFUtilities.Components.Services.Properties
 {
@@ -64,7 +61,7 @@ namespace WPFUtilities.Components.Services.Properties
 
             if (!(eventArgs.NewValue is Type type)) return;
             if (dependencyObject is FrameworkElement frameworkElement)
-                SetupFrameworkElementFromCommandType(frameworkElement, frameworkElement, type);
+                SetupFrameworkElementCommandPropertyFromCommandType(frameworkElement, frameworkElement, type);
             else
             {
                 if (dependencyObject is Behavior behavior)
@@ -94,7 +91,7 @@ namespace WPFUtilities.Components.Services.Properties
                     if (associatedObject is FrameworkElement frameworkElement)
                     {
                         Type type = GetType(behavior);
-                        SetupFrameworkElementFromCommandType(frameworkElement, behavior, type);
+                        SetupFrameworkElementCommandPropertyFromCommandType(frameworkElement, behavior, type);
                     }
                     else
                         throw new Exception($"associated object '{associatedObject}' is not of type FrameworkElement");
@@ -104,34 +101,11 @@ namespace WPFUtilities.Components.Services.Properties
                 throw new InvalidOperationException($"sender '{sender}' is not of type Behavior");
         }
 
-        static void SetupFrameworkElementFromCommandType(
+        static void SetupFrameworkElementCommandPropertyFromCommandType(
             FrameworkElement source,
             DependencyObject target,
-            Type type)
-        {
-            ComponentHostLookup.SetComponentHostPropertyFromResolvedComponentWhenLoaded(source);
+            Type commandType)
+            => source.AssignServiceToProperty(target, commandType, "Command");
 
-            void InitializeAtLoaded(object src, EventArgs e)
-            {
-                source.Loaded -= InitializeAtLoaded;
-
-                var scope = properties.Scope.GetValue(target);
-
-                var host = properties.Component.GetComponentHost(source)
-                    ?? throw new InvalidOperationException("target host is null");
-
-                if (scope == Scopes.Global)
-                    host = host.RootHost;
-
-                var command = host.Services.GetRequiredService(type);
-
-                var commandProperty = target.GetType().GetProperty("Command")
-                    ?? throw new InvalidOperationException("target has no property Command");
-
-                commandProperty.SetValue(target, command);
-            }
-
-            source.Loaded += InitializeAtLoaded;
-        }
     }
 }
