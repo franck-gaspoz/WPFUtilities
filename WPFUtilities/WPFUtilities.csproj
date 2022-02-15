@@ -98,11 +98,11 @@
   <ItemGroup>
     <Compile Include="Components\Services\Properties\FrameworkElementExtensions.cs" />
     <Compile Include="Components\UI\Scrolling\ScrollDown.cs" />
-    <Compile Include="Components\UI\Window\HideOnClose.cs" />
-    <Compile Include="Components\UI\Window\OnDisplayCommand.cs" />
-    <Compile Include="Components\UI\Window\RestoreInitialLocationOnShown.cs" />
-    <Compile Include="Components\UI\Window\Location.cs" />
-    <Compile Include="Components\UI\Window\OnDisplayInvokeCommand.cs" />
+    <Compile Include="Components\UI\WindowExtensions\HideOnClose.cs" />
+    <Compile Include="Components\UI\WindowExtensions\OnDisplayCommand.cs" />
+    <Compile Include="Components\UI\WindowExtensions\RestoreInitialLocationOnShown.cs" />
+    <Compile Include="Components\UI\WindowExtensions\Location.cs" />
+    <Compile Include="Components\UI\WindowExtensions\OnDisplayInvokeCommand.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceCommand.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceParametricCommand.cs" />
     <Compile Include="Commands\Application\ClearLogCommand.cs" />

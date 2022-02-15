@@ -6,7 +6,7 @@ using WPFUtilities.Components.Services.Properties;
 
 using win = System.Windows;
 
-namespace WPFUtilities.Components.UI
+namespace WPFUtilities.Components.UI.WindowExtensions
 {
     /// <summary>
     /// on display invoke a command resolve from a service

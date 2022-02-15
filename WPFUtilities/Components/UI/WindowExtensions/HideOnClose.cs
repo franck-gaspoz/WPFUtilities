@@ -44,7 +44,7 @@ namespace WPFUtilities.Components.UI
                 window.Closing += (o, e) =>
                 {
                     e.Cancel = true;
-                    ((win.Window)o).Hide();
+                    (o as win.Window)?.Hide();
                 };
             }
         }
