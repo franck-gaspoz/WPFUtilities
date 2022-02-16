@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using SampleApp.Commands;
 using SampleApp.Components.Logging;
 
 using WPFUtilities.Commands.Application;
@@ -65,9 +64,7 @@ namespace SampleApp.Components.UI
 
             services.Services
                 .AddSingleton<LogCommand>()
-                .AddSingleton<ClearLogCommand>()
-                .AddSingleton<OnMainWindowShownCommand>()
-                .AddSingleton<CloseWindowCommand>();
+                .AddSingleton<ClearLogCommand>();
         }
     }
 }
