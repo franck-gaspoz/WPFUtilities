@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 using Microsoft.Xaml.Behaviors;
 
-namespace WPFUtilities.Behaviors.Interactivity
+namespace WPFUtilities.Components.UI.Interactivity
 {
     /// <summary>
     /// property changed command delegate behavior

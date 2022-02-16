@@ -3,7 +3,7 @@ using System.Windows.Controls;
 
 using Microsoft.Xaml.Behaviors;
 
-namespace WPFUtilities.Behaviors.Scrolling
+namespace WPFUtilities.Components.UI.ScrollingExtensions
 {
     /// <summary>
     /// scroll viewer helper feature behavior. exports scroll viewer properties to a model

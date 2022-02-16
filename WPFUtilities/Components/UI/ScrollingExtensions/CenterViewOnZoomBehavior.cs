@@ -5,7 +5,7 @@ using GIS.Common.Logger;
 
 using Microsoft.Xaml.Behaviors;
 
-namespace WPFUtilities.Behaviors.ScrollViewers
+namespace WPFUtilities.Components.UI.ScrollingExtensions
 {
     public class CenterZoomOnViewBehavior :
         Behavior<FrameworkElement>

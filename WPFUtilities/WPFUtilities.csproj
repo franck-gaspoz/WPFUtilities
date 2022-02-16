@@ -97,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Services\Properties\FrameworkElementExtensions.cs" />
-    <Compile Include="Components\UI\Scrolling\ScrollDown.cs" />
+    <Compile Include="Components\UI\ScrollingExtensions\ScrollDown.cs" />
     <Compile Include="Components\UI\WindowExtensions\HideOnClose.cs" />
     <Compile Include="Components\UI\WindowExtensions\OnDisplayCommand.cs" />
     <Compile Include="Components\UI\WindowExtensions\RestoreInitialLocationOnShown.cs" />
@@ -139,11 +139,11 @@
     <Compile Include="Components\Logging\ListLogger\IListLogger.cs" />
     <Compile Include="Components\Logging\ListLogger\ListLoggerProvider.cs" />
     <Compile Include="Components\Services\ISingletonServiceDependencyInitializer.cs" />
-    <Compile Include="Behaviors\Scrolling\IScrollViewerHelperFeature.cs" />
+    <Compile Include="Components\UI\ScrollingExtensions\IScrollViewerHelperFeature.cs" />
     <Compile Include="Components\UI\Layout\ChildMargin.cs" />
-    <Compile Include="Behaviors\Interactivity\PropertyChangedDelegateCommandBehavior.cs" />
-    <Compile Include="Behaviors\Scrolling\ScrollViewerHelperFeatureBehavior.cs" />
-    <Compile Include="Behaviors\Scrolling\ScrollViewerTouchBehavior.cs" />
+    <Compile Include="Components\UI\Interactivity\PropertyChangedDelegateCommandBehavior.cs" />
+    <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelperFeatureBehavior.cs" />
+    <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouchBehavior.cs" />
     <Compile Include="Components\UI\Layout\CollapseSplitedPanelBehavior.cs" />
     <Compile Include="Commands\Abstract\AbstractCommand.cs" />
     <Compile Include="Commands\Application\ApplicationCommands.cs" />
@@ -234,8 +234,7 @@
     <Resource Include="Resources\Codicons-SymbolClass.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Behaviors\Layout\" />
-    <Folder Include="Behaviors\Window\" />
+    <Folder Include="Behaviors\" />
     <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
