@@ -1,4 +1,4 @@
-﻿namespace WPFUtilities.Components.UI.Layout
+﻿namespace WPFUtilities.Components.UI
 {
     /// <summary>
     /// layout extensions

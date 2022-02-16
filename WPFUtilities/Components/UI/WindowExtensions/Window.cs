@@ -1,4 +1,4 @@
-﻿namespace WPFUtilities.Components.UI.WindowExtensions
+﻿namespace WPFUtilities.Components.UI
 {
     /// <summary>
     /// window properties extensions

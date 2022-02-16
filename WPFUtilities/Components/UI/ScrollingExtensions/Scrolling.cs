@@ -1,4 +1,4 @@
-﻿namespace WPFUtilities.Components.UI.ScrollingExtensions
+﻿namespace WPFUtilities.Components.UI
 {
     /// <summary>
     /// scrolling properties extensions
