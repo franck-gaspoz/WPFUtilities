@@ -4,6 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
+        xmlns:appCommands="clr-namespace:WPFUtilities.Commands.Application;assembly=WPFUtilities"
+        xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="About ..." 
@@ -11,6 +13,7 @@
         Width="338.296"
         ui:Window.HideOnClose="True"
         ui:Window.RestoreInitialLocationOnShow="True"
+        x:Name="window"
         >
     
     <Grid>
@@ -52,7 +55,10 @@
                     Orientation="Horizontal"
                     ui:Layout.ChildMargin="4"
                     >
-            <Button Content="Ok" IsDefault="True"/>
+            <Button Content="Ok" IsDefault="True"
+                    service:Command.Type="{x:Type appCommands:CloseWindowCommand}"
+                    CommandParameter="{Binding .,ElementName=window}"
+                    />
         </StackPanel>
         
     </Grid>

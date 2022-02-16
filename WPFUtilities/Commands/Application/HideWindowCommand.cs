@@ -1,27 +1,24 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 using WPFUtilities.Commands.Abstract;
-using WPFUtilities.Components.ServiceComponent;
 
 namespace WPFUtilities.Commands.Application
 {
     /// <summary>
     /// close a window
     /// </summary>
-    public class HideWindowCommand : AbstractServiceParametricCommand<HideWindowCommand, Window>
+    public class HideWindowCommand : AbstractCommand<LogCommand>, ICommand
     {
-        /// <summary>
-        /// creates a new command working with the specified service provider
-        /// </summary>
-        /// <param name="serviceProvider">service component provider</param>
-        public HideWindowCommand(IServiceComponentProvider serviceProvider)
-            : base(serviceProvider) { }
+        /// <inheritdoc/>
+        public override bool CanExecute(object parameter)
+            => true;
 
         /// <summary>
         /// hide a window
         /// </summary>
         /// <param name="window">window</param>
-        public override void Execute(Window window)
-            => window.Hide();
+        public override void Execute(object window)
+            => (window as Window)?.Hide();
     }
 }

@@ -1,27 +1,24 @@
 ﻿using System.Windows;
+using System.Windows.Input;
 
 using WPFUtilities.Commands.Abstract;
-using WPFUtilities.Components.ServiceComponent;
 
 namespace WPFUtilities.Commands.Application
 {
     /// <summary>
     /// close a window
     /// </summary>
-    public class CloseWindowCommand : AbstractServiceParametricCommand<CloseWindowCommand, Window>
+    public class CloseWindowCommand : AbstractCommand<LogCommand>, ICommand
     {
-        /// <summary>
-        /// creates a new command working with the specified service provider
-        /// </summary>
-        /// <param name="serviceProvider">service component provider</param>
-        public CloseWindowCommand(IServiceComponentProvider serviceProvider)
-            : base(serviceProvider) { }
+        /// <inheritdoc/>
+        public override bool CanExecute(object parameter)
+            => true;
 
         /// <summary>
         /// close a window
         /// </summary>
         /// <param name="window">window</param>
-        public override void Execute(Window window)
-            => window.Close();
+        public override void Execute(object window)
+            => (window as Window)?.Close();
     }
 }
