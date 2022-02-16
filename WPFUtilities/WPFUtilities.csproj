@@ -234,7 +234,6 @@
     <Resource Include="Resources\Codicons-SymbolClass.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Behaviors\" />
     <Folder Include="Controls\" />
   </ItemGroup>
   <ItemGroup>
