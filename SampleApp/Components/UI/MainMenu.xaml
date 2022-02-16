@@ -54,7 +54,7 @@
 
                 <MenuItem Header="Close window"
                           service:Command.Type="{x:Type applicationCommand:CloseWindowCommand}"
-                          CommandParameter="{x:Type ui:MainWindow}"
+                          CommandParameter="{Binding .,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}"
                           />
 
             </MenuItem>
