@@ -7,7 +7,7 @@ using WPFUtilities.Components.Services;
 namespace WPFUtilities.Components.ServiceComponent
 {
     /// <summary>
-    /// component host
+    /// component host: host of IServicecomponents
     /// </summary>
     public interface IComponentHost :
         IServicesConfigurator,
