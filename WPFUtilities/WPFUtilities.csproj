@@ -97,7 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Services\Properties\FrameworkElementExtensions.cs" />
+    <Compile Include="Components\UI\Layout\Layout.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollDown.cs" />
+    <Compile Include="Components\UI\ScrollingExtensions\Scrolling.cs" />
     <Compile Include="Components\UI\WindowExtensions\HideOnClose.cs" />
     <Compile Include="Components\UI\WindowExtensions\OnDisplayCommand.cs" />
     <Compile Include="Components\UI\WindowExtensions\RestoreInitialLocationOnShown.cs" />
@@ -180,6 +182,7 @@
     <Compile Include="Components\Services\IServicesDependencyTypeResolver.cs" />
     <Compile Include="Components\Services\ServicesDependenciesBuilder.cs" />
     <Compile Include="Components\Services\ServicesDependencyTypeResolver.cs" />
+    <Compile Include="Components\UI\WindowExtensions\Window.cs" />
     <Compile Include="Converters\SizePercentConverter.cs" />
     <Compile Include="Converters\SizePercentRectConverter.cs" />
     <Compile Include="CustomBrushes\HatchRawBrush.cs" />
