@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using SampleApp.Commands;
 using SampleApp.Components.Logging;
 
 using WPFUtilities.Commands.Application;
@@ -60,11 +61,12 @@ namespace SampleApp.Components.UI
                     config.Target = ListLoggerModel.LogItems);
             });
 
-            // window scope commands
+            // window scope (component scope) commands
 
             services.Services
                 .AddSingleton<LogCommand>()
-                .AddSingleton<ClearLogCommand>();
+                .AddSingleton<ClearLogCommand>()
+                .AddSingleton<OnMainWindowShownCommand>();
         }
     }
 }

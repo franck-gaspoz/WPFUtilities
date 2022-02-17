@@ -13,7 +13,11 @@ namespace WPFUtilities.Components.Logging.ListLogger
         /// <summary>
         /// target list
         /// </summary>
-        public IList Target { get; set; }
+        public IList Target
+        {
+            get;
+            set;
+        }
 
         /// <summary>
         /// enabled log levels

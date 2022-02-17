@@ -6,12 +6,12 @@ using WPFUtilities.Components.Services.Properties;
 
 using win = System.Windows;
 
-namespace WPFUtilities.Components.UI.WindowExtensions
+namespace WPFUtilities.Components.UI
 {
     /// <summary>
     /// on display invoke a command resolve from a service
     /// </summary>
-    public static class OnDisplayCommand
+    public static partial class Window
     {
         #region property on display command
 
@@ -20,32 +20,32 @@ namespace WPFUtilities.Components.UI.WindowExtensions
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
-        public static Type GetType(DependencyObject dependencyObject) => (Type)dependencyObject.GetValue(TypeProperty);
+        public static Type GetOnDisplayCommand(DependencyObject dependencyObject) => (Type)dependencyObject.GetValue(OnDisplayCommandProperty);
 
         /// <summary>
-        /// set Type
+        /// set OnDisplayCommand
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="value">value</param>
-        public static void SetType(DependencyObject dependencyObject, Type value) => dependencyObject.SetValue(TypeProperty, value);
+        public static void SetOnDisplayCommand(DependencyObject dependencyObject, Type value) => dependencyObject.SetValue(OnDisplayCommandProperty, value);
 
         /// <summary>
-        /// Type property
+        /// OnDisplayCommand property
         /// </summary>
-        public static readonly DependencyProperty TypeProperty =
+        public static readonly DependencyProperty OnDisplayCommandProperty =
             DependencyProperty.Register(
-                "Type",
+                "OnDisplayCommand",
                 typeof(Type),
                 typeof(win.Window),
-                new UIPropertyMetadata(null, TypeChanged));
+                new UIPropertyMetadata(null, OnDisplayCommandChanged));
 
         #endregion
 
-        private static void TypeChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
+        private static void OnDisplayCommandChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
             if (dependencyObject is win.Window win)
             {
-                var commandType = (Type)win.GetValue(TypeProperty);
+                var commandType = (Type)win.GetValue(OnDisplayCommandProperty);
                 win.WithService(
                     win, commandType,
                     (command) =>

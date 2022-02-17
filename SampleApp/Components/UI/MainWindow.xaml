@@ -6,11 +6,11 @@
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:commands="clr-namespace:SampleApp.Commands"
         xmlns:wui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
-        xmlns:windowExt="clr-namespace:WPFUtilities.Components.UI.WindowExtensions;assembly=WPFUtilities"
+        xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
         xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
-        xmlns:ui="clr-namespace:SampleApp.Components.UI"
+        xmlns:uicomponents="clr-namespace:SampleApp.Components.UI"
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
-        d:DataContext="{d:DesignInstance Type=ui:MainWindowViewModel}"
+        d:DataContext="{d:DesignInstance Type=uicomponents:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"
@@ -18,7 +18,7 @@
         Height="600" 
         Width="800"        
         service:DataContext.IsAuto="True"
-        windowExt:OnDisplayCommand.Type="{x:Type commands:OnMainWindowShownCommand}"
+        ui:Window.OnDisplayCommand="{x:Type commands:OnMainWindowShownCommand}"
         >
 
     <Grid>
@@ -30,9 +30,9 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ui:MainMenu/>
+        <uicomponents:MainMenu/>
 
-        <ui:ButtonBar Grid.Row="1"/>
+        <uicomponents:ButtonBar Grid.Row="1"/>
 
         <TabControl Grid.Row="2" Margin="8,0,8,8" >
 

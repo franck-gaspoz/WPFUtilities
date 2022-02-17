@@ -100,10 +100,10 @@
     <Compile Include="Components\UI\Layout\Layout.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollDown.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\Scrolling.cs" />
-    <Compile Include="Components\UI\WindowExtensions\HideOnClose.cs" />
+    <Compile Include="Components\UI\WindowExtensions\Window.HideOnClose.cs" />
     <Compile Include="Components\UI\WindowExtensions\OnDisplayCommand.cs" />
     <Compile Include="Components\UI\WindowExtensions\RestoreInitialLocationOnShown.cs" />
-    <Compile Include="Components\UI\WindowExtensions\Location.cs" />
+    <Compile Include="Components\UI\WindowExtensions\Window.Location.cs" />
     <Compile Include="Components\UI\WindowExtensions\OnDisplayInvokeCommand.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceCommand.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceParametricCommand.cs" />
