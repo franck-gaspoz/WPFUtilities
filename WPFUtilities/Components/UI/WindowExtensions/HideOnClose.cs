@@ -30,7 +30,7 @@ namespace WPFUtilities.Components.UI
         /// HideOnClose property
         /// </summary>
         public static readonly DependencyProperty HideOnCloseProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyProperty.Register(
                 "HideOnClose",
                 typeof(bool),
                 typeof(win.Window),

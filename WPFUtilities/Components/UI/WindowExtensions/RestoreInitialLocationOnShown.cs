@@ -37,10 +37,12 @@ namespace WPFUtilities.Components.UI
 
         static void RestoreInitialLocationOnShowChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if ((bool)eventArgs.NewValue && dependencyObject is win.Window window)
-            {
+            if (!(dependencyObject is win.Window window)) return;
+
+            if ((bool)eventArgs.NewValue)
                 window.IsVisibleChanged += RestoreInitialLocation_Window_IsVisibleChanged;
-            }
+            else
+                window.IsVisibleChanged -= RestoreInitialLocation_Window_IsVisibleChanged;
         }
 
         #endregion
