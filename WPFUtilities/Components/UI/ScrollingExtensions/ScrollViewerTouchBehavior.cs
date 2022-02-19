@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
+using WPFUtilities.Extensions.Services;
+
 namespace WPFUtilities.Components.UI.ScrollingExtensions
 {
     /// <summary>
@@ -10,15 +12,45 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
     /// </summary>
     public partial class Scrolling
     {
+        #region scroll viewer touch view properties
+
+        /// <summary>
+        /// get scroll viewer touch view properties
+        /// </summary>
+        /// <param name="dependencyObject">dependency Object</param>
+        /// <returns></returns>
+        public static IScrollViewerTouchViewProperties GetScrollViewerTouchViewPropertiesProperty(DependencyObject dependencyObject)
+            => (IScrollViewerTouchViewProperties)dependencyObject.GetValue(ScrollViewerTouchViewPropertiesProperty);
+
+        /// <summary>
+        /// set scroll viewer touch view properties
+        /// </summary>
+        /// <param name="dependencyObject">dependency Object</param>
+        /// <param name="value">value</param>
+        public static void SetScrollViewerTouchViewPropertiesProperty(DependencyObject dependencyObject, IScrollViewerTouchViewProperties value)
+            => dependencyObject.SetValue(ScrollViewerTouchViewPropertiesProperty, value);
+
+        /// <summary>
+        /// scroll viewer touch view properties
+        /// </summary>
+        public static readonly DependencyProperty ScrollViewerTouchViewPropertiesProperty =
+            DependencyProperty.Register(
+                "ScrollViewerTouchViewProperties",
+                typeof(IScrollViewerTouchViewProperties),
+                typeof(ScrollViewer),
+                new PropertyMetadata(null));
+
+        #endregion
+
         /// <summary>
         /// enabling trigger treshold
         /// </summary>
         static readonly double EnableTriggerTreshold = 5;
 
         static IScrollViewerTouchViewProperties GetOrResolveScrollViewerTouchViewProperties(ScrollViewer scrollViewer)
-        {
-            //var props = scrollViewer.GetValue(ScrollViewerTouchViewProperties)
-        }
+            => scrollViewer.GetResolveCreateServiceFromProperty<IScrollViewerTouchViewProperties>(
+                ScrollViewerTouchViewPropertiesProperty,
+                () => new ScrollViewerTouchViewProperties());
 
         /// <inheritdoc/>
         static void EnableScrollViewerTouch(ScrollViewer scrollViewer)
@@ -31,7 +63,9 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
         /// <inheritdoc/>
         static void DisableScrollViewerTouch(ScrollViewer scrollViewer)
         {
-            IsTracking = false;
+            var props = GetOrResolveScrollViewerTouchViewProperties(scrollViewer);
+
+            props.IsTracking = false;
             scrollViewer.PreviewMouseLeftButtonDown -= Target_PreviewMouseLeftButtonDown;
             scrollViewer.PreviewMouseMove -= Target_PreviewMouseMove;
             scrollViewer.PreviewMouseLeftButtonUp -= Target_PreviewMouseLeftButtonUp;
@@ -40,9 +74,10 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
         static void Target_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (!(sender is ScrollViewer scrollViewer)) return;
+            var props = GetOrResolveScrollViewerTouchViewProperties(scrollViewer);
 
-            HorizontalOffset = scrollViewer.HorizontalOffset;
-            VerticalOffset = scrollViewer.VerticalOffset;
+            props.HorizontalOffset = scrollViewer.HorizontalOffset;
+            props.VerticalOffset = scrollViewer.VerticalOffset;
             var point = e.GetPosition(scrollViewer);
 
             if (point.X > scrollViewer.ActualWidth - SystemParameters.ScrollWidth
@@ -50,23 +85,25 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
             {
                 return;
             }
-            Point = point;
-            IsTracking = true;
+            props.Point = point;
+            props.IsTracking = true;
         }
 
         static void Target_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (!(sender is ScrollViewer scrollViewer)) return;
+            var props = GetOrResolveScrollViewerTouchViewProperties(scrollViewer);
 
-            IsTracking = false;
+            props.IsTracking = false;
             scrollViewer.ReleaseMouseCapture();
         }
 
         static void Target_PreviewMouseMove(object sender, MouseEventArgs e)
         {
             if (!(sender is ScrollViewer scrollViewer)) return;
+            var props = GetOrResolveScrollViewerTouchViewProperties(scrollViewer);
 
-            if (!IsTracking || e.LeftButton != MouseButtonState.Pressed)
+            if (!props.IsTracking || e.LeftButton != MouseButtonState.Pressed)
             {
                 scrollViewer.Cursor = null;
                 return;
@@ -75,16 +112,16 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
             var point = e.GetPosition(scrollViewer);
 
             scrollViewer.Cursor = Cursors.SizeAll;
-            var dy = point.Y - Point.Y;
-            var dx = point.X - Point.X;
+            var dy = point.Y - props.Point.Y;
+            var dx = point.X - props.Point.X;
             if (Math.Abs(dy) > EnableTriggerTreshold
                 || Math.Abs(dx) > EnableTriggerTreshold)
             {
                 scrollViewer.CaptureMouse();
             }
 
-            scrollViewer.ScrollToHorizontalOffset(HorizontalOffset - dx);
-            scrollViewer.ScrollToVerticalOffset(VerticalOffset - dy);
+            scrollViewer.ScrollToHorizontalOffset(props.HorizontalOffset - dx);
+            scrollViewer.ScrollToVerticalOffset(props.VerticalOffset - dy);
         }
 
     }

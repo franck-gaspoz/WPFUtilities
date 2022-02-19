@@ -1,8 +1,8 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 using WPFUtilities.Components.UI.ScrollingExtensions;
+using WPFUtilities.Extensions.Services;
 
 namespace WPFUtilities.Components.UI
 {
@@ -11,10 +11,10 @@ namespace WPFUtilities.Components.UI
     /// </summary>
     public partial class Scrolling
     {
-        #region scroll viewer helper feature
+        #region scroll viewer helper view properties
 
         /// <summary>
-        /// get scroll viewer helper feature model
+        /// get scroll viewer helper view properties
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <returns></returns>
@@ -22,7 +22,7 @@ namespace WPFUtilities.Components.UI
             => (IScrollViewerHelperViewProperties)dependencyObject.GetValue(ScrollViewerHelperViewPropertiesProperty);
 
         /// <summary>
-        /// set scroll viewer helper feature model
+        /// set scroll viewer helper view properties
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="value">value</param>
@@ -30,7 +30,7 @@ namespace WPFUtilities.Components.UI
             => dependencyObject.SetValue(ScrollViewerHelperViewPropertiesProperty, value);
 
         /// <summary>
-        /// scroll viewer helper feature model
+        /// scroll viewer helper view properties
         /// </summary>
         public static readonly DependencyProperty ScrollViewerHelperViewPropertiesProperty =
             DependencyProperty.Register(
@@ -71,17 +71,6 @@ namespace WPFUtilities.Components.UI
 
         #endregion
 
-        static T GetResolveCreateService<T>(
-            DependencyObject dependencyObject,
-            DependencyProperty dependencyProperty,
-            Func<T> create)
-        {
-            var service = (T)dependencyObject.GetValue(dependencyProperty);
-            if (service != null) return service;
-            //dependencyObject.WithService()
-            return default(T);
-        }
-
         static void ScrollViewerHelperIsEnabledChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
             if (!(dependencyObject is ScrollViewer scrollViewer)) return;
@@ -103,8 +92,13 @@ namespace WPFUtilities.Components.UI
 
             var scrollViewerViewProperties = (IScrollViewerHelperViewProperties)scrollViewer.GetValue(ScrollViewerHelperViewPropertiesProperty);
 
-
-            if (scrollViewerViewProperties == null) return;
+            if (scrollViewerViewProperties == null)
+            {
+                scrollViewerViewProperties =
+                    scrollViewer.GetResolveCreateServiceFromProperty<IScrollViewerHelperViewProperties>(
+                        ScrollViewerHelperViewPropertiesProperty,
+                        () => new ScrollViewerHelperViewProperties());
+            }
 
             scrollViewerViewProperties.ScrollViewer = scrollViewer;
             if (eventArgs.HorizontalChange != 0)

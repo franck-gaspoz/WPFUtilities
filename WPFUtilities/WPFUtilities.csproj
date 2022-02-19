@@ -97,7 +97,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Services\Properties\ServicesPropertiesHelper.cs" />
+    <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouchBehavior.cs" />
+    <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouchViewProperties.cs" />
+    <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelperViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\IScrollViewerTouchViewProperties.cs" />
+    <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelper.cs" />
     <Compile Include="Extensions\Services\ServicesPropertiesHelperExtensions.cs" />
     <Compile Include="Components\UI\Layout\Layout.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollDown.cs" />
@@ -145,7 +149,6 @@
     <Compile Include="Components\UI\ScrollingExtensions\IScrollViewerHelperViewProperties.cs" />
     <Compile Include="Components\UI\Layout\ChildMargin.cs" />
     <Compile Include="Components\UI\Interactivity\PropertyChangedDelegateCommandBehavior.cs" />
-    <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelperFeature.cs" />
     <Compile Include="Components\UI\Layout\CollapseSplitedPanelBehavior.cs" />
     <Compile Include="Commands\Abstract\AbstractCommand.cs" />
     <Compile Include="Commands\Application\ApplicationCommands.cs" />

@@ -3,7 +3,7 @@
 namespace WPFUtilities.Components.UI.ScrollingExtensions
 {
     /// <summary>
-    /// interface scroll viewer touch view properties
+    /// scroll viewer touch view properties
     /// </summary>
     public interface IScrollViewerTouchViewProperties
     {

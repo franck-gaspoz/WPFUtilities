@@ -85,6 +85,36 @@ namespace WPFUtilities.Components.Services.Properties
         }
 
         /// <summary>
+        /// get a service from services collections of source component host. source must be loaded
+        /// </summary>
+        /// <exception cref="InvalidOperationException">source framework element is not loaded</exception>
+        /// <typeparam name="T">service type</typeparam>
+        /// <param name="source">framework element source</param>
+        /// <returns>service of type T or null if not found</returns>
+        public static T GetService<T>(
+            FrameworkElement source
+            )
+            => (T)GetService(source, typeof(T));
+
+        /// <summary>
+        /// get a service from services collections of source component host. source must be loaded
+        /// </summary>
+        /// <exception cref="InvalidOperationException">source framework element is not loaded</exception>
+        /// <param name="source">framework element source</param>
+        /// <param name="serviceType">service type</param>
+        /// <returns>service or null if not found</returns>
+        public static object GetService(
+            FrameworkElement source,
+            Type serviceType
+            )
+        {
+            if (!source.IsLoaded) throw new InvalidOperationException("source is not loaded");
+            ComponentHostLookup.SetComponentHostPropertyFromResolvedComponentWhenLoaded(source);
+            var service = LookupService(source, serviceType);
+            return service;
+        }
+
+        /// <summary>
         /// call an action with a service parameter, resolved from services collections of source component host, when source is loaded
         /// </summary>
         /// <param name="source">framework element source that fires the setup onces loaded</param>
@@ -119,7 +149,17 @@ namespace WPFUtilities.Components.Services.Properties
             Action<object> action
             )
         {
-            var scope = properties.Scope.GetValue(target);
+            var service = LookupService(source, target, serviceType);
+            if (service == null) throw new InvalidOperationException($"service not found: {serviceType.Name}");
+            action?.Invoke(service);
+        }
+
+        static object LookupService(FrameworkElement source, Type serviceType)
+            => LookupService(source, source, serviceType);
+
+        static object LookupService(FrameworkElement source, DependencyObject scopeOwner, Type serviceType)
+        {
+            var scope = properties.Scope.GetValue(scopeOwner);
 
             var host = properties.Component.GetComponentHost(source)
                 ?? throw new InvalidOperationException("source host is null");
@@ -127,8 +167,8 @@ namespace WPFUtilities.Components.Services.Properties
             if (scope == Scopes.Global)
                 host = host.RootHost;
 
-            var service = host.Services.GetRequiredService(serviceType);
-            action?.Invoke(service);
+            var service = host.Services.GetService(serviceType);
+            return service;
         }
 
         /// <summary>
@@ -169,5 +209,30 @@ namespace WPFUtilities.Components.Services.Properties
             Action<T> action
             )
             => WithService(source, source, typeof(T), (o) => action((T)o));
+
+        /// <summary>
+        /// get a service from a dependency property, if null it is resolve from source component host, if still null the creates function is invokated. 
+        /// the dependency property is initialized once instance is resolved or created
+        /// </summary>        
+        /// <exception cref="InvalidOperationException">source framework element is not loaded</exception>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source">source</param>
+        /// <param name="dependencyProperty">dependency property storing the service</param>
+        /// <param name="create">create function or null</param>
+        /// <returns>service or null</returns>
+        public static T GetResolveCreateServiceFromProperty<T>(
+            FrameworkElement source,
+            DependencyProperty dependencyProperty,
+            Func<T> create = null)
+        {
+            var service = (T)source.GetValue(dependencyProperty);
+            if (service != null) return service;
+            service = GetService<T>(source);
+            if (service == null && create != null)
+                service = create();
+            if (service != null)
+                source.SetValue(dependencyProperty, service);
+            return default(T);
+        }
     }
 }
