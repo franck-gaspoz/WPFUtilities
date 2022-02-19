@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 
 using win = System.Windows;
 
@@ -29,7 +30,7 @@ namespace WPFUtilities.Components.UI
         /// HideOnClose property
         /// </summary>
         public static readonly DependencyProperty HideOnCloseProperty =
-            DependencyProperty.Register(
+            DependencyProperty.RegisterAttached(
                 "HideOnClose",
                 typeof(bool),
                 typeof(win.Window),
@@ -39,14 +40,19 @@ namespace WPFUtilities.Components.UI
 
         static void HideOnCloseChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if ((bool)eventArgs.NewValue && dependencyObject is win.Window window)
+            if (dependencyObject is win.Window window)
             {
-                window.Closing += (o, e) =>
-                {
-                    e.Cancel = true;
-                    (o as win.Window)?.Hide();
-                };
+                if ((bool)eventArgs.NewValue)
+                    window.Closing += OnWindowClosing;
+                else
+                    window.Closing -= OnWindowClosing;
             }
+        }
+
+        private static void OnWindowClosing(object sender, CancelEventArgs e)
+        {
+            e.Cancel = true;
+            (sender as win.Window)?.Hide();
         }
     }
 }
