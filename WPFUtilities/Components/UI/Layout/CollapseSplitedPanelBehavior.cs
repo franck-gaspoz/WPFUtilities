@@ -15,6 +15,8 @@ namespace WPFUtilities.Components.UI
     {
         #region properties
 
+        #region default length
+
         /// <summary>
         /// panel default length
         /// </summary>
@@ -49,6 +51,10 @@ namespace WPFUtilities.Components.UI
                 typeof(double),
                 typeof(CollapseSplitedPanelBehavior),
                 new PropertyMetadata(80d));
+
+        #endregion
+
+        #region length
 
         /// <summary>
         /// panel length
@@ -85,6 +91,10 @@ namespace WPFUtilities.Components.UI
                 typeof(CollapseSplitedPanelBehavior),
                 new PropertyMetadata(80d));
 
+        #endregion
+
+        #region row
+
         /// <summary>
         /// row
         /// </summary>
@@ -119,6 +129,10 @@ namespace WPFUtilities.Components.UI
                 typeof(int),
                 typeof(CollapseSplitedPanelBehavior),
                 new PropertyMetadata(-1));
+
+        #endregion
+
+        #region col
 
         /// <summary>
         /// column
@@ -155,6 +169,10 @@ namespace WPFUtilities.Components.UI
                 typeof(CollapseSplitedPanelBehavior),
                 new PropertyMetadata(-1));
 
+        #endregion
+
+        #region is collapsed
+
         /// <summary>
         /// is collapsed
         /// </summary>
@@ -190,6 +208,8 @@ namespace WPFUtilities.Components.UI
                 typeof(bool),
                 typeof(CollapseSplitedPanelBehavior),
                 new PropertyMetadata(false, IsCollapsedChanged));
+
+        #endregion
 
         #endregion
 
