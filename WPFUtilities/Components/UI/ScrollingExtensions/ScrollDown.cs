@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 using WPFUtilities.Helpers;
 
@@ -41,6 +43,8 @@ namespace WPFUtilities.Components.UI
                 typeof(Scrolling),
                 new PropertyMetadata(false, IsAutoChanged));
 
+        static Lazy<ConcurrentDictionary<object, ScrollViewer>> _scrollViewers = new Lazy<ConcurrentDictionary<object, ScrollViewer>>();
+
         static void IsAutoChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
             if (dependencyObject is ListBox element)
@@ -48,15 +52,25 @@ namespace WPFUtilities.Components.UI
                 void EnableAutoScrollDown(object src, EventArgs e)
                 {
                     element.Loaded -= EnableAutoScrollDown;
-                    var scrollViewer = WPFHelper.FindVisualChild<ScrollViewer>(element);
-
-                    element.ItemContainerGenerator.ItemsChanged += (o, ea) =>
-                    {
-                        scrollViewer.ScrollToBottom();
-                    };
+                    var scrollViewer = _scrollViewers.Value.GetOrAdd(element.ItemContainerGenerator, WPFHelper.FindVisualChild<ScrollViewer>(element));
+                    element.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
                 }
-                element.Loaded += EnableAutoScrollDown;
+                if (!_scrollViewers.Value.ContainsKey(element))
+                    element.Loaded += EnableAutoScrollDown;
+                else
+                {
+                    if ((bool)eventArgs.NewValue)
+                        element.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
+                    else
+                        element.ItemContainerGenerator.ItemsChanged -= ItemContainerGenerator_ItemsChanged;
+                }
             }
+        }
+
+        private static void ItemContainerGenerator_ItemsChanged(object sender, ItemsChangedEventArgs e)
+        {
+            if (_scrollViewers.Value.TryGetValue(sender, out var scrollViewer))
+                scrollViewer.ScrollToBottom();
         }
     }
 }
