@@ -15,6 +15,11 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
         /// </summary>
         static readonly double EnableTriggerTreshold = 5;
 
+        static IScrollViewerTouchViewProperties GetOrResolveScrollViewerTouchViewProperties(ScrollViewer scrollViewer)
+        {
+            //var props = scrollViewer.GetValue(ScrollViewerTouchViewProperties)
+        }
+
         /// <inheritdoc/>
         static void EnableScrollViewerTouch(ScrollViewer scrollViewer)
         {
@@ -32,7 +37,7 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
             scrollViewer.PreviewMouseLeftButtonUp -= Target_PreviewMouseLeftButtonUp;
         }
 
-        void Target_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        static void Target_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (!(sender is ScrollViewer scrollViewer)) return;
 
@@ -49,37 +54,37 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
             IsTracking = true;
         }
 
-        void Target_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        static void Target_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             if (!(sender is ScrollViewer scrollViewer)) return;
 
             IsTracking = false;
-            AssociatedObject.ReleaseMouseCapture();
+            scrollViewer.ReleaseMouseCapture();
         }
 
-        void Target_PreviewMouseMove(object sender, MouseEventArgs e)
+        static void Target_PreviewMouseMove(object sender, MouseEventArgs e)
         {
             if (!(sender is ScrollViewer scrollViewer)) return;
 
             if (!IsTracking || e.LeftButton != MouseButtonState.Pressed)
             {
-                AssociatedObject.Cursor = null;
+                scrollViewer.Cursor = null;
                 return;
             }
 
-            var point = e.GetPosition(AssociatedObject);
+            var point = e.GetPosition(scrollViewer);
 
-            AssociatedObject.Cursor = Cursors.SizeAll;
+            scrollViewer.Cursor = Cursors.SizeAll;
             var dy = point.Y - Point.Y;
             var dx = point.X - Point.X;
             if (Math.Abs(dy) > EnableTriggerTreshold
                 || Math.Abs(dx) > EnableTriggerTreshold)
             {
-                AssociatedObject.CaptureMouse();
+                scrollViewer.CaptureMouse();
             }
 
-            AssociatedObject.ScrollToHorizontalOffset(HorizontalOffset - dx);
-            AssociatedObject.ScrollToVerticalOffset(VerticalOffset - dy);
+            scrollViewer.ScrollToHorizontalOffset(HorizontalOffset - dx);
+            scrollViewer.ScrollToVerticalOffset(VerticalOffset - dy);
         }
 
     }

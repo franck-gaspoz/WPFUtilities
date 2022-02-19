@@ -146,7 +146,6 @@
     <Compile Include="Components\UI\Layout\ChildMargin.cs" />
     <Compile Include="Components\UI\Interactivity\PropertyChangedDelegateCommandBehavior.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelperFeature.cs" />
-    <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouchBehavior.cs" />
     <Compile Include="Components\UI\Layout\CollapseSplitedPanelBehavior.cs" />
     <Compile Include="Commands\Abstract\AbstractCommand.cs" />
     <Compile Include="Commands\Application\ApplicationCommands.cs" />

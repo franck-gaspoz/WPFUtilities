@@ -43,17 +43,16 @@ namespace WPFUtilities.Components.UI
 
         private static void OnDisplayCommandChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if (dependencyObject is win.Window win)
-            {
-                var commandType = (Type)win.GetValue(OnDisplayCommandProperty);
-                win.WithService(
-                    win,
-                    commandType,
-                    (command) =>
-                    {
-                        (command as ICommand)?.Execute(win);
-                    });
-            }
+            if (!(dependencyObject is win.Window win)) return;
+
+            var commandType = (Type)win.GetValue(OnDisplayCommandProperty);
+            win.WithService(
+                win,
+                commandType,
+                (command) =>
+                {
+                    (command as ICommand)?.Execute(win);
+                });
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Windows;
 using Microsoft.Xaml.Behaviors;
 
 using WPFUtilities.Extensions.Behaviors;
+using WPFUtilities.Extensions.Services;
 
 namespace WPFUtilities.Components.Services.Properties
 {
@@ -106,6 +107,5 @@ namespace WPFUtilities.Components.Services.Properties
             DependencyObject target,
             Type commandType)
             => source.AssignServiceToProperty(target, commandType, "Command");
-
     }
 }
