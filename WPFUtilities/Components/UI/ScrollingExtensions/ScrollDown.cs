@@ -13,6 +13,8 @@ namespace WPFUtilities.Components.UI
     /// </summary>
     public static partial class Scrolling
     {
+        #region is auto
+
         /// <summary>
         /// get is auto
         /// </summary>
@@ -43,27 +45,33 @@ namespace WPFUtilities.Components.UI
                 typeof(Scrolling),
                 new PropertyMetadata(false, IsAutoChanged));
 
+        #endregion
+
         static Lazy<ConcurrentDictionary<object, ScrollViewer>> _scrollViewers = new Lazy<ConcurrentDictionary<object, ScrollViewer>>();
 
         static void IsAutoChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
             if (dependencyObject is ListBox element)
             {
-                void EnableAutoScrollDown(object src, EventArgs e)
+                if ((bool)eventArgs.NewValue)
                 {
-                    element.Loaded -= EnableAutoScrollDown;
-                    var scrollViewer = _scrollViewers.Value.GetOrAdd(element.ItemContainerGenerator, WPFHelper.FindVisualChild<ScrollViewer>(element));
-                    element.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
-                }
-                if (!_scrollViewers.Value.ContainsKey(element))
-                    element.Loaded += EnableAutoScrollDown;
-                else
-                {
-                    if ((bool)eventArgs.NewValue)
-                        element.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
+                    if (!element.IsLoaded)
+                        element.Loaded += OnLoaded_EnableAutoScrollDown;
                     else
-                        element.ItemContainerGenerator.ItemsChanged -= ItemContainerGenerator_ItemsChanged;
+                        element.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
                 }
+                else
+                    element.ItemContainerGenerator.ItemsChanged -= ItemContainerGenerator_ItemsChanged;
+            }
+        }
+
+        static void OnLoaded_EnableAutoScrollDown(object src, EventArgs e)
+        {
+            if (src is ListBox element)
+            {
+                element.Loaded -= OnLoaded_EnableAutoScrollDown;
+                var scrollViewer = _scrollViewers.Value.GetOrAdd(element.ItemContainerGenerator, WPFHelper.FindVisualChild<ScrollViewer>(element));
+                element.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
             }
         }
 
