@@ -3,9 +3,9 @@
 namespace WPFUtilities.Components.UI.ScrollingExtensions
 {
     /// <summary>
-    /// scroll viewer helper feature model interface
+    /// scroll viewer helper view properties
     /// </summary>
-    public interface IScrollViewerHelperFeature
+    public interface IScrollViewerHelperViewProperties
     {
         /// <summary>
         /// horizontal offset

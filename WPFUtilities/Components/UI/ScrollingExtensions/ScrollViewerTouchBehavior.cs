@@ -3,66 +3,45 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-using Microsoft.Xaml.Behaviors;
-
 namespace WPFUtilities.Components.UI.ScrollingExtensions
 {
     /// <summary>
     /// touch scrolling behavior
     /// </summary>
-    public class ScrollViewerTouchBehavior :
-        Behavior<ScrollViewer>
+    public partial class Scrolling
     {
         /// <summary>
         /// enabling trigger treshold
         /// </summary>
         static readonly double EnableTriggerTreshold = 5;
 
-        /// <summary>
-        /// horizontal offset
-        /// </summary>
-        public Double HorizontalOffset { get; set; }
-
-        /// <summary>
-        /// vertical offset
-        /// </summary>
-        public Double VerticalOffset { get; set; }
-
-        /// <summary>
-        /// point
-        /// </summary>
-        public Point Point { get; set; }
-
-        /// <summary>
-        /// is tracking
-        /// </summary>
-        public bool IsTracking { get; set; }
-
         /// <inheritdoc/>
-        protected override void OnAttached()
+        static void EnableScrollViewerTouch(ScrollViewer scrollViewer)
         {
-            AssociatedObject.PreviewMouseLeftButtonDown += Target_PreviewMouseLeftButtonDown;
-            AssociatedObject.PreviewMouseMove += Target_PreviewMouseMove;
-            AssociatedObject.PreviewMouseLeftButtonUp += Target_PreviewMouseLeftButtonUp;
+            scrollViewer.PreviewMouseLeftButtonDown += Target_PreviewMouseLeftButtonDown;
+            scrollViewer.PreviewMouseMove += Target_PreviewMouseMove;
+            scrollViewer.PreviewMouseLeftButtonUp += Target_PreviewMouseLeftButtonUp;
         }
 
         /// <inheritdoc/>
-        protected override void OnDetaching()
+        static void DisableScrollViewerTouch(ScrollViewer scrollViewer)
         {
             IsTracking = false;
-            AssociatedObject.PreviewMouseLeftButtonDown -= Target_PreviewMouseLeftButtonDown;
-            AssociatedObject.PreviewMouseMove -= Target_PreviewMouseMove;
-            AssociatedObject.PreviewMouseLeftButtonUp -= Target_PreviewMouseLeftButtonUp;
+            scrollViewer.PreviewMouseLeftButtonDown -= Target_PreviewMouseLeftButtonDown;
+            scrollViewer.PreviewMouseMove -= Target_PreviewMouseMove;
+            scrollViewer.PreviewMouseLeftButtonUp -= Target_PreviewMouseLeftButtonUp;
         }
 
         void Target_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            HorizontalOffset = AssociatedObject.HorizontalOffset;
-            VerticalOffset = AssociatedObject.VerticalOffset;
-            var point = e.GetPosition(AssociatedObject);
+            if (!(sender is ScrollViewer scrollViewer)) return;
 
-            if (point.X > AssociatedObject.ActualWidth - SystemParameters.ScrollWidth
-                || point.Y > AssociatedObject.ActualHeight - SystemParameters.ScrollHeight)
+            HorizontalOffset = scrollViewer.HorizontalOffset;
+            VerticalOffset = scrollViewer.VerticalOffset;
+            var point = e.GetPosition(scrollViewer);
+
+            if (point.X > scrollViewer.ActualWidth - SystemParameters.ScrollWidth
+                || point.Y > scrollViewer.ActualHeight - SystemParameters.ScrollHeight)
             {
                 return;
             }
@@ -72,12 +51,16 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
 
         void Target_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            if (!(sender is ScrollViewer scrollViewer)) return;
+
             IsTracking = false;
             AssociatedObject.ReleaseMouseCapture();
         }
 
         void Target_PreviewMouseMove(object sender, MouseEventArgs e)
         {
+            if (!(sender is ScrollViewer scrollViewer)) return;
+
             if (!IsTracking || e.LeftButton != MouseButtonState.Pressed)
             {
                 AssociatedObject.Cursor = null;

@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Windows;
 
-using WPFUtilities.Components.ServiceComponent;
+using WPFUtilities.Components.Services.Properties;
 
-using properties = WPFUtilities.Components.Services.Properties;
-
-namespace WPFUtilities.Components.Services.Properties
+namespace WPFUtilities.Extensions.Services
 {
     /// <summary>
     /// framework element extensions methods that help resolve services framework element initilization
     /// </summary>
-    public static class FrameworkElementExtensions
+    public static class ServicesPropertiesHelperExtensions
     {
         /// <summary>
         /// set a property on target object, resolved from services collections of source component host, when source is loaded
@@ -24,31 +22,11 @@ namespace WPFUtilities.Components.Services.Properties
             DependencyObject target,
             Type serviceType,
             string targetProperyName)
-        {
-            ComponentHostLookup.SetComponentHostPropertyFromResolvedComponentWhenLoaded(source);
-
-            void InitializeAtLoaded(object src, EventArgs e)
-            {
-                source.Loaded -= InitializeAtLoaded;
-
-                var scope = properties.Scope.GetValue(target);
-
-                var host = properties.Component.GetComponentHost(source)
-                    ?? throw new InvalidOperationException("source host is null");
-
-                if (scope == Scopes.Global)
-                    host = host.RootHost;
-
-                var command = host.Services.GetRequiredService(serviceType);
-
-                var targetProperty = target.GetType().GetProperty(targetProperyName)
-                    ?? throw new InvalidOperationException("target has no property Command");
-
-                targetProperty.SetValue(target, command);
-            }
-
-            source.Loaded += InitializeAtLoaded;
-        }
+            => ServicesPropertiesHelper.AssignServiceToProperty(
+                source,
+                target,
+                serviceType,
+                targetProperyName);
 
         /// <summary>
         /// set a property on target object, resolved from services collections of source component host, when source is loaded
@@ -62,28 +40,11 @@ namespace WPFUtilities.Components.Services.Properties
             DependencyObject target,
             Type serviceType,
             DependencyProperty dependencyProperty)
-        {
-            ComponentHostLookup.SetComponentHostPropertyFromResolvedComponentWhenLoaded(source);
-
-            void InitializeAtLoaded(object src, EventArgs e)
-            {
-                source.Loaded -= InitializeAtLoaded;
-
-                var scope = properties.Scope.GetValue(target);
-
-                var host = properties.Component.GetComponentHost(source)
-                    ?? throw new InvalidOperationException("source host is null");
-
-                if (scope == Scopes.Global)
-                    host = host.RootHost;
-
-                var command = host.Services.GetRequiredService(serviceType);
-
-                target.SetValue(dependencyProperty, command);
-            }
-
-            source.Loaded += InitializeAtLoaded;
-        }
+            => ServicesPropertiesHelper.AssignServiceToDependencyProperty(
+                source,
+                target,
+                serviceType,
+                dependencyProperty);
 
         /// <summary>
         /// call an action with a service parameter, resolved from services collections of source component host, when source is loaded
@@ -98,27 +59,30 @@ namespace WPFUtilities.Components.Services.Properties
             Type serviceType,
             Action<object> action
             )
-        {
-            ComponentHostLookup.SetComponentHostPropertyFromResolvedComponentWhenLoaded(source);
+            => ServicesPropertiesHelper.WithService(
+                source,
+                target,
+                serviceType,
+                action
+                );
 
-            void InitializeAtLoaded(object src, EventArgs e)
-            {
-                source.Loaded -= InitializeAtLoaded;
-
-                var scope = properties.Scope.GetValue(target);
-
-                var host = properties.Component.GetComponentHost(source)
-                    ?? throw new InvalidOperationException("source host is null");
-
-                if (scope == Scopes.Global)
-                    host = host.RootHost;
-
-                var service = host.Services.GetRequiredService(serviceType);
-                action?.Invoke(service);
-            }
-
-            source.Loaded += InitializeAtLoaded;
-        }
+        /// <summary>
+        /// call an action with a service parameter, resolved from services collections of source component host, when source is loaded
+        /// </summary>
+        /// <typeparam name="T">service type to be resolved to an instance from the source component host services collection</typeparam>
+        /// <param name="source">framework element source that fires the setup onces loaded</param>
+        /// <param name="target">The target provides the scope property</param>
+        /// <param name="action">action called with service parameter</param>
+        public static void WithService<T>(
+            this FrameworkElement source,
+            DependencyObject target,
+            Action<T> action
+            )
+            => ServicesPropertiesHelper.WithService<T>(
+                source,
+                target,
+                action
+                );
 
         /// <summary>
         /// call an action with a service parameter, resolved from services collections of source component host, when source is loaded
@@ -132,5 +96,17 @@ namespace WPFUtilities.Components.Services.Properties
             Action<object> action
             )
             => WithService(source, source, serviceType, action);
+
+        /// <summary>
+        /// call an action with a service parameter, resolved from services collections of source component host, when source is loaded
+        /// </summary>
+        /// <typeparam name="T">service type to be resolved to an instance from the source component host services collection</typeparam>
+        /// <param name="source">framework element source that fires the setup onces loaded. provides the scope property</param>
+        /// <param name="action">action called with service parameter</param>
+        public static void WithService<T>(
+            this FrameworkElement source,
+            Action<T> action
+            )
+            => WithService<T>(source, action);
     }
 }

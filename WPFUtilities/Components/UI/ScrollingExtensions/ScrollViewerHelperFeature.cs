@@ -17,15 +17,15 @@ namespace WPFUtilities.Components.UI
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <returns></returns>
-        public static IScrollViewerHelperFeature GetScrollViewerHelperFeatureProperty(DependencyObject dependencyObject)
-            => (IScrollViewerHelperFeature)dependencyObject.GetValue(ScrollViewerHelperFeatureProperty);
+        public static IScrollViewerHelperViewProperties GetScrollViewerHelperFeatureProperty(DependencyObject dependencyObject)
+            => (IScrollViewerHelperViewProperties)dependencyObject.GetValue(ScrollViewerHelperFeatureProperty);
 
         /// <summary>
         /// set scroll viewer helper feature model
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="value">value</param>
-        public static void SetScrollViewerHelperFeatureProperty(DependencyObject dependencyObject, IScrollViewerHelperFeature value)
+        public static void SetScrollViewerHelperFeatureProperty(DependencyObject dependencyObject, IScrollViewerHelperViewProperties value)
             => dependencyObject.SetValue(ScrollViewerHelperFeatureProperty, value);
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace WPFUtilities.Components.UI
         public static readonly DependencyProperty ScrollViewerHelperFeatureProperty =
             DependencyProperty.Register(
                 "ScrollViewerHelperFeature",
-                typeof(IScrollViewerHelperFeature),
+                typeof(IScrollViewerHelperViewProperties),
                 typeof(ScrollViewer),
                 new PropertyMetadata(null));
 
@@ -72,13 +72,12 @@ namespace WPFUtilities.Components.UI
 
         static void ScrollViewerHelperIsEnabledChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if (dependencyObject is ScrollViewer scrollViewer)
-            {
-                if ((bool)eventArgs.NewValue)
-                    scrollViewer.ScrollChanged += ScrollViewer_ScrollChanged_HelperFeature;
-                else
-                    scrollViewer.ScrollChanged -= ScrollViewer_ScrollChanged_HelperFeature;
-            }
+            if (!(dependencyObject is ScrollViewer scrollViewer)) return;
+
+            if ((bool)eventArgs.NewValue)
+                scrollViewer.ScrollChanged += ScrollViewer_ScrollChanged_HelperFeature;
+            else
+                scrollViewer.ScrollChanged -= ScrollViewer_ScrollChanged_HelperFeature;
         }
 
         /// <summary>
@@ -88,14 +87,18 @@ namespace WPFUtilities.Components.UI
         /// <param name="eventArgs">event args</param>
         static void ScrollViewer_ScrollChanged_HelperFeature(object sender, ScrollChangedEventArgs eventArgs)
         {
-            if (sender is DependencyObject dependencyObject)
-            {
-                var scrollViewerHelperFeature = (IScrollViewerHelperFeature)dependencyObject.GetValue(ScrollViewerHelperFeatureProperty);
-                if (eventArgs.HorizontalChange != 0)
-                    scrollViewerHelperFeature.HorizontalOffset = eventArgs.HorizontalOffset;
-                if (eventArgs.VerticalChange != 0)
-                    scrollViewerHelperFeature.VerticalOffset = eventArgs.VerticalOffset;
-            }
+            if (!(sender is ScrollViewer scrollViewer)) return;
+
+            var scrollViewerViewProperties = (IScrollViewerHelperViewProperties)scrollViewer.GetValue(ScrollViewerHelperFeatureProperty);
+
+
+            if (scrollViewerViewProperties == null) return;
+
+            scrollViewerViewProperties.ScrollViewer = scrollViewer;
+            if (eventArgs.HorizontalChange != 0)
+                scrollViewerViewProperties.HorizontalOffset = eventArgs.HorizontalOffset;
+            if (eventArgs.VerticalChange != 0)
+                scrollViewerViewProperties.VerticalOffset = eventArgs.VerticalOffset;
         }
     }
 }

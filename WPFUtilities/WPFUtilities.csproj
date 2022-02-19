@@ -96,7 +96,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\Services\Properties\FrameworkElementExtensions.cs" />
+    <Compile Include="Components\Services\Properties\ServicesPropertiesHelper.cs" />
+    <Compile Include="Components\UI\ScrollingExtensions\IScrollViewerTouchViewProperties.cs" />
+    <Compile Include="Extensions\Services\ServicesPropertiesHelperExtensions.cs" />
     <Compile Include="Components\UI\Layout\Layout.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollDown.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\Scrolling.cs" />
@@ -140,7 +142,7 @@
     <Compile Include="Components\Logging\ListLogger\IListLogger.cs" />
     <Compile Include="Components\Logging\ListLogger\ListLoggerProvider.cs" />
     <Compile Include="Components\Services\ISingletonServiceDependencyInitializer.cs" />
-    <Compile Include="Components\UI\ScrollingExtensions\IScrollViewerHelperFeature.cs" />
+    <Compile Include="Components\UI\ScrollingExtensions\IScrollViewerHelperViewProperties.cs" />
     <Compile Include="Components\UI\Layout\ChildMargin.cs" />
     <Compile Include="Components\UI\Interactivity\PropertyChangedDelegateCommandBehavior.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelperFeature.cs" />

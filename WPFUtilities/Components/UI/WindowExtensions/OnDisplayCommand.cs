@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-using WPFUtilities.Components.Services.Properties;
+using WPFUtilities.Extensions.Services;
 
 using win = System.Windows;
 
@@ -47,7 +47,8 @@ namespace WPFUtilities.Components.UI
             {
                 var commandType = (Type)win.GetValue(OnDisplayCommandProperty);
                 win.WithService(
-                    win, commandType,
+                    win,
+                    commandType,
                     (command) =>
                     {
                         (command as ICommand)?.Execute(win);

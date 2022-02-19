@@ -51,28 +51,26 @@ namespace WPFUtilities.Components.UI
 
         static void IsAutoChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if (dependencyObject is ListBox element)
+            if (!(dependencyObject is ListBox element)) return;
+
+            if ((bool)eventArgs.NewValue)
             {
-                if ((bool)eventArgs.NewValue)
-                {
-                    if (!element.IsLoaded)
-                        element.Loaded += ListBox_Loaded_EnableAutoScrollDown;
-                    else
-                        element.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
-                }
+                if (!element.IsLoaded)
+                    element.Loaded += ListBox_Loaded_EnableAutoScrollDown;
                 else
-                    element.ItemContainerGenerator.ItemsChanged -= ItemContainerGenerator_ItemsChanged;
+                    element.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
             }
+            else
+                element.ItemContainerGenerator.ItemsChanged -= ItemContainerGenerator_ItemsChanged;
         }
 
         static void ListBox_Loaded_EnableAutoScrollDown(object src, EventArgs e)
         {
-            if (src is ListBox element)
-            {
-                element.Loaded -= ListBox_Loaded_EnableAutoScrollDown;
-                var scrollViewer = _scrollViewers.Value.GetOrAdd(element.ItemContainerGenerator, WPFHelper.FindVisualChild<ScrollViewer>(element));
-                element.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
-            }
+            if (!(src is ListBox element)) return;
+
+            element.Loaded -= ListBox_Loaded_EnableAutoScrollDown;
+            var scrollViewer = _scrollViewers.Value.GetOrAdd(element.ItemContainerGenerator, WPFHelper.FindVisualChild<ScrollViewer>(element));
+            element.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
         }
 
         private static void ItemContainerGenerator_ItemsChanged(object sender, ItemsChangedEventArgs e)

@@ -34,22 +34,20 @@ namespace WPFUtilities.Components.UI
 
         static void ChildMarginChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if (dependencyObject is Panel panel)
-            {
-                if (!panel.IsLoaded)
-                    panel.Loaded += Panel_Loaded_SetChildrensMargin;
-                else
-                    SetChildrensMargin(panel);
-            }
+            if (!(dependencyObject is Panel panel)) return;
+
+            if (!panel.IsLoaded)
+                panel.Loaded += Panel_Loaded_SetChildrensMargin;
+            else
+                SetChildrensMargin(panel);
         }
 
         private static void Panel_Loaded_SetChildrensMargin(object sender, RoutedEventArgs e)
         {
-            if (sender is Panel panel)
-            {
-                panel.Loaded -= Panel_Loaded_SetChildrensMargin;
-                SetChildrensMargin(panel);
-            }
+            if (!(sender is Panel panel)) return;
+
+            panel.Loaded -= Panel_Loaded_SetChildrensMargin;
+            SetChildrensMargin(panel);
         }
 
         static void SetChildrensMargin(Panel panel)
