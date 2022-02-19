@@ -72,12 +72,30 @@ namespace WPFUtilities.Components.Services.Properties
             }
         }
 
+        /// <summary>
+        /// work on command property of behavior associated object
+        /// </summary>
+        /// <param name="behavior">associated object</param>
+        /// <param name="type">command type</param>
         static void SetupBehaviorFromCommandType(Behavior behavior, Type type)
-            =>
-            behavior.AddChangedEventHandler
-                (typeof(Command),
-                nameof(BehaviorAssociatedObjectChanged));
+        {
+            var getAssociatedObject = behavior.GetType().GetMethod("get_AssociatedObject", BindingFlags.NonPublic | BindingFlags.Instance);
+            var associatedObject = getAssociatedObject.Invoke(behavior, new object[] { });
 
+            if (associatedObject == null)
+                behavior.AddChangedEventHandler
+                    (typeof(Command),
+                    nameof(BehaviorAssociatedObjectChanged));
+            else
+                SetupBehaviorElementCommentPropertyFromCommandType(associatedObject, behavior);
+
+        }
+
+        /// <summary>
+        /// works when behavior associated object changed
+        /// </summary>
+        /// <param name="sender">behavior</param>
+        /// <param name="e">event args</param>
         static void BehaviorAssociatedObjectChanged(object sender, EventArgs e)
         {
             if (sender is Behavior behavior)
@@ -89,17 +107,23 @@ namespace WPFUtilities.Components.Services.Properties
                     behavior.RemoveChangedEventHandler
                         (typeof(Command),
                         nameof(BehaviorAssociatedObjectChanged));
-                    if (associatedObject is FrameworkElement frameworkElement)
-                    {
-                        Type type = GetType(behavior);
-                        SetupFrameworkElementCommandPropertyFromCommandType(frameworkElement, behavior, type);
-                    }
-                    else
-                        throw new Exception($"associated object '{associatedObject}' is not of type FrameworkElement");
+                    SetupBehaviorElementCommentPropertyFromCommandType(
+                        associatedObject,
+                        behavior
+                        );
                 }
             }
             else
                 throw new InvalidOperationException($"sender '{sender}' is not of type Behavior");
+        }
+
+        static void SetupBehaviorElementCommentPropertyFromCommandType(object associatedObject, Behavior behavior)
+        {
+            if (!(associatedObject is FrameworkElement frameworkElement))
+                throw new Exception($"associated object '{associatedObject}' is not of type FrameworkElement");
+
+            Type type = GetType(behavior);
+            SetupFrameworkElementCommandPropertyFromCommandType(frameworkElement, behavior, type);
         }
 
         static void SetupFrameworkElementCommandPropertyFromCommandType(
