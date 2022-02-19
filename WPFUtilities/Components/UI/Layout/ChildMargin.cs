@@ -37,24 +37,23 @@ namespace WPFUtilities.Components.UI
             if (dependencyObject is Panel panel)
             {
                 if (!panel.IsLoaded)
-                    panel.Loaded += Panel_Loaded;
+                    panel.Loaded += Panel_Loaded_SetChildrensMargin;
                 else
-                    CreateThicknessForChildrens(panel);
+                    SetChildrensMargin(panel);
             }
         }
 
-        private static void Panel_Loaded(object sender, RoutedEventArgs e)
+        private static void Panel_Loaded_SetChildrensMargin(object sender, RoutedEventArgs e)
         {
             if (sender is Panel panel)
             {
-                panel.Loaded -= Panel_Loaded;
-                CreateThicknessForChildrens(panel);
+                panel.Loaded -= Panel_Loaded_SetChildrensMargin;
+                SetChildrensMargin(panel);
             }
         }
 
-        static void CreateThicknessForChildrens(Panel panel)
+        static void SetChildrensMargin(Panel panel)
         {
-            //panel.Loaded -= CreateThicknessForChildrens;
             var childMargin = (Thickness)panel.GetValue(ChildMarginProperty);
             foreach (var child in panel.Children)
             {

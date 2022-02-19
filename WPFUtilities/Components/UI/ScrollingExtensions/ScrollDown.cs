@@ -56,7 +56,7 @@ namespace WPFUtilities.Components.UI
                 if ((bool)eventArgs.NewValue)
                 {
                     if (!element.IsLoaded)
-                        element.Loaded += OnLoaded_EnableAutoScrollDown;
+                        element.Loaded += ListBox_Loaded_EnableAutoScrollDown;
                     else
                         element.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
                 }
@@ -65,11 +65,11 @@ namespace WPFUtilities.Components.UI
             }
         }
 
-        static void OnLoaded_EnableAutoScrollDown(object src, EventArgs e)
+        static void ListBox_Loaded_EnableAutoScrollDown(object src, EventArgs e)
         {
             if (src is ListBox element)
             {
-                element.Loaded -= OnLoaded_EnableAutoScrollDown;
+                element.Loaded -= ListBox_Loaded_EnableAutoScrollDown;
                 var scrollViewer = _scrollViewers.Value.GetOrAdd(element.ItemContainerGenerator, WPFHelper.FindVisualChild<ScrollViewer>(element));
                 element.ItemContainerGenerator.ItemsChanged += ItemContainerGenerator_ItemsChanged;
             }

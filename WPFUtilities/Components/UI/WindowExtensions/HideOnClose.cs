@@ -43,13 +43,13 @@ namespace WPFUtilities.Components.UI
             if (dependencyObject is win.Window window)
             {
                 if ((bool)eventArgs.NewValue)
-                    window.Closing += Window_Closing;
+                    window.Closing += Window_Closing_EnableHideOnClose;
                 else
-                    window.Closing -= Window_Closing;
+                    window.Closing -= Window_Closing_EnableHideOnClose;
             }
         }
 
-        private static void Window_Closing(object sender, CancelEventArgs e)
+        private static void Window_Closing_EnableHideOnClose(object sender, CancelEventArgs e)
         {
             e.Cancel = true;
             (sender as win.Window)?.Hide();
