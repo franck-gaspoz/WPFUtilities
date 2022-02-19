@@ -31,23 +31,22 @@ namespace WPFUtilities.Components.Services.Properties
             {
                 source.Loaded -= InitializeAtLoaded;
 
-                var scope = properties.Scope.GetValue(target);
-
-                var host = properties.Component.GetComponentHost(source)
-                    ?? throw new InvalidOperationException("source host is null");
-
-                if (scope == Scopes.Global)
-                    host = host.RootHost;
-
-                var command = host.Services.GetRequiredService(serviceType);
-
-                var targetProperty = target.GetType().GetProperty(targetProperyName)
-                    ?? throw new InvalidOperationException("target has no property Command");
-
-                targetProperty.SetValue(target, command);
+                InitializeSourceServiceAndPerformAction(
+                    source,
+                    target,
+                    serviceType,
+                    (service) =>
+                    {
+                        var targetProperty = target.GetType().GetProperty(targetProperyName)
+                            ?? throw new InvalidOperationException("target has no property Command");
+                        targetProperty.SetValue(target, service);
+                    });
             }
 
-            source.Loaded += InitializeAtLoaded;
+            if (!source.IsLoaded)
+                source.Loaded += InitializeAtLoaded;
+            else
+                InitializeAtLoaded(source, null);
         }
 
         /// <summary>
@@ -69,20 +68,20 @@ namespace WPFUtilities.Components.Services.Properties
             {
                 source.Loaded -= InitializeAtLoaded;
 
-                var scope = properties.Scope.GetValue(target);
-
-                var host = properties.Component.GetComponentHost(source)
-                    ?? throw new InvalidOperationException("source host is null");
-
-                if (scope == Scopes.Global)
-                    host = host.RootHost;
-
-                var command = host.Services.GetRequiredService(serviceType);
-
-                target.SetValue(dependencyProperty, command);
+                InitializeSourceServiceAndPerformAction(
+                    source,
+                    target,
+                    serviceType,
+                    (service) =>
+                    {
+                        target.SetValue(dependencyProperty, service);
+                    });
             }
 
-            source.Loaded += InitializeAtLoaded;
+            if (!source.IsLoaded)
+                source.Loaded += InitializeAtLoaded;
+            else
+                InitializeAtLoaded(source, null);
         }
 
         /// <summary>
@@ -104,20 +103,32 @@ namespace WPFUtilities.Components.Services.Properties
             void InitializeAtLoaded(object src, EventArgs e)
             {
                 source.Loaded -= InitializeAtLoaded;
-
-                var scope = properties.Scope.GetValue(target);
-
-                var host = properties.Component.GetComponentHost(source)
-                    ?? throw new InvalidOperationException("source host is null");
-
-                if (scope == Scopes.Global)
-                    host = host.RootHost;
-
-                var service = host.Services.GetRequiredService(serviceType);
-                action?.Invoke(service);
+                InitializeSourceServiceAndPerformAction(source, target, serviceType, action);
             }
 
-            source.Loaded += InitializeAtLoaded;
+            if (!source.IsLoaded)
+                source.Loaded += InitializeAtLoaded;
+            else
+                InitializeAtLoaded(source, null);
+        }
+
+        static void InitializeSourceServiceAndPerformAction(
+            FrameworkElement source,
+            DependencyObject target,
+            Type serviceType,
+            Action<object> action
+            )
+        {
+            var scope = properties.Scope.GetValue(target);
+
+            var host = properties.Component.GetComponentHost(source)
+                ?? throw new InvalidOperationException("source host is null");
+
+            if (scope == Scopes.Global)
+                host = host.RootHost;
+
+            var service = host.Services.GetRequiredService(serviceType);
+            action?.Invoke(service);
         }
 
         /// <summary>
