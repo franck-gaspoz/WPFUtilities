@@ -43,6 +43,10 @@
 
             <MenuItem Header="Window">
 
+                <MenuItem Header="Properties">
+                    <MenuItem IsCheckable="True" Header="Top most" IsChecked="True"/>
+                </MenuItem>
+                
                 <MenuItem Header="Log a window message"
                           service:Command.Type="{x:Type applicationCommand:LogCommand}"
                           CommandParameter="I am a window log message!"/>
