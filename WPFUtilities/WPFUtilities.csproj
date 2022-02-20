@@ -103,6 +103,8 @@
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelperViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\IScrollViewerTouchViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelper.cs" />
+    <Compile Include="Components\UI\WindowExtensions\RestoreInitiaSizeOnShown.cs" />
+    <Compile Include="Components\UI\WindowExtensions\Size.cs" />
     <Compile Include="Extensions\Services\ServicesPropertiesHelperExtensions.cs" />
     <Compile Include="Components\UI\Layout\Layout.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollDown.cs" />

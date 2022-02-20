@@ -6,6 +6,6 @@
              ShutdownMode="OnMainWindowClose"
              >
     <Application.Resources>
-         
+        <ResourceDictionary Source="Styles.xaml"/>
     </Application.Resources>
 </wpfuapp:ApplicationBase>
