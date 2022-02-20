@@ -21,7 +21,7 @@ namespace WPFUtilities.Commands.Abstract
             : base(serviceProvider) { }
 
         /// <summary>
-        /// executes the command from the parameter
+        /// executes the command with an unique parameter 'service type' that is resolved from services
         /// </summary>
         /// <param name="parameter">parameter</param>
         public override void Execute(object parameter)
