@@ -103,7 +103,7 @@
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelperViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\IScrollViewerTouchViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelper.cs" />
-    <Compile Include="Components\UI\WindowExtensions\RestoreInitiaSizeOnShown.cs" />
+    <Compile Include="Components\UI\WindowExtensions\RestoreInitiaSizeOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\Size.cs" />
     <Compile Include="Extensions\Services\ServicesPropertiesHelperExtensions.cs" />
     <Compile Include="Components\UI\Layout\Layout.cs" />
@@ -111,7 +111,7 @@
     <Compile Include="Components\UI\ScrollingExtensions\Scrolling.cs" />
     <Compile Include="Components\UI\WindowExtensions\HideOnClose.cs" />
     <Compile Include="Components\UI\WindowExtensions\OnDisplayCommand.cs" />
-    <Compile Include="Components\UI\WindowExtensions\RestoreInitialLocationOnShown.cs" />
+    <Compile Include="Components\UI\WindowExtensions\RestoreInitialLocationOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\Location.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceCommand.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceParametricCommand.cs" />
