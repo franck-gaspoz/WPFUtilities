@@ -6,19 +6,19 @@ using WPFUtilities.Components.ServiceComponent;
 namespace WPFUtilities.Commands.Application
 {
     /// <summary>
-    /// open a window
+    /// open a dialog window
     /// </summary>
-    public class OpenWindowCommand : AbstractServiceParametricCommand<OpenWindowCommand, Window>
+    public class OpenDialogCommand : AbstractServiceParametricCommand<OpenWindowCommand, Window>
     {
         /// <inheritdoc/>
-        public OpenWindowCommand(IServiceComponentProvider serviceProvider)
+        public OpenDialogCommand(IServiceComponentProvider serviceProvider)
             : base(serviceProvider) { }
 
         /// <summary>
-        /// open a window
+        /// open a dialog window
         /// </summary>
         /// <param name="window">window</param>
         public override void Execute(Window window)
-            => window.Show();
+            => window.ShowDialog();
     }
 }

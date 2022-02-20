@@ -14,7 +14,7 @@ namespace WPFUtilities.Commands.Abstract
         where ImplType : ICommand
     {
         /// <summary>
-        /// creates a new instance
+        /// creates a new instance working with the specified service provider
         /// </summary>
         /// <param name="serviceProvider">service component provider</param>
         public AbstractServiceParametricCommand(IServiceComponentProvider serviceProvider)
