@@ -42,6 +42,36 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
 
         #endregion
 
+        #region scroll viewer helper is enabled
+
+        /// <summary>
+        /// get scroll viewer touch is enabled
+        /// </summary>
+        /// <param name="dependencyObject">dependency Object</param>
+        /// <returns></returns>
+        public static bool GetScrollViewerTouchIsEnabledProperty(DependencyObject dependencyObject)
+            => (bool)dependencyObject.GetValue(ScrollViewerTouchIsEnabledProperty);
+
+        /// <summary>
+        /// set scroll viewer touch is enabled
+        /// </summary>
+        /// <param name="dependencyObject">dependency Object</param>
+        /// <param name="value">value</param>
+        public static void SetScrollViewerTouchIsEnabledProperty(DependencyObject dependencyObject, bool value)
+            => dependencyObject.SetValue(ScrollViewerTouchIsEnabledProperty, value);
+
+        /// <summary>
+        /// scroll viewer touch is enabled
+        /// </summary>
+        public static readonly DependencyProperty ScrollViewerTouchIsEnabledProperty =
+            DependencyProperty.Register(
+                "ScrollViewerTouchIsEnabled",
+                typeof(bool),
+                typeof(ScrollViewer),
+                new PropertyMetadata(ScrollViewerTouchIsEnabledChanged));
+
+        #endregion
+
         /// <summary>
         /// enabling trigger treshold
         /// </summary>
@@ -51,6 +81,16 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
             => scrollViewer.GetResolveCreateServiceFromProperty<IScrollViewerTouchViewProperties>(
                 ScrollViewerTouchViewPropertiesProperty,
                 () => new ScrollViewerTouchViewProperties());
+
+        static void ScrollViewerTouchIsEnabledChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
+        {
+            if (!(dependencyObject is ScrollViewer scrollViewer)) return;
+
+            if ((bool)eventArgs.NewValue)
+                EnableScrollViewerTouch(scrollViewer);
+            else
+                DisableScrollViewerTouch(scrollViewer);
+        }
 
         /// <inheritdoc/>
         static void EnableScrollViewerTouch(ScrollViewer scrollViewer)
