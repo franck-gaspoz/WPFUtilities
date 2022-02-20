@@ -30,7 +30,7 @@ namespace WPFUtilities.Components.UI
                 "ChildSpacing",
                 typeof(double),
                 typeof(Layout),
-                new UIPropertyMetadata(0, ChildSpacingChanged));
+                new UIPropertyMetadata(0d, ChildSpacingChanged));
 
         static void ChildSpacingChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
