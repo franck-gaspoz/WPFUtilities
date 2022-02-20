@@ -8,6 +8,7 @@ namespace WPFUtilities.Commands.Interactivity
     /// <summary>
     /// close a window
     /// </summary>
+    [Obsolete]
     public class CloseWindowCommand
         : AbstractCommand<CloseWindowCommand>
     {

@@ -51,17 +51,14 @@ namespace WPFUtilities.Components.UI
         {
             if ((bool)e.NewValue && sender is win.Window win)
             {
-                var initialLeft = Window.GetInitialLeft(win);
-                if (initialLeft == Window.NotInitializedLocation)
-                    Window.SetInitialLeft(win, win.Left);
-                else
-                    win.Left = initialLeft;
+                if (!(win.Owner is win.Window owner)) return;
 
-                var initialTop = Window.GetInitialTop(win);
-                if (initialTop == Window.NotInitializedLocation)
-                    Window.SetInitialTop(win, win.Top);
-                else
-                    win.Top = initialTop;
+                var deltaWidth = owner.Width - win.Width;
+                var deltaHeight = owner.Height - win.Height;
+                var left = owner.Left + deltaWidth / 2d;
+                var top = owner.Top + deltaHeight / 2d;
+                win.Left = left;
+                win.Top = top;
             }
         }
     }

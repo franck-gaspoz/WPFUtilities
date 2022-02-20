@@ -10,6 +10,7 @@ namespace WPFUtilities.Commands.Interactivity
     /// <summary>
     /// open a dialog window
     /// </summary>
+    [Obsolete]
     public class OpenWindowCommand : AbstractCommand<OpenWindowCommand>
     {
         /// <summary>

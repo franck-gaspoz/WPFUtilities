@@ -12,8 +12,8 @@
         Height="191.737" 
         Width="338.296"
         ui:Window.HideOnClose="True"
-        ui:Window.RestoreInitialLocationOnShow="True"
         ui:Window.RestoreInitialSizeOnShow="True"
+        ui:Window.CenterOnParentOnShow="True"
         x:Name="window"
         >
     

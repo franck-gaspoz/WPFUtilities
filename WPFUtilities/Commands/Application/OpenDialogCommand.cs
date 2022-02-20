@@ -19,6 +19,8 @@ namespace WPFUtilities.Commands.Application
         /// </summary>
         /// <param name="window">window</param>
         public override void Execute(Window window)
-            => window.ShowDialog();
+        {
+            window.ShowDialog();
+        }
     }
 }

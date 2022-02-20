@@ -8,6 +8,7 @@ namespace WPFUtilities.Commands.Interactivity
     /// <summary>
     /// hide a window
     /// </summary>
+    [Obsolete]
     public class HideWindowCommand
         : AbstractCommand<HideWindowCommand>
     {
