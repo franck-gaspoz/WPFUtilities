@@ -152,11 +152,8 @@
     <Compile Include="Components\UI\Interactivity\PropertyChangedDelegateCommandBehavior.cs" />
     <Compile Include="Components\UI\Layout\CollapseSplitedPanelBehavior.cs" />
     <Compile Include="Commands\Abstract\AbstractCommand.cs" />
-    <Compile Include="Commands\Application\ApplicationCommands.cs" />
     <Compile Include="Commands\Application\CloseApplicationCommand.cs" />
     <Compile Include="Commands\Application\LogCommand.cs" />
-    <Compile Include="Commands\Render\RenderCommands.cs" />
-    <Compile Include="Commands\Interactivity\InteractivityCommands.cs" />
     <Compile Include="Commands\Interactivity\OpenWindowCommand.cs" />
     <Compile Include="Commands\Render\ZoomCommand.cs" />
     <Compile Include="Commands\Render\ZoomCommandParameters.cs" />
