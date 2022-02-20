@@ -41,7 +41,7 @@ namespace WPFUtilities.Components.UI
 
         #endregion
 
-        #region scroll viewer helper feature
+        #region scroll viewer helper is enabled
 
         /// <summary>
         /// get scroll viewer helper feature model
