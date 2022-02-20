@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Components\Services\Properties\ServicesPropertiesHelper.cs" />
+    <Compile Include="Components\UI\Layout\ChildSpacing.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouch.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouchViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelperViewProperties.cs" />

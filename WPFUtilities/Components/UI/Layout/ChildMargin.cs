@@ -4,7 +4,7 @@ using System.Windows.Controls;
 namespace WPFUtilities.Components.UI
 {
     /// <summary>
-    /// margin setter property behavior
+    /// set childs margins
     /// </summary>
     public static partial class Layout
     {
