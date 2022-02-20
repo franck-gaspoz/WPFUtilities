@@ -16,19 +16,19 @@ namespace WPFUtilities.Components.UI
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
-        public static bool GetRestoreInitialSizeOnShow(DependencyObject dependencyObject) => (bool)dependencyObject.GetValue(RestoreInitialSizeProperty);
+        public static bool GetRestoreInitialSizeOnShow(DependencyObject dependencyObject) => (bool)dependencyObject.GetValue(RestoreInitialSizeOnShowProperty);
 
         /// <summary>
         /// set restore initial size on show
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="value">value</param>
-        public static void SetRestoreInitialSizeOnShow(DependencyObject dependencyObject, bool value) => dependencyObject.SetValue(RestoreInitialSizeProperty, value);
+        public static void SetRestoreInitialSizeOnShow(DependencyObject dependencyObject, bool value) => dependencyObject.SetValue(RestoreInitialSizeOnShowProperty, value);
 
         /// <summary>
         /// restore initial size on show property
         /// </summary>
-        public static readonly DependencyProperty RestoreInitialSizeProperty =
+        public static readonly DependencyProperty RestoreInitialSizeOnShowProperty =
             DependencyProperty.Register(
                 "RestoreInitialSizeOnShow",
                 typeof(bool),

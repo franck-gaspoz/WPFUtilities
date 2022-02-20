@@ -9,45 +9,45 @@ namespace WPFUtilities.Components.UI
     /// </summary>
     public static partial class Window
     {
-        #region restore initial location on show
+        #region center on parent on show
 
         /// <summary>
         /// get restore initial location on show
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
-        public static bool GetRestoreInitialLocationOnShow(DependencyObject dependencyObject) => (bool)dependencyObject.GetValue(RestoreInitialLocationOnShowProperty);
+        public static bool GetCenterOnParentOnShow(DependencyObject dependencyObject) => (bool)dependencyObject.GetValue(CenterOnParentOnShowProperty);
 
         /// <summary>
         /// set restore initial location on show
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="value">value</param>
-        public static void SetRestoreInitialLocationOnShow(DependencyObject dependencyObject, bool value) => dependencyObject.SetValue(RestoreInitialLocationOnShowProperty, value);
+        public static void SetCenterOnParentOnShow(DependencyObject dependencyObject, bool value) => dependencyObject.SetValue(CenterOnParentOnShowProperty, value);
 
         /// <summary>
         /// restore initial location on show property
         /// </summary>
-        public static readonly DependencyProperty RestoreInitialLocationOnShowProperty =
+        public static readonly DependencyProperty CenterOnParentOnShowProperty =
             DependencyProperty.Register(
-                "RestoreInitialLocationOnShow",
+                "CenterOnParentOnShow",
                 typeof(bool),
                 typeof(win.Window),
-                new UIPropertyMetadata(false, RestoreInitialLocationOnShowChanged));
+                new UIPropertyMetadata(false, CenterOnParentOnShowChanged));
 
-        static void RestoreInitialLocationOnShowChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
+        static void CenterOnParentOnShowChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
             if (!(dependencyObject is win.Window window)) return;
 
             if ((bool)eventArgs.NewValue)
-                window.IsVisibleChanged += Window_IsVisibleChanged_RestoreInitialLocation;
+                window.IsVisibleChanged += Window_IsVisibleChanged_CenterOnParent;
             else
-                window.IsVisibleChanged -= Window_IsVisibleChanged_RestoreInitialLocation;
+                window.IsVisibleChanged -= Window_IsVisibleChanged_CenterOnParent;
         }
 
         #endregion
 
-        private static void Window_IsVisibleChanged_RestoreInitialLocation(object sender, DependencyPropertyChangedEventArgs e)
+        private static void Window_IsVisibleChanged_CenterOnParent(object sender, DependencyPropertyChangedEventArgs e)
         {
             if ((bool)e.NewValue && sender is win.Window win)
             {

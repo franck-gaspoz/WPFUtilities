@@ -104,6 +104,7 @@
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelperViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\IScrollViewerTouchViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelper.cs" />
+    <Compile Include="Components\UI\WindowExtensions\CenterOnParentOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\RestoreInitiaSizeOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\Size.cs" />
     <Compile Include="Extensions\Services\ServicesPropertiesHelperExtensions.cs" />
