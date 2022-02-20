@@ -138,7 +138,7 @@ namespace WPFUtilities.Extensions.Services
         /// <param name="dependencyProperty">dependency property storing the service</param>
         /// <param name="create">create function or null</param>
         /// <returns>service or null</returns>
-        public static T GetResolveCreateServiceFromProperty<T>(
+        public static T GetResolveCreateServiceProperty<T>(
             this FrameworkElement source,
             DependencyProperty dependencyProperty,
             Func<T> create = null)

@@ -78,7 +78,7 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
         static readonly double EnableTriggerTreshold = 5;
 
         static IScrollViewerTouchViewProperties GetOrResolveScrollViewerTouchViewProperties(ScrollViewer scrollViewer)
-            => scrollViewer.GetResolveCreateServiceFromProperty<IScrollViewerTouchViewProperties>(
+            => scrollViewer.GetResolveCreateServiceProperty<IScrollViewerTouchViewProperties>(
                 ScrollViewerTouchViewPropertiesProperty,
                 () => new ScrollViewerTouchViewProperties());
 

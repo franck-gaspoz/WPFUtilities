@@ -95,7 +95,7 @@ namespace WPFUtilities.Components.UI
             if (scrollViewerViewProperties == null)
             {
                 scrollViewerViewProperties =
-                    scrollViewer.GetResolveCreateServiceFromProperty<IScrollViewerHelperViewProperties>(
+                    scrollViewer.GetResolveCreateServiceProperty<IScrollViewerHelperViewProperties>(
                         ScrollViewerHelperViewPropertiesProperty,
                         () => new ScrollViewerHelperViewProperties());
             }
