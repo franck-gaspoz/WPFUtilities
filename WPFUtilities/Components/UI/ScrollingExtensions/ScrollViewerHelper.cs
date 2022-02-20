@@ -44,7 +44,7 @@ namespace WPFUtilities.Components.UI
         #region scroll viewer helper is enabled
 
         /// <summary>
-        /// get scroll viewer helper feature model
+        /// get scroll viewer helper is enabled
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <returns></returns>
@@ -52,7 +52,7 @@ namespace WPFUtilities.Components.UI
             => (bool)dependencyObject.GetValue(ScrollViewerHelperIsEnabledProperty);
 
         /// <summary>
-        /// set scroll viewer helper feature model
+        /// set scroll viewer helper is enabled
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="value">value</param>
@@ -60,7 +60,7 @@ namespace WPFUtilities.Components.UI
             => dependencyObject.SetValue(ScrollViewerHelperIsEnabledProperty, value);
 
         /// <summary>
-        /// scroll viewer helper feature model
+        /// scroll viewer helper is enabled
         /// </summary>
         public static readonly DependencyProperty ScrollViewerHelperIsEnabledProperty =
             DependencyProperty.Register(
