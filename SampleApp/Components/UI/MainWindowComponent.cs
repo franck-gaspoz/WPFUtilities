@@ -61,7 +61,7 @@ namespace SampleApp.Components.UI
                     config.Target = ListLoggerModel.LogItems);
             });
 
-            // window scope (component scope) commands
+            // window scope (component scope) commands [app logic]
 
             services.Services
                 .AddSingleton<LogCommand>()
