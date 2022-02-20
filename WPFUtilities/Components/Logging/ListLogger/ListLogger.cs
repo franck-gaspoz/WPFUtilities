@@ -41,9 +41,9 @@ namespace WPFUtilities.Components.Logging.ListLogger
             if (!IsEnabled(logLevel)) return;
             var config = GetCurrentConfiguration();
 
-            var s = $"[{logLevel,-11}]";
-            s += $" {_name} \n";
-            s += $" {formatter(state, exception)}";
+            var s = $"{logLevel,-11}:";
+            s += $" {_name}\n";
+            s += "".PadLeft(13) + $"{formatter(state, exception)}";
 
             config.Target?.Add(s);
         }
