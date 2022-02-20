@@ -42,7 +42,7 @@ namespace WPFUtilities.Components.Logging.ListLogger
             var config = GetCurrentConfiguration();
 
             var s = $"[{logLevel,-11}]";
-            s += $" {_name} |";
+            s += $" {_name} \n";
             s += $" {formatter(state, exception)}";
 
             config.Target?.Add(s);
