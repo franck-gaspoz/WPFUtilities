@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Reflection;
 using System.Windows;
 
 using Microsoft.Xaml.Behaviors;
@@ -17,6 +16,7 @@ namespace WPFUtilities.Components.Services.Properties
     /// <para>requires the Component.Host property to be set in the dependency object</para>
     /// <para>or require the property Component.Type to be setted in the dependency object</para>
     /// <para>and performs a lookup of the component host in parents logical tree, then sets the component host property</para>
+    /// <para>Type is accepted on types FrameworkElement and Behavior</para>
     /// </summary>
     public static class Command
     {
@@ -78,46 +78,11 @@ namespace WPFUtilities.Components.Services.Properties
         /// <param name="behavior">associated object</param>
         /// <param name="type">command type</param>
         static void SetupBehaviorFromCommandType(Behavior behavior, Type type)
-        {
-            var getAssociatedObject = behavior.GetType().GetMethod("get_AssociatedObject", BindingFlags.NonPublic | BindingFlags.Instance);
-            var associatedObject = getAssociatedObject.Invoke(behavior, new object[] { });
+            => behavior.WithAssociatedObjectPropertyChanged(
+                SetupBehaviorElementCommandPropertyFromCommandType);
 
-            if (associatedObject == null)
-                behavior.AddChangedEventHandler
-                    (typeof(Command),
-                    nameof(BehaviorAssociatedObjectChanged));
-            else
-                SetupBehaviorElementCommentPropertyFromCommandType(associatedObject, behavior);
-
-        }
-
-        /// <summary>
-        /// works when behavior associated object changed
-        /// </summary>
-        /// <param name="sender">behavior</param>
-        /// <param name="e">event args</param>
-        static void BehaviorAssociatedObjectChanged(object sender, EventArgs e)
-        {
-            if (sender is Behavior behavior)
-            {
-                var getAssociatedObject = behavior.GetType().GetMethod("get_AssociatedObject", BindingFlags.NonPublic | BindingFlags.Instance);
-                var associatedObject = getAssociatedObject.Invoke(behavior, new object[] { });
-                if (associatedObject != null)
-                {
-                    behavior.RemoveChangedEventHandler
-                        (typeof(Command),
-                        nameof(BehaviorAssociatedObjectChanged));
-                    SetupBehaviorElementCommentPropertyFromCommandType(
-                        associatedObject,
-                        behavior
-                        );
-                }
-            }
-            else
-                throw new InvalidOperationException($"sender '{sender}' is not of type Behavior");
-        }
-
-        static void SetupBehaviorElementCommentPropertyFromCommandType(object associatedObject, Behavior behavior)
+        static void SetupBehaviorElementCommandPropertyFromCommandType(
+            object associatedObject, Behavior behavior)
         {
             if (!(associatedObject is FrameworkElement frameworkElement))
                 throw new Exception($"associated object '{associatedObject}' is not of type FrameworkElement");

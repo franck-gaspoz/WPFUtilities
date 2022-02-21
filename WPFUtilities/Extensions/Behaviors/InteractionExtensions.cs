@@ -63,5 +63,55 @@ namespace WPFUtilities.Extensions.Behaviors
             var handler = Delegate.CreateDelegate(changedEventInfo.EventHandlerType, changedEventHandler);
             changedEventInfo.RemoveEventHandler(behavior, handler);
         }
+
+        /// <summary>
+        /// get behavior AssociatedObject private attribute value
+        /// </summary>
+        /// <param name="behavior">behavior</param>
+        /// <returns>object or null</returns>
+        public static object GetAssociatedObject(this Behavior behavior)
+        {
+            var getAssociatedObject = behavior.GetType().GetMethod("get_AssociatedObject", BindingFlags.NonPublic | BindingFlags.Instance);
+            var associatedObject = getAssociatedObject.Invoke(behavior, new object[] { });
+            return associatedObject;
+        }
+
+        /// <summary>
+        /// triggers an action when behavior associated object is set
+        /// <para>attempt the behavior is attached to its associated object</para>
+        /// <para>trigger action immediately if all conditions are reached</para>
+        /// </summary>
+        /// <param name="behavior">behavior</param>
+        /// <param name="action">action to be triggered</param>
+        public static void WithAssociatedObjectPropertyChanged(
+            this Behavior behavior,
+            Action<object, Behavior> action)
+        {
+            void BehaviorAssociatedObjectChanged(object sender, EventArgs e)
+            {
+                if (!(sender is Behavior _behavior))
+                    throw new InvalidOperationException($"sender '{sender}' is not of type Behavior");
+
+                var _associatedObject = _behavior.GetAssociatedObject();
+                if (_associatedObject != null)
+                {
+                    behavior.RemoveChangedEventHandler
+                        (typeof(InteractionExtensions),
+                        nameof(BehaviorAssociatedObjectChanged));
+                    action(
+                        _associatedObject,
+                        behavior
+                        );
+                }
+            }
+
+            var associatedObject = behavior.GetAssociatedObject();
+            if (associatedObject == null)
+                behavior.AddChangedEventHandler
+                    (typeof(InteractionExtensions),
+                    nameof(BehaviorAssociatedObjectChanged));
+            else
+                action(associatedObject, behavior);
+        }
     }
 }
