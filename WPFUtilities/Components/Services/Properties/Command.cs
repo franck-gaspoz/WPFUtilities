@@ -78,7 +78,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// <param name="behavior">associated object</param>
         /// <param name="type">command type</param>
         static void SetupBehaviorFromCommandType(Behavior behavior, Type type)
-            => behavior.WithAssociatedObjectPropertyChanged(
+            => behavior.WithAssociatedObject(
                 SetupBehaviorElementCommandPropertyFromCommandType);
 
         static void SetupBehaviorElementCommandPropertyFromCommandType(

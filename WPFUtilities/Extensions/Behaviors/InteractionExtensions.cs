@@ -83,7 +83,7 @@ namespace WPFUtilities.Extensions.Behaviors
         /// </summary>
         /// <param name="behavior">behavior</param>
         /// <param name="action">action to be triggered</param>
-        public static void WithAssociatedObjectPropertyChanged(
+        public static void WithAssociatedObject(
             this Behavior behavior,
             Action<object, Behavior> action)
         {
