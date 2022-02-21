@@ -62,11 +62,11 @@ namespace WPFUtilities.Components.Services.Properties
 
             if (!(eventArgs.NewValue is Type type)) return;
             if (dependencyObject is FrameworkElement frameworkElement)
-                SetupFrameworkElementCommandPropertyFromCommandType(frameworkElement, frameworkElement, type);
+                SetupFrameworkElementCommandProperty(frameworkElement, frameworkElement, type);
             else
             {
                 if (dependencyObject is Behavior behavior)
-                    SetupBehaviorFromCommandType(behavior, type);
+                    ResolveBehaviorCommand(behavior, type);
                 else
                     throw new InvalidOperationException($"can't setup Command property on element '{dependencyObject}' of Type '{dependencyObject.GetType().Name}'");
             }
@@ -77,21 +77,21 @@ namespace WPFUtilities.Components.Services.Properties
         /// </summary>
         /// <param name="behavior">associated object</param>
         /// <param name="type">command type</param>
-        static void SetupBehaviorFromCommandType(Behavior behavior, Type type)
+        static void ResolveBehaviorCommand(Behavior behavior, Type type)
             => behavior.WithAssociatedObject(
-                SetupBehaviorElementCommandPropertyFromCommandType);
+                ResolveBehaviorElementCommandProperty);
 
-        static void SetupBehaviorElementCommandPropertyFromCommandType(
+        static void ResolveBehaviorElementCommandProperty(
             object associatedObject, Behavior behavior)
         {
             if (!(associatedObject is FrameworkElement frameworkElement))
                 throw new Exception($"associated object '{associatedObject}' is not of type FrameworkElement");
 
             Type type = GetType(behavior);
-            SetupFrameworkElementCommandPropertyFromCommandType(frameworkElement, behavior, type);
+            SetupFrameworkElementCommandProperty(frameworkElement, behavior, type);
         }
 
-        static void SetupFrameworkElementCommandPropertyFromCommandType(
+        static void SetupFrameworkElementCommandProperty(
             FrameworkElement source,
             DependencyObject target,
             Type commandType)
