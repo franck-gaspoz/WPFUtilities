@@ -15,6 +15,7 @@ namespace SampleApp.Components.Logging
         /// </summary>
         /// <param name="logViewModel">log view model</param>
         /// <param name="listLoggerModel">list logger model</param>
+        // TODO: handle inter-thread logviewmodel -> view access (caller not on ui thread)
         public LogModelMediator(
             ILogViewModel logViewModel,
             IListLoggerModel listLoggerModel)

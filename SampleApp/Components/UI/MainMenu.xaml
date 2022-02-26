@@ -8,6 +8,7 @@
              xmlns:windows="clr-namespace:SampleApp.Windows"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              xmlns:ui="clr-namespace:SampleApp.Components.UI"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="32" 
              d:DesignWidth="800">
@@ -68,7 +69,14 @@
             <MenuItem Header="About">
                 <MenuItem Header="About..."
                           service:Command.Type="{x:Type applicationCommand:OpenDialogCommand}"
-                          CommandParameter="{x:Type windows:AboutWindow}"/>
+                          >
+                    <MenuItem.CommandParameter>
+                        <x:Array Type="{x:Type sys:Object}">
+                            <x:Type Type="{x:Type windows:AboutWindow}"/>
+                            <sys:Boolean>false</sys:Boolean>
+                        </x:Array>
+                    </MenuItem.CommandParameter>
+                </MenuItem>
             </MenuItem>
             
         </Menu>

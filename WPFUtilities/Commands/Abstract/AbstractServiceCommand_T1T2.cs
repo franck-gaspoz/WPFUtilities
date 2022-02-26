@@ -28,17 +28,10 @@ namespace WPFUtilities.Commands.Abstract
             {
                 if (array.Length != 2) throw new InvalidOperationException($"expected 2 parameters, but found {array.Length}");
                 Execute(
-                    ConvertTo<TParam1>(array[0]),
-                    ConvertTo<TParam2>(array[1]),
+                    CastParameterTo<TParam1>(0, array[0]),
+                    CastParameterTo<TParam2>(1, array[1]),
                     context);
             }
-        }
-
-        T ConvertTo<T>(object parameter)
-        {
-            if (parameter is Type type)
-                return (T)ServiceProvider.GetService(type);
-            return (T)parameter;
         }
 
         /// <inheritdoc/>

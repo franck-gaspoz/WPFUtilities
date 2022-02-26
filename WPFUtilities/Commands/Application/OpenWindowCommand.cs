@@ -10,7 +10,7 @@ namespace WPFUtilities.Commands.Application
     /// open a window
     /// </summary>
     public class OpenWindowCommand :
-        AbstractServiceCommand<OpenWindowCommand, Window, bool>
+        AbstractServiceCommand<OpenWindowCommand, Window>
     {
         /// <inheritdoc/>
         public OpenWindowCommand(IServiceComponentProvider serviceProvider)
@@ -20,11 +20,9 @@ namespace WPFUtilities.Commands.Application
         /// open a window
         /// </summary>
         /// <param name="window">window</param>
-        /// <param name="setOwner">set owner if true</param>
         /// <param name="context">execute context</param>
         public override void Execute(
             Window window,
-            bool setOwner,
             IServiceCommandExecuteContext context)
         {
             window.Show();

@@ -99,6 +99,7 @@
     <Compile Include="Commands\Abstract\AbstractServiceCommand_T1T2.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceCommand_T.cs" />
     <Compile Include="Commands\Application\OpenDialogCommand.cs" />
+    <Compile Include="Components\Services\Command\Attributes\ServiceReferenceAttribute.cs" />
     <Compile Include="Components\Services\Command\IServiceCommand_T1T2.cs" />
     <Compile Include="Components\Services\Command\IServiceCommand.cs" />
     <Compile Include="Components\Services\Command\ServiceCommandExecuteContext.cs" />
@@ -108,7 +109,6 @@
     <Compile Include="Components\Services\Properties\CommandExtensions\Command.cs" />
     <Compile Include="Components\Services\Command\ServicesCommandPropertiesHelper.cs" />
     <Compile Include="Components\Services\Properties\ServicesPropertiesHelper.cs" />
-    <Compile Include="Components\Services\ServiceType.cs" />
     <Compile Include="Components\UI\Layout\ChildSpacing.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouch.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouchViewProperties.cs" />

@@ -1,6 +1,4 @@
 ﻿
-using System;
-
 using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Components.Services.Command;
 
@@ -23,14 +21,7 @@ namespace WPFUtilities.Commands.Abstract
 
         /// <inheritdoc/>
         public override void Execute(object parameter, IServiceCommandExecuteContext context)
-            => Execute(ConvertTo<TParam>(parameter), context);
-
-        T ConvertTo<T>(object parameter)
-        {
-            if (parameter is Type type)
-                return (T)ServiceProvider.GetService(type);
-            return (T)parameter;
-        }
+            => Execute(CastParameterTo<TParam>(0, parameter), context);
 
         /// <inheritdoc/>
         public abstract void Execute(TParam parameter, IServiceCommandExecuteContext context);
