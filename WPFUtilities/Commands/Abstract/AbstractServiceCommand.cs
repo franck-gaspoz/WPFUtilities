@@ -1,6 +1,8 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 
 using WPFUtilities.Components.ServiceComponent;
+using WPFUtilities.Components.Services.Command;
 
 namespace WPFUtilities.Commands.Abstract
 {
@@ -10,7 +12,7 @@ namespace WPFUtilities.Commands.Abstract
     public abstract class AbstractServiceCommand<ImplType> :
         AbstractCommand<ImplType>,
         ICommand
-        where ImplType : ICommand
+        where ImplType : IServiceCommand
     {
         /// <summary>
         /// service provider
@@ -25,5 +27,16 @@ namespace WPFUtilities.Commands.Abstract
         {
             ServiceProvider = serviceProvider;
         }
+
+        /// <inheritdoc/>
+        public override void Execute(object parameter)
+            => throw new InvalidOperationException("context is required. use Execute(object parameter, IServiceCommandExecuteContext context) instead");
+
+        /// <summary>
+        /// execute the command
+        /// </summary>
+        /// <param name="parameter">parameter</param>
+        /// <param name="context">execute context</param>
+        public abstract void Execute(object parameter, IServiceCommandExecuteContext context);
     }
 }

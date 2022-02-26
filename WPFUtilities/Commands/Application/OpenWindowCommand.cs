@@ -2,13 +2,14 @@
 
 using WPFUtilities.Commands.Abstract;
 using WPFUtilities.Components.ServiceComponent;
+using WPFUtilities.Components.Services.Command;
 
 namespace WPFUtilities.Commands.Application
 {
     /// <summary>
     /// open a window
     /// </summary>
-    public class OpenWindowCommand : AbstractCommandWithServiceParameter<OpenWindowCommand, Window>
+    public class OpenWindowCommand : AbstractServiceCommand<OpenWindowCommand, Window>
     {
         /// <inheritdoc/>
         public OpenWindowCommand(IServiceComponentProvider serviceProvider)
@@ -18,7 +19,8 @@ namespace WPFUtilities.Commands.Application
         /// open a window
         /// </summary>
         /// <param name="window">window</param>
-        public override void Execute(Window window)
+        /// <param name="context">execute context</param>
+        public override void Execute(Window window, IServiceCommandExecuteContext context)
         {
             window.Show();
         }

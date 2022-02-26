@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿
+using System.Windows;
 
 using WPFUtilities.Commands.Abstract;
 using WPFUtilities.Components.ServiceComponent;
@@ -10,9 +11,7 @@ namespace WPFUtilities.Commands.Application
     /// <summary>
     /// open a dialog window
     /// </summary>
-    public class OpenDialogCommand :
-        AbstractServiceCommandWithServiceParameter<OpenDialogCommand, Window>,
-        IServiceCommand
+    public class OpenDialogCommand : AbstractServiceCommand<OpenDialogCommand, Window>
     {
         /// <inheritdoc/>
         public OpenDialogCommand(IServiceComponentProvider serviceProvider)
@@ -25,8 +24,10 @@ namespace WPFUtilities.Commands.Application
         /// <param name="context">execute context</param>
         public override void Execute(Window window, IServiceCommandExecuteContext context)
         {
-            if (window.WindowStartupLocation == WindowStartupLocation.CenterOwner)
-                window.Owner = WPFHelper.FindAncestor<Window>((DependencyObject)context.Caller);
+            if (window.WindowStartupLocation == WindowStartupLocation.CenterOwner
+                && context.Caller is DependencyObject dependencyObject)
+                window.Owner = WPFHelper.FindAncestor<Window>(dependencyObject);
+
             window.ShowDialog();
         }
     }
