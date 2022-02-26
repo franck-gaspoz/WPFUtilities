@@ -23,9 +23,7 @@ namespace WPFUtilities.Commands.Abstract
 
         /// <inheritdoc/>
         public override void Execute(object parameter, IServiceCommandExecuteContext context)
-        {
-            Execute(ConvertTo<TParam>(parameter), context);
-        }
+            => Execute(ConvertTo<TParam>(parameter), context);
 
         T ConvertTo<T>(object parameter)
         {
