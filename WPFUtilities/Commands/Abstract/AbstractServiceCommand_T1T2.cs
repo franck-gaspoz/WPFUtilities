@@ -22,19 +22,20 @@ namespace WPFUtilities.Commands.Abstract
             : base(serviceProvider) { }
 
         /// <inheritdoc/>
-        public override void Execute(object parameter, IServiceCommandExecuteContext context)
+        public override void Execute(IServiceCommandExecuteContext context, object parameter)
         {
             if (parameter is object[] array)
             {
                 if (array.Length != 2) throw new InvalidOperationException($"expected 2 parameters, but found {array.Length}");
                 Execute(
+                    context,
                     CastParameterTo<TParam1>(0, array[0]),
-                    CastParameterTo<TParam2>(1, array[1]),
-                    context);
+                    CastParameterTo<TParam2>(1, array[1])
+                    );
             }
         }
 
         /// <inheritdoc/>
-        public abstract void Execute(TParam1 param1, TParam2 param2, IServiceCommandExecuteContext context);
+        public abstract void Execute(IServiceCommandExecuteContext context, TParam1 param1, TParam2 param2);
     }
 }

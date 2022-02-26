@@ -37,9 +37,9 @@ namespace WPFUtilities.Commands.Abstract
         /// <summary>
         /// execute the command
         /// </summary>
-        /// <param name="parameter">parameter</param>
         /// <param name="context">execute context</param>
-        public abstract void Execute(object parameter, IServiceCommandExecuteContext context);
+        /// <param name="parameter">parameter</param>
+        public abstract void Execute(IServiceCommandExecuteContext context, object parameter);
 
         /// <summary>
         /// cast a parameter to the specified type according to the Execute method parameters custom attributes
@@ -47,7 +47,7 @@ namespace WPFUtilities.Commands.Abstract
         /// <typeparam name="T">target type</typeparam>
         /// <param name="index">parameter index</param>
         /// <param name="parameter">source parameter</param>
-        /// <returns></returns>
+        /// <returns>parameter as T or service resolve from service reference of type T</returns>
         protected T CastParameterTo<T>(int index, object parameter)
         {
             if (parameter == null) return default(T);

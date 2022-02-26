@@ -43,7 +43,8 @@ namespace WPFUtilities.Components.Services.Command
         /// <inheritdoc/>
         public override void Execute(object parameter)
             => _serviceCommand?.Execute(
-                parameter,
-                _context.Clone());
+                _context.Clone(),
+                parameter
+                );
     }
 }

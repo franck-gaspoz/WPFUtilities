@@ -8,9 +8,9 @@
         /// <summary>
         /// executes the command
         /// </summary>
+        /// <param name="context">service command execute context</param>
         /// <param name="param1">TParam1 command parameter</param>
         /// <param name="param2">TParam2 command parameter</param>
-        /// <param name="context">service command execute context</param>
-        void Execute(TParam1 param1, TParam2 param2, IServiceCommandExecuteContext context);
+        void Execute(IServiceCommandExecuteContext context, TParam1 param1, TParam2 param2);
     }
 }

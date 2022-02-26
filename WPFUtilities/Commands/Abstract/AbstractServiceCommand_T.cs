@@ -20,10 +20,10 @@ namespace WPFUtilities.Commands.Abstract
             : base(serviceProvider) { }
 
         /// <inheritdoc/>
-        public override void Execute(object parameter, IServiceCommandExecuteContext context)
-            => Execute(CastParameterTo<TParam>(0, parameter), context);
+        public override void Execute(IServiceCommandExecuteContext context, object parameter)
+            => Execute(context, CastParameterTo<TParam>(0, parameter));
 
         /// <inheritdoc/>
-        public abstract void Execute(TParam parameter, IServiceCommandExecuteContext context);
+        public abstract void Execute(IServiceCommandExecuteContext context, TParam parameter);
     }
 }

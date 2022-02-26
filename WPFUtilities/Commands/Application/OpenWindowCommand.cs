@@ -19,11 +19,12 @@ namespace WPFUtilities.Commands.Application
         /// <summary>
         /// open a window
         /// </summary>
-        /// <param name="window">window</param>
         /// <param name="context">execute context</param>
+        /// <param name="window">window</param>
         public override void Execute(
-            Window window,
-            IServiceCommandExecuteContext context)
+            IServiceCommandExecuteContext context,
+            Window window
+            )
         {
             window.Show();
         }

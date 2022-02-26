@@ -10,8 +10,8 @@ namespace WPFUtilities.Components.Services.Command
         /// <summary>
         /// executes the command
         /// </summary>
-        /// <param name="parameter">command parameter</param>
         /// <param name="context">service command execute context</param>
-        void Execute(object parameter, IServiceCommandExecuteContext context);
+        /// <param name="parameter">command parameter</param>
+        void Execute(IServiceCommandExecuteContext context, object parameter);
     }
 }
