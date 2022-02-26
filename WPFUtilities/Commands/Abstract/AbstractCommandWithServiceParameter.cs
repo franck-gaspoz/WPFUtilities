@@ -26,11 +26,9 @@ namespace WPFUtilities.Commands.Abstract
         /// <param name="parameter">parameter</param>
         public override void Execute(object parameter)
         {
-            if (parameter is Type serviceType)
-            {
-                var service = (ServiceType)ServiceProvider.GetRequiredService(serviceType);
-                Execute(service);
-            }
+            if (!(parameter is Type serviceType)) throw new InvalidOperationException($"expected a parameter of type '{typeof(ServiceType).FullName}', but found {parameter.GetType().FullName}");
+            var service = (ServiceType)ServiceProvider.GetRequiredService(serviceType);
+            Execute(service);
         }
 
         /// <summary>

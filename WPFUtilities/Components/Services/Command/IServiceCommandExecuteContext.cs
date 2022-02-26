@@ -9,5 +9,11 @@
         /// the command calller
         /// </summary>
         object Caller { get; set; }
+
+        /// <summary>
+        /// clone this object
+        /// </summary>
+        /// <returns>a new instance with same properties values</returns>
+        IServiceCommandExecuteContext Clone();
     }
 }

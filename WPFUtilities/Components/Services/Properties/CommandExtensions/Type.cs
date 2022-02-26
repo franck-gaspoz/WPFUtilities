@@ -101,9 +101,8 @@ namespace WPFUtilities.Components.Services.Properties
             Type commandType)
         {
             if (commandType.HasInterface<IServiceCommand>())
-            {
-
-            }
+                ServiceCommandPropertiesHelper.AssignRelayCommandToProperty(
+                    source, target, commandType);
             else
                 source.AssignServiceToProperty(target, commandType, "Command");
         }

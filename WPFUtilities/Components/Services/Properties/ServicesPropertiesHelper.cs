@@ -146,7 +146,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// trigger action when source host is initialized (once loaded) requiring a service and concerning a target
         /// </summary>
         /// <param name="source">component host source</param>
-        /// <param name="scopeOwner">scope property owner<</param>
+        /// <param name="scopeOwner">scope property owner</param>
         /// <param name="serviceType">required service type</param>
         /// <param name="action">action to be triggered: have the service as parameter</param>
         /// <exception cref="InvalidOperationException">service not found</exception>
@@ -175,7 +175,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// try to find a service from a component host
         /// </summary>
         /// <param name="source">component host source</param>
-        /// <param name="scopeOwner">scope property owner<</param>
+        /// <param name="scopeOwner">scope property owner</param>
         /// <param name="serviceType">service type</param>
         /// <returns>service or null if not found</returns>
         /// <exception cref="InvalidOperationException">source host is null</exception>

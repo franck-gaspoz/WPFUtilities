@@ -38,7 +38,7 @@ namespace WPFUtilities.Components.Services.Properties
                     source,
                     scopeOwner: target,
                     commandType,
-                    (service) =>
+                    (serviceCommand) =>
                     {
                         var targetProperty = target.GetType().GetProperty("Command")
                             ?? throw new InvalidOperationException($"target '{target}' has no property Command");
@@ -48,7 +48,7 @@ namespace WPFUtilities.Components.Services.Properties
                             Caller = source
                         };
                         var relayCommand = new RelayServiceCommand(
-                            service as IServiceCommand,
+                            serviceCommand as IServiceCommand,
                             context);
                         targetProperty.SetValue(target, relayCommand);
                     }); ;

@@ -11,7 +11,7 @@ namespace WPFUtilities.Components.Application
         /// <inheritdoc/>
         public Type MainWindowComponentInterfaceType { get; set; }
 
-        //// <inheritdoc/>
+        /// <inheritdoc/>
         public Type MainWindowComponentImplementationType { get; set; }
 
         /// <inheritdoc/>

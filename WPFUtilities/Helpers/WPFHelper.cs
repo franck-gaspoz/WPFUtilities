@@ -14,7 +14,24 @@ namespace WPFUtilities.Helpers
     public static class WPFHelper
     {
         /// <summary>
-        /// find object ancestor of type T in visual tree
+        /// find visual ancestor of type T
+        /// </summary>
+        /// <typeparam name="T">lookup type</typeparam>
+        /// <param name="dependencyObject">from this object</param>
+        /// <returns>object of type T or null</returns>
+        public static T FindVisualAncestor<T>(DependencyObject dependencyObject)
+            where T : DependencyObject
+        {
+            var parent = VisualTreeHelper.GetParent(dependencyObject);
+
+            if (parent == null) return null;
+
+            var parentT = parent as T;
+            return parentT ?? FindAncestor<T>(parent);
+        }
+
+        /// <summary>
+        /// find logicial ancestor of type T
         /// </summary>
         /// <typeparam name="T">lookup type</typeparam>
         /// <param name="dependencyObject">from this object</param>
@@ -22,7 +39,7 @@ namespace WPFUtilities.Helpers
         public static T FindAncestor<T>(DependencyObject dependencyObject)
             where T : DependencyObject
         {
-            var parent = VisualTreeHelper.GetParent(dependencyObject);
+            var parent = LogicalTreeHelper.GetParent(dependencyObject);
 
             if (parent == null) return null;
 

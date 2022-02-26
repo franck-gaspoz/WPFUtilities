@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows.Input;
 
+using WPFUtilities.Commands.Abstract;
+
 namespace WPFUtilities.Components.Services.Command
 {
     /// <summary>
@@ -8,12 +10,10 @@ namespace WPFUtilities.Components.Services.Command
     /// <para>statefull, unique for a source</para>
     /// </summary>
     public class RelayServiceCommand
-        : ICommand
+        : AbstractCommand<ICommand>
     {
-        /// <inheritdoc/>
-        public event EventHandler CanExecuteChanged;
 
-        IServiceCommandExecuteContext context;
+        IServiceCommandExecuteContext _context;
 
         WeakReference<IServiceCommand> _command;
 
@@ -29,6 +29,7 @@ namespace WPFUtilities.Components.Services.Command
         {
             if (command == null) throw new InvalidOperationException("command can't be null");
             _command = new WeakReference<IServiceCommand>(command);
+            _context = context;
         }
 
         IServiceCommand _serviceCommand =>
@@ -36,11 +37,14 @@ namespace WPFUtilities.Components.Services.Command
                 ? target : null;
 
         /// <inheritdoc/>
-        public bool CanExecute(object parameter)
-            => (bool)_serviceCommand?.CanExecute(parameter);
+        public override bool CanExecute(object parameter)
+            => base.CanExecute(parameter) &&
+                (bool)_serviceCommand?.CanExecute(parameter);
 
         /// <inheritdoc/>
-        public void Execute(object parameter)
-            => _serviceCommand?.Execute(parameter, context);
+        public override void Execute(object parameter)
+            => _serviceCommand?.Execute(
+                parameter,
+                _context.Clone());
     }
 }

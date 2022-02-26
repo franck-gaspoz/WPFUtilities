@@ -11,7 +11,8 @@ namespace WPFUtilities.Commands.Abstract
     /// abstract command singleton service
     /// </summary>
     public abstract class AbstractCommand<ImplType> :
-        SingletonService<ImplType>, ICommand
+        SingletonService<ImplType>,
+        ICommand
         where ImplType : ICommand
     {
 
