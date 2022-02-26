@@ -8,7 +8,7 @@ namespace WPFUtilities.Commands.Abstract
     /// <summary>
     /// command that requires service context and a service parameter
     /// </summary>
-    public abstract class AbstractServiceParametricCommand<ImplType, ServiceType>
+    public abstract class AbstractCommandWithServiceParameter<ImplType, ServiceType>
         : AbstractServiceCommand<ImplType>,
         ICommand
         where ImplType : ICommand
@@ -17,7 +17,7 @@ namespace WPFUtilities.Commands.Abstract
         /// creates a new instance working with the specified service provider
         /// </summary>
         /// <param name="serviceProvider">service component provider</param>
-        public AbstractServiceParametricCommand(IServiceComponentProvider serviceProvider)
+        public AbstractCommandWithServiceParameter(IServiceComponentProvider serviceProvider)
             : base(serviceProvider) { }
 
         /// <summary>

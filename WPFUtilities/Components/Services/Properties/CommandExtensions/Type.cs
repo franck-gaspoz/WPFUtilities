@@ -1,10 +1,11 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows;
 
 using Microsoft.Xaml.Behaviors;
 
+using WPFUtilities.Components.Services.Command;
 using WPFUtilities.Extensions.Behaviors;
+using WPFUtilities.Extensions.Reflections;
 using WPFUtilities.Extensions.Services;
 
 namespace WPFUtilities.Components.Services.Properties
@@ -18,7 +19,7 @@ namespace WPFUtilities.Components.Services.Properties
     /// <para>and performs a lookup of the component host in parents logical tree, then sets the component host property</para>
     /// <para>Type is accepted on types FrameworkElement and Behavior</para>
     /// </summary>
-    public static class Command
+    public static partial class Command
     {
         #region type
 
@@ -57,9 +58,6 @@ namespace WPFUtilities.Components.Services.Properties
         /// <param name="eventArgs">event args</param>
         public static void TypeChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
-            if (DesignerProperties.GetIsInDesignMode(dependencyObject))
-                return;
-
             if (!(eventArgs.NewValue is Type type)) return;
             if (dependencyObject is FrameworkElement frameworkElement)
                 SetupFrameworkElementCommandProperty(frameworkElement, frameworkElement, type);
@@ -91,10 +89,23 @@ namespace WPFUtilities.Components.Services.Properties
             SetupFrameworkElementCommandProperty(frameworkElement, behavior, type);
         }
 
+        /// <summary>
+        /// setup the framework element property 'Command'
+        /// </summary>
+        /// <param name="source">framework element providing the component host</param>
+        /// <param name="target">object target owning the property 'Command'</param>
+        /// <param name="commandType">value of the 'Command' property</param>
         static void SetupFrameworkElementCommandProperty(
             FrameworkElement source,
             DependencyObject target,
             Type commandType)
-            => source.AssignServiceToProperty(target, commandType, "Command");
+        {
+            if (commandType.HasInterface<IServiceCommand>())
+            {
+
+            }
+            else
+                source.AssignServiceToProperty(target, commandType, "Command");
+        }
     }
 }

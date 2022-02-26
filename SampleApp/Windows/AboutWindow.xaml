@@ -7,7 +7,7 @@
         xmlns:appCommands="clr-namespace:WPFUtilities.Commands.Application;assembly=WPFUtilities"
         xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterOwner"
         Title="About ..." 
         Height="191.737" 
         Width="338.296"

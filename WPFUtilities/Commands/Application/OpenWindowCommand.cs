@@ -8,7 +8,7 @@ namespace WPFUtilities.Commands.Application
     /// <summary>
     /// open a window
     /// </summary>
-    public class OpenWindowCommand : AbstractServiceParametricCommand<OpenWindowCommand, Window>
+    public class OpenWindowCommand : AbstractCommandWithServiceParameter<OpenWindowCommand, Window>
     {
         /// <inheritdoc/>
         public OpenWindowCommand(IServiceComponentProvider serviceProvider)

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace WPFUtilities.Extensions.Reflections
 {
@@ -23,5 +24,23 @@ namespace WPFUtilities.Extensions.Reflections
             }
             return false;
         }
+
+        /// <summary>
+        /// indicates if a type inherits from a type having an interface with the given interface name. returns true if type has given interface type name
+        /// </summary>
+        /// <param name="type">type to analyze</param>
+        /// <param name="interfaceTypeName">interface type name</param>
+        /// <returns>true if type implements an interface, false otherwize</returns>
+        public static bool HasInterface(this Type type, string interfaceTypeName)
+            => type.GetInterfaces().Where(x => x.FullName == interfaceTypeName).Any();
+
+        /// <summary>
+        /// indicates if a type inherits from a type having an interface with the given interface name. returns true if type has given interface type name
+        /// </summary>
+        /// <param name="type">type to analyze</param>
+        /// <typeparam name="InterfaceType">interface type</typeparam>
+        /// <returns>true if type implements an interface, false otherwize</returns>
+        public static bool HasInterface<InterfaceType>(this Type type)
+            => HasInterface(type, typeof(InterfaceType).FullName);
     }
 }

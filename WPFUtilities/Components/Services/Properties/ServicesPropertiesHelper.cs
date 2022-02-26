@@ -8,7 +8,7 @@ using properties = WPFUtilities.Components.Services.Properties;
 namespace WPFUtilities.Components.Services.Properties
 {
     /// <summary>
-    /// framework element extensions methods that help resolve services framework element initilization
+    /// framework element extensions methods that help resolve services framework element initialization
     /// </summary>
     public static class ServicesPropertiesHelper
     {
@@ -142,22 +142,44 @@ namespace WPFUtilities.Components.Services.Properties
                 InitializeAtLoaded(source, null);
         }
 
-        static void InitializeSourceServiceAndPerformAction(
+        /// <summary>
+        /// trigger action when source host is initialized (once loaded) requiring a service and concerning a target
+        /// </summary>
+        /// <param name="source">component host source</param>
+        /// <param name="scopeOwner">scope property owner<</param>
+        /// <param name="serviceType">required service type</param>
+        /// <param name="action">action to be triggered: have the service as parameter</param>
+        /// <exception cref="InvalidOperationException">service not found</exception>
+        public static void InitializeSourceServiceAndPerformAction(
             FrameworkElement source,
-            DependencyObject target,
+            DependencyObject scopeOwner,
             Type serviceType,
             Action<object> action
             )
         {
-            var service = LookupService(source, target, serviceType);
+            var service = LookupService(source, scopeOwner, serviceType);
             if (service == null) throw new InvalidOperationException($"service not found: {serviceType.Name}");
             action?.Invoke(service);
         }
 
-        static object LookupService(FrameworkElement source, Type serviceType)
+        /// <summary>
+        /// try to find a service from a component host
+        /// </summary>
+        /// <param name="source">component host source</param>
+        /// <param name="serviceType">service type</param>
+        /// <returns>service or null if not found</returns>
+        public static object LookupService(FrameworkElement source, Type serviceType)
             => LookupService(source, source, serviceType);
 
-        static object LookupService(FrameworkElement source, DependencyObject scopeOwner, Type serviceType)
+        /// <summary>
+        /// try to find a service from a component host
+        /// </summary>
+        /// <param name="source">component host source</param>
+        /// <param name="scopeOwner">scope property owner<</param>
+        /// <param name="serviceType">service type</param>
+        /// <returns>service or null if not found</returns>
+        /// <exception cref="InvalidOperationException">source host is null</exception>
+        public static object LookupService(FrameworkElement source, DependencyObject scopeOwner, Type serviceType)
         {
             var scope = properties.Scope.GetValue(scopeOwner);
 

@@ -31,8 +31,6 @@ namespace SampleApp.Commands
         /// </summary>
         /// <param name="parameter">not used</param>
         public override void Execute(object parameter)
-        {
-            _logger.LogInformation("* main window is shown *");
-        }
+            => _logger.LogInformation("* main window is shown *");
     }
 }

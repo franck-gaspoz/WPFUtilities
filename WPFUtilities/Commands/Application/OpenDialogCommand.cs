@@ -8,7 +8,7 @@ namespace WPFUtilities.Commands.Application
     /// <summary>
     /// open a dialog window
     /// </summary>
-    public class OpenDialogCommand : AbstractServiceParametricCommand<OpenWindowCommand, Window>
+    public class OpenDialogCommand : AbstractCommandWithServiceParameter<OpenWindowCommand, Window>
     {
         /// <inheritdoc/>
         public OpenDialogCommand(IServiceComponentProvider serviceProvider)

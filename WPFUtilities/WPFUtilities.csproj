@@ -96,7 +96,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Abstract\AbstractServiceCommandWithServiceParameter.cs" />
     <Compile Include="Commands\Application\OpenDialogCommand.cs" />
+    <Compile Include="Components\Services\Command\ServiceCommandExecuteContext.cs" />
+    <Compile Include="Components\Services\Command\IServiceCommandExecuteContext.cs" />
+    <Compile Include="Components\Services\Command\IServiceCommand.cs" />
+    <Compile Include="Components\Services\Command\RelayServiceCommand.cs" />
+    <Compile Include="Components\Services\Properties\CommandExtensions\Command.cs" />
+    <Compile Include="Components\Services\Command\ServicesCommandPropertiesHelper.cs" />
     <Compile Include="Components\Services\Properties\ServicesPropertiesHelper.cs" />
     <Compile Include="Components\UI\Layout\ChildSpacing.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouch.cs" />
@@ -116,14 +123,14 @@
     <Compile Include="Components\UI\WindowExtensions\RestoreInitialLocationOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\Location.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceCommand.cs" />
-    <Compile Include="Commands\Abstract\AbstractServiceParametricCommand.cs" />
+    <Compile Include="Commands\Abstract\AbstractCommandWithServiceParameter.cs" />
     <Compile Include="Commands\Application\ClearLogCommand.cs" />
     <Compile Include="Commands\Application\HideWindowCommand.cs" />
     <Compile Include="Commands\Application\OpenWindowCommand.cs" />
     <Compile Include="Commands\Application\CloseWindowCommand.cs" />
     <Compile Include="Commands\Application\OpenMainWindowCommand.cs" />
     <Compile Include="ComponentModels\InstanceCounter.cs" />
-    <Compile Include="Components\Services\Properties\Command.cs" />
+    <Compile Include="Components\Services\Properties\CommandExtensions\Type.cs" />
     <Compile Include="Components\ServiceComponent\ComponentHostLookup.cs" />
     <Compile Include="Components\Services\Properties\Component.cs" />
     <Compile Include="Components\ServiceComponent\IServiceComponentCollection.cs" />
