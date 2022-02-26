@@ -57,15 +57,27 @@ namespace WPFUtilities.Commands.Abstract
                 .ToDictionary(x => x.GetParameters().Length);
             var executeMethod = executeMethods[executeMethods.Keys.Max()];
             var paramInfo = executeMethod.GetParameters()[index];
+
+            if (parameter is Type type
+                && (paramInfo.ParameterType != typeof(Type)
+                || paramInfo.GetCustomAttributes(typeof(ServiceReferenceAttribute), true).Any()))
             {
-                if (parameter is Type type
-                    && (paramInfo.ParameterType != typeof(Type)
-                    || paramInfo.GetCustomAttributes(typeof(ServiceReferenceAttribute), true).Any()))
-                    // resolve type as a service reference
-                    return (T)ServiceProvider.GetService(type);
+                // resolve type as a service reference
+                var service = ServiceProvider.GetService(type);
+                if (!(service is T))
+                    throw CreateExecuteCommandParamaterTypeErrorException(
+                        paramInfo.ParameterType, service.GetType(), index,
+                        "Service parameter resolve error: ");
+                return (T)service;
             }
 
+            if (!(parameter is T))
+                throw CreateExecuteCommandParamaterTypeErrorException(
+                    paramInfo.ParameterType, parameter.GetType(), index);
             return (T)parameter;
         }
+
+        InvalidOperationException CreateExecuteCommandParamaterTypeErrorException(Type expectedType, Type type, int index, string prefix = "")
+            => new InvalidOperationException($"{prefix}Excute command '{this.GetType().Name}' parameter {index} wrong type: expected {expectedType.FullName} but found {type.FullName}");
     }
 }

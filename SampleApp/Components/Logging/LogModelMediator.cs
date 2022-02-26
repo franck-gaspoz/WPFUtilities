@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Linq;
 
 using WPFUtilities.Components.Logging.ListLogger;
@@ -28,10 +29,12 @@ namespace SampleApp.Components.Logging
                 switch (e.ListChangedType)
                 {
                     case ListChangedType.Reset:
-                        logViewModel.Messages.Clear();
+                        App.Current.Dispatcher.BeginInvoke(new Action(() =>
+                            logViewModel.Messages.Clear()));
                         break;
                     case ListChangedType.ItemAdded:
-                        logViewModel.Messages.Add(listLoggerModel.LogItems[e.NewIndex]);
+                        App.Current.Dispatcher.BeginInvoke(new Action(() =>
+                            logViewModel.Messages.Add(listLoggerModel.LogItems[e.NewIndex])));
                         break;
                 }
             }
