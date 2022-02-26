@@ -11,7 +11,9 @@ namespace WPFUtilities.Commands.Application
     /// open a dialog window
     /// </summary>
     public class OpenDialogCommand :
-        AbstractServiceCommand<OpenDialogCommand, Window, bool>
+        AbstractServiceCommand<
+            OpenDialogCommand,
+            Window, bool>
     {
         /// <inheritdoc/>
         public OpenDialogCommand(IServiceComponentProvider serviceProvider)
@@ -26,7 +28,7 @@ namespace WPFUtilities.Commands.Application
         public override void Execute(
             IServiceCommandExecuteContext context,
             Window window,
-            bool takesOwnership
+            bool takesOwnership = true
             )
         {
             if (window.WindowStartupLocation == WindowStartupLocation.CenterOwner
