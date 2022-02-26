@@ -70,13 +70,7 @@
                 <MenuItem Header="About..."
                           service:Command.Type="{x:Type applicationCommand:OpenDialogCommand}"
                           CommandParameter="{x:Type windows:AboutWindow}"
-                          >
-                    <!--<MenuItem.CommandParameter>
-                        <x:Array Type="{x:Type sys:Object}">
-                            <x:Type Type="{x:Type windows:AboutWindow}"/>
-                        </x:Array>
-                    </MenuItem.CommandParameter>-->
-                </MenuItem>
+                          />
             </MenuItem>
             
         </Menu>
