@@ -56,7 +56,7 @@ namespace WPFUtilities.Commands.Abstract
                 .Where(x => x.Name == "Execute")
                 .ToDictionary(x => x.GetParameters().Length);
             var executeMethod = executeMethods[executeMethods.Keys.Max()];
-            var paramInfo = executeMethod.GetParameters()[index];
+            var paramInfo = executeMethod.GetParameters()[index + 1];
 
             // TODO: test with interface type
             if (parameter is Type type

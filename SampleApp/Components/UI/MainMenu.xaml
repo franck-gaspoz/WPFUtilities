@@ -73,7 +73,7 @@
                     <MenuItem.CommandParameter>
                         <x:Array Type="{x:Type sys:Object}">
                             <x:Type Type="{x:Type windows:AboutWindow}"/>
-                            <sys:Boolean>false</sys:Boolean>
+                            <sys:Int16>32</sys:Int16>
                         </x:Array>
                     </MenuItem.CommandParameter>
                 </MenuItem>
