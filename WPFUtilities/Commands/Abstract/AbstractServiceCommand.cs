@@ -123,6 +123,36 @@ namespace WPFUtilities.Commands.Abstract
             return (T)parameter;
         }
 
+        /// <summary>
+        /// returns an array from parameter object, if parameter is array of object returns parameter
+        /// </summary>
+        /// <param name="parameter">parameter</param>
+        /// <returns>parameter or array with parameter inside</returns>
+        protected object[] ToParameterArray(object parameter)
+            => (!(parameter is object[] array))
+                ? new object[] { parameter }
+                : array;
+
+        /// <summary>
+        /// validate a parameter array
+        /// </summary>
+        /// <param name="parameters">parameters</param>
+        /// <param name="maxLength">max length limit</param>
+        /// <param name="minLength">min length limit (default 0)</param>
+        /// <returns>parameters array</returns>
+        /// <exception cref="InvalidOperationException">parameters array length is over max length limit</exception>
+        /// <exception cref="InvalidOperationException">parameters array length is under min length limit</exception>
+        protected object[] ToValidParameterArray(
+            object parameters,
+            int maxLength,
+            int minLength = 0)
+        {
+            var array = ToParameterArray(parameters);
+            if (array.Length > maxLength) throw new InvalidOperationException($"expected maximim {maxLength} parameters, but found {array.Length}");
+            if (array.Length < minLength) throw new InvalidOperationException($"expected minimum {minLength} parameters, but found {array.Length}");
+            return array;
+        }
+
         InvalidOperationException CreateExecuteCommandParamaterTypeErrorException(Type expectedType, Type type, int index, string prefix = "")
             => new InvalidOperationException($"{prefix}Excute command '{this.GetType().Name}' parameter {index} wrong type: expected {expectedType.FullName} but found {type.FullName}");
 

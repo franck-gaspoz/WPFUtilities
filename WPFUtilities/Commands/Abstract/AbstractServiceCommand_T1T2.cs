@@ -1,6 +1,4 @@
 ﻿
-using System;
-
 using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Components.Services.Command;
 
@@ -24,15 +22,13 @@ namespace WPFUtilities.Commands.Abstract
         /// <inheritdoc/>
         public override void Execute(IServiceCommandExecuteContext context, object parameter)
         {
-            if (parameter is object[] array)
-            {
-                if (array.Length > 2) throw new InvalidOperationException($"expected 2 parameters, but found {array.Length}");
-                Execute(
-                    context,
-                    TransformParameter<TParam1>(0, array),
-                    TransformParameter<TParam2>(1, array)
-                    );
-            }
+            var array = ToValidParameterArray(parameter, 2);
+
+            Execute(
+                context,
+                TransformParameter<TParam1>(0, array),
+                TransformParameter<TParam2>(1, array)
+                );
         }
 
         /// <inheritdoc/>
