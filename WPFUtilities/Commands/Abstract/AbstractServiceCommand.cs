@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Input;
 
 using WPFUtilities.Components.ServiceComponent;
@@ -42,21 +43,65 @@ namespace WPFUtilities.Commands.Abstract
         public abstract void Execute(IServiceCommandExecuteContext context, object parameter);
 
         /// <summary>
-        /// cast a parameter to the specified type according to the Execute method parameters custom attributes
+        /// transform a parameter to the specified type according to the Execute method parameters default value
         /// </summary>
         /// <typeparam name="T">target type</typeparam>
         /// <param name="index">parameter index</param>
-        /// <param name="parameter">source parameter</param>
         /// <returns>parameter as T or service resolve from service reference of type T</returns>
-        protected T CastParameterTo<T>(int index, object parameter)
+        /// <exception cref="InvalidOperationException">parameter wrong type error</exception>
+        protected T TransformParameter<T>(int index)
         {
-            if (parameter == null) return default(T);
+            var paramInfo = GetParamInfo(index);
+            if (paramInfo.HasDefaultValue)
+            {
+                var parameter = paramInfo.DefaultValue;
+                if (!(parameter is T prameterAsT))
+                    throw CreateExecuteCommandParamaterTypeErrorException(
+                        paramInfo.ParameterType, parameter.GetType(), index, "Parameter default value transformation error: ");
+                return prameterAsT;
+            }
+            throw CreateExecuteCommandParameterDefaultMissingException(typeof(T), index);
+        }
 
+        /// <summary>
+        /// transform parrameter depending on index et parameters array
+        /// </summary>
+        /// <typeparam name="T">target type</typeparam>
+        /// <param name="index">parameter index</param>
+        /// <param name="paramArray">array of parameters values</param>
+        /// <returns>parameter as T or service resolve from service reference of type T</returns>
+        /// <exception cref="InvalidOperationException">parameter wrong type error</exception>
+        protected T TransformParameter<T>(int index, object[] paramArray)
+        {
+            if (paramArray.Length > index)
+                return TransformParameter<T>(index, paramArray[index]);
+            else
+                return TransformParameter<T>(index);
+        }
+
+        ParameterInfo GetParamInfo(int index)
+        {
             var executeMethods = this.GetType().GetMethods()
                 .Where(x => x.Name == "Execute")
                 .ToDictionary(x => x.GetParameters().Length);
             var executeMethod = executeMethods[executeMethods.Keys.Max()];
             var paramInfo = executeMethod.GetParameters()[index + 1];
+            return paramInfo;
+        }
+
+        /// <summary>
+        /// transform a parameter to the specified type according to the Execute method parameters custom attributes
+        /// </summary>
+        /// <typeparam name="T">target type</typeparam>
+        /// <param name="index">parameter index</param>
+        /// <param name="parameter">source parameter</param>
+        /// <returns>parameter as T or service resolve from service reference of type T</returns>
+        /// <exception cref="InvalidOperationException">parameter wrong type error</exception>
+        protected T TransformParameter<T>(int index, object parameter)
+        {
+            if (parameter == null) return default(T);
+
+            var paramInfo = GetParamInfo(index);
 
             // TODO: test with interface type
             if (parameter is Type type
@@ -80,5 +125,9 @@ namespace WPFUtilities.Commands.Abstract
 
         InvalidOperationException CreateExecuteCommandParamaterTypeErrorException(Type expectedType, Type type, int index, string prefix = "")
             => new InvalidOperationException($"{prefix}Excute command '{this.GetType().Name}' parameter {index} wrong type: expected {expectedType.FullName} but found {type.FullName}");
+
+        InvalidOperationException CreateExecuteCommandParameterDefaultMissingException(Type expectedType, int index, string prefix = "")
+           => new InvalidOperationException($"{prefix}Execute command '{this.GetType().Name}' parameter {index} has no default value, but value was missing in call");
+
     }
 }

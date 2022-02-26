@@ -26,11 +26,11 @@ namespace WPFUtilities.Commands.Abstract
         {
             if (parameter is object[] array)
             {
-                if (array.Length != 2) throw new InvalidOperationException($"expected 2 parameters, but found {array.Length}");
+                if (array.Length > 2) throw new InvalidOperationException($"expected 2 parameters, but found {array.Length}");
                 Execute(
                     context,
-                    CastParameterTo<TParam1>(0, array[0]),
-                    CastParameterTo<TParam2>(1, array[1])
+                    TransformParameter<TParam1>(0, array),
+                    TransformParameter<TParam2>(1, array)
                     );
             }
         }

@@ -32,6 +32,7 @@ namespace WPFUtilities.Commands.Application
             )
         {
             if (window.WindowStartupLocation == WindowStartupLocation.CenterOwner
+                && takesOwnership
                 && context.Caller is DependencyObject dependencyObject)
                 window.Owner = WPFHelper.FindAncestor<Window>(dependencyObject);
 
