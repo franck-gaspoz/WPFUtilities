@@ -58,6 +58,7 @@ namespace WPFUtilities.Commands.Abstract
             var executeMethod = executeMethods[executeMethods.Keys.Max()];
             var paramInfo = executeMethod.GetParameters()[index];
 
+            // TODO: test with interface type
             if (parameter is Type type
                 && (paramInfo.ParameterType != typeof(Type)
                 || paramInfo.GetCustomAttributes(typeof(ServiceReferenceAttribute), true).Any()))
