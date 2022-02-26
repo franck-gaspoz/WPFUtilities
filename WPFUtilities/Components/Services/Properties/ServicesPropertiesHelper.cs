@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 
 using WPFUtilities.Components.ServiceComponent;
@@ -25,6 +26,8 @@ namespace WPFUtilities.Components.Services.Properties
             Type serviceType,
             string targetProperyName)
         {
+            if (DesignerProperties.GetIsInDesignMode(source)) return;
+            if (DesignerProperties.GetIsInDesignMode(target)) return;
             ComponentHostLookup.SetComponentHostPropertyFromResolvedComponentWhenLoaded(source);
 
             void InitializeAtLoaded(object src, EventArgs e)
@@ -149,7 +152,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// <param name="scopeOwner">scope property owner</param>
         /// <param name="serviceType">required service type</param>
         /// <param name="action">action to be triggered: have the service as parameter</param>
-        /// <exception cref="InvalidOperationException">service not found</exception>
+        /// <exception cref="InvalidOperationException">source host is null</exception>
         public static void InitializeSourceServiceAndPerformAction(
             FrameworkElement source,
             DependencyObject scopeOwner,

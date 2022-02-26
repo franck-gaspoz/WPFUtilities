@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 
 using Microsoft.Xaml.Behaviors;
@@ -58,6 +59,8 @@ namespace WPFUtilities.Components.Services.Properties
         /// <param name="eventArgs">event args</param>
         public static void TypeChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
+            if (DesignerProperties.GetIsInDesignMode(dependencyObject)) return;
+
             if (!(eventArgs.NewValue is Type type)) return;
             if (dependencyObject is FrameworkElement frameworkElement)
                 SetupFrameworkElementCommandProperty(frameworkElement, frameworkElement, type);
@@ -100,6 +103,9 @@ namespace WPFUtilities.Components.Services.Properties
             DependencyObject target,
             Type commandType)
         {
+            if (DesignerProperties.GetIsInDesignMode(source)) return;
+            if (DesignerProperties.GetIsInDesignMode(target)) return;
+
             if (commandType.HasInterface<IServiceCommand>())
                 ServiceCommandPropertiesHelper.AssignRelayCommandToProperty(
                     source, target, commandType);

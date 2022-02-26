@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 
 using win = System.Windows;
 
@@ -37,6 +38,7 @@ namespace WPFUtilities.Components.UI
 
         static void CenterOnParentOnShowChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
+            if (DesignerProperties.GetIsInDesignMode(dependencyObject)) return;
             if (!(dependencyObject is win.Window window)) return;
 
             if ((bool)eventArgs.NewValue)

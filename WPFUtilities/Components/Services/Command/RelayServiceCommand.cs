@@ -12,7 +12,6 @@ namespace WPFUtilities.Components.Services.Command
     public class RelayServiceCommand
         : AbstractCommand<ICommand>
     {
-
         IServiceCommandExecuteContext _context;
 
         WeakReference<IServiceCommand> _command;
