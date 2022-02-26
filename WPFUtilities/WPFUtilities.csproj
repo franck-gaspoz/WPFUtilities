@@ -96,12 +96,14 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\Abstract\AbstractServiceCommand_T1T2.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceCommand_T.cs" />
     <Compile Include="Commands\Application\OpenDialogCommand.cs" />
-    <Compile Include="Components\Services\Command\IServiceCommand_T.cs" />
+    <Compile Include="Components\Services\Command\IServiceCommand_T1T2.cs" />
+    <Compile Include="Components\Services\Command\IServiceCommand.cs" />
     <Compile Include="Components\Services\Command\ServiceCommandExecuteContext.cs" />
     <Compile Include="Components\Services\Command\IServiceCommandExecuteContext.cs" />
-    <Compile Include="Components\Services\Command\IServiceCommand.cs" />
+    <Compile Include="Components\Services\Command\IServiceCommand_T.cs" />
     <Compile Include="Components\Services\Command\RelayServiceCommand.cs" />
     <Compile Include="Components\Services\Properties\CommandExtensions\Command.cs" />
     <Compile Include="Components\Services\Command\ServicesCommandPropertiesHelper.cs" />
