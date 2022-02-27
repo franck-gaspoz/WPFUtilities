@@ -102,6 +102,7 @@
     <Compile Include="Commands\Application\LogObjectCommand.cs" />
     <Compile Include="Commands\Application\LogObjectCommandParameters.cs" />
     <Compile Include="Commands\Application\OpenDialogCommand.cs" />
+    <Compile Include="Components\Binding\BindingProxy.cs" />
     <Compile Include="Components\Services\Command\Attributes\ServiceCommandParametersAttribute.cs" />
     <Compile Include="Components\Services\Command\Attributes\ServiceReferenceAttribute.cs" />
     <Compile Include="Components\Services\Command\IServiceCommand_T1T2T3.cs" />

@@ -60,7 +60,7 @@
                             Message="window object dump :"
                             >
                             <applicationCommand:LogObjectCommandParameters.Data>
-                                <Binding Path="." RelativeSource="{RelativeSource Mode=Self}"/>
+                                <Binding Path="." RelativeSource="{RelativeSource Mode=FindAncestor,AncestorType=Window}"/>
                             </applicationCommand:LogObjectCommandParameters.Data>
                         </applicationCommand:LogObjectCommandParameters>
                     </MenuItem.CommandParameter>
