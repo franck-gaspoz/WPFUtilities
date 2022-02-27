@@ -105,6 +105,13 @@
     <Compile Include="Components\Binding\BindingProxy.cs" />
     <Compile Include="Components\Services\Command\Attributes\ServiceCommandParametersAttribute.cs" />
     <Compile Include="Components\Services\Command\Attributes\ServiceReferenceAttribute.cs" />
+    <Compile Include="Components\Services\Command\IServiceCommand_T1T2T3T4T5T6T7T8T9T10.cs" />
+    <Compile Include="Components\Services\Command\IServiceCommand_T1T2T3T4T5T6T7T8T9.cs" />
+    <Compile Include="Components\Services\Command\IServiceCommand_T1T2T3T4T5T6T7T8.cs" />
+    <Compile Include="Components\Services\Command\IServiceCommand_T1T2T3T4T5T6T7.cs" />
+    <Compile Include="Components\Services\Command\IServiceCommand_T1T2T3T4T5T6.cs" />
+    <Compile Include="Components\Services\Command\IServiceCommand_T1T2T3T4T5.cs" />
+    <Compile Include="Components\Services\Command\IServiceCommand_T1T2T3T4.cs" />
     <Compile Include="Components\Services\Command\IServiceCommand_T1T2T3.cs" />
     <Compile Include="Components\Services\Command\IServiceCommand_T1T2.cs" />
     <Compile Include="Components\Services\Command\IServiceCommand.cs" />
