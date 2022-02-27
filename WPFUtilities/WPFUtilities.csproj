@@ -114,6 +114,14 @@
     <Compile Include="Components\Services\Command\RelayServiceCommand.cs" />
     <Compile Include="Components\Services\Properties\CommandExtensions\Command.cs" />
     <Compile Include="Components\Services\Command\ServicesCommandPropertiesHelper.cs" />
+    <Compile Include="Components\Services\Properties\CommandExtensions\Param10.cs" />
+    <Compile Include="Components\Services\Properties\CommandExtensions\Param9.cs" />
+    <Compile Include="Components\Services\Properties\CommandExtensions\Param8.cs" />
+    <Compile Include="Components\Services\Properties\CommandExtensions\Param7.cs" />
+    <Compile Include="Components\Services\Properties\CommandExtensions\Param6.cs" />
+    <Compile Include="Components\Services\Properties\CommandExtensions\Param5.cs" />
+    <Compile Include="Components\Services\Properties\CommandExtensions\Param4.cs" />
+    <Compile Include="Components\Services\Properties\CommandExtensions\Param3.cs" />
     <Compile Include="Components\Services\Properties\CommandExtensions\Param2.cs" />
     <Compile Include="Components\Services\Properties\ServicesPropertiesHelper.cs" />
     <Compile Include="Components\UI\Layout\ChildSpacing.cs" />
