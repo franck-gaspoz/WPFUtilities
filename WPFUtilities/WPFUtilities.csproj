@@ -114,6 +114,7 @@
     <Compile Include="Components\Services\Command\RelayServiceCommand.cs" />
     <Compile Include="Components\Services\Properties\CommandExtensions\Command.cs" />
     <Compile Include="Components\Services\Command\ServicesCommandPropertiesHelper.cs" />
+    <Compile Include="Components\Services\Properties\CommandExtensions\Param2.cs" />
     <Compile Include="Components\Services\Properties\ServicesPropertiesHelper.cs" />
     <Compile Include="Components\UI\Layout\ChildSpacing.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouch.cs" />

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Input;
 
 using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Components.Services.Command;
 using WPFUtilities.Components.Services.Command.Attributes;
+using WPFUtilities.Components.Services.Properties;
 
 namespace WPFUtilities.Commands.Abstract
 {
@@ -145,21 +147,50 @@ namespace WPFUtilities.Commands.Abstract
         /// <para>- if parameter is single object and Execute expects more that one parameter, try to map object to Execute parameters and to build the method parameters array</para>
         /// </summary>
         /// <param name="context">context</param>
+        /// <param name="maxLength">max array length</param>
         /// <param name="parameter">parameter</param>
         /// <returns>parameter or array with parameter inside</returns>
         /// <exception cref="InvalidOperationException">parameter object doesn't match command Execute method</exception>
         protected object[] ToParameterArray(
             IServiceCommandExecuteContext context,
+            int maxLength,
             object parameter)
         {
             if (parameter is object[] array) return array;
 
+            if (context.Caller is DependencyObject dependencyObject)
+            {
+                int curLength = 1;
+                var parameters = new List<object> { parameter };
+                // extra command parameters are used as parameters source                
+                var param = dependencyObject.GetValue(Command.Param2Property);
+                if (param != Command.UnsetPropertyValue)
+                {
+                    var properties = new List<DependencyProperty> {
+                        Command.Param2Property
+                    };
+                    foreach (var property in properties)
+                    {
+                        param = dependencyObject.GetValue(property);
+                        if (param != Command.UnsetPropertyValue)
+                        {
+                            parameters.Add(param);
+                            curLength++;
+                        }
+                        else
+                            break;
+                        if (curLength == maxLength) break;
+                    }
+                    return parameters.ToArray();
+                }
+            }
+
             if (parameter != null)
             {
+                // ServiceCommandParameters attributed object is mapped to Execute method parameters
                 if (parameter.GetType()
                     .GetCustomAttribute<ServiceCommandParametersAttribute>() != null)
                 {
-                    // ServiceCommandParameters attributed object is mapped to Execute method parmeters
                     var executeMethod = GetExecuteMethod();
                     if (executeMethod.GetParameters().Length > 2)
                     {
@@ -210,7 +241,7 @@ namespace WPFUtilities.Commands.Abstract
             int maxLength,
             int minLength = 0)
         {
-            var array = ToParameterArray(context, parameters);
+            var array = ToParameterArray(context, maxLength, parameters);
             if (array.Length > maxLength) throw new InvalidOperationException($"expected maximim {maxLength} parameters, but found {array.Length}");
             if (array.Length < minLength) throw new InvalidOperationException($"expected minimum {minLength} parameters, but found {array.Length}");
             return array;

@@ -11,15 +11,6 @@ using WPFUtilities.Extensions.Services;
 
 namespace WPFUtilities.Components.Services.Properties
 {
-    /// <summary>
-    /// resolve a command from di scope
-    /// <para>use application host if Scope value property is not defined or set to Global</para>
-    /// <para>else:</para>
-    /// <para>requires the Component.Host property to be set in the dependency object</para>
-    /// <para>or require the property Component.Type to be setted in the dependency object</para>
-    /// <para>and performs a lookup of the component host in parents logical tree, then sets the component host property</para>
-    /// <para>Type is accepted on types FrameworkElement and Behavior</para>
-    /// </summary>
     public static partial class Command
     {
         #region type
@@ -41,7 +32,13 @@ namespace WPFUtilities.Components.Services.Properties
             => dependencyObject.SetValue(TypeProperty, value);
 
         /// <summary>
-        /// Type dependency property
+        /// resolve a command from di scope
+        /// <para>use application host if Scope value property is not defined or set to Global</para>
+        /// <para>else:</para>
+        /// <para>requires the Component.Host property to be set in the dependency object</para>
+        /// <para>or require the property Component.Type to be setted in the dependency object</para>
+        /// <para>and performs a lookup of the component host in parents logical tree, then sets the component host property</para>
+        /// <para>Type is accepted on types FrameworkElement and Behavior</para>
         /// </summary>
         public static readonly DependencyProperty TypeProperty =
             DependencyProperty.RegisterAttached(

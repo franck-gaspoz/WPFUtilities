@@ -73,6 +73,12 @@
                     </MenuItem.CommandParameter>
                 </MenuItem>
 
+                <MenuItem Header="Log the application object"
+                          service:Command.Type="{x:Type applicationCommand:LogObjectCommand}"
+                          CommandParameter="window object dump:"
+                          service:Command.Param2="{x:Static Application.Current}"
+                          />
+
                 <MenuItem Header="Clear window log"
                           service:Command.Type="{x:Type applicationCommand:ClearLogCommand}"/>
 
