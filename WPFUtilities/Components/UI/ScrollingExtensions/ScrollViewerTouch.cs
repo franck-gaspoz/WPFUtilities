@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -84,6 +85,7 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
 
         static void ScrollViewerTouchIsEnabledChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
+            if (DesignerProperties.GetIsInDesignMode(dependencyObject)) return;
             if (!(dependencyObject is ScrollViewer scrollViewer)) return;
 
             if ((bool)eventArgs.NewValue)

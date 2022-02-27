@@ -16,17 +16,16 @@
         WindowStartupLocation="CenterScreen"
         Topmost="False"
         Height="600" 
-        Width="800"        
+        Width="1162"        
         service:DataContext.IsAuto="True"
         ui:Window.OnDisplayCommand="{x:Type commands:OnMainWindowShownCommand}"
         >
 
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="200"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
@@ -34,43 +33,52 @@
 
         <uicomponents:ButtonBar Grid.Row="1"/>
 
-        <TabControl Grid.Row="2" Margin="8,0,8,8" >
+        <Grid Grid.Row="2">
 
-            <TabItem Header="Settings" IsSelected="True">
-            </TabItem>
-            
-            <TabItem Header="Model validation">
-            </TabItem>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
 
-            <TabItem Header="Scroll viewer">
-            </TabItem>
+            <!-- tab panel -->
+            <TabControl Grid.Column="1" Grid.Row="2" Margin="8,0,8,8" >
 
-            <TabItem Header="Layout">
-            </TabItem>
+                <TabItem Header="Settings" IsSelected="True">
+                </TabItem>
 
-            <TabItem Header="Converters">
-            </TabItem>
+                <TabItem Header="Model validation">
+                </TabItem>
 
-            <TabItem Header="Brushes">
-            </TabItem>
+                <TabItem Header="Scroll viewer">
+                </TabItem>
 
-        </TabControl>
+                <TabItem Header="Layout">
+                </TabItem>
 
-        <Grid Grid.Row="3">
+                <TabItem Header="Converters">
+                </TabItem>
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50*"/>
-                <RowDefinition Height="50*"/>
-            </Grid.RowDefinitions>
+                <TabItem Header="Brushes">
+                </TabItem>
 
-            <logging:LogView
+            </TabControl>
+
+            <!-- logs panels -->
+            <Grid Grid.Row="3">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40*"/>
+                    <RowDefinition Height="60*"/>
+                </Grid.RowDefinitions>
+
+                <logging:LogView
                 Margin="8,0,8,8"
                 Title="application log"
                 service:Component.Type="{x:Type logging:ApplicationLogComponent}"
                 service:DataContext.IsAuto="True"
             />
 
-            <logging:LogView
+                <logging:LogView
                 Margin="8,0,8,8"
                 Grid.Row="1"
                 Title="window log"
@@ -78,7 +86,9 @@
                 service:DataContext.IsAuto="True"
             />
 
+            </Grid>
+
         </Grid>
-        
+
     </Grid>
 </Window>

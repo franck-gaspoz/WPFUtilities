@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -51,6 +52,7 @@ namespace WPFUtilities.Components.UI
 
         static void IsAutoChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
+            if (DesignerProperties.GetIsInDesignMode(dependencyObject)) return;
             if (!(dependencyObject is ListBox element)) return;
 
             if ((bool)eventArgs.NewValue)
