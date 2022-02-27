@@ -7,6 +7,7 @@
              xmlns:interactivityCommand="clr-namespace:WPFUtilities.Commands.Interactivity;assembly=WPFUtilities"
              xmlns:windows="clr-namespace:SampleApp.Windows"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
+             xmlns:binding="clr-namespace:WPFUtilities.Components.Binding;assembly=WPFUtilities"
              xmlns:ui="clr-namespace:SampleApp.Components.UI"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
@@ -53,14 +54,20 @@
                           CommandParameter="I am a window log message!"/>
 
                 <MenuItem Header="Log the window object"
+                          x:Name="MI"
                           service:Command.Type="{x:Type applicationCommand:LogObjectCommand}"
+                          Tag="{Binding .,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}"
                           >
+                    <MenuItem.Resources>
+                        <binding:BindingProxy x:Key="Proxy" Data="{Binding ElementName=MI,Path=Tag}"/>
+                    </MenuItem.Resources>
                     <MenuItem.CommandParameter>
                         <applicationCommand:LogObjectCommandParameters 
                             Message="window object dump :"
                             >
                             <applicationCommand:LogObjectCommandParameters.Data>
-                                <Binding Path="." RelativeSource="{RelativeSource Mode=FindAncestor,AncestorType=Window}"/>
+                                <Binding Path="Data" 
+                                         Source="{StaticResource Proxy}"/>
                             </applicationCommand:LogObjectCommandParameters.Data>
                         </applicationCommand:LogObjectCommandParameters>
                     </MenuItem.CommandParameter>
