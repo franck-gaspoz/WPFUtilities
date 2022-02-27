@@ -22,6 +22,7 @@
                   FontFamily="Courier New"
                   Grid.Row="1"
                   ui:Scrolling.IsAuto="True"
+                  ScrollViewer.CanContentScroll="False"
                   />
     </Grid>
 </UserControl>
