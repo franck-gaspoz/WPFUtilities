@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:applicationCommand="clr-namespace:WPFUtilities.Commands.Application;assembly=WPFUtilities"
              xmlns:interactivityCommand="clr-namespace:WPFUtilities.Commands.Interactivity;assembly=WPFUtilities"
-             xmlns:windows="clr-namespace:SampleApp.Windows"
+             xmlns:about="clr-namespace:SampleApp.Components.About"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              xmlns:binding="clr-namespace:WPFUtilities.Components.Binding;assembly=WPFUtilities"
              xmlns:ui="clr-namespace:SampleApp.Components.UI"
@@ -83,7 +83,7 @@
             <MenuItem Header="About">
                 <MenuItem Header="About..."
                           service:Command.Type="{x:Type applicationCommand:OpenDialogCommand}"
-                          CommandParameter="{x:Type windows:AboutWindow}"
+                          CommandParameter="{x:Type about:AboutWindow}"
                           />
             </MenuItem>
             
