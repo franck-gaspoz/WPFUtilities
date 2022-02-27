@@ -159,6 +159,7 @@ namespace WPFUtilities.Commands.Abstract
                 if (parameter.GetType()
                     .GetCustomAttribute<ServiceCommandParametersAttribute>() != null)
                 {
+                    // ServiceCommandParameters attributed object is mapped to Execute method parmeters
                     var executeMethod = GetExecuteMethod();
                     if (executeMethod.GetParameters().Length > 2)
                     {
