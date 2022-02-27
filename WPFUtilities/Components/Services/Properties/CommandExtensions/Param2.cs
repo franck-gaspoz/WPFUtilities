@@ -7,7 +7,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// <summary>
         /// value of an unset Param.. Property
         /// </summary>
-        public static readonly object UnsetPropertyValue = new object();
+        public const string UnsetPropertyValue = "UnsetPropertyValue";
 
         #region Param2 dependency property
 
@@ -31,7 +31,7 @@ namespace WPFUtilities.Components.Services.Properties
                     "Param2",
                     typeof(object),
                     typeof(Command),
-                    new PropertyMetadata(UnsetPropertyValue));
+                    new PropertyMetadata((object)UnsetPropertyValue));
 
         #endregion
 

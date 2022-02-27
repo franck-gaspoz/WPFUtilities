@@ -76,7 +76,7 @@
                 <MenuItem Header="Log the application object"
                           service:Command.Type="{x:Type applicationCommand:LogObjectCommand}"
                           CommandParameter="window object dump:"
-                          service:Command.Param2="{x:Static Application.Current}"
+                          service:Command.Param2="{Binding .,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}"
                           />
 
                 <MenuItem Header="Clear window log"

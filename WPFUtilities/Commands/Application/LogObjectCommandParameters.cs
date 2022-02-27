@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Windows;
 
 using Microsoft.Extensions.Logging;
@@ -10,6 +11,7 @@ namespace WPFUtilities.Commands.Application
     /// <summary>
     /// log object command parameters
     /// </summary>
+    [Obsolete]
     [ServiceCommandParameters]
     public class LogObjectCommandParameters : DependencyObject
     {

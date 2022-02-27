@@ -167,7 +167,15 @@ namespace WPFUtilities.Commands.Abstract
                 if (param != Command.UnsetPropertyValue)
                 {
                     var properties = new List<DependencyProperty> {
-                        Command.Param2Property
+                        Command.Param2Property,
+                        Command.Param3Property,
+                        Command.Param4Property,
+                        Command.Param5Property,
+                        Command.Param6Property,
+                        Command.Param7Property,
+                        Command.Param8Property,
+                        Command.Param9Property,
+                        Command.Param10Property
                     };
                     foreach (var property in properties)
                     {

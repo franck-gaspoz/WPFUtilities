@@ -26,7 +26,7 @@ namespace WPFUtilities.Components.Services.Properties
                     "Param10",
                     typeof(object),
                     typeof(Command),
-                    new PropertyMetadata(UnsetPropertyValue));
+                    new PropertyMetadata((object)UnsetPropertyValue));
 
         #endregion
 
