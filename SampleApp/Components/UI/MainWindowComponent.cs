@@ -66,6 +66,7 @@ namespace SampleApp.Components.UI
             services.Services
                 .AddSingleton<LogCommand>()
                 .AddSingleton<ClearLogCommand>()
+                .AddSingleton<LogObjectCommand>()
                 .AddSingleton<OnMainWindowShownCommand>();
         }
     }

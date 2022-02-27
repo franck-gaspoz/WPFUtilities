@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Input;
@@ -56,9 +57,15 @@ namespace WPFUtilities.Commands.Abstract
             {
                 var parameter = paramInfo.DefaultValue;
                 if (!(parameter is T prameterAsT))
-                    throw CreateExecuteCommandParamaterTypeErrorException(
-                        paramInfo.ParameterType, parameter.GetType(), index, "Parameter default value transformation error: ");
-                return prameterAsT;
+                {
+                    if (parameter != null)
+                        throw CreateExecuteCommandParamaterTypeErrorException(
+                            paramInfo.ParameterType, parameter.GetType(), index, "Parameter default value transformation error: ");
+                    else
+                        return default(T);
+                }
+                else
+                    return prameterAsT;
             }
             throw CreateExecuteCommandParameterDefaultMissingException(typeof(T), index);
         }
@@ -79,12 +86,18 @@ namespace WPFUtilities.Commands.Abstract
                 return TransformParameter<T>(index);
         }
 
-        ParameterInfo GetParamInfo(int index)
+        MethodInfo GetExecuteMethod()
         {
             var executeMethods = this.GetType().GetMethods()
                 .Where(x => x.Name == "Execute")
                 .ToDictionary(x => x.GetParameters().Length);
             var executeMethod = executeMethods[executeMethods.Keys.Max()];
+            return executeMethod;
+        }
+
+        ParameterInfo GetParamInfo(int index)
+        {
+            var executeMethod = GetExecuteMethod();
             var paramInfo = executeMethod.GetParameters()[index + 1];
             return paramInfo;
         }
@@ -118,24 +131,72 @@ namespace WPFUtilities.Commands.Abstract
             }
 
             if (!(parameter is T))
+            {
                 throw CreateExecuteCommandParamaterTypeErrorException(
                     paramInfo.ParameterType, parameter.GetType(), index);
+            }
             return (T)parameter;
         }
 
         /// <summary>
-        /// returns an array from parameter object, if parameter is array of object returns parameter
+        /// returns an array from parameter object
+        /// <para>- if parameter is array of object returns parameter</para>
+        /// <para>- if parameter is single object and Execute expects one parameter returns array of the object</para>
+        /// <para>- if parameter is single object and Execute expects more that one parameter, try to map object to Execute parameters and to build the method parameters array</para>
         /// </summary>
+        /// <param name="context">context</param>
         /// <param name="parameter">parameter</param>
         /// <returns>parameter or array with parameter inside</returns>
-        protected object[] ToParameterArray(object parameter)
-            => (!(parameter is object[] array))
-                ? new object[] { parameter }
-                : array;
+        /// <exception cref="InvalidOperationException">parameter object doesn't match command Execute method</exception>
+        protected object[] ToParameterArray(
+            IServiceCommandExecuteContext context,
+            object parameter)
+        {
+            if (parameter is object[] array) return array;
+
+            if (parameter != null)
+            {
+                if (parameter.GetType()
+                    .GetCustomAttribute<ServiceCommandParametersAttribute>() != null)
+                {
+                    var executeMethod = GetExecuteMethod();
+                    if (executeMethod.GetParameters().Length > 2)
+                    {
+                        // min for _T1T2 service commands
+                        var parameters = new List<object>();
+                        var properties = parameter.GetType().GetProperties();
+                        foreach (var paramInfo in executeMethod.GetParameters())
+                        {
+                            if (paramInfo.ParameterType != typeof(IServiceCommandExecuteContext))
+                            {
+                                var stringComparison = StringComparison.InvariantCultureIgnoreCase;
+                                var propertyInfos = properties
+                                    .Where(x => x.Name.Equals(paramInfo.Name, stringComparison))
+                                    .ToList();
+                                if (propertyInfos.Count == 0)
+                                    throw CreateParameterObjectDoesntMatchExecuteMethodException(
+                                        $"property {paramInfo.Name} is missing in object parameter");
+                                if (propertyInfos.Count > 1)
+                                    throw CreateParameterObjectDoesntMatchExecuteMethodException(
+                                        $"property {paramInfo.Name} has several matchin properties in object parameter (match mode is: {stringComparison})");
+
+                                parameters.Add(propertyInfos[0].GetValue(parameter));
+                            }
+                        }
+                        return parameters.ToArray();
+                    }
+                }
+            }
+            return new object[] { parameter };
+        }
+
+        Exception CreateParameterObjectDoesntMatchExecuteMethodException(string message)
+            => new InvalidOperationException("parameter object doesn't match command Execute method:" + message);
 
         /// <summary>
         /// validate a parameter array
         /// </summary>
+        /// <param name="context">context</param>
         /// <param name="parameters">parameters</param>
         /// <param name="maxLength">max length limit</param>
         /// <param name="minLength">min length limit (default 0)</param>
@@ -143,11 +204,12 @@ namespace WPFUtilities.Commands.Abstract
         /// <exception cref="InvalidOperationException">parameters array length is over max length limit</exception>
         /// <exception cref="InvalidOperationException">parameters array length is under min length limit</exception>
         protected object[] ToValidParameterArray(
+            IServiceCommandExecuteContext context,
             object parameters,
             int maxLength,
             int minLength = 0)
         {
-            var array = ToParameterArray(parameters);
+            var array = ToParameterArray(context, parameters);
             if (array.Length > maxLength) throw new InvalidOperationException($"expected maximim {maxLength} parameters, but found {array.Length}");
             if (array.Length < minLength) throw new InvalidOperationException($"expected minimum {minLength} parameters, but found {array.Length}");
             return array;

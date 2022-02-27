@@ -52,6 +52,20 @@
                           service:Command.Type="{x:Type applicationCommand:LogCommand}"
                           CommandParameter="I am a window log message!"/>
 
+                <MenuItem Header="Log the window object"
+                          service:Command.Type="{x:Type applicationCommand:LogObjectCommand}"
+                          >
+                    <MenuItem.CommandParameter>
+                        <applicationCommand:LogObjectCommandParameters 
+                            Message="window object dump :"
+                            >
+                            <applicationCommand:LogObjectCommandParameters.Data>
+                                <Binding Path="." RelativeSource="{RelativeSource Mode=Self}"/>
+                            </applicationCommand:LogObjectCommandParameters.Data>
+                        </applicationCommand:LogObjectCommandParameters>
+                    </MenuItem.CommandParameter>
+                </MenuItem>
+
                 <MenuItem Header="Clear window log"
                           service:Command.Type="{x:Type applicationCommand:ClearLogCommand}"/>
 

@@ -99,7 +99,10 @@
     <Compile Include="Commands\Abstract\AbstractServiceCommand_T1T2T3.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceCommand_T1T2.cs" />
     <Compile Include="Commands\Abstract\AbstractServiceCommand_T.cs" />
+    <Compile Include="Commands\Application\LogObjectCommand.cs" />
+    <Compile Include="Commands\Application\LogObjectCommandParameters.cs" />
     <Compile Include="Commands\Application\OpenDialogCommand.cs" />
+    <Compile Include="Components\Services\Command\Attributes\ServiceCommandParametersAttribute.cs" />
     <Compile Include="Components\Services\Command\Attributes\ServiceReferenceAttribute.cs" />
     <Compile Include="Components\Services\Command\IServiceCommand_T1T2T3.cs" />
     <Compile Include="Components\Services\Command\IServiceCommand_T1T2.cs" />
@@ -208,6 +211,7 @@
     <Compile Include="Extensions\Application\ApplicationExtensions.cs" />
     <Compile Include="Extensions\Reflections\TypeExtensions.cs" />
     <Compile Include="Extensions\Host\IHostBuilderContextExtensions.cs" />
+    <Compile Include="Helpers\PropertyPathHelper.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Components\Application\ApplicationViewModelBase.cs" />
     <Compile Include="Components\Application\IApplicationViewModelBase.cs" />

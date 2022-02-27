@@ -22,9 +22,9 @@ namespace WPFUtilities.Commands.Application
         /// <summary>
         /// show a dialog window command
         /// </summary>
+        /// <param name="context">execute context</param>
         /// <param name="window">window to be shown</param>
         /// <param name="takesOwnership">set owner from parent caller window if true</param>
-        /// <param name="context">execute context</param>
         public override void Execute(
             IServiceCommandExecuteContext context,
             Window window,

@@ -22,7 +22,7 @@ namespace WPFUtilities.Commands.Abstract
         /// <inheritdoc/>
         public override void Execute(IServiceCommandExecuteContext context, object parameter)
         {
-            var array = ToValidParameterArray(parameter, 2);
+            var array = ToValidParameterArray(context, parameter, 2);
 
             Execute(
                 context,
