@@ -56,27 +56,14 @@
                 <MenuItem Header="Log the window object"
                           x:Name="MI"
                           service:Command.Type="{x:Type applicationCommand:LogObjectCommand}"
-                          Tag="{Binding .,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}"
-                          >
-                    <MenuItem.Resources>
-                        <binding:BindingProxy x:Key="Proxy" Data="{Binding ElementName=MI,Path=Tag}"/>
-                    </MenuItem.Resources>
-                    <MenuItem.CommandParameter>
-                        <applicationCommand:LogObjectCommandParameters 
-                            Message="window object dump :"
-                            >
-                            <applicationCommand:LogObjectCommandParameters.Data>
-                                <Binding Path="Data" 
-                                         Source="{StaticResource Proxy}"/>
-                            </applicationCommand:LogObjectCommandParameters.Data>
-                        </applicationCommand:LogObjectCommandParameters>
-                    </MenuItem.CommandParameter>
-                </MenuItem>
+                          CommandParameter="window object dump:"
+                          service:Command.Param2="{Binding .,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}"
+                          />
 
                 <MenuItem Header="Log the application object"
                           service:Command.Type="{x:Type applicationCommand:LogObjectCommand}"
-                          CommandParameter="window object dump:"
-                          service:Command.Param2="{Binding .,RelativeSource={RelativeSource AncestorType=Window,Mode=FindAncestor}}"
+                          CommandParameter="application object dump:"
+                          service:Command.Param2="{x:Static Application.Current}"
                           />
 
                 <MenuItem Header="Clear window log"
