@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
@@ -43,6 +44,7 @@ namespace WPFUtilities.Components.UI
 
         private static void OnDisplayCommandChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
+            if (DesignerProperties.GetIsInDesignMode(dependencyObject)) return;
             if (!(dependencyObject is win.Window win)) return;
 
             var commandType = (Type)win.GetValue(OnDisplayCommandProperty);

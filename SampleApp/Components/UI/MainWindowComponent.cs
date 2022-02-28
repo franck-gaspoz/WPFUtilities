@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 
 using SampleApp.Commands;
 using SampleApp.Components.Logging;
+using SampleApp.Components.Settings;
 
 using WPFUtilities.Commands.Application;
 using WPFUtilities.Components.Logging.ListLogger;
@@ -46,10 +47,11 @@ namespace SampleApp.Components.UI
             services.AddSingleton<MainWindow>()
                     .AddSingleton<IMainWindowViewModel, MainWindowViewModel>()
 
-            // log component
+            // components
 
                     .AddSingleton<ApplicationLogComponent>()
-                    .AddSingleton<WindowLogComponent>();
+                    .AddSingleton<WindowLogComponent>()
+                    .AddSingleton<SettingsComponent>();
 
             // 'window' scopped logger
 

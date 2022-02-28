@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 
 namespace WPFUtilities.Extensions.Reflections
 {
@@ -8,6 +9,27 @@ namespace WPFUtilities.Extensions.Reflections
     /// </summary>
     public static class TypeExtensions
     {
+        /// <summary>
+        /// try to gives the value of the field of an object, whether it is public,protected or private
+        /// </summary>
+        /// <typeparam name="T">expected value type</typeparam>
+        /// <param name="obj">object</param>
+        /// <param name="fieldName">field name</param>
+        /// <param name="fieldValue">out field value</param>
+        /// <returns>true if value found with expected type, false otherwise</returns>
+        public static bool GetField<T>(this object obj, string fieldName, out T fieldValue)
+            where T : class
+        {
+            fieldValue = default(T);
+            if (obj == null) return false;
+
+            var fieldInfo = obj.GetType().GetField(fieldName,
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+
+            fieldValue = fieldInfo.GetValue(obj) as T;
+            return fieldValue is T;
+        }
+
         /// <summary>
         /// indicates if a type inherits from a type having given name. returns false if type has given type name
         /// </summary>

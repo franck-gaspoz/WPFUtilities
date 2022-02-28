@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 
 using WPFUtilities.Components.ServiceComponent;
@@ -82,6 +83,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// <param name="eventArgs">event args</param>
         public static void ResolveChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
+            if (DesignerProperties.GetIsInDesignMode(dependencyObject)) return;
             if (!(dependencyObject is FrameworkElement target)
                 || !(eventArgs.NewValue is Type type)) return;
 
@@ -106,6 +108,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// <param name="eventArgs">event args</param>
         public static void IsAutoChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
+            if (DesignerProperties.GetIsInDesignMode(dependencyObject)) return;
             if (!(dependencyObject is FrameworkElement target)
                 || !((bool)eventArgs.NewValue)) return;
 

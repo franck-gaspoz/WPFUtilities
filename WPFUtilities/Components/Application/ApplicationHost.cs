@@ -54,6 +54,5 @@ namespace WPFUtilities.Components.Application
                 .AddDependencyServices()
                 .AddDependencyServicesInitializers();
         }
-
     }
 }

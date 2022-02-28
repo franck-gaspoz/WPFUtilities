@@ -10,6 +10,7 @@
         xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
         xmlns:uicomponents="clr-namespace:SampleApp.Components.UI"
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
+        xmlns:settings="clr-namespace:SampleApp.Components.Settings"
         d:DataContext="{d:DesignInstance Type=uicomponents:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="{Binding Title,FallbackValue=title}" 
@@ -41,9 +42,11 @@
             </Grid.ColumnDefinitions>
 
             <!-- tab panel -->
-            <TabControl Grid.Column="1" Grid.Row="2" Margin="8,0,8,8" >
+            <TabControl Grid.Column="1" Grid.Row="2" Margin="8,0,8,8">
 
                 <TabItem Header="Settings" IsSelected="True">
+                    <settings:SettingsView service:Component.Type="{x:Type settings:SettingsComponent}" 
+                                           service:DataContext.IsAuto="True"/>
                 </TabItem>
 
                 <TabItem Header="Model validation">
@@ -72,19 +75,19 @@
                 </Grid.RowDefinitions>
 
                 <logging:LogView
-                Margin="8,0,8,8"
-                Title="application log"
-                service:Component.Type="{x:Type logging:ApplicationLogComponent}"
-                service:DataContext.IsAuto="True"
-            />
+                    Margin="8,0,8,8"
+                    Title="application log"
+                    service:Component.Type="{x:Type logging:ApplicationLogComponent}"
+                    service:DataContext.IsAuto="True"
+                />
 
                 <logging:LogView
-                Margin="8,0,8,8"
-                Grid.Row="1"
-                Title="window log"
-                service:Component.Type="{x:Type logging:WindowLogComponent}"
-                service:DataContext.IsAuto="True"
-            />
+                    Margin="8,0,8,8"
+                    Grid.Row="1"
+                    Title="window log"
+                    service:Component.Type="{x:Type logging:WindowLogComponent}"
+                    service:DataContext.IsAuto="True"
+                />
 
             </Grid>
 
