@@ -47,7 +47,7 @@
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding EnvironmentName}"/>
 
             <TextBlock Grid.Row="3" Text="Providers" />
-            <ListBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Providers}"/>
+            <ListBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Providers}" BorderThickness="0"/>
             
         </Grid>
 

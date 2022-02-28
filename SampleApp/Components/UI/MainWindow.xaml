@@ -16,7 +16,7 @@
         Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"
         Topmost="False"
-        Height="600" 
+        Height="670" 
         Width="1162"        
         service:DataContext.IsAuto="True"
         ui:Window.OnDisplayCommand="{x:Type commands:OnMainWindowShownCommand}"
