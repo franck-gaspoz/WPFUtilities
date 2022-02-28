@@ -138,9 +138,9 @@
     <Compile Include="Components\Services\Properties\CommandExtensions\Param3.cs" />
     <Compile Include="Components\Services\Properties\CommandExtensions\Param2.cs" />
     <Compile Include="Components\Services\Properties\ServicesPropertiesHelper.cs" />
-    <Compile Include="Components\UI\Grid\Grid.cs" />
-    <Compile Include="Components\UI\Grid\FrameBrush.cs" />
-    <Compile Include="Components\UI\Grid\FrameWidth.cs" />
+    <Compile Include="Components\UI\Grids\Grids.cs" />
+    <Compile Include="Components\UI\Grids\FrameBrush.cs" />
+    <Compile Include="Components\UI\Grids\FrameSize.cs" />
     <Compile Include="Components\UI\Layout\ChildSpacing.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouch.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouchViewProperties.cs" />

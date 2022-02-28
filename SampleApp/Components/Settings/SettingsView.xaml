@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.Settings"
+             xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=local:SettingsViewModel}" 
              d:DesignHeight="202.796" 
@@ -15,7 +16,10 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid Background="DarkGray">
+        <Grid 
+              ui:Grids.FrameBrush="DarkGray"
+              ui:Grids.FrameSize="1"
+              >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -28,22 +32,21 @@
             </Grid.ColumnDefinitions>
             <Grid.Resources>
                 <Style TargetType="TextBlock">
-                    <Setter Property="Background" Value="#DDDDDD"/>
-                    <Setter Property="Margin" Value="0,0,1,1"/>
+                    <Setter Property="Background" Value="#EAEAEA"/>
                     <Setter Property="Padding" Value="4,2,4,2"/>
                 </Style>
             </Grid.Resources>
 
-            <TextBlock Text="Application name" Margin="1,1,1,1"/>
-            <TextBlock Grid.Column="1" Margin="0,1,1,1" Text="{Binding ApplicationName}"/>
+            <TextBlock Text="Application name"/>
+            <TextBlock Grid.Column="1" Text="{Binding ApplicationName}"/>
 
-            <TextBlock Grid.Row="1" Text="Content root path" Margin="1,0,1,1"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,0,1,1" Text="{Binding ContentRootPath}"/>
+            <TextBlock Grid.Row="1" Text="Content root path"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ContentRootPath}"/>
 
-            <TextBlock Grid.Row="2" Text="Environment name" Margin="1,0,1,1"/>
+            <TextBlock Grid.Row="2" Text="Environment name" />
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding EnvironmentName}"/>
 
-            <TextBlock Grid.Row="3" Text="Providers" Margin="1,0,1,1"/>
+            <TextBlock Grid.Row="3" Text="Providers" />
             <ListBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Providers}"/>
             
         </Grid>

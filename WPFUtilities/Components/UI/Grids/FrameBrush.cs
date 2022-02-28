@@ -8,7 +8,7 @@ namespace WPFUtilities.Components.UI
     /// <summary>
     /// set childs margins
     /// </summary>
-    public static partial class Grid
+    public static partial class Grids
     {
         /// <summary>
         /// get margin
@@ -32,12 +32,12 @@ namespace WPFUtilities.Components.UI
                 "FrameBrush",
                 typeof(Brush),
                 typeof(Grid),
-                new UIPropertyMetadata(1d, FrameBrushChanged));
+                new UIPropertyMetadata(null, FrameBrushChanged));
 
         static void FrameBrushChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
             if (DesignerProperties.GetIsInDesignMode(dependencyObject)) return;
-            if (!(dependencyObject is Panel panel)) return;
+            if (!(dependencyObject is Grid panel)) return;
 
             if (!panel.IsLoaded)
                 panel.Loaded += Panel_Loaded_SetChildrensFrameBrush;
@@ -47,7 +47,7 @@ namespace WPFUtilities.Components.UI
 
         private static void Panel_Loaded_SetChildrensFrameBrush(object sender, RoutedEventArgs e)
         {
-            if (!(sender is Panel panel)) return;
+            if (!(sender is Grid panel)) return;
 
             panel.Loaded -= Panel_Loaded_SetChildrensFrameBrush;
             SetChildrensFrame(panel);

@@ -3,7 +3,7 @@
     /// <summary>
     /// grid extensions
     /// </summary>
-    public static partial class Grid
+    public static partial class Grids
     {
     }
 }
