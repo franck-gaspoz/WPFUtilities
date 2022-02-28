@@ -98,16 +98,16 @@ namespace SampleApp.Components.Settings
                 AppendProviders(providers);
         }
 
-        void AppendProviders(List<IConfigurationProvider> providers)
+        void AppendProviders(List<IConfigurationProvider> providers, string padLeft = "")
         {
             foreach (var provider in providers)
             {
-                var name = provider.ToString();
+                var name = padLeft + provider.ToString();
                 Providers.Add(name);
                 if (provider is ChainedConfigurationProvider chained)
                 {
                     if (chained.GetField<ConfigurationRoot>("_config", out var config))
-                        AppendProviders(config.Providers.ToList());
+                        AppendProviders(config.Providers.ToList(), padLeft + "    ");
                 }
             }
         }
