@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace WPFUtilities.Components.UI
@@ -50,6 +51,32 @@ namespace WPFUtilities.Components.UI
                 dico[key] = value;
             else
                 dico.Add(key, value);
+        }
+
+        /// <summary>
+        /// indicates if a dependency object has an additional data with given key
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <param name="key">key</param>
+        /// <returns>true if additional data exists, false otherwise</returns>
+        public static bool HasAdditionalData(DependencyObject dependencyObject, string key)
+        {
+            var dico = (Dictionary<string, object>)dependencyObject.GetValue(AdditionalDataProperty);
+            return (dico != null && dico.ContainsKey(key));
+        }
+
+        /// <summary>
+        /// return additional data having key from dependency object
+        /// </summary>
+        /// <typeparam name="T">expectged additional data value type</typeparam>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <param name="key">key</param>
+        /// <returns>additional data object value</returns>
+        /// <exception cref="InvalidOperationException">dependency object has no additional data or no one with the specified key</exception>
+        public static T GetAdditionalData<T>(DependencyObject dependencyObject, string key)
+        {
+            if (!HasAdditionalData(dependencyObject, key)) throw new InvalidOperationException($"additional data with key '{key}' not found");
+            return (T)((Dictionary<string, object>)dependencyObject.GetValue(AdditionalDataProperty))[key];
         }
     }
 }

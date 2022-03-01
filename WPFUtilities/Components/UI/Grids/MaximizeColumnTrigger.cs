@@ -55,6 +55,14 @@ namespace WPFUtilities.Components.UI
 
             var maxCol = grid.ColumnDefinitions[maxColIndex];
             var minCol = grid.ColumnDefinitions[minColIndex];
+            var maxColOgWidthKey = MaximizeColumnIndexProperty.Name + "_maximizedColumnOriginalWidth";
+            var minColOgWidthKey = MinimizeColumnIndexProperty.Name + "_minimizedColumnOriginalWidth";
+            if (!Data.HasAdditionalData(grid, maxColOgWidthKey))
+            {
+                Data.AddOrRemplaceAdditionalData(grid, maxColOgWidthKey, maxCol.Width);
+                Data.AddOrRemplaceAdditionalData(grid, minColOgWidthKey, minCol.Width);
+            }
+
             if (!maximized)
             {
                 maxCol.Width = new GridLength(100d, GridUnitType.Star);
@@ -62,8 +70,8 @@ namespace WPFUtilities.Components.UI
             }
             else
             {
-                maxCol.Width = new GridLength(50d, GridUnitType.Star);
-                minCol.Width = new GridLength(50d, GridUnitType.Star);
+                maxCol.Width = new GridLength(Data.GetAdditionalData<GridLength>(grid, maxColOgWidthKey).Value, GridUnitType.Star);
+                minCol.Width = new GridLength(Data.GetAdditionalData<GridLength>(grid, maxColOgWidthKey).Value, GridUnitType.Star);
             }
         }
     }
