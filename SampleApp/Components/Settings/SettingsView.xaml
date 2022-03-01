@@ -47,8 +47,44 @@
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding EnvironmentName}"/>
 
             <TextBlock Grid.Row="3" Text="Providers" />
-            <ListBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding Providers}" BorderThickness="0"/>
+            <ListBox Grid.Row="3" Grid.Column="1" 
+                     MaxHeight="100"
+                     SelectedItem="{Binding SelectedProvider}"
+                     ItemsSource="{Binding Providers}" 
+                     BorderThickness="0">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Label}"/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
             
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="0,4,0,0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="4px"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+        
+            <TabControl Grid.Column="0">
+            
+                <TabItem Header="Data">
+                    <local:DataView/>
+                </TabItem>
+            
+            </TabControl>
+
+            <TabControl Grid.Column="2">
+
+                <TabItem Header="file">
+                    <local:FileView/>
+                </TabItem>
+
+            </TabControl>
+
         </Grid>
 
     </Grid>

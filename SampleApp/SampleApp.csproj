@@ -60,6 +60,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Components\Settings\DataView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Settings\FileView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\Settings\SettingsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -109,6 +117,16 @@
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Logging\LogViewModel.cs" />
+    <Compile Include="Components\Settings\DataItem.cs" />
+    <Compile Include="Components\Settings\DataProviderMediator.cs" />
+    <Compile Include="Components\Settings\DataView.xaml.cs">
+      <DependentUpon>DataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Settings\DataViewModel.cs" />
+    <Compile Include="Components\Settings\FileView.xaml.cs">
+      <DependentUpon>FileView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Settings\IDataViewModel.cs" />
     <Compile Include="Components\Settings\ISettingsViewModel.cs" />
     <Compile Include="Components\Settings\SettingsComponent.cs" />
     <Compile Include="Components\Settings\SettingsView.xaml.cs">

@@ -18,9 +18,7 @@ namespace SampleApp.Components.Settings
         #region properties
 
         string _environmentName = "";
-        /// <summary>
-        /// environment name
-        /// </summary>
+        /// <inheritdoc/>
         public string EnvironmentName
         {
             get
@@ -35,9 +33,7 @@ namespace SampleApp.Components.Settings
         }
 
         string _applicationName = "";
-        /// <summary>
-        /// application name
-        /// </summary>
+        /// <inheritdoc/>
         public string ApplicationName
         {
             get
@@ -52,9 +48,7 @@ namespace SampleApp.Components.Settings
         }
 
         string _contentRootPath = "";
-        /// <summary>
-        /// content root path
-        /// </summary>
+        /// <inheritdoc/>
         public string ContentRootPath
         {
             get
@@ -68,10 +62,23 @@ namespace SampleApp.Components.Settings
             }
         }
 
-        /// <summary>
-        /// providers
-        /// </summary>
-        public BindingList<string> Providers { get; } = new BindingList<string>();
+        object _selectedProvider = null;
+        /// <inheritdoc/>
+        public object SelectedProvider
+        {
+            get
+            {
+                return _selectedProvider;
+            }
+            set
+            {
+                _selectedProvider = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        /// <inheritdoc/>
+        public BindingList<object> Providers { get; } = new BindingList<object>();
 
         #endregion
 
@@ -93,6 +100,7 @@ namespace SampleApp.Components.Settings
             EnvironmentName = _hostEnvironment.EnvironmentName;
             ApplicationName = _hostEnvironment.ApplicationName;
             ContentRootPath = _hostEnvironment.ContentRootPath;
+            Providers.Clear();
 
             if (_configuration.GetField<List<IConfigurationProvider>>("_providers", out var providers))
                 AppendProviders(providers);
@@ -103,7 +111,7 @@ namespace SampleApp.Components.Settings
             foreach (var provider in providers)
             {
                 var name = padLeft + provider.ToString();
-                Providers.Add(name);
+                Providers.Add(new { Label = name, Provider = provider });
                 if (provider is ChainedConfigurationProvider chained)
                 {
                     if (chained.GetField<ConfigurationRoot>("_config", out var config))

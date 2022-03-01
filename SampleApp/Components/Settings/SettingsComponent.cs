@@ -14,15 +14,18 @@ namespace SampleApp.Components.Settings
             HostBuilderContext context,
             IServiceComponentCollection services)
         {
-            //services.Services.AddSingleton<ISettingsViewModel>(
-            //    (sp) => ComponentHost.RootHost.Services.GetService<ISettingsViewModel>());
-            services.AddSingleton<ISettingsViewModel, SettingsViewModel>();
+            services
+                .AddSingleton<ISettingsViewModel, SettingsViewModel>()
+                .AddSingleton<IDataViewModel, DataViewModel>()
+                .AddSingleton<DataProviderMediator>();
         }
 
         /// <inheritdoc/>
         public override void Build()
         {
             base.Build();
+            _ = this.ComponentHost.Services.GetRequiredService<IDataViewModel>();
+            _ = this.ComponentHost.Services.GetRequiredService<DataProviderMediator>();
         }
     }
 }

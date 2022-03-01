@@ -25,9 +25,32 @@ namespace WPFUtilities.Extensions.Reflections
 
             var fieldInfo = obj.GetType().GetField(fieldName,
                 BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            if (fieldInfo == null) throw new InvalidOperationException($"field '{fieldName}' not found");
 
             fieldValue = fieldInfo.GetValue(obj) as T;
             return fieldValue is T;
+        }
+
+        /// <summary>
+        /// try to gives the value of the property of an object, whether it is public,protected or private
+        /// </summary>
+        /// <typeparam name="T">expected value type</typeparam>
+        /// <param name="obj">object</param>
+        /// <param name="propertyName">field name</param>
+        /// <param name="propertyValue">out field value</param>
+        /// <returns>true if value found with expected type, false otherwise</returns>
+        public static bool GetProperty<T>(this object obj, string propertyName, out T propertyValue)
+            where T : class
+        {
+            propertyValue = default(T);
+            if (obj == null) return false;
+
+            var propInfo = obj.GetType().GetProperty(propertyName,
+                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            if (propInfo == null) throw new InvalidOperationException($"property '{propertyName}' not found");
+
+            propertyValue = propInfo.GetValue(obj) as T;
+            return propertyValue is T;
         }
 
         /// <summary>
