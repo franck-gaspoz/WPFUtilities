@@ -25,7 +25,7 @@ namespace WPFUtilities.Extensions.Reflections
 
             var fieldInfo = obj.GetType().GetField(fieldName,
                 BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
-            if (fieldInfo == null) throw new InvalidOperationException($"field '{fieldName}' not found");
+            if (fieldInfo == null) return false;
 
             fieldValue = fieldInfo.GetValue(obj) as T;
             return fieldValue is T;
@@ -47,7 +47,7 @@ namespace WPFUtilities.Extensions.Reflections
 
             var propInfo = obj.GetType().GetProperty(propertyName,
                 BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
-            if (propInfo == null) throw new InvalidOperationException($"property '{propertyName}' not found");
+            if (propInfo == null) return false;
 
             propertyValue = propInfo.GetValue(obj) as T;
             return propertyValue is T;

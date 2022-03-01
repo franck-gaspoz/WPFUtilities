@@ -64,7 +64,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\Settings\FileView.xaml">
+    <Page Include="Components\Settings\SettingsFileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,12 +123,15 @@
       <DependentUpon>DataView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Settings\DataViewModel.cs" />
-    <Compile Include="Components\Settings\FileView.xaml.cs">
-      <DependentUpon>FileView.xaml</DependentUpon>
+    <Compile Include="Components\Settings\SettingsFileMediator.cs" />
+    <Compile Include="Components\Settings\SettingsFileView.xaml.cs">
+      <DependentUpon>SettingsFileView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Settings\IDataViewModel.cs" />
+    <Compile Include="Components\Settings\ISettingsFileViewModel.cs" />
     <Compile Include="Components\Settings\ISettingsViewModel.cs" />
     <Compile Include="Components\Settings\SettingsComponent.cs" />
+    <Compile Include="Components\Settings\SettingsFileViewModel.cs" />
     <Compile Include="Components\Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>

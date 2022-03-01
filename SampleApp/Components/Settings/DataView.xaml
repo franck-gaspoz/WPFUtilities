@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SampleApp.Components.Settings" d:DataContext="{d:DesignInstance Type=local:DataViewModel}"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d" 
-             d:DesignHeight="168.276" 
+             d:DesignHeight="111.218" 
              d:DesignWidth="295.988">
     <Grid>
         <DataGrid 

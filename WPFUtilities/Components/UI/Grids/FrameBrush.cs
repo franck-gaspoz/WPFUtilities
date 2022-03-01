@@ -6,19 +6,21 @@ using System.Windows.Media;
 namespace WPFUtilities.Components.UI
 {
     /// <summary>
-    /// set childs margins
+    /// set frame brush
     /// </summary>
     public static partial class Grids
     {
+        #region brush
+
         /// <summary>
-        /// get margin
+        /// get brush
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
         public static Brush GetFrameBrush(DependencyObject dependencyObject) => (Brush)dependencyObject.GetValue(FrameBrushProperty);
 
         /// <summary>
-        /// set margin
+        /// set brush
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="FrameBrush">FrameBrush</param>
@@ -31,8 +33,10 @@ namespace WPFUtilities.Components.UI
             DependencyProperty.RegisterAttached(
                 "FrameBrush",
                 typeof(Brush),
-                typeof(Grid),
+                typeof(Grids),
                 new UIPropertyMetadata(null, FrameBrushChanged));
+
+        #endregion
 
         static void FrameBrushChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {

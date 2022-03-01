@@ -3,11 +3,11 @@
 namespace SampleApp.Components.Settings
 {
     /// <summary>
-    /// Logique d'interaction pour DataView.xaml
+    /// Logique d'interaction pour SettingsFileView.xaml
     /// </summary>
-    public partial class DataView : UserControl
+    public partial class SettingsFileView : UserControl
     {
-        public DataView()
+        public SettingsFileView()
         {
             InitializeComponent();
         }

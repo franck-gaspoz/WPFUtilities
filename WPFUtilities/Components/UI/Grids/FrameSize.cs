@@ -6,12 +6,14 @@ using System.Windows.Media;
 namespace WPFUtilities.Components.UI
 {
     /// <summary>
-    /// set childs margins
+    /// set frame size
     /// </summary>
     public static partial class Grids
     {
+        #region size
+
         /// <summary>
-        /// get margin
+        /// get size
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
@@ -33,6 +35,8 @@ namespace WPFUtilities.Components.UI
                 typeof(double),
                 typeof(Grids),
                 new UIPropertyMetadata(1d, FrameSizeChanged));
+
+        #endregion
 
         static void FrameSizeChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {

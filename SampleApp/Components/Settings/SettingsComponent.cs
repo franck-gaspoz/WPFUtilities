@@ -4,7 +4,6 @@ using WPFUtilities.Components.ServiceComponent;
 
 namespace SampleApp.Components.Settings
 {
-    //[ServiceDependency]
     public class SettingsComponent :
         AbstractServiceComponent,
         IServiceComponent
@@ -16,8 +15,10 @@ namespace SampleApp.Components.Settings
         {
             services
                 .AddSingleton<ISettingsViewModel, SettingsViewModel>()
+                .AddSingleton<ISettingsFileViewModel, SettingsFileViewModel>()
                 .AddSingleton<IDataViewModel, DataViewModel>()
-                .AddSingleton<DataProviderMediator>();
+                .AddSingleton<DataProviderMediator>()
+                .AddSingleton<SettingsFileMediator>();
         }
 
         /// <inheritdoc/>
@@ -26,6 +27,7 @@ namespace SampleApp.Components.Settings
             base.Build();
             _ = this.ComponentHost.Services.GetRequiredService<IDataViewModel>();
             _ = this.ComponentHost.Services.GetRequiredService<DataProviderMediator>();
+            _ = this.ComponentHost.Services.GetRequiredService<SettingsFileMediator>();
         }
     }
 }

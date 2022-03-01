@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="SampleApp.Components.Settings.SettingsFileView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
+             xmlns:local="clr-namespace:SampleApp.Components.Settings" d:DataContext="{d:DesignInstance Type=local:SettingsFileViewModel}"
+             xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
+             mc:Ignorable="d" 
+             d:DesignHeight="151.634" 
+             d:DesignWidth="301.932">
+    <Grid
+        Visibility="{Binding IsVisible,Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"
+        service:DataContext.Resolve="{x:Type local:ISettingsFileViewModel}"
+        >
+
+    </Grid>
+</UserControl>
