@@ -3,7 +3,7 @@
 namespace SampleApp.Components.Settings
 {
     /// <summary>
-    /// file mediator
+    /// file view model mediator
     /// </summary>
     public class SettingsFileMediator
     {
@@ -16,7 +16,7 @@ namespace SampleApp.Components.Settings
         {
             _settingsViewModel = settingsViewModel;
             _settingsFileViewModel = settingsFileViewModel;
-            settingsViewModel.PropertyChanged += SettingsViewModel_PropertyChanged; ;
+            settingsViewModel.PropertyChanged += SettingsViewModel_PropertyChanged;
         }
 
         private void SettingsViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
