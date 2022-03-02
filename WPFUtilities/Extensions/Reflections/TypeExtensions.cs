@@ -24,7 +24,7 @@ namespace WPFUtilities.Extensions.Reflections
             if (obj == null) return false;
 
             var fieldInfo = obj.GetType().GetField(fieldName,
-                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
             if (fieldInfo == null) return false;
 
             fieldValue = fieldInfo.GetValue(obj) as T;
@@ -46,7 +46,7 @@ namespace WPFUtilities.Extensions.Reflections
             if (obj == null) return false;
 
             var propInfo = obj.GetType().GetProperty(propertyName,
-                BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
             if (propInfo == null) return false;
 
             propertyValue = propInfo.GetValue(obj) as T;

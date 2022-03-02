@@ -4,15 +4,75 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
-             xmlns:local="clr-namespace:SampleApp.Components.Settings" d:DataContext="{d:DesignInstance Type=local:SettingsFileViewModel}"
+             xmlns:local="clr-namespace:SampleApp.Components.Settings" 
+             d:DataContext="{d:DesignInstance Type=local:SettingsFileViewModel}"
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
              mc:Ignorable="d" 
-             d:DesignHeight="151.634" 
-             d:DesignWidth="301.932">
+             d:DesignHeight="108.634" 
+             d:DesignWidth="175.932">
+
     <Grid
         Visibility="{Binding IsVisible,Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"
         service:DataContext.Resolve="{x:Type local:ISettingsFileViewModel}"
         >
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="{StaticResource Margin_Default}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Path:" Margin="0,0,4,0"/>
+            <TextBox Text="{Binding FilePath,FallbackValue='fill path'}"
+                     Grid.Column="1"
+                     HorizontalAlignment="Stretch"
+                     IsReadOnly="True"
+                     Margin="{DynamicResource MarginBottom_Default}"
+                     />
+
+            <TextBlock Text="Name:" Grid.Row="1" Margin="0,0,4,0"/>
+            <TextBox Text="{Binding FileName,FallbackValue='fill name'}"
+                     Grid.Column="1"
+                     Grid.Row="1"
+                     HorizontalAlignment="Stretch"
+                     IsReadOnly="True"
+                     />
+        </Grid>
+        
+        <Border 
+            Grid.Row="1"
+            Style="{DynamicResource Border_Default}"
+            Visibility="{Binding IsFileAvailable,
+                Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"
+            >
+            <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Auto"
+                              >
+                <TextBox Margin="{DynamicResource Margin_Default}"
+                             IsReadOnly="False"
+                             Text="{Binding FileText,FallbackValue='file text'}"/>
+            </ScrollViewer>
+        </Border>
+
+        <Border
+            Grid.Row="1"
+            Style="{DynamicResource BorderTop_Default}"
+            Visibility="{Binding IsFileAvailable,
+                Converter={x:Static converters:NotBooleanToVisibilityConverter.Instance}}">
+
+            <TextBlock Text="{Binding Error,FallbackValue=''}"
+                Margin="{DynamicResource Margin_Default}"
+                Style="{DynamicResource ErrorText}" />
+        </Border>
 
     </Grid>
 </UserControl>

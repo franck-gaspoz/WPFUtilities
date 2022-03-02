@@ -9,7 +9,7 @@
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=local:SettingsViewModel}" 
-             d:DesignHeight="202.796" 
+             d:DesignHeight="278.796" 
              d:DesignWidth="321.875"
              >
     <Grid Margin="4">
@@ -50,7 +50,7 @@
 
             <TextBlock Grid.Row="3" Text="Providers" />
             <ListBox Grid.Row="3" Grid.Column="1" 
-                     MaxHeight="100"
+                     MaxHeight="220"
                      SelectedItem="{Binding SelectedProvider}"
                      ItemsSource="{Binding Providers}" 
                      BorderThickness="0">
