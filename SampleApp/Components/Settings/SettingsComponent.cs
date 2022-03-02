@@ -1,5 +1,9 @@
 ﻿using Microsoft.Extensions.Hosting;
 
+using SampleApp.Components.Settings.Data;
+using SampleApp.Components.Settings.Files;
+using SampleApp.Components.Settings.Mediators;
+
 using WPFUtilities.Components.ServiceComponent;
 
 namespace SampleApp.Components.Settings

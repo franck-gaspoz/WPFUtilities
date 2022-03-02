@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
-using WPFUtilities.Extensions.Reflections;
+using Microsoft.Extensions.Configuration;
 
-namespace SampleApp.Components.Settings
+using SampleApp.Components.Settings.Data;
+
+using WPFUtilities.Extensions.Configuration;
+
+namespace SampleApp.Components.Settings.Mediators
 {
     public class DataProviderMediator
     {
@@ -24,11 +27,12 @@ namespace SampleApp.Components.Settings
             PropertyChangedEventArgs e)
         {
             if (e.PropertyName != nameof(ISettingsViewModel.SelectedProvider)) return;
+            _dataViewModel.Items.Clear();
             dynamic item = _settingsViewModel.SelectedProvider;
-            object provider = item.Provider;
-            if (provider.GetProperty<Dictionary<string, string>>("Data", out var data))
+            object oprovider = item.Provider;
+            if (oprovider is IConfigurationProvider provider
+                && provider.TryGetData(out var data))
             {
-                _dataViewModel.Items.Clear();
                 foreach (var kvp in data)
                 {
                     _dataViewModel.Items.Add(

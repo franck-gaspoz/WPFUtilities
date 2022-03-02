@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace SampleApp.Components.Settings
+namespace SampleApp.Components.Settings.Files
 {
     /// <summary>
     /// Logique d'interaction pour SettingsFileView.xaml

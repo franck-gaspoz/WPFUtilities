@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="SampleApp.Components.Settings.Providers.ProvidersView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SampleApp.Components.Settings.Providers"
+             xmlns:settings="clr-namespace:SampleApp.Components.Settings"
+             xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
+             mc:Ignorable="d" 
+             d:DesignHeight="124.993" 
+             d:DesignWidth="368.76"
+             >
+    
+    <Grid service:DataContext.Resolve="{x:Type settings:ISettingsViewModel}">
+        <ListBox 
+            MaxHeight="220"
+            SelectedItem="{Binding SelectedProvider}"
+            ItemsSource="{Binding Providers}" 
+            BorderThickness="0">
+            
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+    
+</UserControl>

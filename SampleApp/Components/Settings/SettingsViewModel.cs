@@ -6,7 +6,10 @@ using System.Linq;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
+using SampleApp.Components.Settings.Providers;
+
 using WPFUtilities.ComponentModels;
+using WPFUtilities.Extensions.Configuration;
 using WPFUtilities.Extensions.Reflections;
 
 namespace SampleApp.Components.Settings
@@ -111,7 +114,20 @@ namespace SampleApp.Components.Settings
             foreach (var provider in providers)
             {
                 var name = padLeft + provider.ToString();
-                Providers.Add(new { Label = name, Provider = provider });
+                var providerItemViewModel = new ProviderItemViewModel
+                {
+                    Name = name,
+                    Provider = provider
+                };
+
+                if (provider.TryGetData(out var data))
+                    providerItemViewModel.DataCount = data.Count;
+                if (provider is FileConfigurationProvider fileConfigurationProvider)
+                    providerItemViewModel.IsProvidingFile =
+                        string.IsNullOrEmpty(fileConfigurationProvider.Source?.Path);
+
+                Providers.Add(providerItemViewModel);
+
                 if (provider is ChainedConfigurationProvider chained)
                 {
                     if (chained.GetField<ConfigurationRoot>("_config", out var config))

@@ -1,6 +1,6 @@
 ﻿using WPFUtilities.ComponentModels;
 
-namespace SampleApp.Components.Settings
+namespace SampleApp.Components.Settings.Files
 {
     public interface ISettingsFileViewModel : IModelBase
     {

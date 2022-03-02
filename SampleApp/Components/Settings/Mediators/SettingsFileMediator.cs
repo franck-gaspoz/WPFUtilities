@@ -4,10 +4,12 @@ using System.IO;
 using Microsoft.Extensions.Configuration.Json;
 using Microsoft.Extensions.Logging;
 
+using SampleApp.Components.Settings.Files;
+
 using WPFUtilities.Extensions.Exceptions;
 using WPFUtilities.Extensions.Reflections;
 
-namespace SampleApp.Components.Settings
+namespace SampleApp.Components.Settings.Mediators
 {
     /// <summary>
     /// file view model mediator

@@ -4,6 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.Settings"
+             xmlns:data="clr-namespace:SampleApp.Components.Settings.Data"
+             xmlns:files="clr-namespace:SampleApp.Components.Settings.Files"
+             xmlns:providers="clr-namespace:SampleApp.Components.Settings.Providers"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
@@ -49,18 +52,11 @@
             <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding EnvironmentName}"/>
 
             <TextBlock Grid.Row="3" Text="Providers" />
-            <ListBox Grid.Row="3" Grid.Column="1" 
-                     MaxHeight="220"
-                     SelectedItem="{Binding SelectedProvider}"
-                     ItemsSource="{Binding Providers}" 
-                     BorderThickness="0">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Label}"/>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-            
+
+            <providers:ProvidersView 
+                Grid.Row="3" 
+                Grid.Column="1"/>
+
         </Grid>
 
         <Grid Grid.Row="1"
@@ -68,7 +64,8 @@
               ui:Grids.MaximizeColumnIndex="0"
               ui:Grids.MinimizeColumnIndex="2"
               ui:Grids.MaximizeColumnTrigger="{Binding IsVisible}"
-              service:DataContext.Resolve="{x:Type local:ISettingsFileViewModel}"
+              service:DataContext.Resolve="{x:Type files:ISettingsFileViewModel}"
+              d:DataContext="{d:DesignInstance Type=files:SettingsFileViewModel}" 
               >
 
             <Grid.ColumnDefinitions>
@@ -80,7 +77,7 @@
             <TabControl Grid.Column="0">
             
                 <TabItem Header="Data">
-                    <local:DataView/>
+                    <data:DataView />
                 </TabItem>
             
             </TabControl>
@@ -90,11 +87,11 @@
                           HorizontalAlignment="Stretch"/>
 
             <TabControl Grid.Column="2" 
-                        service:DataContext.Resolve="{x:Type local:ISettingsFileViewModel}"
+                        service:DataContext.Resolve="{x:Type files:ISettingsFileViewModel}"
                         Visibility="{Binding IsVisible,Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}">
 
                 <TabItem Header="file">
-                    <local:SettingsFileView/>
+                    <files:SettingsFileView/>
                 </TabItem>
 
             </TabControl>

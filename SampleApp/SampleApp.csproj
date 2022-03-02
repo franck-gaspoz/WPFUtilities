@@ -60,11 +60,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Components\Settings\DataView.xaml">
+    <Page Include="Components\Settings\Data\DataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\Settings\SettingsFileView.xaml">
+    <Page Include="Components\Settings\Providers\ProvidersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Settings\Files\SettingsFileView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,21 +125,26 @@
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Logging\LogViewModel.cs" />
-    <Compile Include="Components\Settings\DataItem.cs" />
-    <Compile Include="Components\Settings\DataProviderMediator.cs" />
-    <Compile Include="Components\Settings\DataView.xaml.cs">
+    <Compile Include="Components\Settings\Data\DataItem.cs" />
+    <Compile Include="Components\Settings\Mediators\DataProviderMediator.cs" />
+    <Compile Include="Components\Settings\Data\DataView.xaml.cs">
       <DependentUpon>DataView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Settings\DataViewModel.cs" />
-    <Compile Include="Components\Settings\SettingsFileMediator.cs" />
-    <Compile Include="Components\Settings\SettingsFileView.xaml.cs">
+    <Compile Include="Components\Settings\Data\DataViewModel.cs" />
+    <Compile Include="Components\Settings\Providers\ProviderItemViewModel.cs" />
+    <Compile Include="Components\Settings\Providers\IProvidersViewModel.cs" />
+    <Compile Include="Components\Settings\Providers\ProvidersView.xaml.cs">
+      <DependentUpon>ProvidersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Settings\Mediators\SettingsFileMediator.cs" />
+    <Compile Include="Components\Settings\Files\SettingsFileView.xaml.cs">
       <DependentUpon>SettingsFileView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Settings\IDataViewModel.cs" />
-    <Compile Include="Components\Settings\ISettingsFileViewModel.cs" />
+    <Compile Include="Components\Settings\Data\IDataViewModel.cs" />
+    <Compile Include="Components\Settings\Files\ISettingsFileViewModel.cs" />
     <Compile Include="Components\Settings\ISettingsViewModel.cs" />
     <Compile Include="Components\Settings\SettingsComponent.cs" />
-    <Compile Include="Components\Settings\SettingsFileViewModel.cs" />
+    <Compile Include="Components\Settings\Files\SettingsFileViewModel.cs" />
     <Compile Include="Components\Settings\SettingsView.xaml.cs">
       <DependentUpon>SettingsView.xaml</DependentUpon>
     </Compile>

@@ -2,7 +2,7 @@
 
 using WPFUtilities.ComponentModels;
 
-namespace SampleApp.Components.Settings
+namespace SampleApp.Components.Settings.Files
 {
     public class SettingsFileViewModel : ModelBase, ISettingsFileViewModel
     {

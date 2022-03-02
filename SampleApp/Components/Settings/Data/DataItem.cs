@@ -1,4 +1,4 @@
-﻿namespace SampleApp.Components.Settings
+﻿namespace SampleApp.Components.Settings.Data
 {
     /// <summary>
     /// key / value data item
