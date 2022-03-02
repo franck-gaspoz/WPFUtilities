@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              xmlns:local="clr-namespace:SampleApp.Components.Settings" 
+             xmlns:uicomponents="clr-namespace:SampleApp.Components.UI"
              d:DataContext="{d:DesignInstance Type=local:SettingsFileViewModel}"
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
              mc:Ignorable="d" 
@@ -63,16 +64,12 @@
             </ScrollViewer>
         </Border>
 
-        <Border
+        <uicomponents:ErrorView 
             Grid.Row="1"
-            Style="{DynamicResource BorderTop_Default}"
+            Error="{Binding Error,FallbackValue=''}"
             Visibility="{Binding IsFileAvailable,
-                Converter={x:Static converters:NotBooleanToVisibilityConverter.Instance}}">
-
-            <TextBlock Text="{Binding Error,FallbackValue=''}"
-                Margin="{DynamicResource Margin_Default}"
-                Style="{DynamicResource ErrorText}" />
-        </Border>
-
+                Converter={x:Static converters:NotBooleanToVisibilityConverter.Instance}}"
+            />
+        
     </Grid>
 </UserControl>
