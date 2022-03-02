@@ -41,6 +41,17 @@ namespace WPFUtilities.Components.UI
         {
             if (DesignerProperties.GetIsInDesignMode(dependencyObject)) return;
             if (!(dependencyObject is Grid grid)) return;
+            if (grid.IsLoaded)
+                SetColumnMaximizedMinimizedState(grid);
+            else
+                grid.Loaded += Grid_Loaded_SetColumnMaximizedMinimizedState;
+        }
+
+        private static void Grid_Loaded_SetColumnMaximizedMinimizedState(object sender, RoutedEventArgs e)
+        {
+            if (!(sender is Grid grid)) return;
+
+            grid.Loaded -= Grid_Loaded_SetColumnMaximizedMinimizedState;
             SetColumnMaximizedMinimizedState(grid);
         }
 
