@@ -11,11 +11,7 @@
     <Grid>
         <DataGrid 
             service:DataContext.Resolve="{x:Type local:IDataViewModel}"
-            ItemsSource="{Binding Items}"  
-            CanUserAddRows="False"
-            CanUserResizeRows="False"
-            IsReadOnly="True"
-            AutoGenerateColumns="False">
+            ItemsSource="{Binding Items}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Key" Binding="{Binding Key}"/>
                 <DataGridTextColumn Header="Value" Binding="{Binding Value}"/>

@@ -132,7 +132,6 @@
     </Compile>
     <Compile Include="Components\Settings\Data\DataViewModel.cs" />
     <Compile Include="Components\Settings\Providers\ProviderItemViewModel.cs" />
-    <Compile Include="Components\Settings\Providers\IProvidersViewModel.cs" />
     <Compile Include="Components\Settings\Providers\ProvidersView.xaml.cs">
       <DependentUpon>ProvidersView.xaml</DependentUpon>
     </Compile>

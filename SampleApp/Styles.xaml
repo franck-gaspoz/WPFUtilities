@@ -29,5 +29,18 @@
         <Setter Property="Foreground" Value="Red"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
-    
+
+    <SolidColorBrush x:Key="DataGrid_LinesBrush">LightGray</SolidColorBrush>
+
+    <Style TargetType="DataGrid">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="AutoGenerateColumns" Value="False"/>
+        <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="CanUserResizeRows" Value="False"/>
+        <Setter Property="HeadersVisibility" Value="Column"/>
+        <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource DataGrid_LinesBrush}"/>
+        <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource DataGrid_LinesBrush}"/>
+    </Style>        
+
 </ResourceDictionary>

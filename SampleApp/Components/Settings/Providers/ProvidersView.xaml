@@ -9,21 +9,25 @@
              mc:Ignorable="d" 
              d:DesignHeight="124.993" 
              d:DesignWidth="368.76"
+             d:DataContext="{d:DesignInstance Type=settings:SettingsViewModel}"
              >
     
     <Grid service:DataContext.Resolve="{x:Type settings:ISettingsViewModel}">
-        <ListBox 
+        <DataGrid
             MaxHeight="220"
             SelectedItem="{Binding SelectedProvider}"
-            ItemsSource="{Binding Providers}" 
-            BorderThickness="0">
-            
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            ItemsSource="{Binding Providers}"
+            AutoGenerateColumns="False"
+            HorizontalGridLinesBrush="Transparent"
+            VerticalGridLinesBrush="Transparent"
+            >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Count" Binding="{Binding DataCount}"/>
+                <DataGridCheckBoxColumn Header="providing file" Binding="{Binding IsProvidingFile}"/>
+            </DataGrid.Columns>
+
+        </DataGrid>
     </Grid>
     
 </UserControl>

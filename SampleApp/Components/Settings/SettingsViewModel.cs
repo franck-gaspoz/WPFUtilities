@@ -124,7 +124,7 @@ namespace SampleApp.Components.Settings
                     providerItemViewModel.DataCount = data.Count;
                 if (provider is FileConfigurationProvider fileConfigurationProvider)
                     providerItemViewModel.IsProvidingFile =
-                        string.IsNullOrEmpty(fileConfigurationProvider.Source?.Path);
+                        !string.IsNullOrEmpty(fileConfigurationProvider.Source?.Path);
 
                 Providers.Add(providerItemViewModel);
 
