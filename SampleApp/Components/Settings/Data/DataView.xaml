@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.Settings.Data"
+             xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d" 
              d:DataContext="{d:DesignInstance Type=local:DataViewModel}"
@@ -12,6 +13,7 @@
     <Grid>
         <DataGrid 
             service:DataContext.Resolve="{x:Type local:IDataViewModel}"
+            ui:DataGrid.AdjustColumnSizeMode="OnResize"
             ItemsSource="{Binding Items}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Key" Binding="{Binding Key}" Width="50*"/>

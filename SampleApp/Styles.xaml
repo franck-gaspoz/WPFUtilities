@@ -1,5 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <Style TargetType="Button">
@@ -33,6 +34,9 @@
     <SolidColorBrush x:Key="DataGrid_LinesBrush">LightGray</SolidColorBrush>
 
     <Style TargetType="DataGrid">
+        <!-- 
+        <Setter Property="ui:DataGrid.AdjustColumnSizeMode" Value="OnResize"/>
+        -->
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="IsReadOnly" Value="True"/>
         <Setter Property="AutoGenerateColumns" Value="False"/>
