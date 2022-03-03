@@ -2,9 +2,8 @@
 using System.Windows;
 
 using WPFUtilities.Components.UI.DataGridExtensions;
-using WPFUtilities.Extensions.DataSources;
+using WPFUtilities.Extensions.DataGrids;
 using WPFUtilities.Extensions.DependencyObjects;
-using WPFUtilities.Extensions.FrameworkElements;
 
 using DataGridControlType = System.Windows.Controls.DataGrid;
 using DataGridLength = System.Windows.Controls.DataGridLength;
@@ -50,20 +49,9 @@ namespace WPFUtilities.Components.UI
             if (DesignerProperties.GetIsInDesignMode(dependencyObject)
                 || !(dependencyObject is DataGridControlType datagrid)) return;
 
-            datagrid.OnLoaded(
-                (routed) =>
-                {
-                    InitializeAdjustColumnSize(datagrid);
-
-                    datagrid.OnValueChanged(
-                        DataGridControlType.ItemsSourceProperty,
-                        (args) =>
-                        {
-                            AdjustColumnSizeMode(datagrid);
-                            datagrid.OnItemSourceReset(
-                                (source) => AdjustColumnSizeMode(datagrid));
-                        });
-                });
+            datagrid.OnSourceChanged(
+                (o) => AdjustColumnSizeMode(o),
+                (o) => InitializeAdjustColumnSize(o));
         }
 
         static void InitializeAdjustColumnSize(DataGridControlType datagrid)

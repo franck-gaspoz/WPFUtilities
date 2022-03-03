@@ -160,6 +160,7 @@
     <Compile Include="Components\UI\WindowExtensions\RestoreInitiaSizeOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\Size.cs" />
     <Compile Include="Extensions\Configuration\IConfigurationProviderExtensions.cs" />
+    <Compile Include="Extensions\DataGrids\DataGridExtensions.cs" />
     <Compile Include="Extensions\DataSources\DataSourceExtensions.cs" />
     <Compile Include="Extensions\DependencyObjects\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\Exceptions\ExceptionsExtensions.cs" />
