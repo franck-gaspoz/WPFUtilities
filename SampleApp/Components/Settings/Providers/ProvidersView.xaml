@@ -24,7 +24,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Count" Binding="{Binding DataCount}"/>
-                <DataGridCheckBoxColumn Header="providing file" Binding="{Binding IsProvidingFile}"/>
+                <DataGridCheckBoxColumn Header="file provider" Binding="{Binding IsProvidingFile}"/>
             </DataGrid.Columns>
 
         </DataGrid>

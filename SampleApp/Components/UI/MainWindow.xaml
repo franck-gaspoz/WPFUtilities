@@ -15,6 +15,7 @@
         mc:Ignorable="d"
         Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"
+        WindowState="Maximized"
         Topmost="False"
         Height="670" 
         Width="1162"        
@@ -49,19 +50,19 @@
                                            service:DataContext.IsAuto="True"/>
                 </TabItem>
 
-                <TabItem Header="Model validation">
+                <TabItem Header="Model validation" IsEnabled="False">
                 </TabItem>
 
-                <TabItem Header="Scroll viewer">
+                <TabItem Header="Scroll viewer" IsEnabled="False">
                 </TabItem>
 
-                <TabItem Header="Layout">
+                <TabItem Header="Layout" IsEnabled="False">
                 </TabItem>
 
-                <TabItem Header="Converters">
+                <TabItem Header="Converters" IsEnabled="False">
                 </TabItem>
 
-                <TabItem Header="Brushes">
+                <TabItem Header="Brushes" IsEnabled="False">
                 </TabItem>
 
             </TabControl>

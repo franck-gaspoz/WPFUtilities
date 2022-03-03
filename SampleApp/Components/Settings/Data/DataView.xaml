@@ -14,8 +14,8 @@
             service:DataContext.Resolve="{x:Type local:IDataViewModel}"
             ItemsSource="{Binding Items}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Key" Binding="{Binding Key}"/>
-                <DataGridTextColumn Header="Value" Binding="{Binding Value}"/>
+                <DataGridTextColumn Header="Key" Binding="{Binding Key}" Width="50*"/>
+                <DataGridTextColumn Header="Value" Binding="{Binding Value}" Width="50*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
