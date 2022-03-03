@@ -61,10 +61,7 @@ namespace WPFUtilities.Components.UI
                         {
                             AdjustColumnSizeMode(datagrid);
                             datagrid.OnItemSourceReset(
-                                (source) =>
-                                {
-                                    AdjustColumnSizeMode(datagrid);
-                                });
+                                (source) => AdjustColumnSizeMode(datagrid);
                         });
                 });
         }
