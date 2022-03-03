@@ -3,6 +3,7 @@ using System.Windows;
 
 using WPFUtilities.Components.UI.DataGridExtensions;
 using WPFUtilities.Extensions.DependencyObjects;
+using WPFUtilities.Extensions.FrameworkElements;
 
 using DataGridControlType = System.Windows.Controls.DataGrid;
 using DataGridLength = System.Windows.Controls.DataGridLength;
@@ -47,23 +48,17 @@ namespace WPFUtilities.Components.UI
         {
             if (DesignerProperties.GetIsInDesignMode(dependencyObject)
                 || !(dependencyObject is DataGridControlType datagrid)) return;
-            if (datagrid.IsLoaded)
-                InitializeAdjustColumnSize(datagrid);
-            else
-                datagrid.Loaded += DataGrid_Loaded_SetAdjustColumnSizeMode;
-        }
 
-        private static void DataGrid_Loaded_SetAdjustColumnSizeMode(object sender, RoutedEventArgs e)
-        {
-            if (!(sender is DataGridControlType datagrid)) return;
-            datagrid.Loaded -= DataGrid_Loaded_SetAdjustColumnSizeMode;
-            InitializeAdjustColumnSize(datagrid);
-        }
-
-        private static void DataGrid_SizeChanged_SetAdjustColumnSizeMode(object sender, SizeChangedEventArgs e)
-        {
-            if (!(sender is DataGridControlType datagrid)) return;
-            AdjustColumnSizeMode(datagrid);
+            datagrid.OnLoaded(
+                (routed) =>
+                {
+                    InitializeAdjustColumnSize(datagrid);
+                    datagrid.OnSizeChanged(
+                        (sizeChanged) =>
+                        {
+                            AdjustColumnSizeMode(datagrid);
+                        });
+                });
         }
 
         static void InitializeAdjustColumnSize(DataGridControlType datagrid)
@@ -72,8 +67,6 @@ namespace WPFUtilities.Components.UI
             props.InitialColumnsWidths = new DataGridLength[datagrid.Columns.Count];
             for (var i = 0; i < datagrid.Columns.Count; i++)
                 props.InitialColumnsWidths[i] = datagrid.Columns[i].Width;
-
-            datagrid.SizeChanged += DataGrid_SizeChanged_SetAdjustColumnSizeMode;
         }
 
         static void AdjustColumnSizeMode(DataGridControlType datagrid)
