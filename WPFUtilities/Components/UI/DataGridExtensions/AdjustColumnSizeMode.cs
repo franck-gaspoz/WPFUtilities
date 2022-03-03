@@ -2,6 +2,7 @@
 using System.Windows;
 
 using WPFUtilities.Components.UI.DataGridExtensions;
+using WPFUtilities.Extensions.DataSources;
 using WPFUtilities.Extensions.DependencyObjects;
 using WPFUtilities.Extensions.FrameworkElements;
 
@@ -53,10 +54,17 @@ namespace WPFUtilities.Components.UI
                 (routed) =>
                 {
                     InitializeAdjustColumnSize(datagrid);
-                    datagrid.OnSizeChanged(
-                        (sizeChanged) =>
+
+                    datagrid.OnValueChanged(
+                        DataGridControlType.ItemsSourceProperty,
+                        (args) =>
                         {
                             AdjustColumnSizeMode(datagrid);
+                            datagrid.OnItemSourceReset(
+                                (source) =>
+                                {
+                                    AdjustColumnSizeMode(datagrid);
+                                });
                         });
                 });
         }

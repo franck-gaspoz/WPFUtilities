@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System;
+using System.ComponentModel;
+using System.Windows;
 
 namespace WPFUtilities.Extensions.DependencyObjects
 {
@@ -53,5 +55,41 @@ namespace WPFUtilities.Extensions.DependencyObjects
             DependencyProperty property
             )
             => (T)dependencyObject.GetValue(property);
+
+        /// <summary>
+        /// triggers an an action when the value of a dependency property change
+        /// </summary>
+        /// <typeparam name="T">source type</typeparam>
+        /// <param name="dependencyObject">dependency object (type T)</param>
+        /// <param name="property">dependency property</param>
+        /// <param name="action">action</param>
+        /// <param name="repeat"></param>
+        public static void OnValueChanged<T>(
+            this T dependencyObject,
+            DependencyProperty property,
+            Action<EventArgs> action,
+            bool repeat = true
+            )
+            where T : DependencyObject
+        {
+            void ValueChanged(object sender, EventArgs args)
+            {
+                if (!repeat)
+                    DependencyPropertyDescriptor.
+                        FromProperty(property, typeof(T))
+                        .RemoveValueChanged(
+                            dependencyObject,
+                            ValueChanged
+                        );
+                action(args);
+            }
+
+            DependencyPropertyDescriptor.
+                FromProperty(property, typeof(T))
+                .AddValueChanged(
+                    dependencyObject,
+                    ValueChanged
+                );
+        }
     }
 }

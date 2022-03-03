@@ -11,15 +11,11 @@ namespace WPFUtilities.ComponentModels
         IModelBase,
         INotifyPropertyChanged
     {
-        /// <summary>
-        /// enable/disable data validation
-        /// </summary>
+        /// <inheritdoc/>
         public bool IsDataValidationEnabled { get; set; } = true;
 
         bool _hasModelChanged = false;
-        /// <summary>
-        /// indicates if any data has changed in the model
-        /// </summary>
+        /// <inheritdoc/>
         public bool HasModelChanged
         {
             get => _hasModelChanged;
@@ -31,9 +27,7 @@ namespace WPFUtilities.ComponentModels
             }
         }
 
-        /// <summary>
-        /// property changed event
-        /// </summary>
+        /// <inheritdoc/>
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
@@ -54,11 +48,8 @@ namespace WPFUtilities.ComponentModels
             NotifyPropertyChanged(nameof(IsValid));
         }
 
-        /// <summary>
-        /// notify a property has changed
-        /// </summary>
-        /// <param name="propertyName">property name (caller member name if omitted)</param>
-        protected void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        /// <inheritdoc/>
+        public void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             if (!HasModelChanged) HasModelChanged = true;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -68,9 +59,7 @@ namespace WPFUtilities.ComponentModels
             }
         }
 
-        /// <summary>
-        /// reset model state
-        /// </summary>
+        /// <inheritdoc/>
         public void ResetModelState() => HasModelChanged = false;
     }
 }

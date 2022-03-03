@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace WPFUtilities.ComponentModels
 {
@@ -26,5 +27,11 @@ namespace WPFUtilities.ComponentModels
         /// reset model state
         /// </summary>
         void ResetModelState();
+
+        /// <summary>
+        /// notify a property has changed
+        /// </summary>
+        /// <param name="propertyName">property name (caller member name if omitted)</param>
+        void NotifyPropertyChanged([CallerMemberName] string propertyName = "");
     }
 }

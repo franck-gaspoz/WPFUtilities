@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
 
 using Microsoft.Extensions.Configuration;
 
@@ -15,7 +16,8 @@ namespace SampleApp.Components.Settings.Mediators
 
         public DataProviderMediator(
             ISettingsViewModel settingsViewModel,
-            IDataViewModel dataViewModel)
+            IDataViewModel dataViewModel
+            )
         {
             _settingsViewModel = settingsViewModel;
             _dataViewModel = dataViewModel;
@@ -30,16 +32,22 @@ namespace SampleApp.Components.Settings.Mediators
             _dataViewModel.Items.Clear();
             dynamic item = _settingsViewModel.SelectedProvider;
             object oprovider = item.Provider;
+
+            var items = new List<DataItem>();
+
             if (oprovider is IConfigurationProvider provider
                 && provider.TryGetData(out var data))
             {
                 foreach (var kvp in data)
                 {
-                    _dataViewModel.Items.Add(
+                    items.Add(
                         new DataItem { Key = kvp.Key, Value = kvp.Value }
                         );
                 }
+                foreach (var dataItem in items)
+                    _dataViewModel.Items.Add(dataItem);
             }
+            _dataViewModel.NotifyPropertyChanged(nameof(IDataViewModel.Items));
         }
     }
 }
