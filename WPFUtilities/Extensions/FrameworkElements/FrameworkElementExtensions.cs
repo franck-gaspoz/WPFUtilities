@@ -45,7 +45,7 @@ namespace WPFUtilities.Extensions.FrameworkElements
         /// <param name="repeat">if true repeat action on next event</param>
         public static void OnSizeChanged<T>(
             this T obj,
-            Action<RoutedEventArgs> action,
+            Action<SizeChangedEventArgs> action,
             bool repeat = true)
             where T : FrameworkElement
         {
