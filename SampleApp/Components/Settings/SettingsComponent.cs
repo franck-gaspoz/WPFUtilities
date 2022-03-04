@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 using SampleApp.Components.Settings.Data;
 using SampleApp.Components.Settings.Files;
 using SampleApp.Components.Settings.Mediators;
 
+using WPFUtilities.Components.Logging.ListLogger;
 using WPFUtilities.Components.ServiceComponent;
 
 namespace SampleApp.Components.Settings
@@ -12,6 +14,13 @@ namespace SampleApp.Components.Settings
         AbstractServiceComponent,
         IServiceComponent
     {
+        IListLoggerModel _listLoggerModel;
+
+        public SettingsComponent(IListLoggerModel listLoggerModel)
+        {
+            _listLoggerModel = listLoggerModel;
+        }
+
         /// <inheritdoc/>
         public override void ConfigureServices(
             HostBuilderContext context,
@@ -23,6 +32,16 @@ namespace SampleApp.Components.Settings
                 .AddSingleton<IDataViewModel, DataViewModel>()
                 .AddSingleton<DataProviderMediator>()
                 .AddSingleton<SettingsFileMediator>();
+
+            // enable logging to parent list logger model
+            services.Services.AddLogging((loggingBuilder) =>
+            {
+                loggingBuilder.AddListLogger(
+                    (listLoggerConfiguration) =>
+                    {
+                        listLoggerConfiguration.Target = _listLoggerModel.LogItems;
+                    });
+            });
         }
 
         /// <inheritdoc/>

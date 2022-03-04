@@ -65,7 +65,7 @@ namespace SampleApp.Components.UI
 
             // window scope (component scope) commands [app logic]
 
-            services.Services
+            services
                 .AddSingleton<LogCommand>()
                 .AddSingleton<ClearLogCommand>()
                 .AddSingleton<LogObjectCommand>()

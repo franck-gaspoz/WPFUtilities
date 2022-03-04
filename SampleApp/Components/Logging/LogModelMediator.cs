@@ -34,7 +34,8 @@ namespace SampleApp.Components.Logging
                         break;
                     case ListChangedType.ItemAdded:
                         App.Current.Dispatcher.BeginInvoke(new Action(() =>
-                            logViewModel.Messages.Add(listLoggerModel.LogItems[e.NewIndex])));
+                            logViewModel.Messages.Add(
+                                listLoggerModel.LogItems[e.NewIndex])));
                         break;
                 }
             }
