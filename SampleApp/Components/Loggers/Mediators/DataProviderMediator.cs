@@ -1,17 +1,17 @@
 ﻿using System.ComponentModel;
 
-using SampleApp.Components.Data;
+using SampleApp.Components.Data.KeyValue;
 
 namespace SampleApp.Components.Loggers.Mediators
 {
     public class DataProviderMediator
     {
         ILoggersViewModel _LoggersViewModel;
-        IDataViewModel _dataViewModel;
+        IKeyValueViewModel _dataViewModel;
 
         public DataProviderMediator(
             ILoggersViewModel LoggersViewModel,
-            IDataViewModel dataViewModel
+            IKeyValueViewModel dataViewModel
             )
         {
             _LoggersViewModel = LoggersViewModel;

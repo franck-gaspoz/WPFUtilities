@@ -60,11 +60,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Components\Hosts\HostsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\Loggers\LoggersView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Components\Data\DataView.xaml">
+    <Page Include="Components\Data\KeyValue\KeyValueView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,6 +125,12 @@
     <Compile Include="Components\About\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\Hosts\HostsComponent.cs" />
+    <Compile Include="Components\Hosts\HostsView.xaml.cs">
+      <DependentUpon>HostsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Hosts\HostsViewModel.cs" />
+    <Compile Include="Components\Hosts\IHostsViewModel.cs" />
     <Compile Include="Components\Loggers\ILoggersViewModel.cs" />
     <Compile Include="Components\Loggers\Mediators\DataProviderMediator.cs" />
     <Compile Include="Components\Loggers\LoggersComponent.cs" />
@@ -136,12 +146,12 @@
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Logging\LogViewModel.cs" />
-    <Compile Include="Components\Data\DataItem.cs" />
+    <Compile Include="Components\Data\KeyValue\KeyValueItem.cs" />
     <Compile Include="Components\Settings\Mediators\DataProviderMediator.cs" />
-    <Compile Include="Components\Data\DataView.xaml.cs">
-      <DependentUpon>DataView.xaml</DependentUpon>
+    <Compile Include="Components\Data\KeyValue\KeyValueView.xaml.cs">
+      <DependentUpon>KeyValueView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Data\DataViewModel.cs" />
+    <Compile Include="Components\Data\KeyValue\KeyValueViewModel.cs" />
     <Compile Include="Components\Settings\Providers\ProviderItemViewModel.cs" />
     <Compile Include="Components\Settings\Providers\ProvidersView.xaml.cs">
       <DependentUpon>ProvidersView.xaml</DependentUpon>
@@ -150,7 +160,7 @@
     <Compile Include="Components\Settings\Files\SettingsFileView.xaml.cs">
       <DependentUpon>SettingsFileView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Data\IDataViewModel.cs" />
+    <Compile Include="Components\Data\KeyValue\IKeyValueViewModel.cs" />
     <Compile Include="Components\Settings\Files\ISettingsFileViewModel.cs" />
     <Compile Include="Components\Settings\ISettingsViewModel.cs" />
     <Compile Include="Components\Settings\SettingsComponent.cs" />
@@ -239,6 +249,8 @@
   <ItemGroup>
     <Resource Include="Resources\Codicons-SymbolClass.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Components\Data\Tree\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

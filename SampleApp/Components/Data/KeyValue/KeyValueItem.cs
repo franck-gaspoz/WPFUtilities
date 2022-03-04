@@ -1,9 +1,9 @@
-﻿namespace SampleApp.Components.Data
+﻿namespace SampleApp.Components.Data.KeyValue
 {
     /// <summary>
     /// key / value data item
     /// </summary>
-    public class DataItem
+    public class KeyValueItem
     {
         /// <summary>
         /// key

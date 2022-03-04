@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.Settings"
-             xmlns:data="clr-namespace:SampleApp.Components.Data"
+             xmlns:data="clr-namespace:SampleApp.Components.Data.KeyValue"
              xmlns:files="clr-namespace:SampleApp.Components.Settings.Files"
              xmlns:providers="clr-namespace:SampleApp.Components.Settings.Providers"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
@@ -77,7 +77,7 @@
             <TabControl Grid.Column="0">
             
                 <TabItem Header="Data">
-                    <data:DataView />
+                    <data:KeyValueView />
                 </TabItem>
             
             </TabControl>

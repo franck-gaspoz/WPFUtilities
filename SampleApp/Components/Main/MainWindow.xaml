@@ -47,14 +47,14 @@
             <!-- tab panel -->
             <TabControl Grid.Column="1" Grid.Row="2" Margin="8,0,8,8">
 
-                <TabItem Header="Settings" IsSelected="True">
+                <TabItem Header="Settings" IsSelected="False">
                     <settings:SettingsView service:Component.Type="{x:Type settings:SettingsComponent}" 
                                            service:DataContext.IsAuto="True"/>
                 </TabItem>
 
-                <TabItem Header="Loggers">
-                    <settings:SettingsView service:Component.Type="{x:Type loggers:LoggersComponent}" 
-                                           service:DataContext.IsAuto="True"/>
+                <TabItem Header="Loggers" IsSelected="True">
+                    <loggers:LoggersView service:Component.Type="{x:Type loggers:LoggersComponent}" 
+                                         service:DataContext.IsAuto="True"/>
                 </TabItem>
 
                 <TabItem Header="Model validation" IsEnabled="False">

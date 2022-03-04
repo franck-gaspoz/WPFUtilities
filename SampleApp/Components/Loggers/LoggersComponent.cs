@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using SampleApp.Components.Data;
+using SampleApp.Components.Data.KeyValue;
 using SampleApp.Components.Loggers.Mediators;
 
 using WPFUtilities.Components.Logging.ListLogger;
@@ -27,7 +27,7 @@ namespace SampleApp.Components.Loggers
         {
             services
                 .AddSingleton<ILoggersViewModel, LoggersViewModel>()
-                .AddSingleton<IDataViewModel, DataViewModel>()
+                .AddSingleton<IKeyValueViewModel, KeyValueViewModel>()
                 .AddSingleton<DataProviderMediator>();
 
             // enable logging to parent list logger model
@@ -46,7 +46,7 @@ namespace SampleApp.Components.Loggers
         public override void Build()
         {
             base.Build();
-            _ = this.ComponentHost.Services.GetRequiredService<IDataViewModel>();
+            _ = this.ComponentHost.Services.GetRequiredService<IKeyValueViewModel>();
             _ = this.ComponentHost.Services.GetRequiredService<DataProviderMediator>();
         }
     }

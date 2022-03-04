@@ -1,10 +1,11 @@
-﻿<UserControl x:Class="SampleApp.Components.Loggers.SettingsView"
+﻿<UserControl x:Class="SampleApp.Components.Loggers.LoggersView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.Loggers"
-             xmlns:data="clr-namespace:SampleApp.Components.Data"
+             xmlns:data="clr-namespace:SampleApp.Components.Data.KeyValue"
+             xmlns:hosts="clr-namespace:SampleApp.Components.Hosts"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
@@ -19,67 +20,20 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid 
-              ui:Grids.FrameBrush="DarkGray"
-              ui:Grids.FrameSize="1"
-              >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.Resources>
-                <Style TargetType="TextBlock">
-                    <Setter Property="Background" Value="#EAEAEA"/>
-                    <Setter Property="Padding" Value="4,2,4,2"/>
-                </Style>
-            </Grid.Resources>
+        <Grid>
 
-            <TextBlock Text="Application name"/>
-            <TextBlock Grid.Column="1" Text="{Binding ApplicationName}"/>
-
-            <TextBlock Grid.Row="1" Text="Content root path"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding ContentRootPath}"/>
-
-            <TextBlock Grid.Row="2" Text="Environment name" />
-            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding EnvironmentName}"/>
-
-            <TextBlock Grid.Row="3" Text="Providers" />
-
-            <!--
-            <providers:ProvidersView 
-                Grid.Row="3" 
-                Grid.Column="1"/>
-            -->
+            <hosts:HostsView/>
 
         </Grid>
 
         <Grid Grid.Row="1"
               Margin="0,4,0,0"
-              ui:Grids.MaximizeColumnIndex="0"
-              ui:Grids.MinimizeColumnIndex="2"
-              ui:Grids.MaximizeColumnTrigger="{Binding IsVisible}"
               >
-
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="4px"/>
-                <ColumnDefinition Width="50*"/>
-            </Grid.ColumnDefinitions>
-
-            <TabControl Grid.Column="0">
-
+            <TabControl>
                 <TabItem Header="Data">
-                    <data:DataView />
+                    <data:KeyValueView />
                 </TabItem>
-
             </TabControl>
-
         </Grid>
 
     </Grid>

@@ -3,13 +3,13 @@ using System.Collections.ObjectModel;
 
 using WPFUtilities.ComponentModels;
 
-namespace SampleApp.Components.Data
+namespace SampleApp.Components.Data.KeyValue
 {
-    public interface IDataViewModel : IModelBase
+    public interface IKeyValueViewModel : IModelBase
     {
         /// <summary>
         /// items list
         /// </summary>
-        ObservableCollection<DataItem> Items { get; }
+        ObservableCollection<KeyValueItem> Items { get; }
     }
 }

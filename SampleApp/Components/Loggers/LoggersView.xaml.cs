@@ -5,9 +5,9 @@ namespace SampleApp.Components.Loggers
     /// <summary>
     /// Logique d'interaction pour SettingsView.xaml
     /// </summary>
-    public partial class SettingsView : UserControl
+    public partial class LoggersView : UserControl
     {
-        public SettingsView()
+        public LoggersView()
         {
             InitializeComponent();
         }

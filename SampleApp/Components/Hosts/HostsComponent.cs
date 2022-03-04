@@ -1,22 +1,18 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using SampleApp.Components.Data.KeyValue;
-using SampleApp.Components.Settings.Files;
-using SampleApp.Components.Settings.Mediators;
-
 using WPFUtilities.Components.Logging.ListLogger;
 using WPFUtilities.Components.ServiceComponent;
 
-namespace SampleApp.Components.Settings
+namespace SampleApp.Components.Hosts
 {
-    public class SettingsComponent :
+    public class HostsComponent :
         AbstractServiceComponent,
         IServiceComponent
     {
         IListLoggerModel _listLoggerModel;
 
-        public SettingsComponent(IListLoggerModel listLoggerModel)
+        public HostsComponent(IListLoggerModel listLoggerModel)
         {
             _listLoggerModel = listLoggerModel;
         }
@@ -27,11 +23,8 @@ namespace SampleApp.Components.Settings
             IServiceComponentCollection services)
         {
             services
-                .AddSingleton<ISettingsViewModel, SettingsViewModel>()
-                .AddSingleton<ISettingsFileViewModel, SettingsFileViewModel>()
-                .AddSingleton<IKeyValueViewModel, KeyValueViewModel>()
-                .AddSingleton<DataProviderMediator>()
-                .AddSingleton<SettingsFileMediator>();
+                .AddSingleton<IHostsViewModel, HostsViewModel>()
+                ;
 
             // enable logging to parent list logger model
             // TODO: inherits from parent host loggers
@@ -49,9 +42,6 @@ namespace SampleApp.Components.Settings
         public override void Build()
         {
             base.Build();
-            _ = this.ComponentHost.Services.GetRequiredService<IKeyValueViewModel>();
-            _ = this.ComponentHost.Services.GetRequiredService<DataProviderMediator>();
-            _ = this.ComponentHost.Services.GetRequiredService<SettingsFileMediator>();
         }
     }
 }
