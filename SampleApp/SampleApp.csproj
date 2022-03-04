@@ -60,7 +60,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Components\Settings\Data\DataView.xaml">
+    <Page Include="Components\Loggers\LoggersView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\Data\DataView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,6 +121,13 @@
     <Compile Include="Components\About\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\Loggers\ILoggersViewModel.cs" />
+    <Compile Include="Components\Loggers\Mediators\DataProviderMediator.cs" />
+    <Compile Include="Components\Loggers\LoggersComponent.cs" />
+    <Compile Include="Components\Loggers\LoggersView.xaml.cs">
+      <DependentUpon>LoggersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Loggers\LoggersViewModel.cs" />
     <Compile Include="Components\Logging\WindowLogComponent.cs" />
     <Compile Include="Components\Logging\ILogViewModel.cs" />
     <Compile Include="Components\Logging\ApplicationLogComponent.cs" />
@@ -125,12 +136,12 @@
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Logging\LogViewModel.cs" />
-    <Compile Include="Components\Settings\Data\DataItem.cs" />
+    <Compile Include="Components\Data\DataItem.cs" />
     <Compile Include="Components\Settings\Mediators\DataProviderMediator.cs" />
-    <Compile Include="Components\Settings\Data\DataView.xaml.cs">
+    <Compile Include="Components\Data\DataView.xaml.cs">
       <DependentUpon>DataView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Settings\Data\DataViewModel.cs" />
+    <Compile Include="Components\Data\DataViewModel.cs" />
     <Compile Include="Components\Settings\Providers\ProviderItemViewModel.cs" />
     <Compile Include="Components\Settings\Providers\ProvidersView.xaml.cs">
       <DependentUpon>ProvidersView.xaml</DependentUpon>
@@ -139,7 +150,7 @@
     <Compile Include="Components\Settings\Files\SettingsFileView.xaml.cs">
       <DependentUpon>SettingsFileView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Settings\Data\IDataViewModel.cs" />
+    <Compile Include="Components\Data\IDataViewModel.cs" />
     <Compile Include="Components\Settings\Files\ISettingsFileViewModel.cs" />
     <Compile Include="Components\Settings\ISettingsViewModel.cs" />
     <Compile Include="Components\Settings\SettingsComponent.cs" />

@@ -3,7 +3,7 @@ using System.Collections.ObjectModel;
 
 using WPFUtilities.ComponentModels;
 
-namespace SampleApp.Components.Settings.Data
+namespace SampleApp.Components.Data
 {
     public interface IDataViewModel : IModelBase
     {

@@ -9,9 +9,11 @@
         xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
         xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
         xmlns:uicomponents="clr-namespace:SampleApp.Components.UI"
+        xmlns:local="clr-namespace:SampleApp.Components.Main"
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
         xmlns:settings="clr-namespace:SampleApp.Components.Settings"
-        d:DataContext="{d:DesignInstance Type=uicomponents:MainWindowViewModel}"
+        xmlns:loggers="clr-namespace:SampleApp.Components.Loggers"
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"
@@ -47,6 +49,11 @@
 
                 <TabItem Header="Settings" IsSelected="True">
                     <settings:SettingsView service:Component.Type="{x:Type settings:SettingsComponent}" 
+                                           service:DataContext.IsAuto="True"/>
+                </TabItem>
+
+                <TabItem Header="Loggers">
+                    <settings:SettingsView service:Component.Type="{x:Type loggers:LoggersComponent}" 
                                            service:DataContext.IsAuto="True"/>
                 </TabItem>
 

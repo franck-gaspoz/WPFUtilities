@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace SampleApp.Components.Settings.Data
+namespace SampleApp.Components.Data
 {
     /// <summary>
     /// Logique d'interaction pour DataView.xaml

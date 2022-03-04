@@ -2,7 +2,7 @@
 
 using WPFUtilities.ComponentModels;
 
-namespace SampleApp.Components.Settings.Data
+namespace SampleApp.Components.Data
 {
     public class DataViewModel : ModelBase, IDataViewModel
     {

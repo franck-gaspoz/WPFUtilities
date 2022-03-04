@@ -1,39 +1,34 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-
-using Microsoft.Extensions.Configuration;
+﻿using System.ComponentModel;
 
 using SampleApp.Components.Data;
 
-using WPFUtilities.Extensions.Configuration;
-
-namespace SampleApp.Components.Settings.Mediators
+namespace SampleApp.Components.Loggers.Mediators
 {
     public class DataProviderMediator
     {
-        ISettingsViewModel _settingsViewModel;
+        ILoggersViewModel _LoggersViewModel;
         IDataViewModel _dataViewModel;
 
         public DataProviderMediator(
-            ISettingsViewModel settingsViewModel,
+            ILoggersViewModel LoggersViewModel,
             IDataViewModel dataViewModel
             )
         {
-            _settingsViewModel = settingsViewModel;
+            _LoggersViewModel = LoggersViewModel;
             _dataViewModel = dataViewModel;
-            settingsViewModel.PropertyChanged += SettingsViewModel_PropertyChanged;
+            LoggersViewModel.PropertyChanged += LoggersViewModel_PropertyChanged;
         }
 
-        private void SettingsViewModel_PropertyChanged(
+        private void LoggersViewModel_PropertyChanged(
             object sender,
             PropertyChangedEventArgs e)
         {
-            if (e.PropertyName != nameof(ISettingsViewModel.SelectedProvider)) return;
+            if (e.PropertyName != nameof(ILoggersViewModel.SelectedLogger)) return;
             _dataViewModel.Items.Clear();
-            dynamic item = _settingsViewModel.SelectedProvider;
+            dynamic item = _LoggersViewModel.SelectedLogger;
             object oprovider = item.Provider;
 
-            var items = new List<DataItem>();
+            /*var items = new List<DataItem>();
 
             if (oprovider is IConfigurationProvider provider
                 && provider.TryGetData(out var data))
@@ -47,7 +42,7 @@ namespace SampleApp.Components.Settings.Mediators
                 foreach (var dataItem in items)
                     _dataViewModel.Items.Add(dataItem);
             }
-            _dataViewModel.NotifyPropertyChanged(nameof(IDataViewModel.Items));
+            _dataViewModel.NotifyPropertyChanged(nameof(IDataViewModel.Items));*/
         }
     }
 }
