@@ -9,7 +9,7 @@ using WPFUtilities.Commands.Application;
 using WPFUtilities.Components.Logging.ListLogger;
 using WPFUtilities.Components.ServiceComponent;
 
-namespace SampleApp.Components.UI
+namespace SampleApp.Components.Main
 {
     /// <summary>
     /// UI component

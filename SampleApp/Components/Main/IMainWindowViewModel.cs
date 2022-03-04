@@ -1,7 +1,7 @@
 ﻿
 using WPFUtilities.ComponentModels;
 
-namespace SampleApp.Components.UI
+namespace SampleApp.Components.Main
 {
     /// <summary>
     /// main window view model

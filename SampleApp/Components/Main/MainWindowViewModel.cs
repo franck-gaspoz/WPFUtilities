@@ -4,7 +4,7 @@ using System.Reflection;
 using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.Application;
 
-namespace SampleApp.Components.UI
+namespace SampleApp.Components.Main
 {
     /// <summary>
     /// main window view model

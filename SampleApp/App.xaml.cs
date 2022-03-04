@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using SampleApp.Components.UI;
+using SampleApp.Components.Main;
 
 using WPFUtilities.Components.Application;
 using WPFUtilities.Components.Logging.ListLogger;

@@ -104,7 +104,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\UI\MainWindow.xaml">
+    <Page Include="Components\Main\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -157,19 +157,19 @@
     <Compile Include="Components\UI\ErrorView.xaml.cs">
       <DependentUpon>ErrorView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\UI\IMainWindowComponent.cs" />
-    <Compile Include="Components\UI\IMainWindowViewModel.cs" />
+    <Compile Include="Components\Main\IMainWindowComponent.cs" />
+    <Compile Include="Components\Main\IMainWindowViewModel.cs" />
     <Compile Include="Components\UI\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\UI\MainWindow.xaml.cs">
+    <Compile Include="Components\Main\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Components\UI\MainWindowViewModel.cs" />
-    <Compile Include="Components\UI\MainWindowComponent.cs" />
+    <Compile Include="Components\Main\MainWindowViewModel.cs" />
+    <Compile Include="Components\Main\MainWindowComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
