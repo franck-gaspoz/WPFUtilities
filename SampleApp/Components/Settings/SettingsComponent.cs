@@ -34,6 +34,7 @@ namespace SampleApp.Components.Settings
                 .AddSingleton<SettingsFileMediator>();
 
             // enable logging to parent list logger model
+            // TODO: inherits from parent host loggers
             services.Services.AddLogging((loggingBuilder) =>
             {
                 loggingBuilder.AddListLogger(
