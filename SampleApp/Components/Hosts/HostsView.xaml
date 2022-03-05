@@ -34,12 +34,11 @@
                   MinHeight="100"
                   ItemsSource="{Binding Hosts}">
 
-            <TreeView.Resources>
-                <HierarchicalDataTemplate DataType="{x:Type local:IHostViewModel}" 
-                                          ItemsSource="{Binding Path=Hosts}">
-                    <TreeViewItem Header="{Binding Path=Name}"  />
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Hosts}">
+                    <TextBlock Text="{Binding Name}"/>
                 </HierarchicalDataTemplate>
-            </TreeView.Resources>
+            </TreeView.ItemTemplate>
 
         </TreeView>
         
