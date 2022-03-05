@@ -58,13 +58,16 @@ namespace SampleApp.Components.Hosts
             Label = item.Name;
         }
 
-        void GetHosts(IComponentHost host, IHostViewModel parentViewModel = null)
+        void GetHosts(
+            IComponentHost host,
+            IHostViewModel parentViewModel = null,
+            int level = 0)
         {
             var item = new HostViewModel();
-            item.Initialize(host);
+            item.Initialize(host, level);
 
             foreach (var subHost in host.ChildHosts)
-                GetHosts(subHost, item);
+                GetHosts(subHost, item, level + 1);
 
             if (parentViewModel == null)
                 Hosts.Add(item);

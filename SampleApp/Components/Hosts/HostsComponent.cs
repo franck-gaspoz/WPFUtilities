@@ -24,6 +24,7 @@ namespace SampleApp.Components.Hosts
         {
             services
                 .AddSingleton<IHostsViewModel, HostsViewModel>()
+                .AddSingleton<IHostsGridViewModel, HostsGridViewModel>()
                 ;
 
             // enable logging to parent list logger model

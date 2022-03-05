@@ -126,11 +126,13 @@
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Hosts\HostsComponent.cs" />
+    <Compile Include="Components\Hosts\HostsGridViewModel.cs" />
     <Compile Include="Components\Hosts\HostsView.xaml.cs">
       <DependentUpon>HostsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Hosts\HostsViewModel.cs" />
     <Compile Include="Components\Hosts\HostViewModel.cs" />
+    <Compile Include="Components\Hosts\IHostsGridViewModel.cs" />
     <Compile Include="Components\Hosts\IHostsViewModel.cs" />
     <Compile Include="Components\Hosts\IHostViewModel.cs" />
     <Compile Include="Components\Loggers\ILoggersViewModel.cs" />

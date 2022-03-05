@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace WPFUtilities.Components.UI
@@ -34,6 +35,7 @@ namespace WPFUtilities.Components.UI
 
         static void ChildMarginChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
+            if (DesignerProperties.GetIsInDesignMode(dependencyObject)) return;
             if (!(dependencyObject is Panel panel)) return;
 
             if (!panel.IsLoaded)

@@ -7,28 +7,85 @@
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              d:DataContext="{d:DesignInstance Type=local:HostsViewModel}" 
              xmlns:commands="clr-namespace:SampleApp.Commands"
+             xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
+             xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
              service:DataContext.IsAuto="True"
              mc:Ignorable="d" 
-             d:DesignHeight="133"
-             d:DesignWidth="256.818">
+             d:DesignHeight="176"
+             d:DesignWidth="356.818">
     <Grid>
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <DataGrid Grid.Column="0" 
+                  ItemsSource="{Binding Items}"
+                  service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}">
+            <DataGrid.Columns>
+                
+                <DataGridTemplateColumn Header="Name">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="2">
+                                <ToggleButton IsChecked="{Binding IsExpanded}" 
+                                              Visibility="{Binding ChildsCount,
+                                                        Converter={x:Static converters:NumberToVisibilityConverter.Instance}}"
+                                              Width="16px"
+                                              Height="16px"
+                                              HorizontalContentAlignment="Center"
+                                              VerticalContentAlignment="Center"
+                                              Background="Transparent"
+                                              BorderThickness="0"
+                                              x:Name="tb"
+                                              ui:Layout.LeftMarginMultiplyFactor="{Binding Width,ElementName=tb}"
+                                              ui:Layout.LeftMarginMultiplyFrom="{Binding Level}"
+                                              >
+                                    <ToggleButton.Style>
+                                        <Style TargetType="ToggleButton">
+                                            <Style.Triggers>
+                                                <Trigger Property="IsChecked" Value="True">
+                                                    <Setter Property="Content" Value="-"/>
+                                                    <Setter Property="BorderThickness" Value="0"/>
+                                                    <Setter Property="Background" Value="Transparent"/>
+                                                </Trigger>
+                                                <Trigger Property="IsChecked" Value="False">
+                                                    <Setter Property="Content" Value="+"/>
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </ToggleButton.Style>
+                                </ToggleButton>
+                                <TextBlock Text="{Binding Name}" Margin="8,0,0,0"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Header="Logger" Binding="{Binding HostLogger}"/>
+                <DataGridTextColumn Header="Options" Binding="{Binding HostOptions}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+            <!--
         <TreeView Grid.Row="0" 
                   MinHeight="100"
-                  ItemsSource="{Binding Hosts}">
+                  ItemsSource="{Binding Hosts}"
+                  Background="Transparent"
+                  Margin="0,22,0,0"
+                  HorizontalAlignment="Left"
+                  BorderBrush="Red"
+                  >
 
             <TreeView.ItemTemplate>
                 <HierarchicalDataTemplate ItemsSource="{Binding Hosts}">
                     <TextBlock Text="{Binding Name}"/>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
-
+       
         </TreeView>
-        
+         -->
+
     </Grid>
-    
+
 </UserControl>

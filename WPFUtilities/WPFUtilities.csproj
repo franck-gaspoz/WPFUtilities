@@ -152,6 +152,8 @@
     <Compile Include="Components\UI\Grids\MinimizeColumnIndex.cs" />
     <Compile Include="Components\UI\Grids\MaximizeColumnIndex.cs" />
     <Compile Include="Components\UI\Grids\MaximizeColumnTrigger.cs" />
+    <Compile Include="Components\UI\Layout\LeftMarginWultipyFactor.cs" />
+    <Compile Include="Components\UI\Layout\LeftMarginWultipyFrom.cs" />
     <Compile Include="Components\UI\Layout\ChildSpacing.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouch.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerTouchViewProperties.cs" />
@@ -161,6 +163,7 @@
     <Compile Include="Components\UI\WindowExtensions\CenterOnParentOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\RestoreInitiaSizeOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\Size.cs" />
+    <Compile Include="Converters\NumberToVisibilityConverter.cs" />
     <Compile Include="Extensions\Configuration\IConfigurationProviderExtensions.cs" />
     <Compile Include="Extensions\DataGrids\DataGridExtensions.cs" />
     <Compile Include="Extensions\DataSources\DataSourceExtensions.cs" />
