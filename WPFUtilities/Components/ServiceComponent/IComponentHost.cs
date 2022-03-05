@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+
 using Microsoft.Extensions.Hosting;
 
 using WPFUtilities.ComponentModels;
@@ -17,6 +19,17 @@ namespace WPFUtilities.Components.ServiceComponent
         /// host
         /// </summary>
         IHost Host { get; }
+
+        /// <summary>
+        /// child hosts
+        /// </summary>
+        IReadOnlyList<IComponentHost> ChildHosts { get; }
+
+        /// <summary>
+        /// register a host as a child of this host
+        /// </summary>
+        /// <param name="host">host</param>
+        void RegisterChildHost(IComponentHost host);
 
         /// <summary>
         /// component host builder

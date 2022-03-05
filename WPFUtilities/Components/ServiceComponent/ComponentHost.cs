@@ -33,6 +33,19 @@ namespace WPFUtilities.Components.ServiceComponent
         /// <inheritdoc/>
         public IHost Host { get; protected set; }
 
+        /// <inheritdoc/>
+        public IReadOnlyList<IComponentHost> ChildHosts
+            => _childHosts.AsReadOnly();
+
+        List<IComponentHost> _childHosts = new List<IComponentHost>();
+
+        /// <inheritdoc/>
+        public void RegisterChildHost(IComponentHost host)
+        {
+            if (!_childHosts.Contains(host))
+                _childHosts.Add(host);
+        }
+
         /// <summary>
         /// component host builder
         /// </summary>

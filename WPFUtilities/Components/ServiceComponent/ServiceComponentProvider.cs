@@ -179,6 +179,7 @@ namespace WPFUtilities.Components.ServiceComponent
         void InitializeComponent(IServiceComponent component)
         {
             if (component == null || component.IsBuilt) return;
+            _host.RegisterChildHost(component.ComponentHost);
             component.ComponentHost.ParentHost = _host;
             component.Configure();
             component.Build();
