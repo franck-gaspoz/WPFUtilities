@@ -130,7 +130,9 @@
       <DependentUpon>HostsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Hosts\HostsViewModel.cs" />
+    <Compile Include="Components\Hosts\HostViewModel.cs" />
     <Compile Include="Components\Hosts\IHostsViewModel.cs" />
+    <Compile Include="Components\Hosts\IHostViewModel.cs" />
     <Compile Include="Components\Loggers\ILoggersViewModel.cs" />
     <Compile Include="Components\Loggers\Mediators\DataProviderMediator.cs" />
     <Compile Include="Components\Loggers\LoggersComponent.cs" />

@@ -9,6 +9,7 @@ namespace WPFUtilities.Extensions.Host
     {
         /// <summary>
         /// get host from creating host builder context
+        /// TODO: check is well implemented
         /// </summary>
         /// <exception cref="System.Collections.Generic.KeyNotFoundException">host builder context not initialized</exception>
         /// <param name="hostBuilderContext">creating host builder context</param>

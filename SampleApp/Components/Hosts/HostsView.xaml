@@ -6,18 +6,42 @@
              xmlns:local="clr-namespace:SampleApp.Components.Hosts"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              d:DataContext="{d:DesignInstance Type=local:HostsViewModel}" 
+             xmlns:commands="clr-namespace:SampleApp.Commands"
              service:DataContext.IsAuto="True"
              mc:Ignorable="d" 
              d:DesignHeight="133"
              d:DesignWidth="256.818">
     <Grid>
 
-        <TabControl>
-            <TabItem Header="Hosts">
-                
-                
-            </TabItem>
-        </TabControl>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- test button -->
+        <Button service:Command.Type="{x:Type commands:TestCommand}" 
+                CommandParameter="{Binding DataContext,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="test"/>
+        <!-- end of test button -->
+
+        <TextBlock Text="{Binding Label}"
+                   Grid.Row="1"/>
+
+        <TreeView Grid.Row="2" 
+                  MinHeight="100"
+                  ItemsSource="{Binding Hosts}">
+
+            <TreeView.Resources>
+                <HierarchicalDataTemplate DataType="{x:Type local:IHostViewModel}" 
+                                          ItemsSource="{Binding Path=Hosts}">
+                    <TreeViewItem Header="{Binding Path=Name}"  />
+                </HierarchicalDataTemplate>
+            </TreeView.Resources>
+
+        </TreeView>
         
     </Grid>
     

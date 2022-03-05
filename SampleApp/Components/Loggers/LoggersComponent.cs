@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 
 using SampleApp.Components.Data.KeyValue;
+using SampleApp.Components.Hosts;
 using SampleApp.Components.Loggers.Mediators;
 
 using WPFUtilities.Components.Logging.ListLogger;
@@ -28,7 +29,12 @@ namespace SampleApp.Components.Loggers
             services
                 .AddSingleton<ILoggersViewModel, LoggersViewModel>()
                 .AddSingleton<IKeyValueViewModel, KeyValueViewModel>()
-                .AddSingleton<DataProviderMediator>();
+                .AddSingleton<DataProviderMediator>()
+                .AddSingleton<HostsComponent>();
+
+            services.Services
+                .AddSingleton<IListLoggerModel>(
+                    (sp) => _listLoggerModel);
 
             // enable logging to parent list logger model
             // TODO: inherits from parent host loggers

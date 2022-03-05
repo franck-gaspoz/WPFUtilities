@@ -63,6 +63,7 @@ namespace WPFUtilities.Components.Services.Properties
                     .GetViewModelInterfaceType(dependencyObject.GetType());
                 if (interfaceType != null)
                     frameworkElement.DataContext =
+                        // TODO: clean up runtime dependencies error and ask for a required service here
                         componentHost.Services
                         .GetService(interfaceType);
             }

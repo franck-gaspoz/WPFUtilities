@@ -95,10 +95,10 @@ namespace SampleApp.Components.Settings
         {
             _hostEnvironment = hostEnvironment;
             _configuration = configuration;
-            InitializeViewModel();
+            Initialize();
         }
 
-        void InitializeViewModel()
+        void Initialize()
         {
             EnvironmentName = _hostEnvironment.EnvironmentName;
             ApplicationName = _hostEnvironment.ApplicationName;

@@ -1,4 +1,6 @@
 ﻿
+using System.ComponentModel;
+
 using WPFUtilities.ComponentModels;
 
 namespace SampleApp.Components.Hosts
@@ -8,5 +10,14 @@ namespace SampleApp.Components.Hosts
     /// </summary>
     public interface IHostsViewModel : IModelBase
     {
+        /// <summary>
+        /// label
+        /// </summary>
+        string Label { get; set; }
+
+        /// <summary>
+        /// hosts
+        /// </summary>
+        BindingList<IHostViewModel> Hosts { get; }
     }
 }

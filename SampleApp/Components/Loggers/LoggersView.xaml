@@ -10,7 +10,7 @@
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance Type=local:LoggersViewModel}" 
+             d:DataContext="{d:DesignInstance Type=local:LoggersViewModel}"
              d:DesignHeight="278.796" 
              d:DesignWidth="321.875"
              >
@@ -22,7 +22,13 @@
 
         <Grid>
 
-            <hosts:HostsView/>
+            <TabControl>
+                <TabItem Header="Hosts">
+                    <hosts:HostsView
+                        service:Component.Type="{x:Type hosts:HostsComponent}"
+                        service:DataContext.IsAuto="True"/>
+                </TabItem>
+            </TabControl>
 
         </Grid>
 

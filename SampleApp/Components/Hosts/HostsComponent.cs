@@ -33,7 +33,7 @@ namespace SampleApp.Components.Hosts
                 loggingBuilder.AddListLogger(
                     (listLoggerConfiguration) =>
                     {
-                        listLoggerConfiguration.Target = _listLoggerModel.LogItems;
+                        listLoggerConfiguration.Target = _listLoggerModel?.LogItems;
                     });
             });
         }
