@@ -312,6 +312,7 @@
     <None Include="Doc\README.md" />
     <None Include="Snippets\CSharp\behavior.snippet" />
     <None Include="Snippets\CSharp\iproperty.snippet" />
+    <None Include="Snippets\Xaml\xmlns.testbutton.snippet" />
     <None Include="Snippets\Xaml\xmlns.addbehavior.snippet" />
     <None Include="Snippets\Xaml\xmlns.behaviors.snippet" />
     <None Include="Snippets\Xaml\xmlns.behavior.snippet" />
