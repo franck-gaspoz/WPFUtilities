@@ -110,6 +110,8 @@
     <Compile Include="Commands\Application\LogObjectCommandParameters.cs" />
     <Compile Include="Commands\Application\OpenDialogCommand.cs" />
     <Compile Include="Components\Binding\BindingProxy.cs" />
+    <Compile Include="Components\ServiceComponent\ChildHostsCollectionChangedEventArgs.cs" />
+    <Compile Include="Components\ServiceComponent\ParentHostChangedEventArgs.cs" />
     <Compile Include="Components\Services\Command\Attributes\ServiceCommandParametersAttribute.cs" />
     <Compile Include="Components\Services\Command\Attributes\ServiceReferenceAttribute.cs" />
     <Compile Include="Components\Services\Command\IServiceCommand_T1T2T3T4T5T6T7T8T9T10.cs" />

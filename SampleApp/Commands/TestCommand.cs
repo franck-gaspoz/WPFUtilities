@@ -3,6 +3,7 @@
 using Microsoft.Extensions.Logging;
 
 using WPFUtilities.Commands.Abstract;
+using WPFUtilities.Extensions.App;
 
 namespace SampleApp.Commands
 {
@@ -32,7 +33,7 @@ namespace SampleApp.Commands
         /// <param name="parameter">not used</param>
         public override void Execute(object parameter)
         {
-
+            var appHost = this.GetApplication().ApplicationHost;
         }
     }
 }

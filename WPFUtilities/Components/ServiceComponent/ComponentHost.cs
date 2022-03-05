@@ -1,5 +1,7 @@
 ﻿
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -34,16 +36,31 @@ namespace WPFUtilities.Components.ServiceComponent
         public IHost Host { get; protected set; }
 
         /// <inheritdoc/>
-        public IReadOnlyList<IComponentHost> ChildHosts
-            => _childHosts.AsReadOnly();
+        public BindingList<IComponentHost> ChildHosts { get; private set; }
 
-        List<IComponentHost> _childHosts = new List<IComponentHost>();
+        /// <inheritdoc/>
+        public void OnChildHostsChanged(ChildHostsCollectionChangedEventArgs args = null)
+        {
+            var eventArgs = args ?? new ChildHostsCollectionChangedEventArgs
+            {
+                Host = this
+            };
+            ChildHostsCollectionChangedEvent?.Invoke(this, eventArgs);
+            if (RootHost != null && RootHost != this)
+                RootHost.OnChildHostsChanged(eventArgs);
+        }
+
+        /// <inheritdoc/>
+        public event EventHandler<ChildHostsCollectionChangedEventArgs> ChildHostsCollectionChangedEvent;
+
+        /// <inheritdoc/>
+        public event EventHandler<ParentHostChangedEventArgs> ParentHostChangedEvent;
 
         /// <inheritdoc/>
         public void RegisterChildHost(IComponentHost host)
         {
-            if (!_childHosts.Contains(host))
-                _childHosts.Add(host);
+            if (!ChildHosts.Contains(host))
+                ChildHosts.Add(host);
         }
 
         /// <summary>
@@ -59,8 +76,27 @@ namespace WPFUtilities.Components.ServiceComponent
         /// <inheritdoc/>
         public IServiceComponentProvider Services { get; protected set; }
 
+        IComponentHost _parentHost;
         /// <inheritdoc/>
-        public IComponentHost ParentHost { get; set; }
+        public IComponentHost ParentHost
+        {
+            get => _parentHost;
+            set
+            {
+                var oldValue = _parentHost;
+                _parentHost = value;
+                OnParentHostChanged(
+                    new ParentHostChangedEventArgs
+                    {
+                        Host = this,
+                        OldParent = oldValue,
+                        NewParent = _parentHost
+                    });
+            }
+        }
+
+        void OnParentHostChanged(ParentHostChangedEventArgs args)
+            => ParentHostChangedEvent?.Invoke(this, args);
 
         /// <inheritdoc/>
         public IComponentHost RootHost
@@ -96,10 +132,17 @@ namespace WPFUtilities.Components.ServiceComponent
         /// </summary>
         void Initialize()
         {
+            ChildHosts = new BindingList<IComponentHost>();
+            ChildHosts.ListChanged += (o, e) => OnChildHostsChanged();
             Services = new ServiceComponentProvider(this);
             HostBuilder = mshosting.Host.CreateDefaultBuilder();
             HostBuilder.ConfigureServices((context, services) => ConfigureServices(context, services));
             HostBuilder.ConfigureLogging((context, loggingBuilder) => ConfigureLogging(context, loggingBuilder));
+        }
+
+        private void ChildHosts_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         /// <inheritdoc/>

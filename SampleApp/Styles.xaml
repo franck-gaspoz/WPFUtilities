@@ -25,6 +25,8 @@
                Bottom="{StaticResource Margin_Default_Size}"/>
     <Thickness x:Key="MarginBottom_Default"
                Bottom="{StaticResource Margin_Default_Size}"/>
+    <Thickness x:Key="MarginTop_Default"
+               Top="{StaticResource Margin_Default_Size}"/>
     
     <Style x:Key="ErrorText" TargetType="TextBlock">
         <Setter Property="Foreground" Value="Red"/>

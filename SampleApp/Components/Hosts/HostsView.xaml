@@ -14,23 +14,20 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         
         <!-- test button -->
+        <!--
         <Button service:Command.Type="{x:Type commands:TestCommand}" 
                 CommandParameter="{Binding DataContext,RelativeSource={RelativeSource AncestorType=UserControl}}"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
                 Content="test"/>
+        -->
         <!-- end of test button -->
 
-        <TextBlock Text="{Binding Label}"
-                   Grid.Row="1"/>
-
-        <TreeView Grid.Row="2" 
+        <TreeView Grid.Row="0" 
                   MinHeight="100"
                   ItemsSource="{Binding Hosts}">
 

@@ -15,7 +15,7 @@
              d:DesignHeight="278.796" 
              d:DesignWidth="321.875"
              >
-    <Grid Margin="4">
+    <Grid Margin="{DynamicResource Margin_Default}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>

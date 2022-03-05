@@ -5,6 +5,8 @@ using System.Windows;
 
 using Microsoft.Extensions.DependencyInjection;
 
+using WPFUtilities.Extensions.App;
+
 using properties = WPFUtilities.Components.Services.Properties;
 
 namespace WPFUtilities.Components.ServiceComponent
@@ -180,9 +182,11 @@ namespace WPFUtilities.Components.ServiceComponent
         {
             if (component == null || component.IsBuilt) return;
             _host.RegisterChildHost(component.ComponentHost);
+            System.Diagnostics.Debug.WriteLine(component.ToString() + " childs= " + _host.ChildHosts.Count);
             component.ComponentHost.ParentHost = _host;
             component.Configure();
             component.Build();
+            var appHost = this.GetApplication().ApplicationHost;
         }
 
         InvalidOperationException GetServiceRequiredNotFoundException(string typeName)

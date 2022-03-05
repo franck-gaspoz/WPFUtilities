@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 
 using WPFUtilities.ComponentModels;
+using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Extensions.App;
 
 namespace SampleApp.Components.Hosts
@@ -41,10 +42,34 @@ namespace SampleApp.Components.Hosts
         void Initialize()
         {
             var appHost = this.GetApplication().ApplicationHost;
-            var hostViewModel = new HostViewModel()
-                .Initialize(appHost);
-            Hosts.Add(hostViewModel);
-            Label = hostViewModel.Name;
+
+            appHost.ChildHostsCollectionChangedEvent += (o, e) =>
+            {
+                SetupHosts(appHost);
+            };
+            SetupHosts(appHost);
+        }
+
+        void SetupHosts(IComponentHost host)
+        {
+            Hosts.Clear();
+            GetHosts(host);
+            var item = Hosts[0];
+            Label = item.Name;
+        }
+
+        void GetHosts(IComponentHost host, IHostViewModel parentViewModel = null)
+        {
+            var item = new HostViewModel();
+            item.Initialize(host);
+
+            foreach (var subHost in host.ChildHosts)
+                GetHosts(subHost, item);
+
+            if (parentViewModel == null)
+                Hosts.Add(item);
+            else
+                parentViewModel.Hosts.Add(item);
         }
     }
 }

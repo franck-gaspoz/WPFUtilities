@@ -14,7 +14,7 @@
              d:DesignHeight="278.796" 
              d:DesignWidth="321.875"
              >
-    <Grid Margin="4">
+    <Grid Margin="{DynamicResource Margin_Default}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
@@ -26,7 +26,8 @@
                 <TabItem Header="Hosts">
                     <hosts:HostsView
                         service:Component.Type="{x:Type hosts:HostsComponent}"
-                        service:DataContext.IsAuto="True"/>
+                        service:DataContext.IsAuto="True"
+                        MinHeight="200"/>
                 </TabItem>
             </TabControl>
 

@@ -1,5 +1,5 @@
-﻿
-using System.Collections.Generic;
+﻿using System;
+using System.ComponentModel;
 
 using Microsoft.Extensions.Hosting;
 
@@ -23,7 +23,18 @@ namespace WPFUtilities.Components.ServiceComponent
         /// <summary>
         /// child hosts
         /// </summary>
-        IReadOnlyList<IComponentHost> ChildHosts { get; }
+        BindingList<IComponentHost> ChildHosts { get; }
+
+        /// <summary>
+        /// child hosts collection reset event
+        /// </summary>
+        event EventHandler<ChildHostsCollectionChangedEventArgs> ChildHostsCollectionChangedEvent;
+
+        /// <summary>
+        /// trigger a child hosts collection changed event
+        /// </summary>
+        /// <param name="args">event args</param>
+        void OnChildHostsChanged(ChildHostsCollectionChangedEventArgs args);
 
         /// <summary>
         /// register a host as a child of this host
@@ -50,6 +61,11 @@ namespace WPFUtilities.Components.ServiceComponent
         /// parent host or null if this is a root component host
         /// </summary>
         IComponentHost ParentHost { get; set; }
+
+        /// <summary>
+        /// parent host changed event
+        /// </summary>
+        event EventHandler<ParentHostChangedEventArgs> ParentHostChangedEvent;
 
         /// <summary>
         /// root component host
