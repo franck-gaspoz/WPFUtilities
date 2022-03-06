@@ -18,9 +18,10 @@
              d:DesignWidth="356.818">
     <Grid>
 
-        <DataGrid Grid.Column="0" 
+        <DataGrid Grid.Column="0"
+                  x:Name="DG"
+                  x:FieldModifier="public"
                   ItemsSource="{Binding Items}"
-                  d:DataContext="{d:DesignInstance Type=local:TreeDataGridRowViewModel}"
                   ui:DataGrid.AppendColumns="{Binding Columns,ElementName=uc}"
                   >
             <DataGrid.Resources>
@@ -41,7 +42,7 @@
 
                 <DataGridTemplateColumn 
                     Header="{Binding Source={StaticResource proxy},
-                                Path=Data.TreeColumnHeader}">
+                                Path=Data.TreeColumnHeader,FallbackValue=Name}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="2">
@@ -78,31 +79,8 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                    <!--
-                <DataGridTextColumn Header="Logger" Binding="{Binding HostLogger}"/>
-                <DataGridTextColumn Header="Options" Binding="{Binding HostOptions}"/>
-                -->
             </DataGrid.Columns>
         </DataGrid>
-
-            <!--
-        <TreeView Grid.Row="0" 
-                  MinHeight="100"
-                  ItemsSource="{Binding Hosts}"
-                  Background="Transparent"
-                  Margin="0,22,0,0"
-                  HorizontalAlignment="Left"
-                  BorderBrush="Red"
-                  >
-
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Hosts}">
-                    <TextBlock Text="{Binding Name}"/>
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-       
-        </TreeView>
-         -->
 
     </Grid>
 
