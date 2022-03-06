@@ -18,72 +18,12 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <DataGrid Grid.Column="0" 
-                  ItemsSource="{Binding Items}"
-                  service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}">
-
-            <DataGrid.RowStyle>
-                <Style TargetType="{x:Type DataGridRow}">
-                    <Style.Triggers>
-                        <DataTrigger Binding="{Binding IsFolded}" Value="True">
-                            <Setter Property="Visibility" Value="Collapsed"/>
-                        </DataTrigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-            
-            <DataGrid.Columns>
-
-                <DataGridTemplateColumn Header="Name">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="2">
-                                <ToggleButton IsChecked="{Binding IsExpanded,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                                              Visibility="{Binding ChildsCount,
-                                                        Converter={x:Static converters:NumberToVisibilityConverter.Instance}}"
-                                              Width="16px"
-                                              Height="16px"
-                                              HorizontalContentAlignment="Center"
-                                              VerticalContentAlignment="Center"
-                                              Background="Transparent"
-                                              BorderThickness="0"
-                                              x:Name="tb"
-                                              ui:Layout.LeftMarginMultiplyFactor="{Binding Width,ElementName=tb}"
-                                              ui:Layout.LeftMarginMultiplyFrom="{Binding Level}"
-                                              >
-                                    <ToggleButton.Style>
-                                        <Style TargetType="ToggleButton">
-                                            <Style.Triggers>
-                                                <Trigger Property="IsChecked" Value="True">
-                                                    <Setter Property="Content" Value="-"/>
-                                                    <Setter Property="BorderThickness" Value="0"/>
-                                                    <Setter Property="Background" Value="Transparent"/>
-                                                </Trigger>
-                                                <Trigger Property="IsChecked" Value="False">
-                                                    <Setter Property="Content" Value="+"/>
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </ToggleButton.Style>
-                                </ToggleButton>
-                                <TextBlock Text="{Binding Name}" Margin="8,0,0,0"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
-                <DataGridTextColumn Header="Logger" Binding="{Binding HostLogger}"/>
-                <DataGridTextColumn Header="Options" Binding="{Binding HostOptions}"/>
-            </DataGrid.Columns>
-        </DataGrid>
 
         <tree:TreeDataGridView
             service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}"
             TreeColumnHeader="Host"
-            Grid.Row="1">
+            Grid.Row="0">
             <tree:TreeDataGridView.Columns>
                 <DataGridTextColumn Header="Logger" Binding="{Binding HostLogger}"/>
                 <DataGridTextColumn Header="Options" Binding="{Binding HostOptions}"/>

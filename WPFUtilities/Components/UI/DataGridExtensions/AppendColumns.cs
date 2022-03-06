@@ -1,4 +1,6 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -50,12 +52,18 @@ namespace WPFUtilities.Components.UI
 
             datagrid.OnLoaded((routed) =>
             {
-                var columns = datagrid.GetValue<ObservableCollection<DataGridColumn>>(AppendColumnsProperty);
-                if (columns == null) return;
+                try
+                {
+                    var columns = datagrid.GetValue<ObservableCollection<DataGridColumn>>(AppendColumnsProperty);
+                    if (columns == null) return;
 
-                foreach (var column in columns)
-                    datagrid.Columns.Add(column);
-            });
+                    if (datagrid.Columns.Count == 1)
+                        foreach (var column in columns)
+                            if (!datagrid.Columns.Where(x => x.Header.ToString() == column.Header.ToString()).Any())
+                                datagrid.Columns.Add(column);
+                }
+                catch (Exception) { }
+            }, false);
         }
 
     }

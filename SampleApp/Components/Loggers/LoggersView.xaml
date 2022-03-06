@@ -11,7 +11,7 @@
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=local:LoggersViewModel}"
-             d:DesignHeight="278.796" 
+             d:DesignHeight="401.796" 
              d:DesignWidth="321.875"
              >
     <Grid Margin="{DynamicResource Margin_Default}">
