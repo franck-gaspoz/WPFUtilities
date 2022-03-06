@@ -329,5 +329,11 @@
     <None Include="Snippets\CSharp\command.prop.snippet" />
     <None Include="Snippets\CSharp\command.snippet" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="Resources\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

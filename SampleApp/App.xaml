@@ -6,6 +6,11 @@
              ShutdownMode="OnMainWindowClose"
              >
     <Application.Resources>
-        <ResourceDictionary Source="Styles.xaml"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles.xaml"/>
+                <ResourceDictionary Source="Components/Data/Tree/TreeDataGridStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </wpfuapp:ApplicationBase>
