@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.Hosts"
+             xmlns:tree="clr-namespace:SampleApp.Components.Data.Tree"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              d:DataContext="{d:DesignInstance Type=local:HostsViewModel}" 
              xmlns:commands="clr-namespace:SampleApp.Commands"
@@ -15,9 +16,10 @@
              d:DesignWidth="356.818">
     <Grid>
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
         <DataGrid Grid.Column="0" 
                   ItemsSource="{Binding Items}"
@@ -78,6 +80,15 @@
             </DataGrid.Columns>
         </DataGrid>
 
+        <tree:TreeDataGridView
+            service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}"
+            TreeColumnHeader="Host"
+            Grid.Row="1">
+           <!-- <tree:TreeDataGridView.Columns>
+                <DataGridTextColumn Header="Logger" Binding="{Binding HostLogger}"/>
+            </tree:TreeDataGridView.Columns>-->
+        </tree:TreeDataGridView>
+        
             <!--
         <TreeView Grid.Row="0" 
                   MinHeight="100"

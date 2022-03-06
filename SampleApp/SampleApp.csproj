@@ -60,7 +60,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Components\Data\Tree\TreeDataGridRowView.xaml">
+    <Page Include="Components\Data\Tree\TreeDataGridView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -129,10 +129,10 @@
     <Compile Include="Components\About\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Data\Tree\TreeDataGridRowView.xaml.cs">
-      <DependentUpon>TreeDataGridRowView.xaml</DependentUpon>
+    <Compile Include="Components\Data\Tree\TreeDataGridView.xaml.cs">
+      <DependentUpon>TreeDataGridView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Data\Tree\ITreeDataGridRowViewModel.cs" />
+    <Compile Include="Components\Data\Tree\ITreeDataGridVRowViewModel.cs" />
     <Compile Include="Components\Data\Tree\TreeDataGridRowViewModel.cs" />
     <Compile Include="Components\Hosts\HostsComponent.cs" />
     <Compile Include="Components\Hosts\HostsGridViewModel.cs" />

@@ -7,7 +7,9 @@ namespace SampleApp.Components.Data.Tree
     /// <summary>
     /// a 'tree style' data grid row view model
     /// </summary>
-    public abstract class TreeDataGridRowViewModel : ModelBase, ITreeDataGridRowViewModel
+    public class TreeDataGridRowViewModel<ViewModelBase> : ModelBase,
+        ITreeDataGridVRowViewModel<ViewModelBase>
+        where ViewModelBase : ModelBase, ITreeDataGridVRowViewModel<ViewModelBase>
     {
         #region tree properties
 
@@ -42,14 +44,14 @@ namespace SampleApp.Components.Data.Tree
         }
 
         /// <inheritdoc/>
-        public abstract int ChildsCount { get; }
+        public int ChildsCount => Childs?.Count ?? 0;
 
-        /// <inheritdoc/>
+        /// <inheritdoc/>s
         public bool IsFolded
         {
             get
             {
-                ITreeDataGridRowViewModel parent = Parent;
+                ITreeDataGridVRowViewModel<ViewModelBase> parent = Parent;
                 while (parent != null)
                 {
                     if (!parent.IsExpanded) return true;
@@ -59,9 +61,9 @@ namespace SampleApp.Components.Data.Tree
             }
         }
 
-        ITreeDataGridRowViewModel _parent = null;
+        ViewModelBase _parent = null;
         /// <inheritdoc/>
-        public ITreeDataGridRowViewModel Parent
+        public ViewModelBase Parent
         {
             get
             {
@@ -80,7 +82,7 @@ namespace SampleApp.Components.Data.Tree
 
         private void ParentIsExpandedPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(ITreeDataGridRowViewModel.IsExpanded))
+            if (e.PropertyName == nameof(IsExpanded))
             {
                 NotifyPropertyChanged(nameof(IsFolded));
                 if (ChildsCount > 0)
@@ -89,7 +91,7 @@ namespace SampleApp.Components.Data.Tree
         }
 
         /// <inheritdoc/>
-        public BindingList<ITreeDataGridRowViewModel> Childs { get; }
+        public BindingList<ViewModelBase> Childs { get; }
 
         #endregion
     }

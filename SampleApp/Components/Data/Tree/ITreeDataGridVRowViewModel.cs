@@ -7,7 +7,8 @@ namespace SampleApp.Components.Data.Tree
     /// <summary>
     /// view model of a 'tree style' data grid row
     /// </summary>
-    public interface ITreeDataGridRowViewModel : IModelBase
+    public interface ITreeDataGridVRowViewModel<ViewModelBase> : IModelBase
+        where ViewModelBase : IModelBase
     {
         #region tree properties
 
@@ -34,12 +35,12 @@ namespace SampleApp.Components.Data.Tree
         /// <summary>
         /// parent (tree) model
         /// </summary>
-        ITreeDataGridRowViewModel Parent { get; }
+        ViewModelBase Parent { get; }
 
         /// <summary>
         /// hosts
         /// </summary>
-        BindingList<ITreeDataGridRowViewModel> Childs { get; }
+        BindingList<ViewModelBase> Childs { get; }
 
         #endregion
     }

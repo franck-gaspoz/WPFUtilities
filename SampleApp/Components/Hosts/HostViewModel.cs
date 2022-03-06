@@ -3,6 +3,8 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using SampleApp.Components.Data.Tree;
+
 using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Extensions.Reflections;
@@ -12,7 +14,10 @@ namespace SampleApp.Components.Hosts
     /// <summary>
     /// hosts view model
     /// </summary>
-    public class HostViewModel : ModelBase, IHostViewModel
+    public class HostViewModel :
+        ModelBase,
+        IHostViewModel,
+        ITreeDataGridVRowViewModel<IHostViewModel>
     {
         #region tree properties
 
@@ -47,38 +52,38 @@ namespace SampleApp.Components.Hosts
         }
 
         /// <inheritdoc/>
-        public int ChildsCount => Hosts?.Count ?? 0;
+        public int ChildsCount => Childs?.Count ?? 0;
 
         /// <inheritdoc/>
         public bool IsFolded
         {
             get
             {
-                IHostViewModel parent = Parent;
+                IHostViewModel parent = ParentViewModel;
                 while (parent != null)
                 {
                     if (!parent.IsExpanded) return true;
-                    parent = parent.Parent;
+                    parent = parent.ParentViewModel;
                 }
                 return false;
             }
         }
 
-        IHostViewModel _parent = null;
+        IHostViewModel _parentViewModel = null;
         /// <inheritdoc/>
-        public IHostViewModel Parent
+        public IHostViewModel ParentViewModel
         {
             get
             {
-                return _parent;
+                return _parentViewModel;
             }
             set
             {
-                if (_parent != null)
-                    _parent.PropertyChanged -= ParentIsExpandedPropertyChanged;
-                _parent = value;
-                if (_parent != null)
-                    _parent.PropertyChanged += ParentIsExpandedPropertyChanged;
+                if (_parentViewModel != null)
+                    _parentViewModel.PropertyChanged -= ParentIsExpandedPropertyChanged;
+                _parentViewModel = value;
+                if (_parentViewModel != null)
+                    _parentViewModel.PropertyChanged += ParentIsExpandedPropertyChanged;
                 NotifyPropertyChanged();
             }
         }
@@ -88,10 +93,33 @@ namespace SampleApp.Components.Hosts
             if (e.PropertyName == nameof(IHostViewModel.IsExpanded))
             {
                 NotifyPropertyChanged(nameof(IsFolded));
-                if (ChildsCount>0)
+                if (ChildsCount > 0)
                     NotifyPropertyChanged(nameof(IsExpanded));
             }
         }
+
+        IHostViewModel _parent = null;
+        /// <summary>
+        /// parent tree
+        /// </summary>
+        public IHostViewModel Parent
+        {
+            get
+            {
+                return _parent;
+            }
+            set
+            {
+                _parent = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// childs
+        /// </summary>
+        public BindingList<IHostViewModel> Childs { get; }
+            = new BindingList<IHostViewModel>();
 
         #endregion
 
@@ -145,12 +173,6 @@ namespace SampleApp.Components.Hosts
         /// <inheritdoc/>
         public IComponentHost ComponentHost { get; set; }
 
-        /// <summary>
-        /// hosts
-        /// </summary>
-        public BindingList<IHostViewModel> Hosts { get; }
-            = new BindingList<IHostViewModel>();
-
         /// <inheritdoc/>
         public IHostViewModel Initialize(
             IComponentHost host,
@@ -160,7 +182,7 @@ namespace SampleApp.Components.Hosts
             Name = host.Name;
             ComponentHost = host;
             Level = level;
-            Parent = parentViewModel;
+            this.ParentViewModel = parentViewModel;
 
             if (host.Host.GetField<HostOptions>("_options", out var options))
                 HostOptions = options;

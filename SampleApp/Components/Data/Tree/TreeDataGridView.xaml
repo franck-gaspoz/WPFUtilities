@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="SampleApp.Components.Data.Tree.TreeDataGridRowView"
+﻿<UserControl x:Class="SampleApp.Components.Data.Tree.TreeDataGridView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,17 +7,26 @@
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              d:DataContext="{d:DesignInstance Type=local:TreeDataGridRowViewModel}" 
              xmlns:commands="clr-namespace:SampleApp.Commands"
+             xmlns:datagrids="clr-namespace:WPFUtilities.Extensions.DataGrids;assembly=WPFUtilities"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
+             xmlns:binding="clr-namespace:WPFUtilities.Components.Binding;assembly=WPFUtilities"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              service:DataContext.IsAuto="True"
              mc:Ignorable="d" 
+             x:Name="uc"
              d:DesignHeight="78"
              d:DesignWidth="356.818">
     <Grid>
 
         <DataGrid Grid.Column="0" 
                   ItemsSource="{Binding Items}"
-                  service:DataContext.Resolve="{x:Type local:ITreeDataGridRowViewModel}">
+                  d:DataContext="{d:DesignInstance Type=local:TreeDataGridRowViewModel}" 
+                  >
+            <DataGrid.Resources>
+                <sys:String x:Key="HeaderContent">{Binding TreeColumnHeader}</sys:String>
+                <binding:BindingProxy x:Key="proxy" Data="{Binding ElementName=uc}"/>
+            </DataGrid.Resources>
 
             <DataGrid.RowStyle>
                 <Style TargetType="{x:Type DataGridRow}">
@@ -31,8 +40,9 @@
             
             <DataGrid.Columns>
 
-                <DataGridTemplateColumn Header="Name">
-                    <DataGridTemplateColumn.CellTemplate>
+                <datagrids:DataGridBoundTemplateColumn 
+                    Header="{Binding Source={StaticResource proxy},Path=Data.TreeColumnHeader}">
+                    <datagrids:DataGridBoundTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="2">
                                 <ToggleButton IsChecked="{Binding IsExpanded,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
@@ -66,11 +76,12 @@
                                 <TextBlock Text="{Binding Name}" Margin="8,0,0,0"/>
                             </StackPanel>
                         </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-
+                    </datagrids:DataGridBoundTemplateColumn.CellTemplate>
+                </datagrids:DataGridBoundTemplateColumn>
+                    <!--
                 <DataGridTextColumn Header="Logger" Binding="{Binding HostLogger}"/>
                 <DataGridTextColumn Header="Options" Binding="{Binding HostOptions}"/>
+                -->
             </DataGrid.Columns>
         </DataGrid>
 

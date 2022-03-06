@@ -72,7 +72,7 @@ namespace SampleApp.Components.Hosts
             if (parentViewModel == null)
                 Hosts.Add(item);
             else
-                parentViewModel.Hosts.Add(item);
+                parentViewModel.Childs.Add(item);
         }
     }
 }

@@ -5,11 +5,11 @@ using System.Windows.Controls;
 namespace SampleApp.Components.Data.Tree
 {
     /// <summary>
-    /// Logique d'interaction pour HostsView.xaml
+    /// Logique d'interaction pour TreeDataGridView.xaml
     /// </summary>
-    public partial class TreeDataGridRowView : UserControl
+    public partial class TreeDataGridView : UserControl
     {
-        public TreeDataGridRowView()
+        public TreeDataGridView()
         {
             InitializeComponent();
         }
@@ -24,8 +24,20 @@ namespace SampleApp.Components.Data.Tree
             DependencyProperty.Register(
                 "Columns",
                 typeof(ObservableCollection<DataGridColumn>),
-                typeof(TreeDataGridRowView),
+                typeof(TreeDataGridView),
                 new PropertyMetadata(null));
 
+        public object TreeColumnHeader
+        {
+            get { return (object)GetValue(TreeColumnHeaderProperty); }
+            set { SetValue(TreeColumnHeaderProperty, value); }
+        }
+
+        public static readonly DependencyProperty TreeColumnHeaderProperty =
+            DependencyProperty.Register(
+                "TreeColumnHeader",
+                typeof(object),
+                typeof(TreeDataGridView),
+                new PropertyMetadata(null));
     }
 }

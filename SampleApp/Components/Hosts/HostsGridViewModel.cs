@@ -32,7 +32,7 @@ namespace SampleApp.Components.Hosts
             foreach (var host in hosts)
             {
                 GetHost(host);
-                GetHosts(host.Hosts);
+                GetHosts(host.Childs);
             }
         }
 

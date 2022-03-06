@@ -35,7 +35,7 @@ namespace SampleApp.Components.Hosts
         /// <summary>
         /// parent (tree) model
         /// </summary>
-        IHostViewModel Parent { get; }
+        IHostViewModel ParentViewModel { get; }
 
         #endregion
 
@@ -62,7 +62,7 @@ namespace SampleApp.Components.Hosts
         /// <summary>
         /// hosts
         /// </summary>
-        BindingList<IHostViewModel> Hosts { get; }
+        BindingList<IHostViewModel> Childs { get; }
 
         /// <summary>
         /// initialize from a component host
@@ -72,7 +72,7 @@ namespace SampleApp.Components.Hosts
         /// <param name="parentViewModel">parentV view model</param>
         /// <returns></returns>
         IHostViewModel Initialize(
-            IComponentHost host, 
+            IComponentHost host,
             int level,
             IHostViewModel parentViewModel);
     }
