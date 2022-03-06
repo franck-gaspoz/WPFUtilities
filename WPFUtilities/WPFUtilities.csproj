@@ -140,6 +140,7 @@
     <Compile Include="Components\Services\Properties\CommandExtensions\Param3.cs" />
     <Compile Include="Components\Services\Properties\CommandExtensions\Param2.cs" />
     <Compile Include="Components\Services\Properties\ServicesPropertiesHelper.cs" />
+    <Compile Include="Components\UI\DataGridExtensions\AppendColumns.cs" />
     <Compile Include="Components\UI\DataGridExtensions\AdjustColumnSizeMode.cs" />
     <Compile Include="Components\UI\DataGridExtensions\AdjustColumnSizeModes.cs" />
     <Compile Include="Components\UI\DataGridExtensions\DataGrid.cs" />
@@ -316,6 +317,7 @@
     <None Include="Doc\README.md" />
     <None Include="Snippets\CSharp\behavior.snippet" />
     <None Include="Snippets\CSharp\iproperty.snippet" />
+    <None Include="Snippets\Xaml\xmlns.treeview.snippet" />
     <None Include="Snippets\Xaml\xmlns.testbutton.snippet" />
     <None Include="Snippets\Xaml\xmlns.addbehavior.snippet" />
     <None Include="Snippets\Xaml\xmlns.behaviors.snippet" />

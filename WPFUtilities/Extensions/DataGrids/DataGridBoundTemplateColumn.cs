@@ -7,6 +7,7 @@ using WPFUtilities.Extensions.FrameworkElements;
 namespace WPFUtilities.Extensions.DataGrids
 {
     /// <summary>
+    /// TODO: maybe remove - check usage
     /// bindable datagrid template column
     /// </summary>
     public class DataGridBoundTemplateColumn : DataGridBoundColumn

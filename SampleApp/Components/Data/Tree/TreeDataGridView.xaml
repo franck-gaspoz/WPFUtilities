@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.Data.Tree"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
-             d:DataContext="{d:DesignInstance Type=local:TreeDataGridRowViewModel}" 
              xmlns:commands="clr-namespace:SampleApp.Commands"
              xmlns:datagrids="clr-namespace:WPFUtilities.Extensions.DataGrids;assembly=WPFUtilities"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
@@ -21,10 +20,10 @@
 
         <DataGrid Grid.Column="0" 
                   ItemsSource="{Binding Items}"
-                  d:DataContext="{d:DesignInstance Type=local:TreeDataGridRowViewModel}" 
+                  d:DataContext="{d:DesignInstance Type=local:TreeDataGridRowViewModel}"
+                  ui:DataGrid.AppendColumns="{Binding Columns,ElementName=uc}"
                   >
             <DataGrid.Resources>
-                <sys:String x:Key="HeaderContent">{Binding TreeColumnHeader}</sys:String>
                 <binding:BindingProxy x:Key="proxy" Data="{Binding ElementName=uc}"/>
             </DataGrid.Resources>
 
@@ -40,9 +39,10 @@
             
             <DataGrid.Columns>
 
-                <datagrids:DataGridBoundTemplateColumn 
-                    Header="{Binding Source={StaticResource proxy},Path=Data.TreeColumnHeader}">
-                    <datagrids:DataGridBoundTemplateColumn.CellTemplate>
+                <DataGridTemplateColumn 
+                    Header="{Binding Source={StaticResource proxy},
+                                Path=Data.TreeColumnHeader}">
+                    <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="2">
                                 <ToggleButton IsChecked="{Binding IsExpanded,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
@@ -76,8 +76,8 @@
                                 <TextBlock Text="{Binding Name}" Margin="8,0,0,0"/>
                             </StackPanel>
                         </DataTemplate>
-                    </datagrids:DataGridBoundTemplateColumn.CellTemplate>
-                </datagrids:DataGridBoundTemplateColumn>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                     <!--
                 <DataGridTextColumn Header="Logger" Binding="{Binding HostLogger}"/>
                 <DataGridTextColumn Header="Options" Binding="{Binding HostOptions}"/>

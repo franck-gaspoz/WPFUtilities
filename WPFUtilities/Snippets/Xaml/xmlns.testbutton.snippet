@@ -12,13 +12,24 @@
 		</Header>
 		<Snippet>
 <Code Language="xaml" Delimiter="~">
-			<![CDATA[<!-- test button -->
-<Button service:Command.Type="{x:Type commands:TestCommand}" 
-                CommandParameter="{Binding DataContext,RelativeSource={RelativeSource AncestorType=UserControl}}"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Content="test"/>
-<!-- end of test button -->]]></Code>
+			<![CDATA[<!-- tree view -->
+<TreeView Grid.Row="0" 
+                  MinHeight="100"
+                  ItemsSource="{Binding Hosts}"
+                  Background="Transparent"
+                  Margin="0,22,0,0"
+                  HorizontalAlignment="Left"
+                  BorderBrush="Red"
+                  >
+
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Hosts}">
+                    <TextBlock Text="{Binding Name}"/>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+       
+        </TreeView>
+<!-- end of treeview -->]]></Code>
 		</Snippet>
 	</CodeSnippet>
 </CodeSnippets>

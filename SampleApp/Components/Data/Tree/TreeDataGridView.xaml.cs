@@ -25,7 +25,7 @@ namespace SampleApp.Components.Data.Tree
                 "Columns",
                 typeof(ObservableCollection<DataGridColumn>),
                 typeof(TreeDataGridView),
-                new PropertyMetadata(null));
+                new PropertyMetadata(new ObservableCollection<DataGridColumn>()));
 
         public object TreeColumnHeader
         {

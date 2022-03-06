@@ -84,29 +84,11 @@
             service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}"
             TreeColumnHeader="Host"
             Grid.Row="1">
-           <!-- <tree:TreeDataGridView.Columns>
+            <tree:TreeDataGridView.Columns>
                 <DataGridTextColumn Header="Logger" Binding="{Binding HostLogger}"/>
-            </tree:TreeDataGridView.Columns>-->
+                <DataGridTextColumn Header="Options" Binding="{Binding HostOptions}"/>
+            </tree:TreeDataGridView.Columns>
         </tree:TreeDataGridView>
-        
-            <!--
-        <TreeView Grid.Row="0" 
-                  MinHeight="100"
-                  ItemsSource="{Binding Hosts}"
-                  Background="Transparent"
-                  Margin="0,22,0,0"
-                  HorizontalAlignment="Left"
-                  BorderBrush="Red"
-                  >
-
-            <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate ItemsSource="{Binding Hosts}">
-                    <TextBlock Text="{Binding Name}"/>
-                </HierarchicalDataTemplate>
-            </TreeView.ItemTemplate>
-       
-        </TreeView>
-         -->
 
     </Grid>
 

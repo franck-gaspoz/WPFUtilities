@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+			<Title>add a test button</Title>
+			<Author>WPFUtilities</Author>
+			<Description>add a test button</Description>
+			<Shortcut>testbutton</Shortcut>
+		</Header>
+		<Snippet>
+<Code Language="xaml" Delimiter="~">
+			<![CDATA[<!-- test button -->
+<Button service:Command.Type="{x:Type commands:TestCommand}" 
+                CommandParameter="{Binding DataContext,RelativeSource={RelativeSource AncestorType=UserControl}}"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Content="test"/>
+<!-- end of test button -->]]></Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>
