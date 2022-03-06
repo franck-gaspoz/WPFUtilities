@@ -64,7 +64,7 @@ namespace SampleApp.Components.Hosts
             int level = 0)
         {
             var item = new HostViewModel();
-            item.Initialize(host, level);
+            item.Initialize(host, level, parentViewModel);
 
             foreach (var subHost in host.ChildHosts)
                 GetHosts(subHost, item, level + 1);

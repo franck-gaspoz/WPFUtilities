@@ -31,7 +31,7 @@ namespace SampleApp.Components.Hosts
             }
         }
 
-        bool _isExpanded = true;
+        bool _isExpanded = false;
         /// <inheritdoc/>
         public bool IsExpanded
         {
@@ -48,6 +48,50 @@ namespace SampleApp.Components.Hosts
 
         /// <inheritdoc/>
         public int ChildsCount => Hosts?.Count ?? 0;
+
+        /// <inheritdoc/>
+        public bool IsFolded
+        {
+            get
+            {
+                IHostViewModel parent = Parent;
+                while (parent != null)
+                {
+                    if (!parent.IsExpanded) return true;
+                    parent = parent.Parent;
+                }
+                return false;
+            }
+        }
+
+        IHostViewModel _parent = null;
+        /// <inheritdoc/>
+        public IHostViewModel Parent
+        {
+            get
+            {
+                return _parent;
+            }
+            set
+            {
+                if (_parent != null)
+                    _parent.PropertyChanged -= ParentIsExpandedPropertyChanged;
+                _parent = value;
+                if (_parent != null)
+                    _parent.PropertyChanged += ParentIsExpandedPropertyChanged;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private void ParentIsExpandedPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(IHostViewModel.IsExpanded))
+            {
+                NotifyPropertyChanged(nameof(IsFolded));
+                if (ChildsCount>0)
+                    NotifyPropertyChanged(nameof(IsExpanded));
+            }
+        }
 
         #endregion
 
@@ -110,11 +154,13 @@ namespace SampleApp.Components.Hosts
         /// <inheritdoc/>
         public IHostViewModel Initialize(
             IComponentHost host,
-            int level)
+            int level,
+            IHostViewModel parentViewModel)
         {
             Name = host.Name;
             ComponentHost = host;
             Level = level;
+            Parent = parentViewModel;
 
             if (host.Host.GetField<HostOptions>("_options", out var options))
                 HostOptions = options;

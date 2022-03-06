@@ -22,13 +22,24 @@
         <DataGrid Grid.Column="0" 
                   ItemsSource="{Binding Items}"
                   service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}">
+
+            <DataGrid.RowStyle>
+                <Style TargetType="{x:Type DataGridRow}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsFolded}" Value="True">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+            
             <DataGrid.Columns>
-                
+
                 <DataGridTemplateColumn Header="Name">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Horizontal" Margin="2">
-                                <ToggleButton IsChecked="{Binding IsExpanded}" 
+                                <ToggleButton IsChecked="{Binding IsExpanded,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                                               Visibility="{Binding ChildsCount,
                                                         Converter={x:Static converters:NumberToVisibilityConverter.Instance}}"
                                               Width="16px"

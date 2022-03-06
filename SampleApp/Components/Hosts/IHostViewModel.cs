@@ -27,6 +27,16 @@ namespace SampleApp.Components.Hosts
         /// </summary>
         int ChildsCount { get; }
 
+        /// <summary>
+        /// indicates if folded by any of its parents
+        /// </summary>
+        bool IsFolded { get; }
+
+        /// <summary>
+        /// parent (tree) model
+        /// </summary>
+        IHostViewModel Parent { get; }
+
         #endregion
 
         /// <summary>
@@ -59,7 +69,11 @@ namespace SampleApp.Components.Hosts
         /// </summary>
         /// <param name="host">host</param>
         /// <param name="level">level</param>
+        /// <param name="parentViewModel">parentV view model</param>
         /// <returns></returns>
-        IHostViewModel Initialize(IComponentHost host, int level);
+        IHostViewModel Initialize(
+            IComponentHost host, 
+            int level,
+            IHostViewModel parentViewModel);
     }
 }
