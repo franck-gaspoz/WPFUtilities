@@ -60,6 +60,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Components\Data\Tree\TreeDataGridRowView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Components\Hosts\HostsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -125,6 +129,11 @@
     <Compile Include="Components\About\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\Data\Tree\TreeDataGridRowView.xaml.cs">
+      <DependentUpon>TreeDataGridRowView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\Data\Tree\ITreeDataGridRowViewModel.cs" />
+    <Compile Include="Components\Data\Tree\TreeDataGridRowViewModel.cs" />
     <Compile Include="Components\Hosts\HostsComponent.cs" />
     <Compile Include="Components\Hosts\HostsGridViewModel.cs" />
     <Compile Include="Components\Hosts\HostsView.xaml.cs">
@@ -253,8 +262,6 @@
   <ItemGroup>
     <Resource Include="Resources\Codicons-SymbolClass.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Components\Data\Tree\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
