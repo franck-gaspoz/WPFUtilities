@@ -146,6 +146,7 @@
     <Compile Include="Components\UI\DataGridExtensions\DataGrid.cs" />
     <Compile Include="Components\UI\DataGridExtensions\DataGridViewProperties.cs" />
     <Compile Include="Components\UI\DataGridExtensions\DataGridViewPropertiesProperty.cs" />
+    <Compile Include="Components\UI\DataGridExtensions\SetTreeColumn.cs" />
     <Compile Include="Components\UI\Data\Data.cs" />
     <Compile Include="Components\UI\Grids\Grids.cs" />
     <Compile Include="Components\UI\Grids\FrameBrush.cs" />

@@ -13,20 +13,22 @@
     </Style>
 
     <DataTemplate x:Key="TreeDataGrid_TreeCell">
+        
         <StackPanel Orientation="Horizontal" Margin="2">
+            
             <ToggleButton IsChecked="{Binding IsExpanded,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
-                                    Visibility="{Binding ChildsCount,
-                                            Converter={x:Static converters:NumberToVisibilityConverter.Instance}}"
-                                    Width="16px"
-                                    Height="16px"
-                                    HorizontalContentAlignment="Center"
-                                    VerticalContentAlignment="Center"
-                                    Background="Transparent"
-                                    BorderThickness="0"
-                                    x:Name="tb"
-                                    ui:Layout.LeftMarginMultiplyFactor="{Binding Width,ElementName=tb}"
-                                    ui:Layout.LeftMarginMultiplyFrom="{Binding Level}"
-                                    >
+                Visibility="{Binding ChildsCount,
+                        Converter={x:Static converters:NumberToVisibilityConverter.Instance}}"
+                Width="16px"
+                Height="16px"
+                HorizontalContentAlignment="Center"
+                VerticalContentAlignment="Center"
+                Background="Transparent"
+                BorderThickness="0"
+                x:Name="tb"
+                ui:Layout.LeftMarginMultiplyFactor="{Binding Width,ElementName=tb}"
+                ui:Layout.LeftMarginMultiplyFrom="{Binding Level}"
+                >
                 <ToggleButton.Style>
                     <Style TargetType="ToggleButton">
                         <Style.Triggers>

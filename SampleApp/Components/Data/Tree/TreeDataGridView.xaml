@@ -37,6 +37,7 @@
 
                     CellTemplate="{DynamicResource TreeDataGrid_TreeCell}">
                 </DataGridTemplateColumn>
+                
             </DataGrid.Columns>
         </DataGrid>
 

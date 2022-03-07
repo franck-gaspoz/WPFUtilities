@@ -5,6 +5,9 @@ using WPFUtilities.ComponentModels;
 
 namespace SampleApp.Components.Hosts
 {
+    /// <summary>
+    /// flat project the hosts view model (Hosts -> Items)
+    /// </summary>
     public class HostsGridViewModel : ModelBase, IHostsGridViewModel
     {
         public BindingList<IHostViewModel> Items { get; }
