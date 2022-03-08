@@ -51,8 +51,12 @@ namespace WPFUtilities.Components.UI
             if (!(dependencyObject is DataGridControlType datagrid)) return;
             datagrid.OnLoaded((routed) =>
             {
-                var treeColumn = GetSetTreeColumn(dependencyObject);
-                datagrid.SetValue(TreeColumnPathProperty, treeColumn);
+                var treeColumnPath = datagrid.GetValue<string>(TreeColumnPathProperty);
+                if (treeColumnPath == null)
+                {
+                    var treeColumn = GetSetTreeColumn(dependencyObject);
+                    datagrid.SetValue(TreeColumnPathProperty, treeColumn);
+                }
 
                 var cellDataTemplate = (DataTemplate)System.Windows.Application.Current
                     .FindResource("TreeDataGrid_TreeCell");

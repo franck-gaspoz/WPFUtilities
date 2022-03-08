@@ -35,11 +35,12 @@
         <DataGrid ItemsSource="{Binding Items}"
                   service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}"
                   Grid.Row="1"
-                  ui:DataGrid.SetTreeColumn="Name">
+                  ui:DataGrid.TreeColumnPath="Name"
+                  ui:DataGrid.SetTreeColumn="Host">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Name" />
-                <DataGridTextColumn Header="Options" Binding="{Binding HostOptions}"/>
+                <DataGridTemplateColumn Header="Host" />
                 <DataGridTextColumn Header="Logger" Binding="{Binding HostLogger}"/>
+                <DataGridTextColumn Header="Options" Binding="{Binding HostOptions}"/>
             </DataGrid.Columns>
         </DataGrid>
         
