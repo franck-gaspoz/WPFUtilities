@@ -77,7 +77,8 @@
             <TabControl Grid.Column="0">
             
                 <TabItem Header="Data">
-                    <data:KeyValueView />
+                    <data:KeyValueView 
+                        service:DataContext.Resolve="{x:Type data:IKeyValueViewModel}"/>
                 </TabItem>
             
             </TabControl>

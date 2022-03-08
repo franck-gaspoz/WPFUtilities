@@ -11,8 +11,7 @@
              d:DesignHeight="111.218" 
              d:DesignWidth="295.988">
     <Grid>
-        <DataGrid 
-            service:DataContext.Resolve="{x:Type local:IKeyValueViewModel}"
+        <DataGrid
             ui:DataGrid.AdjustColumnSizeMode="OnResize"
             ItemsSource="{Binding Items}">
             <DataGrid.Columns>
