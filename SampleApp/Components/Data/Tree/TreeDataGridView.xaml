@@ -9,7 +9,7 @@
              xmlns:datagrids="clr-namespace:WPFUtilities.Extensions.DataGrids;assembly=WPFUtilities"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
-             xmlns:binding="clr-namespace:WPFUtilities.Components.Binding;assembly=WPFUtilities"
+             xmlns:binding="clr-namespace:WPFUtilities.Components.Bindings;assembly=WPFUtilities"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              service:DataContext.IsAuto="True"
              mc:Ignorable="d" 

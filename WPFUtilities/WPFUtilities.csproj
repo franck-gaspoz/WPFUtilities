@@ -146,6 +146,7 @@
     <Compile Include="Components\UI\DataGridExtensions\DataGrid.cs" />
     <Compile Include="Components\UI\DataGridExtensions\DataGridViewProperties.cs" />
     <Compile Include="Components\UI\DataGridExtensions\DataGridViewPropertiesProperty.cs" />
+    <Compile Include="Components\UI\DataGridExtensions\TreeColumnName.cs" />
     <Compile Include="Components\UI\DataGridExtensions\SetTreeColumn.cs" />
     <Compile Include="Components\UI\Data\Data.cs" />
     <Compile Include="Components\UI\Grids\Grids.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Components\UI\WindowExtensions\CenterOnParentOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\RestoreInitiaSizeOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\Size.cs" />
+    <Compile Include="Converters\DebugMultiConverter.cs" />
     <Compile Include="Converters\NumberToVisibilityConverter.cs" />
     <Compile Include="Extensions\Configuration\IConfigurationProviderExtensions.cs" />
     <Compile Include="Extensions\DataGrids\DataGridBoundTemplateColumn.cs" />

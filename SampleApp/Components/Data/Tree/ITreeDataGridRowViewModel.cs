@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿
+using System.Collections.Generic;
 
 using WPFUtilities.ComponentModels;
 
@@ -7,8 +8,7 @@ namespace SampleApp.Components.Data.Tree
     /// <summary>
     /// view model of a 'tree style' data grid row
     /// </summary>
-    public interface ITreeDataGridVRowViewModel<ViewModelBase> : IModelBase
-        where ViewModelBase : IModelBase
+    public interface ITreeDataGridRowViewModel : IModelBase
     {
         #region tree properties
 
@@ -35,12 +35,12 @@ namespace SampleApp.Components.Data.Tree
         /// <summary>
         /// parent (tree) model
         /// </summary>
-        ViewModelBase Parent { get; }
+        ITreeDataGridRowViewModel GetParent();
 
         /// <summary>
-        /// hosts
+        /// childs
         /// </summary>
-        BindingList<ViewModelBase> Childs { get; }
+        IEnumerable<ITreeDataGridRowViewModel> GetChilds();
 
         #endregion
     }

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
 using WPFUtilities.ComponentModels;
 
@@ -8,8 +10,8 @@ namespace SampleApp.Components.Data.Tree
     /// a 'tree style' data grid row view model
     /// </summary>
     public class TreeDataGridRowViewModel<ViewModelBase> : ModelBase,
-        ITreeDataGridVRowViewModel<ViewModelBase>
-        where ViewModelBase : ModelBase, ITreeDataGridVRowViewModel<ViewModelBase>
+        ITreeDataGridRowViewModel<ViewModelBase>
+        where ViewModelBase : ModelBase, ITreeDataGridRowViewModel<ViewModelBase>
     {
         #region tree properties
 
@@ -51,7 +53,7 @@ namespace SampleApp.Components.Data.Tree
         {
             get
             {
-                ITreeDataGridVRowViewModel<ViewModelBase> parent = Parent;
+                ITreeDataGridRowViewModel<ViewModelBase> parent = Parent;
                 while (parent != null)
                 {
                     if (!parent.IsExpanded) return true;
@@ -92,6 +94,12 @@ namespace SampleApp.Components.Data.Tree
 
         /// <inheritdoc/>
         public BindingList<ViewModelBase> Childs { get; }
+
+        /// <inheritdoc/>
+        public ITreeDataGridRowViewModel GetParent() => Parent;
+
+        /// <inheritdoc/>
+        public IEnumerable<ITreeDataGridRowViewModel> GetChilds() => Childs.AsEnumerable();
 
         #endregion
     }

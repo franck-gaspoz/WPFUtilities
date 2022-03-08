@@ -23,6 +23,7 @@
 
         <tree:TreeDataGridView
             service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}"
+            ui:DataGrid.TreeColumnName="{Binding Name}"
             TreeColumnHeader="Host"
             Grid.Row="0">
             <tree:TreeDataGridView.Columns>
@@ -34,6 +35,7 @@
         <DataGrid ItemsSource="{Binding Items}"
                   service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}"
                   Grid.Row="1"
+                  ui:DataGrid.TreeColumnName="{Binding Name}"
                   ui:DataGrid.SetTreeColumn="Name">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Name" />

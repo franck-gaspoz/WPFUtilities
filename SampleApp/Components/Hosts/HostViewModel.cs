@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -17,7 +19,7 @@ namespace SampleApp.Components.Hosts
     public class HostViewModel :
         ModelBase,
         IHostViewModel,
-        ITreeDataGridVRowViewModel<IHostViewModel>
+        ITreeDataGridRowViewModel<IHostViewModel>
     {
         #region tree properties
 
@@ -120,6 +122,12 @@ namespace SampleApp.Components.Hosts
         /// </summary>
         public BindingList<IHostViewModel> Childs { get; }
             = new BindingList<IHostViewModel>();
+
+        /// <inheritdoc/>
+        public ITreeDataGridRowViewModel GetParent() => Parent;
+
+        /// <inheritdoc/>
+        public IEnumerable<ITreeDataGridRowViewModel> GetChilds() => Childs.AsEnumerable();
 
         #endregion
 

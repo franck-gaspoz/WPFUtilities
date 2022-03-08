@@ -3,41 +3,19 @@
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using SampleApp.Components.Data.Tree;
+
 using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.ServiceComponent;
 
 namespace SampleApp.Components.Hosts
 {
-    public interface IHostViewModel : IModelBase
+    public interface IHostViewModel : ITreeDataGridRowViewModel, IModelBase
     {
-        #region tree properties
-
-        /// <summary>
-        /// tree level
-        /// </summary>
-        int Level { get; set; }
-
-        /// <summary>
-        /// is expanded
-        /// </summary>
-        bool IsExpanded { get; set; }
-
-        /// <summary>
-        /// childs count
-        /// </summary>
-        int ChildsCount { get; }
-
-        /// <summary>
-        /// indicates if folded by any of its parents
-        /// </summary>
-        bool IsFolded { get; }
-
         /// <summary>
         /// parent (tree) model
         /// </summary>
         IHostViewModel ParentViewModel { get; }
-
-        #endregion
 
         /// <summary>
         /// name

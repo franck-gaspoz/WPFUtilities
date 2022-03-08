@@ -7,7 +7,7 @@
              xmlns:interactivityCommand="clr-namespace:WPFUtilities.Commands.Interactivity;assembly=WPFUtilities"
              xmlns:about="clr-namespace:SampleApp.Components.About"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
-             xmlns:binding="clr-namespace:WPFUtilities.Components.Binding;assembly=WPFUtilities"
+             xmlns:binding="clr-namespace:WPFUtilities.Components.Bindings;assembly=WPFUtilities"
              xmlns:ui="clr-namespace:SampleApp.Components.UI"
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 

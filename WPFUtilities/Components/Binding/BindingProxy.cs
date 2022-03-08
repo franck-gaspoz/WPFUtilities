@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WPFUtilities.Components.Binding
+namespace WPFUtilities.Components.Bindings
 {
     /// <summary>
     /// binding proxy

@@ -133,10 +133,12 @@
     <Compile Include="Components\About\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\Data\Tree\ITreeDataGridVRowViewModelT.cs" />
+    <Compile Include="Components\Data\Tree\TreeDataGridColumnBindingConverter.cs" />
     <Compile Include="Components\Data\Tree\TreeDataGridView.xaml.cs">
       <DependentUpon>TreeDataGridView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Data\Tree\ITreeDataGridVRowViewModel.cs" />
+    <Compile Include="Components\Data\Tree\ITreeDataGridRowViewModel.cs" />
     <Compile Include="Components\Data\Tree\TreeDataGridRowViewModel.cs" />
     <Compile Include="Components\Hosts\HostsComponent.cs" />
     <Compile Include="Components\Hosts\HostsGridViewModel.cs" />
