@@ -18,7 +18,19 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+
+        <tree:TreeDataGridView
+            service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}"
+            ui:DataGrid.TreeColumnPath="Name"
+            TreeColumnHeader="Host"
+            Grid.Row="0">
+            <tree:TreeDataGridView.Columns>
+                <DataGridTextColumn Header="Logger" Binding="{Binding HostLogger}"/>
+                <DataGridTextColumn Header="Options" Binding="{Binding HostOptions}"/>
+            </tree:TreeDataGridView.Columns>
+        </tree:TreeDataGridView>
 
         <DataGrid ItemsSource="{Binding Items}"
                   service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}"
