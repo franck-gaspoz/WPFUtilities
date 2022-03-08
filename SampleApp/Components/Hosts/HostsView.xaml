@@ -35,7 +35,6 @@
         <DataGrid ItemsSource="{Binding Items}"
                   service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}"
                   Grid.Row="1"
-                  ui:DataGrid.TreeColumnPath="Name"
                   ui:DataGrid.SetTreeColumn="Name">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Name" />
