@@ -27,7 +27,7 @@ namespace WPFUtilities.Helpers
             if (parent == null) return null;
 
             var parentT = parent as T;
-            return parentT ?? FindAncestor<T>(parent);
+            return parentT ?? FindVisualAncestor<T>(parent);
         }
 
         /// <summary>

@@ -53,17 +53,21 @@
                 Converter={x:Static converters:DebugConverter.Instance},
                 ConverterParameter={Binding RelativeSource={RelativeSource Self}}}" 
             -->
-            
-            <TextBlock 
-                Margin="8,0,0,0">
+
+            <TextBlock Margin="8,0,0,0" 
+                       local:TreeColumnBinding.Target="{x:Static TextBlock.TextProperty}"
+                       
+                       >
+
+                <!--
                 <TextBlock.Text>
                     <MultiBinding Converter="{x:Static local:TreeDataGridColumnBindingConverter.Instance}">
-                        <Binding Path="."
-                                 RelativeSource="{RelativeSource AncestorType={x:Type DataGrid},Mode=FindAncestor}"/>
-                        <Binding Path="."
-                                 RelativeSource="{RelativeSource Self}"/>
+                        <Binding RelativeSource="{RelativeSource AncestorType={x:Type DataGrid},Mode=FindAncestor}"/>
+                        <Binding RelativeSource="{RelativeSource Self}"/>
                     </MultiBinding>
                 </TextBlock.Text>
+                -->
+
             </TextBlock>
 
         </StackPanel>

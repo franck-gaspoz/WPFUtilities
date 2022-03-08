@@ -34,16 +34,16 @@ namespace SampleApp.Components.Data.Tree
             var tb = values[1] as FrameworkElement;
             var dg = values[0] as DataGrid;
             var uc = WPFUtilities.Helpers.WPFHelper.FindAncestor<UserControl>(dg);
-            var val0 = uc?.GetValue<Binding>(WPFUtilities.Components.UI.DataGrid.TreeColumnNameProperty);
-            var val = dg?.GetValue<Binding>(WPFUtilities.Components.UI.DataGrid.TreeColumnNameProperty);
-            Binding b = val0 ?? val;
-            var columnPath = b.Path.Path;
-            if (b.Source == null)
-            {
-                b.Source = tb.DataContext;
-            }
-            var value = PropertyPathHelper.GetValue(tb.DataContext, columnPath);
+            var val0 = uc?.GetValue<string>(WPFUtilities.Components.UI.DataGrid.TreeColumnPathProperty);
+            var val = dg?.GetValue<string>(WPFUtilities.Components.UI.DataGrid.TreeColumnPathProperty);
+            var path = val0 ?? val;
 
+            var value = PropertyPathHelper.GetValue(tb.DataContext, path);
+            /*
+            var binding = new Binding(path);
+            binding.Source = tb.DataContext;
+            BindingOperations.SetBinding(tb, missing dp)
+            */
             return value;
         }
 

@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Data;
 
 using DataGridControlType = System.Windows.Controls.DataGrid;
 
@@ -12,29 +11,29 @@ namespace WPFUtilities.Components.UI
     /// </summary>
     static partial class DataGrid
     {
-        #region tree column
+        #region tree column path
 
         /// <summary>
-        /// get adjust column size modes
+        /// get column path
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
-        public static Binding GetTreeColumnName(DependencyObject dependencyObject) => (Binding)dependencyObject.GetValue(TreeColumnNameProperty);
+        public static string GetTreeColumnPath(DependencyObject dependencyObject) => (string)dependencyObject.GetValue(TreeColumnPathProperty);
 
         /// <summary>
-        /// set adjust column size modes
+        /// set column path
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
-        /// <param name="TreeColumnName">TreeColumnName</param>
-        public static void SetTreeColumnName(DependencyObject dependencyObject, Binding TreeColumnName) => dependencyObject.SetValue(TreeColumnNameProperty, TreeColumnName);
+        /// <param name="TreeColumnPath">TreeColumnPath</param>
+        public static void SetTreeColumnPath(DependencyObject dependencyObject, string TreeColumnPath) => dependencyObject.SetValue(TreeColumnPathProperty, TreeColumnPath);
 
         /// <summary>
-        /// margin property
+        /// column path property
         /// </summary>
-        public static readonly DependencyProperty TreeColumnNameProperty =
+        public static readonly DependencyProperty TreeColumnPathProperty =
             DependencyProperty.Register(
-                "TreeColumnName",
-                typeof(Binding),
+                "TreeColumnPath",
+                typeof(string),
                 typeof(DataGridControlType),
                 new UIPropertyMetadata(null));
 

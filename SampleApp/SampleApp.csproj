@@ -133,6 +133,7 @@
     <Compile Include="Components\About\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\Data\Tree\TreeColumnBinding.cs" />
     <Compile Include="Components\Data\Tree\ITreeDataGridVRowViewModelT.cs" />
     <Compile Include="Components\Data\Tree\TreeDataGridColumnBindingConverter.cs" />
     <Compile Include="Components\Data\Tree\TreeDataGridView.xaml.cs">
