@@ -49,11 +49,8 @@ namespace SampleApp.Components.Data.Tree
 
         static void Initialize(DependencyObject obj)
         {
-            //((FrameworkElement)obj).OnLoaded((routed) =>
-            //{
             var target = obj.GetValue<DependencyProperty>(TargetProperty);
             SetBinding(obj);
-            //});
         }
 
         static void SetBinding(DependencyObject obj)
