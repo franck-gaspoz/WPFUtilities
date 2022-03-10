@@ -18,7 +18,6 @@ namespace WPFUtilities.Extensions.Reflections
         /// <param name="fieldValue">out field value</param>
         /// <returns>true if value found with expected type, false otherwise</returns>
         public static bool GetField<T>(this object obj, string fieldName, out T fieldValue)
-            where T : class
         {
             fieldValue = default(T);
             if (obj == null) return false;
@@ -27,9 +26,71 @@ namespace WPFUtilities.Extensions.Reflections
                 BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
             if (fieldInfo == null) return false;
 
-            fieldValue = fieldInfo.GetValue(obj) as T;
+            fieldValue = (T)fieldInfo.GetValue(obj);
             return fieldValue is T;
         }
+
+        /// <summary>
+        /// try to gives the value of the field of an object, whether it is public,protected or private
+        /// </summary>
+        /// <typeparam name="T">expected value type</typeparam>
+        /// <param name="obj">object</param>
+        /// <param name="methodName">method name</param>
+        /// <returns>method invoke result if method is found, null otherwise</returns>
+        public static T InvokeMethod<T>(this object obj, string methodName, params object[] parameters)
+        {
+            var result = default(T);
+            if (obj == null) return result;
+
+            var methodInfo = obj.GetType().GetMethod(methodName,
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            if (methodInfo == null) return result;
+
+            result = (T)methodInfo.Invoke(obj, parameters);
+            return result;
+        }
+
+        /// <summary>
+        /// try to gives the value of the field of an object, whether it is public,protected or private
+        /// </summary>
+        /// <typeparam name="T">expected value type</typeparam>
+        /// <param name="obj">object</param>
+        /// <param name="fieldName">field name</param>
+        /// <returns>null if value not found or null, value of type T otherwise</returns>
+        public static T GetField<T>(this object obj, string fieldName)
+        {
+            var fieldValue = default(T);
+            if (obj == null) return fieldValue;
+
+            var fieldInfo = obj.GetType().GetField(fieldName,
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            if (fieldInfo == null) return fieldValue;
+
+            fieldValue = (T)fieldInfo.GetValue(obj);
+            return fieldValue;
+        }
+
+        /// <summary>
+        /// check if an object has a field, whether it is public,protected or private
+        /// </summary>
+        /// <param name="obj">object</param>
+        /// <param name="fieldName">field name</param>
+        /// <returns>true if has field</returns>
+        public static bool HasField(this object obj, string fieldName)
+            => obj.GetType().GetField(fieldName,
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
+                != null;
+
+        /// <summary>
+        /// check if an object has a property, whether it is public,protected or private
+        /// </summary>
+        /// <param name="obj">object</param>
+        /// <param name="propertyName">property name</param>
+        /// <returns>true if has property</returns>
+        public static bool HasProperty(this object obj, string propertyName)
+            => obj.GetType().GetProperty(propertyName,
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
+                != null;
 
         /// <summary>
         /// try to gives the value of the property of an object, whether it is public,protected or private
@@ -40,7 +101,6 @@ namespace WPFUtilities.Extensions.Reflections
         /// <param name="propertyValue">out field value</param>
         /// <returns>true if value found with expected type, false otherwise</returns>
         public static bool GetProperty<T>(this object obj, string propertyName, out T propertyValue)
-            where T : class
         {
             propertyValue = default(T);
             if (obj == null) return false;
@@ -49,9 +109,54 @@ namespace WPFUtilities.Extensions.Reflections
                 BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
             if (propInfo == null) return false;
 
-            propertyValue = propInfo.GetValue(obj) as T;
+            propertyValue = (T)propInfo.GetValue(obj);
             return propertyValue is T;
         }
+
+        /// <summary>
+        /// try to gives the value of the property of an object, whether it is public,protected or private
+        /// </summary>
+        /// <typeparam name="T">expected value type</typeparam>
+        /// <param name="obj">object</param>
+        /// <param name="propertyName">field name</param>
+        /// <returns>null if value not found or null, value of type T otherwise</returns>
+        public static T GetProperty<T>(this object obj, string propertyName)
+        {
+            var propertyValue = default(T);
+            if (obj == null) return propertyValue;
+
+            var propInfo = obj.GetType().GetProperty(propertyName,
+                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            if (propInfo == null) return propertyValue;
+
+            propertyValue = (T)propInfo.GetValue(obj);
+            return propertyValue;
+        }
+
+        /// <summary>
+        /// try to gives the value of a member of an object, first a field and secondly a property, whether it is public,protected or private
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="memberName"></param>
+        /// <param name="memberValue"></param>
+        /// <returns>value or null</returns>
+        public static bool GetMember<T>(this object obj, string memberName, out T memberValue)
+            => obj.HasField(memberName) ?
+                    GetField(obj, memberName, out memberValue)
+                    : GetProperty(obj, memberName, out memberValue);
+
+        /// <summary>
+        /// try to gives the value of a member of an object, first a field and secondly a property, whether it is public,protected or private
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <param name="memberName"></param>
+        /// <returns>value or null</returns>
+        public static T GetMember<T>(this object obj, string memberName)
+            => obj.HasField(memberName) ?
+                    GetField<T>(obj, memberName)
+                    : GetProperty<T>(obj, memberName);
 
         /// <summary>
         /// indicates if a type inherits from a type having given name. returns false if type has given type name

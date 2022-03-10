@@ -28,6 +28,11 @@ namespace SampleApp.Components.Hosts
         ILogger HostLogger { get; set; }
 
         /// <summary>
+        /// host logger description
+        /// </summary>
+        string HostLoggerDescription { get; set; }
+
+        /// <summary>
         /// component host
         /// </summary>
         IComponentHost ComponentHost { get; set; }

@@ -16,7 +16,10 @@
 
     <DataTemplate x:Key="TreeDataGrid_TreeCell">
         
-        <StackPanel Orientation="Horizontal" Margin="2">
+        <StackPanel Orientation="Horizontal" 
+                    Margin="2"
+                    VerticalAlignment="Top"
+                    >
             
             <ToggleButton IsChecked="{Binding IsExpanded,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                 Visibility="{Binding ChildsCount,

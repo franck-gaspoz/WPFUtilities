@@ -16,8 +16,8 @@
              >
     <Grid Margin="{DynamicResource Margin_Default}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
 
         <Grid>

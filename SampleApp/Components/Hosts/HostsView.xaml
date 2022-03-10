@@ -27,7 +27,7 @@
                   ui:DataGrid.SetTreeColumn="Host">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Host" />
-                <DataGridTextColumn Header="Logger" Binding="{Binding HostLogger}"/>
+                <DataGridTextColumn Header="Logger" Binding="{Binding HostLoggerDescription}"/>
                 <DataGridTextColumn Header="Options" Binding="{Binding HostOptions}"/>
             </DataGrid.Columns>
         </DataGrid>

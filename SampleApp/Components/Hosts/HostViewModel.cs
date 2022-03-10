@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
 
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -161,6 +164,21 @@ namespace SampleApp.Components.Hosts
             }
         }
 
+        string _hostLoggerDescription = null;
+        /// <inheritdoc/>
+        public string HostLoggerDescription
+        {
+            get
+            {
+                return _hostLoggerDescription;
+            }
+            set
+            {
+                _hostLoggerDescription = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         HostOptions _hostOptions = null;
         /// <summary>
         /// summary
@@ -181,6 +199,21 @@ namespace SampleApp.Components.Hosts
         /// <inheritdoc/>
         public IComponentHost ComponentHost { get; set; }
 
+        /// <summary>
+        /// loggers informations
+        /// </summary>
+        public List<object> LoggerInformations = new List<object>();
+
+        /// <summary>
+        /// message loggers
+        /// </summary>
+        public List<object> MessageLoggers = new List<object>();
+
+        /// <summary>
+        /// scope loggers
+        /// </summary>
+        public List<object> ScopeLoggers = new List<object>();
+
         /// <inheritdoc/>
         public IHostViewModel Initialize(
             IComponentHost host,
@@ -195,8 +228,90 @@ namespace SampleApp.Components.Hosts
             if (host.Host.GetField<HostOptions>("_options", out var options))
                 HostOptions = options;
             if (host.Host.GetField<ILogger>("_logger", out var logger))
+            {
                 HostLogger = logger;
+                if (HostLogger.GetMember<object>("_logger", out var _logger))
+                {
+                    void Add(object array, Action<object> handleObject)
+                    {
+                        var enumerator = array.InvokeMethod<IEnumerator>("GetEnumerator");
+                        while (enumerator.MoveNext())
+                            handleObject(enumerator.Current);
+                    }
+
+                    if (_logger.GetMember<object>("Loggers", out var loggerInformationArray))
+                        Add(loggerInformationArray, AddLoggerInformation);
+                    if (_logger.GetMember<object>("MessageLoggers", out var messageLoggerArray))
+                        Add(messageLoggerArray, AddMessageLogger);
+                    if (_logger.GetMember<object>("ScopeLoggers", out var scopeLoggerInformationArray))
+                        Add(scopeLoggerInformationArray, AddScopeLogger);
+                }
+            }
+            HostLoggerDescription =
+                string.Join(Environment.NewLine, GetHostLoggerDescription());
             return this;
+        }
+
+        string GetHostLoggerDescription()
+        {
+            var sb = new StringBuilder();
+            string GetLoggerDescription(object obj)
+                => obj.GetMember<string>("LoggerDescription")
+                    ?.Split('.')
+                    ?.Last()
+                    ?.Replace("Logger", "");
+
+            var t = new (string key, List<object> values)[]
+            {
+                ("logger informations:",LoggerInformations),
+                ("message loggers:",MessageLoggers),
+                ("scope loggers:",ScopeLoggers)
+            };
+            foreach (var t2 in t)
+            {
+                sb.Append(t2.key);
+                var t3 = new List<string>();
+                foreach (var o in t2.values)
+                    t3.Add(GetLoggerDescription(o));
+                sb.AppendLine(string.Join(",", t3));
+            }
+            return sb.ToString().Trim();
+        }
+
+        void AddLoggerInformation(object logger)
+        {
+            var data = new
+            {
+                Category = logger.GetMember<string>("Category"),
+                ExternalScope = logger.GetMember<bool>("ExternalScope"),
+                Logger = logger.GetMember<ILogger>("Logger"),
+                LoggerDescription = logger.GetMember<ILogger>("Logger")?.ToString(),
+                ProviderType = logger.GetMember<Type>("ProviderType")
+            };
+            LoggerInformations.Add(data);
+        }
+
+        void AddMessageLogger(object logger)
+        {
+            var data = new
+            {
+                Category = logger.GetMember<string>("Category"),
+                Logger = logger.GetMember<ILogger>("Logger"),
+                LoggerDescription = logger.GetMember<ILogger>("Logger")?.ToString(),
+                MinLevel = logger.GetMember<LogLevel?>("MinLevel"),
+            };
+            MessageLoggers.Add(data);
+        }
+
+        void AddScopeLogger(object logger)
+        {
+            var data = new
+            {
+                ExternalScopeProvider = logger.GetMember<IExternalScopeProvider>("ExternalScopeProvider"),
+                Logger = logger.GetMember<ILogger>("Logger"),
+                LoggerDescription = logger.GetMember<ILogger>("Logger")?.ToString()
+            };
+            ScopeLoggers.Add(data);
         }
 
     }
