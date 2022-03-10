@@ -199,6 +199,14 @@ namespace SampleApp.Components.Hosts
         /// <inheritdoc/>
         public IComponentHost ComponentHost { get; set; }
 
+        /// <inheritdoc/>
+        public int LoggersCount
+        {
+            get => LoggerInformations.Count()
+                + MessageLoggers.Count()
+                + ScopeLoggers.Count();
+        }
+
         /// <summary>
         /// loggers informations
         /// </summary>

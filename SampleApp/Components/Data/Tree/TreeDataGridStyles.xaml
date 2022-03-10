@@ -27,19 +27,20 @@
                 Width="16px"
                 Height="16px"
                 HorizontalContentAlignment="Center"
-                VerticalContentAlignment="Center"
+                VerticalContentAlignment="Top"
                 Background="Transparent"
-                BorderThickness="0"
+                BorderThickness="1"
+                BorderBrush="Black"
                 x:Name="tb"
                 ui:Layout.LeftMarginMultiplyFactor="{Binding Width,ElementName=tb}"
                 ui:Layout.LeftMarginMultiplyFrom="{Binding Level}"
+                Padding="0"
                 >
                 <ToggleButton.Style>
                     <Style TargetType="ToggleButton">
                         <Style.Triggers>
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter Property="Content" Value="-"/>
-                                <Setter Property="BorderThickness" Value="0"/>
                                 <Setter Property="Background" Value="Transparent"/>
                             </Trigger>
                             <Trigger Property="IsChecked" Value="False">
