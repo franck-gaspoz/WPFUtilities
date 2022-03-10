@@ -51,7 +51,7 @@
                 </ToggleButton.Style>
             </ToggleButton>
 
-            <TextBlock Margin="8,0,0,0" 
+            <TextBlock Margin="8,0,0,0"                        
                        local:TreeColumnBinding.Target="{x:Static TextBlock.TextProperty}"/>
         </StackPanel>
 

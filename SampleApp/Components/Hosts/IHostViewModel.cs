@@ -48,6 +48,16 @@ namespace SampleApp.Components.Hosts
         HostOptions HostOptions { get; set; }
 
         /// <summary>
+        /// options count
+        /// </summary>
+        int OptionsCount { get; }
+
+        /// <summary>
+        /// services count
+        /// </summary>
+        int ServicesCount { get; }
+
+        /// <summary>
         /// hosts
         /// </summary>
         BindingList<IHostViewModel> Childs { get; }

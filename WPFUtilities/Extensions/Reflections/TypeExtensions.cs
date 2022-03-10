@@ -10,6 +10,13 @@ namespace WPFUtilities.Extensions.Reflections
     public static class TypeExtensions
     {
         /// <summary>
+        /// default binding scopes
+        /// </summary>
+        public const BindingFlags DefaultScopeBindingFlags =
+            BindingFlags.Public | BindingFlags.NonPublic
+            | BindingFlags.Instance | BindingFlags.Static;
+
+        /// <summary>
         /// try to gives the value of the field of an object, whether it is public,protected or private
         /// </summary>
         /// <typeparam name="T">expected value type</typeparam>
@@ -23,7 +30,7 @@ namespace WPFUtilities.Extensions.Reflections
             if (obj == null) return false;
 
             var fieldInfo = obj.GetType().GetField(fieldName,
-                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                DefaultScopeBindingFlags);
             if (fieldInfo == null) return false;
 
             fieldValue = (T)fieldInfo.GetValue(obj);
@@ -43,7 +50,7 @@ namespace WPFUtilities.Extensions.Reflections
             if (obj == null) return result;
 
             var methodInfo = obj.GetType().GetMethod(methodName,
-                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                DefaultScopeBindingFlags);
             if (methodInfo == null) return result;
 
             result = (T)methodInfo.Invoke(obj, parameters);
@@ -63,7 +70,7 @@ namespace WPFUtilities.Extensions.Reflections
             if (obj == null) return fieldValue;
 
             var fieldInfo = obj.GetType().GetField(fieldName,
-                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                DefaultScopeBindingFlags);
             if (fieldInfo == null) return fieldValue;
 
             fieldValue = (T)fieldInfo.GetValue(obj);
@@ -78,7 +85,7 @@ namespace WPFUtilities.Extensions.Reflections
         /// <returns>true if has field</returns>
         public static bool HasField(this object obj, string fieldName)
             => obj.GetType().GetField(fieldName,
-                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
+                DefaultScopeBindingFlags)
                 != null;
 
         /// <summary>
@@ -89,7 +96,7 @@ namespace WPFUtilities.Extensions.Reflections
         /// <returns>true if has property</returns>
         public static bool HasProperty(this object obj, string propertyName)
             => obj.GetType().GetProperty(propertyName,
-                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static)
+                DefaultScopeBindingFlags)
                 != null;
 
         /// <summary>
@@ -106,7 +113,7 @@ namespace WPFUtilities.Extensions.Reflections
             if (obj == null) return false;
 
             var propInfo = obj.GetType().GetProperty(propertyName,
-                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                DefaultScopeBindingFlags);
             if (propInfo == null) return false;
 
             propertyValue = (T)propInfo.GetValue(obj);
@@ -126,7 +133,7 @@ namespace WPFUtilities.Extensions.Reflections
             if (obj == null) return propertyValue;
 
             var propInfo = obj.GetType().GetProperty(propertyName,
-                BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                DefaultScopeBindingFlags);
             if (propInfo == null) return propertyValue;
 
             propertyValue = (T)propInfo.GetValue(obj);

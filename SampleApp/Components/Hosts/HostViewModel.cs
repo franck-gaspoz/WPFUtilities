@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -19,6 +20,7 @@ namespace SampleApp.Components.Hosts
     /// <summary>
     /// hosts view model
     /// </summary>
+    [DebuggerDisplay("{ComponentHost}")]
     public class HostViewModel :
         ModelBase,
         IHostViewModel,
@@ -207,6 +209,12 @@ namespace SampleApp.Components.Hosts
                 + ScopeLoggers.Count();
         }
 
+        /// <inheritdoc/>
+        public int OptionsCount { get; protected set; } = 0;
+
+        /// <inheritdoc/>
+        public int ServicesCount { get; protected set; } = 0;
+
         /// <summary>
         /// loggers informations
         /// </summary>
@@ -233,8 +241,20 @@ namespace SampleApp.Components.Hosts
             Level = level;
             this.ParentViewModel = parentViewModel;
 
+            if (host.Host != null
+                && host.Host.Services.GetMember<object>("_realizedServices", out var services))
+            {
+                var ms = services.GetType().GetMembers(TypeExtensions.DefaultScopeBindingFlags);
+                var keys = services.InvokeMethod<IReadOnlyCollection<Type>>("get_Keys");
+                ServicesCount = keys.Count;
+            }
+
             if (host.Host.GetField<HostOptions>("_options", out var options))
+            {
                 HostOptions = options;
+                OptionsCount = 2;
+            }
+
             if (host.Host.GetField<ILogger>("_logger", out var logger))
             {
                 HostLogger = logger;
@@ -254,9 +274,9 @@ namespace SampleApp.Components.Hosts
                     if (_logger.GetMember<object>("ScopeLoggers", out var scopeLoggerInformationArray))
                         Add(scopeLoggerInformationArray, AddScopeLogger);
                 }
+                HostLoggerDescription =
+                    string.Join(Environment.NewLine, GetHostLoggerDescription());
             }
-            HostLoggerDescription =
-                string.Join(Environment.NewLine, GetHostLoggerDescription());
             return this;
         }
 

@@ -13,7 +13,7 @@
              service:DataContext.IsAuto="True"
              mc:Ignorable="d" 
              d:DesignHeight="71"
-             d:DesignWidth="356.818">
+             d:DesignWidth="654.818">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -29,7 +29,19 @@
                 <DataGridTemplateColumn Header="Host" />
                 <DataGridTextColumn Header="Loggers" 
                                     Binding="{Binding LoggersCount}"/>
-                <DataGridTextColumn Header="Options" Binding="{Binding HostOptions}"/>
+                <DataGridTextColumn Header="Options" Binding="{Binding OptionsCount}"/>
+                <DataGridTextColumn                                   
+                                    Binding="{Binding HostOptions.BackgroundServiceExceptionBehavior}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Background service exception behavior"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   Height="32px"
+                                   Width="112px"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Shutdown timeout" Binding="{Binding HostOptions.ShutdownTimeout}"/>
+                <DataGridTextColumn Header="Services" Binding="{Binding ServicesCount}"/>
             </DataGrid.Columns>
         </DataGrid>
         
