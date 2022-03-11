@@ -14,6 +14,7 @@ using SampleApp.Components.Data.Tree;
 using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Extensions.Reflections;
+using WPFUtilities.Extensions.Threading;
 
 namespace SampleApp.Components.Hosts
 {
@@ -241,42 +242,49 @@ namespace SampleApp.Components.Hosts
             Level = level;
             this.ParentViewModel = parentViewModel;
 
-            if (host.Host != null
-                && host.Host.Services.GetMember<object>("_realizedServices", out var services))
-            {
-                var ms = services.GetType().GetMembers(TypeExtensions.DefaultScopeBindingFlags);
-                var keys = services.InvokeMethod<IReadOnlyCollection<Type>>("get_Keys");
-                ServicesCount = keys.Count;
-            }
-
-            if (host.Host.GetField<HostOptions>("_options", out var options))
-            {
-                HostOptions = options;
-                OptionsCount = 2;
-            }
-
-            if (host.Host.GetField<ILogger>("_logger", out var logger))
-            {
-                HostLogger = logger;
-                if (HostLogger.GetMember<object>("_logger", out var _logger))
+            host.OnNotNull<IHost>(
+                "Host",
+                (_host) =>
                 {
-                    void Add(object array, Action<object> handleObject)
+                    if (_host.Services.GetMember<object>("_realizedServices", out var services))
                     {
-                        var enumerator = array.InvokeMethod<IEnumerator>("GetEnumerator");
-                        while (enumerator.MoveNext())
-                            handleObject(enumerator.Current);
+                        var ms = services.GetType().GetMembers(TypeExtensions.DefaultScopeBindingFlags);
+                        var keys = services.InvokeMethod<IReadOnlyCollection<Type>>("get_Keys");
+                        ServicesCount = keys.Count;
                     }
 
-                    if (_logger.GetMember<object>("Loggers", out var loggerInformationArray))
-                        Add(loggerInformationArray, AddLoggerInformation);
-                    if (_logger.GetMember<object>("MessageLoggers", out var messageLoggerArray))
-                        Add(messageLoggerArray, AddMessageLogger);
-                    if (_logger.GetMember<object>("ScopeLoggers", out var scopeLoggerInformationArray))
-                        Add(scopeLoggerInformationArray, AddScopeLogger);
+                    if (_host.GetField<HostOptions>("_options", out var options))
+                    {
+                        HostOptions = options;
+                        OptionsCount = 2;
+                    }
+
+                    if (_host.GetField<ILogger>("_logger", out var logger))
+                    {
+                        HostLogger = logger;
+                        if (HostLogger.GetMember<object>("_logger", out var _logger))
+                        {
+                            void Add(object array, Action<object> handleObject)
+                            {
+                                var enumerator = array.InvokeMethod<IEnumerator>("GetEnumerator");
+                                while (enumerator.MoveNext())
+                                    handleObject(enumerator.Current);
+                            }
+
+                            if (_logger.GetMember<object>("Loggers", out var loggerInformationArray))
+                                Add(loggerInformationArray, AddLoggerInformation);
+                            if (_logger.GetMember<object>("MessageLoggers", out var messageLoggerArray))
+                                Add(messageLoggerArray, AddMessageLogger);
+                            if (_logger.GetMember<object>("ScopeLoggers", out var scopeLoggerInformationArray))
+                                Add(scopeLoggerInformationArray, AddScopeLogger);
+                        }
+                        HostLoggerDescription =
+                            string.Join(Environment.NewLine, GetHostLoggerDescription());
+                    }
+
                 }
-                HostLoggerDescription =
-                    string.Join(Environment.NewLine, GetHostLoggerDescription());
-            }
+                );
+
             return this;
         }
 

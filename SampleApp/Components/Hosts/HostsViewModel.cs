@@ -47,7 +47,6 @@ namespace SampleApp.Components.Hosts
 
             appHost.ChildHostsCollectionChangedEvent += (o, e) =>
             {
-                SetupHosts(appHost);
             };
             SetupHosts(appHost);
         }

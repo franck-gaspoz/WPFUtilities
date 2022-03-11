@@ -263,6 +263,7 @@
     <Compile Include="Extensions\Application\ApplicationExtensions.cs" />
     <Compile Include="Extensions\Reflections\TypeExtensions.cs" />
     <Compile Include="Extensions\Host\IHostBuilderContextExtensions.cs" />
+    <Compile Include="Extensions\Threading\ThreadExtensions.cs" />
     <Compile Include="Helpers\PropertyPathHelper.cs" />
     <Compile Include="Helpers\UIHelper.cs" />
     <Compile Include="Components\Application\ApplicationViewModelBase.cs" />

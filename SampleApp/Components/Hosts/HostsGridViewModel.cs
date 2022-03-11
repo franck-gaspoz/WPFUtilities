@@ -22,19 +22,6 @@ namespace SampleApp.Components.Hosts
             _hostsViewModel = hostsViewModel;
 
             Initialize();
-
-            /*_hostsViewModel.Hosts.ListChanged += (o, e) =>
-            {
-                switch (e.ListChangedType)
-                {
-                    case ListChangedType.Reset:
-                        Initialize();
-                        break;
-                    case ListChangedType.ItemAdded:
-                        GetHost(_hostsViewModel.Hosts[e.NewIndex]);
-                        break;
-                }
-            };*/
         }
 
         void Initialize()
