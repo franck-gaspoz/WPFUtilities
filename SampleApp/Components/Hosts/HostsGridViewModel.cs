@@ -36,24 +36,26 @@ namespace SampleApp.Components.Hosts
             {
                 GetHost(host);
                 GetHosts(host.Childs);
-                host.Childs.ListChanged += (o, e) =>
-                {
-                    switch (e.ListChangedType)
-                    {
-                        case ListChangedType.Reset:
-                            Initialize();
-                            break;
-                        case ListChangedType.ItemAdded:
-                            GetHost(host.Childs[e.NewIndex]);
-                            break;
-                    }
-                };
             }
         }
 
         void GetHost(IHostViewModel host)
         {
+            void ChildHosts_ListChanged(object o, ListChangedEventArgs e)
+            {
+                switch (e.ListChangedType)
+                {
+                    case ListChangedType.Reset:
+                        Initialize();
+                        break;
+                    case ListChangedType.ItemAdded:
+                        GetHost(host.Childs[e.NewIndex]);
+                        break;
+                }
+            }
+
             Items.Add(host);
+            host.Childs.ListChanged += ChildHosts_ListChanged;
         }
     }
 }

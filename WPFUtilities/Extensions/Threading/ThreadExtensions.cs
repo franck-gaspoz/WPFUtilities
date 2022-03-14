@@ -17,6 +17,11 @@ namespace WPFUtilities.Extensions.Threading
         public const int DefaultMaxRetryCount = 3;
 
         /// <summary>
+        /// default wait time before trigger action
+        /// </summary>
+        public const int DefaultWaitTimeBeforeTriggerAction = 10000;
+
+        /// <summary>
         /// default sleep delay ms
         /// </summary>
         public const int DefaultSleepDelay = 200;
@@ -30,11 +35,15 @@ namespace WPFUtilities.Extensions.Threading
         /// <param name="memberName">source member</param>
         /// <param name="action">action to trigger</param>
         /// <param name="maxRetryCount">max retry count (default DefaultMaxRetryCount)</param>
+        /// <param name="waitBeforeTriggerAction">if true wait 'waitTimeBeforeTriggerAction' ms before trigger action</param>
+        /// <param name="waitTimeBeforeTriggerAction">time to wait before triggera action if wait is enabled</param>
         public static void OnNotNull<T>(
             this object source,
             string memberName,
             Action<T> action,
-            int maxRetryCount = DefaultMaxRetryCount)
+            int maxRetryCount = DefaultMaxRetryCount,
+            bool waitBeforeTriggerAction = false,
+            int waitTimeBeforeTriggerAction = DefaultWaitTimeBeforeTriggerAction)
         {
             if (source == null) return;
             var value = source.GetMember<object>(memberName);
@@ -49,7 +58,14 @@ namespace WPFUtilities.Extensions.Threading
             }
             else
             {
-                action((T)value);
+                if (waitBeforeTriggerAction)
+                    Task.Run(() =>
+                    {
+                        Thread.Sleep(DefaultWaitTimeBeforeTriggerAction);
+                        action((T)value);
+                    });
+                else
+                    action((T)value);
             }
         }
     }

@@ -133,16 +133,10 @@ namespace WPFUtilities.Components.ServiceComponent
         void Initialize()
         {
             ChildHosts = new BindingList<IComponentHost>();
-            ChildHosts.ListChanged += (o, e) => OnChildHostsChanged();
             Services = new ServiceComponentProvider(this);
             HostBuilder = mshosting.Host.CreateDefaultBuilder();
             HostBuilder.ConfigureServices((context, services) => ConfigureServices(context, services));
             HostBuilder.ConfigureLogging((context, loggingBuilder) => ConfigureLogging(context, loggingBuilder));
-        }
-
-        private void ChildHosts_ListChanged(object sender, ListChangedEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         /// <inheritdoc/>

@@ -210,26 +210,44 @@ namespace SampleApp.Components.Hosts
                 + ScopeLoggers.Count();
         }
 
+        int _optionsCount = 0;
         /// <inheritdoc/>
-        public int OptionsCount { get; protected set; } = 0;
+        public int OptionsCount
+        {
+            get => _optionsCount;
+            protected set
+            {
+                _optionsCount = value;
+                NotifyPropertyChanged();
+            }
+        }
 
+        int _servicesCount = 0;
         /// <inheritdoc/>
-        public int ServicesCount { get; protected set; } = 0;
+        public int ServicesCount
+        {
+            get => _servicesCount;
+            protected set
+            {
+                _servicesCount = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// loggers informations
         /// </summary>
-        public List<object> LoggerInformations = new List<object>();
+        public BindingList<object> LoggerInformations = new BindingList<object>();
 
         /// <summary>
         /// message loggers
         /// </summary>
-        public List<object> MessageLoggers = new List<object>();
+        public BindingList<object> MessageLoggers = new BindingList<object>();
 
         /// <summary>
         /// scope loggers
         /// </summary>
-        public List<object> ScopeLoggers = new List<object>();
+        public BindingList<object> ScopeLoggers = new BindingList<object>();
 
         /// <inheritdoc/>
         public IHostViewModel Initialize(
@@ -272,18 +290,25 @@ namespace SampleApp.Components.Hosts
                             }
 
                             if (_logger.GetMember<object>("Loggers", out var loggerInformationArray))
+                            {
                                 Add(loggerInformationArray, AddLoggerInformation);
+                                NotifyPropertyChanged(nameof(LoggersCount));
+                            }
                             if (_logger.GetMember<object>("MessageLoggers", out var messageLoggerArray))
+                            {
                                 Add(messageLoggerArray, AddMessageLogger);
+                                NotifyPropertyChanged(nameof(LoggersCount));
+                            }
                             if (_logger.GetMember<object>("ScopeLoggers", out var scopeLoggerInformationArray))
+                            {
                                 Add(scopeLoggerInformationArray, AddScopeLogger);
+                                NotifyPropertyChanged(nameof(LoggersCount));
+                            }
                         }
                         HostLoggerDescription =
                             string.Join(Environment.NewLine, GetHostLoggerDescription());
                     }
-
-                }
-                );
+                });
 
             return this;
         }
@@ -299,9 +324,9 @@ namespace SampleApp.Components.Hosts
 
             var t = new (string key, List<object> values)[]
             {
-                ("logger informations:",LoggerInformations),
-                ("message loggers:",MessageLoggers),
-                ("scope loggers:",ScopeLoggers)
+                ("logger informations:",LoggerInformations.ToList()),
+                ("message loggers:",MessageLoggers.ToList()),
+                ("scope loggers:",ScopeLoggers.ToList())
             };
             foreach (var t2 in t)
             {
