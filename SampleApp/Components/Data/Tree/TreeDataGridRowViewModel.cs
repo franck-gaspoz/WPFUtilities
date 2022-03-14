@@ -30,7 +30,7 @@ namespace SampleApp.Components.Data.Tree
             }
         }
 
-        bool _isExpanded = false;
+        bool _isExpanded = true;
         /// <inheritdoc/>
         public bool IsExpanded
         {
@@ -48,7 +48,7 @@ namespace SampleApp.Components.Data.Tree
         /// <inheritdoc/>
         public int ChildsCount => Childs?.Count ?? 0;
 
-        /// <inheritdoc/>s
+        /// <inheritdoc/>
         public bool IsFolded
         {
             get

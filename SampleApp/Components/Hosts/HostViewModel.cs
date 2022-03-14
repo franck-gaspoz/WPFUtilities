@@ -27,6 +27,14 @@ namespace SampleApp.Components.Hosts
         IHostViewModel,
         ITreeDataGridRowViewModel<IHostViewModel>
     {
+        public HostViewModel()
+        {
+            Childs.ListChanged += (o, e) =>
+            {
+                NotifyPropertyChanged(nameof(ChildsCount));
+            };
+        }
+
         #region tree properties
 
         int _level = 0;

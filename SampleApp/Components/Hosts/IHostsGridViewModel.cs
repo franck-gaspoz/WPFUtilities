@@ -13,5 +13,7 @@ namespace SampleApp.Components.Hosts
         /// items
         /// </summary>
         BindingList<IHostViewModel> Items { get; }
+
+        IHostViewModel SelectedItem { get; set; }
     }
 }

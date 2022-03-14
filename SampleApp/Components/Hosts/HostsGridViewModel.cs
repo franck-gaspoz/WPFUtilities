@@ -13,6 +13,17 @@ namespace SampleApp.Components.Hosts
         public BindingList<IHostViewModel> Items { get; }
             = new BindingList<IHostViewModel>();
 
+        IHostViewModel _selectedItem;
+        public IHostViewModel SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                _selectedItem = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         IHostsViewModel _hostsViewModel;
 
         public HostsGridViewModel(
@@ -33,10 +44,7 @@ namespace SampleApp.Components.Hosts
         void GetHosts(IEnumerable<IHostViewModel> hosts)
         {
             foreach (var host in hosts)
-            {
                 GetHost(host);
-                GetHosts(host.Childs);
-            }
         }
 
         void GetHost(IHostViewModel host)
@@ -49,13 +57,17 @@ namespace SampleApp.Components.Hosts
                         Initialize();
                         break;
                     case ListChangedType.ItemAdded:
-                        GetHost(host.Childs[e.NewIndex]);
+                        var child = host.Childs[e.NewIndex];
+                        System.Diagnostics.Debug.WriteLine($" -2-> {host} == {host.ComponentHost.Name} > {child.ComponentHost.Name}");
+                        GetHost(child);
                         break;
                 }
             }
 
             Items.Add(host);
+            System.Diagnostics.Debug.WriteLine($"-1-> {host} == {host.ComponentHost.Name}");
             host.Childs.ListChanged += ChildHosts_ListChanged;
+            GetHosts(host.Childs);
         }
     }
 }

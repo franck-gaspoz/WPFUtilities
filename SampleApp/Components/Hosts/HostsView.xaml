@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:SampleApp.Components.Hosts"
              xmlns:tree="clr-namespace:SampleApp.Components.Data.Tree"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
-             d:DataContext="{d:DesignInstance Type=local:HostsViewModel}" 
+             d:DataContext="{d:DesignInstance Type=local:HostsGridViewModel}" 
              xmlns:commands="clr-namespace:SampleApp.Commands"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
@@ -21,8 +21,10 @@
         </Grid.RowDefinitions>
 
         <DataGrid ItemsSource="{Binding Items}"
+                  
                   service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}"
                   Grid.Row="1"
+                  SelectedItem="{Binding SelectedItem}"
                   ui:DataGrid.TreeColumnPath="Name"
                   ui:DataGrid.SetTreeColumn="Host">
             <DataGrid.Columns>
