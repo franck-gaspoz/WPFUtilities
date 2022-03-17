@@ -98,11 +98,26 @@ namespace WPFUtilities.Extensions.DependencyObjects
             {
                 return fun();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex);
                 return default(T);
             }
         }
+
+        /// <summary>
+        /// fallback dependency property
+        /// </summary>
+        public static readonly DependencyProperty FallBackProperty =
+            DependencyObjectExtensions.Register(
+                "FallBackProperty",
+                typeof(object),
+                typeof(DependencyObjectExtensions),
+                new UIPropertyMetadata(null));
+
+        static DependencyProperty Try(Func<DependencyProperty> fun)
+            => Try<DependencyProperty>(fun)
+                ?? FallBackProperty;
 
         /// <summary>
         /// register a dependency property
