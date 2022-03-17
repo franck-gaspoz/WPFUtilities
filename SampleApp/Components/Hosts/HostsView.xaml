@@ -12,7 +12,7 @@
              service:DataContext.IsAuto="True"
              mc:Ignorable="d" 
              d:DesignHeight="71"
-             d:DesignWidth="654.818">
+             d:DesignWidth="480.818">
     <Grid>
 
         <DataGrid ItemsSource="{Binding Items}"                  

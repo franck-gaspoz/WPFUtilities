@@ -52,7 +52,7 @@ namespace SampleApp.Components.Hosts
             }
         }
 
-        bool _isExpanded = false;
+        bool _isExpanded = true;
         /// <inheritdoc/>
         public bool IsExpanded
         {
@@ -89,10 +89,8 @@ namespace SampleApp.Components.Hosts
         /// <inheritdoc/>
         public IHostViewModel ParentViewModel
         {
-            get
-            {
-                return _parentViewModel;
-            }
+            get => _parentViewModel;
+
             set
             {
                 if (_parentViewModel != null)
