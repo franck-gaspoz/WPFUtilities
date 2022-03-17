@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using SampleApp.Components.ComponentHosts.Mediators;
 using SampleApp.Components.Data.KeyValue;
 using SampleApp.Components.Hosts;
 
@@ -29,7 +28,6 @@ namespace SampleApp.Components.ComponentHosts
             services
                 .AddSingleton<IComponentHostsViewModel, ComponentHostsViewModel>()
                 .AddSingleton<IKeyValueViewModel, KeyValueViewModel>()
-                .AddSingleton<DataProviderMediator>()
                 .AddSingleton<HostsComponent>();
 
             services.Services
@@ -53,7 +51,6 @@ namespace SampleApp.Components.ComponentHosts
         {
             base.Build();
             _ = this.ComponentHost.Services.GetRequiredService<IKeyValueViewModel>();
-            _ = this.ComponentHost.Services.GetRequiredService<DataProviderMediator>();
         }
     }
 }

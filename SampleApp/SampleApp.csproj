@@ -134,7 +134,6 @@
       <DependentUpon>ComponentHostsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\ComponentHosts\ComponentHostsViewModel.cs" />
-    <Compile Include="Components\ComponentHosts\Mediators\DataProviderMediator.cs" />
     <Compile Include="Components\Debug\TestCommand.cs" />
     <Compile Include="Components\Main\OnMainWindowShownCommand.cs" />
     <Compile Include="Components\About\AboutWindow.xaml.cs">
