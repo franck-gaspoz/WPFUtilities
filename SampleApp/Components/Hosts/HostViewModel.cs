@@ -21,7 +21,7 @@ namespace SampleApp.Components.Hosts
     /// <summary>
     /// hosts view model
     /// </summary>
-    [DebuggerDisplay("{ComponentHost}")]
+    [DebuggerDisplay("HostViewModel: component host = {ComponentHost}")]
     public class HostViewModel :
         ModelBase,
         IHostViewModel,

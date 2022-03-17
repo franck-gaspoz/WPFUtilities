@@ -10,7 +10,7 @@ namespace SampleApp.Components.Hosts
     /// <summary>
     /// hosts view model
     /// </summary>
-    [DebuggerDisplay("{Label}")]
+    [DebuggerDisplay("HostsViewModel: childs count = {Hosts.Count}")]
     public class HostsViewModel : ModelBase, IHostsViewModel
     {
         string _label = null;
