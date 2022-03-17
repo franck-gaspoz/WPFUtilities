@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 using WPFUtilities.Commands.Abstract;
 
-namespace SampleApp.Commands
+namespace SampleApp.Components.Main
 {
     /// <summary>
     /// on application init command callback

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using SampleApp.Commands;
 using SampleApp.Components.Loggers;
 using SampleApp.Components.Logging;
 using SampleApp.Components.Settings;

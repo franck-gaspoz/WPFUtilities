@@ -7,7 +7,6 @@
              xmlns:tree="clr-namespace:SampleApp.Components.Data.Tree"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              d:DataContext="{d:DesignInstance Type=local:HostsGridViewModel}" 
-             xmlns:commands="clr-namespace:SampleApp.Commands"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
              service:DataContext.IsAuto="True"

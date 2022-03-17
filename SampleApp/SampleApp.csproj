@@ -128,8 +128,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\TestCommand.cs" />
-    <Compile Include="Commands\OnMainWindowShownCommand.cs" />
+    <Compile Include="Components\Debug\TestCommand.cs" />
+    <Compile Include="Components\Main\OnMainWindowShownCommand.cs" />
     <Compile Include="Components\About\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>

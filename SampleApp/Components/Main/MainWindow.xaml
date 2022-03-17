@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:commands="clr-namespace:SampleApp.Commands"
         xmlns:wui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
         xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
         xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
@@ -22,7 +21,7 @@
         Height="670" 
         Width="1162"        
         service:DataContext.IsAuto="True"
-        ui:Window.OnDisplayCommand="{x:Type commands:OnMainWindowShownCommand}"
+        ui:Window.OnDisplayCommand="{x:Type local:OnMainWindowShownCommand}"
         >
 
     <Grid>

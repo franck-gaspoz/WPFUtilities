@@ -5,7 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.Data.Tree"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
-             xmlns:commands="clr-namespace:SampleApp.Commands"
              xmlns:datagrids="clr-namespace:WPFUtilities.Extensions.DataGrids;assembly=WPFUtilities"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
