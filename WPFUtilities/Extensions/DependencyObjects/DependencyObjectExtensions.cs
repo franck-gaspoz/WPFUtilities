@@ -100,7 +100,9 @@ namespace WPFUtilities.Extensions.DependencyObjects
             }
             catch (Exception ex)
             {
+#if DEBUG
                 System.Diagnostics.Debug.WriteLine(ex);
+#endif
                 return default(T);
             }
         }
@@ -112,7 +114,7 @@ namespace WPFUtilities.Extensions.DependencyObjects
             DependencyObjectExtensions.Register(
                 "FallBackProperty",
                 typeof(object),
-                typeof(DependencyObjectExtensions),
+                typeof(DependencyObject),
                 new UIPropertyMetadata(null));
 
         static DependencyProperty Try(Func<DependencyProperty> fun)
