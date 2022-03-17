@@ -1,18 +1,18 @@
-﻿<UserControl x:Class="SampleApp.Components.Loggers.LoggersView"
+﻿<UserControl x:Class="SampleApp.Components.ComponentHosts.ComponentHostsView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SampleApp.Components.Loggers"
+             xmlns:local="clr-namespace:SampleApp.Components.ComponentHosts"
              xmlns:data="clr-namespace:SampleApp.Components.Data.KeyValue"
              xmlns:hosts="clr-namespace:SampleApp.Components.Hosts"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance Type=local:LoggersViewModel}"
+             d:DataContext="{d:DesignInstance Type=local:ComponentHostsViewModel}"
              d:DesignHeight="401.796" 
-             d:DesignWidth="476.875"
+             d:DesignWidth="499.944"
              >
     <Grid Margin="{DynamicResource Margin_Default}">
         <Grid.RowDefinitions>
@@ -22,6 +22,8 @@
 
         <Grid>
 
+            <!-- hosts tree grid -->
+            
             <TabControl>
                 <TabItem Header="Hosts">
                     <hosts:HostsView
@@ -35,6 +37,9 @@
         <Grid Grid.Row="1"
               Margin="0,4,0,0"
               >
+            
+            <!-- a key/value panel -->
+            
             <TabControl>
                 <TabItem Header="Data">
                     <data:KeyValueView 

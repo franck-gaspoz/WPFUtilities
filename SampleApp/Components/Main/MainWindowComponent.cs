@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using SampleApp.Components.Loggers;
+using SampleApp.Components.ComponentHosts;
 using SampleApp.Components.Logging;
 using SampleApp.Components.Settings;
 
@@ -52,7 +52,7 @@ namespace SampleApp.Components.Main
                     .AddSingleton<ApplicationLogComponent>()
                     .AddSingleton<WindowLogComponent>()
                     .AddSingleton<SettingsComponent>()
-                    .AddSingleton<LoggersComponent>();
+                    .AddSingleton<ComponentHostsComponent>();
 
             // 'window' scopped logger
 

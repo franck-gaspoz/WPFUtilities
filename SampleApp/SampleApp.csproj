@@ -60,6 +60,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Components\ComponentHosts\ComponentHostsView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Components\Data\Tree\TreeDataGridStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,10 +75,6 @@
     <Page Include="Components\Hosts\HostsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Components\Loggers\LoggersView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Components\Data\KeyValue\KeyValueView.xaml">
       <SubType>Designer</SubType>
@@ -128,6 +128,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Components\ComponentHosts\IComponentHostsViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\ComponentHostsComponent.cs" />
+    <Compile Include="Components\ComponentHosts\ComponentHostsView.xaml.cs">
+      <DependentUpon>ComponentHostsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ComponentHosts\ComponentHostsViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Mediators\DataProviderMediator.cs" />
     <Compile Include="Components\Debug\TestCommand.cs" />
     <Compile Include="Components\Main\OnMainWindowShownCommand.cs" />
     <Compile Include="Components\About\AboutWindow.xaml.cs">
@@ -150,13 +157,6 @@
     <Compile Include="Components\Hosts\IHostsGridViewModel.cs" />
     <Compile Include="Components\Hosts\IHostsViewModel.cs" />
     <Compile Include="Components\Hosts\IHostViewModel.cs" />
-    <Compile Include="Components\Loggers\ILoggersViewModel.cs" />
-    <Compile Include="Components\Loggers\Mediators\DataProviderMediator.cs" />
-    <Compile Include="Components\Loggers\LoggersComponent.cs" />
-    <Compile Include="Components\Loggers\LoggersView.xaml.cs">
-      <DependentUpon>LoggersView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\Loggers\LoggersViewModel.cs" />
     <Compile Include="Components\Logging\WindowLogComponent.cs" />
     <Compile Include="Components\Logging\ILogViewModel.cs" />
     <Compile Include="Components\Logging\ApplicationLogComponent.cs" />

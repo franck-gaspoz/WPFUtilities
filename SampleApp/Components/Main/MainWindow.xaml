@@ -11,7 +11,7 @@
         xmlns:local="clr-namespace:SampleApp.Components.Main"
         xmlns:logging="clr-namespace:SampleApp.Components.Logging"
         xmlns:settings="clr-namespace:SampleApp.Components.Settings"
-        xmlns:loggers="clr-namespace:SampleApp.Components.Loggers"
+        xmlns:hosts="clr-namespace:SampleApp.Components.ComponentHosts"
         d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="{Binding Title,FallbackValue=title}" 
@@ -51,9 +51,12 @@
                                            service:DataContext.IsAuto="True"/>
                 </TabItem>
 
-                <TabItem Header="Loggers" IsSelected="True">
-                    <loggers:LoggersView service:Component.Type="{x:Type loggers:LoggersComponent}" 
-                                         service:DataContext.IsAuto="True"/>
+                <TabItem Header="Hosts" IsSelected="True">
+                    
+                    <hosts:ComponentHostsView 
+                        service:Component.Type="{x:Type hosts:ComponentHostsComponent}" 
+                        service:DataContext.IsAuto="True"/>
+                    
                 </TabItem>
 
                 <TabItem Header="Model validation" IsEnabled="False">
