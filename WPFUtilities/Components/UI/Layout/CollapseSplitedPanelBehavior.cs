@@ -3,6 +3,7 @@ using System.Windows.Controls;
 
 using Microsoft.Xaml.Behaviors;
 
+using WPFUtilities.Extensions.DependencyObjects;
 using WPFUtilities.Helpers;
 
 namespace WPFUtilities.Components.UI
@@ -46,7 +47,7 @@ namespace WPFUtilities.Components.UI
         /// default length property
         /// </summary>
         public static readonly DependencyProperty DefaultLengthProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "DefaultLength",
                 typeof(double),
                 typeof(CollapseSplitedPanelBehavior),
@@ -85,7 +86,7 @@ namespace WPFUtilities.Components.UI
         /// length property
         /// </summary>
         public static readonly DependencyProperty LengthProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "Length",
                 typeof(double),
                 typeof(CollapseSplitedPanelBehavior),
@@ -124,7 +125,7 @@ namespace WPFUtilities.Components.UI
         /// row property
         /// </summary>
         public static readonly DependencyProperty RowProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "Row",
                 typeof(int),
                 typeof(CollapseSplitedPanelBehavior),
@@ -163,7 +164,7 @@ namespace WPFUtilities.Components.UI
         /// column property
         /// </summary>
         public static readonly DependencyProperty ColProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "Col",
                 typeof(int),
                 typeof(CollapseSplitedPanelBehavior),
@@ -203,7 +204,7 @@ namespace WPFUtilities.Components.UI
         /// is collapsed
         /// </summary>
         public static readonly DependencyProperty IsCollapsedProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "IsCollapsed",
                 typeof(bool),
                 typeof(CollapseSplitedPanelBehavior),

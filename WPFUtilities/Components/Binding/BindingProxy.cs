@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace WPFUtilities.Components.Bindings
 {
     /// <summary>
@@ -30,7 +32,7 @@ namespace WPFUtilities.Components.Bindings
         /// data property
         /// </summary>
         public static readonly DependencyProperty DataProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "Data",
                 typeof(object),
                 typeof(BindingProxy),

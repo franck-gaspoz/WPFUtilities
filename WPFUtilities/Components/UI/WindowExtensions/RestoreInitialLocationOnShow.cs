@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 using win = System.Windows;
 
 namespace WPFUtilities.Components.UI
@@ -29,7 +31,7 @@ namespace WPFUtilities.Components.UI
         /// restore initial location on show property
         /// </summary>
         public static readonly DependencyProperty RestoreInitialLocationOnShowProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "RestoreInitialLocationOnShow",
                 typeof(bool),
                 typeof(win.Window),

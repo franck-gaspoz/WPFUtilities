@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
+using WPFUtilities.Extensions.DependencyObjects;
 using WPFUtilities.Extensions.Services;
 
 namespace WPFUtilities.Components.UI.ScrollingExtensions
@@ -35,7 +36,7 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
         /// scroll viewer touch view properties
         /// </summary>
         public static readonly DependencyProperty ScrollViewerTouchViewPropertiesProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "ScrollViewerTouchViewProperties",
                 typeof(IScrollViewerTouchViewProperties),
                 typeof(ScrollViewer),
@@ -65,7 +66,7 @@ namespace WPFUtilities.Components.UI.ScrollingExtensions
         /// scroll viewer touch is enabled
         /// </summary>
         public static readonly DependencyProperty ScrollViewerTouchIsEnabledProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "ScrollViewerTouchIsEnabled",
                 typeof(bool),
                 typeof(ScrollViewer),

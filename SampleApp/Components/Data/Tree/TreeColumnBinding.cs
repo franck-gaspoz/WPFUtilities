@@ -33,7 +33,7 @@ namespace SampleApp.Components.Data.Tree
         /// DependencyProperty property
         /// </summary>
         public static readonly DependencyProperty TargetProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "Target",
                 typeof(DependencyProperty),
                 typeof(DependencyObject),

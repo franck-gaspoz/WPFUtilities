@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace WPFUtilities.Components.Services.Properties
 {
     public static partial class Command
@@ -22,11 +24,11 @@ namespace WPFUtilities.Components.Services.Properties
         /// command parameter 4 dependency property
         /// </summary>
         public static readonly DependencyProperty Param4Property =
-                DependencyProperty.RegisterAttached(
-                    "Param4",
-                    typeof(object),
-                    typeof(Command),
-                    new PropertyMetadata((object)UnsetPropertyValue));
+            DependencyObjectExtensions.RegisterAttached(
+                "Param4",
+                typeof(object),
+                typeof(Command),
+                new PropertyMetadata((object)UnsetPropertyValue));
 
         #endregion
 

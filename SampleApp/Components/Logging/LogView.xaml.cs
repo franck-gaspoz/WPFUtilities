@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace SampleApp.Components.Logging
 {
     /// <summary>
@@ -15,7 +17,10 @@ namespace SampleApp.Components.Logging
         }
 
         public static readonly DependencyProperty TitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(LogView), new PropertyMetadata("LogView title"));
+            DependencyObjectExtensions.Register(
+                "Title", typeof(string),
+                typeof(LogView),
+                new PropertyMetadata("LogView title"));
 
         /// <summary>
         /// creates a new instance

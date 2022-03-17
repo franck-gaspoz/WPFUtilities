@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Data;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace WPFUtilities.Helpers
 {
     /// <summary>
@@ -30,7 +32,7 @@ namespace WPFUtilities.Helpers
         private class Dummy : DependencyObject
         {
             public static readonly DependencyProperty ValueProperty =
-                DependencyProperty.Register(
+                DependencyObjectExtensions.Register(
                     "Value",
                     typeof(object),
                     typeof(Dummy),

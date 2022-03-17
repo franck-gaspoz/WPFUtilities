@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 
+using WPFUtilities.Extensions.DependencyObjects;
 using WPFUtilities.Extensions.Services;
 
 using win = System.Windows;
@@ -34,7 +35,7 @@ namespace WPFUtilities.Components.UI
         /// OnDisplayCommand property
         /// </summary>
         public static readonly DependencyProperty OnDisplayCommandProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "OnDisplayCommand",
                 typeof(Type),
                 typeof(win.Window),

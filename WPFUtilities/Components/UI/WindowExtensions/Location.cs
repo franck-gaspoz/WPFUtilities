@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 using win = System.Windows;
 
 namespace WPFUtilities.Components.UI
@@ -34,7 +36,7 @@ namespace WPFUtilities.Components.UI
         /// InitialLeft property
         /// </summary>
         public static readonly DependencyProperty InitialLeftProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "InitialLeft",
                 typeof(double),
                 typeof(win.Window),
@@ -62,7 +64,7 @@ namespace WPFUtilities.Components.UI
         /// InitialTop property
         /// </summary>
         public static readonly DependencyProperty InitialTopProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "InitialTop",
                 typeof(double),
                 typeof(win.Window),

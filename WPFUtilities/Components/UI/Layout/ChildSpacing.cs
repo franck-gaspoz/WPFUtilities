@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace WPFUtilities.Components.UI
 {
     /// <summary>
@@ -27,7 +29,7 @@ namespace WPFUtilities.Components.UI
         /// margin property
         /// </summary>
         public static readonly DependencyProperty ChildSpacingProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "ChildSpacing",
                 typeof(double),
                 typeof(Layout),

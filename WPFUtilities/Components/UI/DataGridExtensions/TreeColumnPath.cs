@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 using DataGridControlType = System.Windows.Controls.DataGrid;
 
 namespace WPFUtilities.Components.UI
@@ -31,7 +33,7 @@ namespace WPFUtilities.Components.UI
         /// column path property
         /// </summary>
         public static readonly DependencyProperty TreeColumnPathProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "TreeColumnPath",
                 typeof(string),
                 typeof(DataGridControlType),

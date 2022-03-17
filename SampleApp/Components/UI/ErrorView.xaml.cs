@@ -1,6 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace SampleApp.Components.UI
 {
     /// <summary>
@@ -20,7 +22,7 @@ namespace SampleApp.Components.UI
         }
 
         public static readonly DependencyProperty ErrorProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "Error",
                 typeof(string),
                 typeof(ErrorView),

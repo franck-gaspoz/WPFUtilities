@@ -37,7 +37,7 @@ namespace WPFUtilities.Components.UI
         /// margin property
         /// </summary>
         public static readonly DependencyProperty AppendColumnsProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "AppendColumns",
                 typeof(ObservableCollection<DataGridColumn>),
                 typeof(DataGrid),

@@ -2,6 +2,7 @@
 using System.Windows;
 
 using WPFUtilities.Components.ServiceComponent;
+using WPFUtilities.Extensions.DependencyObjects;
 
 namespace WPFUtilities.Components.Services.Properties
 {
@@ -36,7 +37,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// component host property
         /// </summary>
         public static readonly DependencyProperty ComponentHostProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "ComponentHost",
                 typeof(IComponentHost),
                 typeof(Component),
@@ -70,7 +71,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// component property
         /// </summary>
         public static readonly DependencyProperty TypeProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "Type",
                 typeof(Type),
                 typeof(Component),

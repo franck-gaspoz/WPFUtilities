@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace WPFUtilities.Components.Services.Properties
 {
     /// <summary>
@@ -30,7 +32,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// Value dependency property
         /// </summary>
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "Value",
                 typeof(Scopes),
                 typeof(Scope),

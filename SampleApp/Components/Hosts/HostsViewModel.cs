@@ -13,23 +13,6 @@ namespace SampleApp.Components.Hosts
     [DebuggerDisplay("HostsViewModel: childs count = {Hosts.Count}")]
     public class HostsViewModel : ModelBase, IHostsViewModel
     {
-        string _label = null;
-        /// <summary>
-        /// label
-        /// </summary>
-        public string Label
-        {
-            get
-            {
-                return _label;
-            }
-            set
-            {
-                _label = value;
-                NotifyPropertyChanged();
-            }
-        }
-
         /// <summary>
         /// hosts
         /// </summary>
@@ -56,7 +39,6 @@ namespace SampleApp.Components.Hosts
             Hosts.Clear();
             GetHosts(host);
             var item = Hosts[0];
-            Label = item.Name;
         }
 
         void GetHosts(

@@ -91,5 +91,119 @@ namespace WPFUtilities.Extensions.DependencyObjects
                     ValueChanged
                 );
         }
+
+        static T Try<T>(Func<T> fun)
+        {
+            try
+            {
+                return fun();
+            }
+            catch (Exception)
+            {
+                return default(T);
+            }
+        }
+
+        /// <summary>
+        /// register a dependency property
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <param name="propertyType">property type</param>
+        /// <param name="ownerType">owner type</param>
+        /// <returns>dependecy property or null if fail</returns>
+        public static DependencyProperty Register(
+            string name,
+            Type propertyType,
+            Type ownerType)
+                => Try(() => DependencyProperty
+                    .Register(name, propertyType, ownerType));
+
+        /// <summary>
+        /// register a dependency property
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <param name="propertyType">property type</param>
+        /// <param name="ownerType">owner type</param>
+        /// <param name="typeMetadata">type meta data</param>
+        /// <returns>dependecy property or null if fail</returns>
+        public static DependencyProperty Register(
+            string name,
+            Type propertyType,
+            Type ownerType,
+            PropertyMetadata typeMetadata)
+                => Try(() => DependencyProperty
+                    .Register(name, propertyType, ownerType, typeMetadata));
+
+        /// <summary>
+        /// register a dependency property
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <param name="propertyType">property type</param>
+        /// <param name="ownerType">owner type</param>
+        /// <param name="typeMetadata">type meta data</param>
+        /// <param name="validateValueCallback">validate value callback</param>
+        /// <returns>dependecy property or null if fail</returns>
+        public static DependencyProperty Register(
+            string name,
+            Type propertyType,
+            Type ownerType,
+            PropertyMetadata typeMetadata,
+            ValidateValueCallback validateValueCallback)
+                => Try(() => DependencyProperty
+                    .Register(name, propertyType, ownerType, typeMetadata, validateValueCallback));
+
+        /// <summary>
+        /// registered attached dependency property
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <param name="propertyType">property type</param>
+        /// <param name="ownerType">owner type</param>
+        /// <returns>dependecy property or null if fail</returns>
+        public static DependencyProperty RegisterAttached(
+            string name,
+            Type propertyType,
+            Type ownerType)
+                => Try(() => DependencyProperty.
+                    RegisterAttached(
+                        name, propertyType, ownerType
+                        ));
+
+        /// <summary>
+        /// registered attached dependency property
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <param name="propertyType">property type</param>
+        /// <param name="ownerType">owner type</param>
+        /// <param name="defaultMetadata">default meta data</param>
+        /// <returns>dependecy property or null if fail</returns>
+        public static DependencyProperty RegisterAttached(
+            string name,
+            Type propertyType,
+            Type ownerType,
+            PropertyMetadata defaultMetadata)
+                => Try(() => DependencyProperty.
+                    RegisterAttached(
+                        name, propertyType, ownerType, defaultMetadata
+                        ));
+
+        /// <summary>
+        /// registered attached dependency property
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <param name="propertyType">property type</param>
+        /// <param name="ownerType">owner type</param>
+        /// <param name="defaultMetadata">default meta data</param>
+        /// <param name="validateValueCallback">validate value callback</param>
+        /// <returns>dependecy property or null if fail</returns>
+        public static DependencyProperty RegisterAttached(
+            string name,
+            Type propertyType,
+            Type ownerType,
+            PropertyMetadata defaultMetadata,
+            ValidateValueCallback validateValueCallback)
+                => Try(() => DependencyProperty.
+                    RegisterAttached(
+                        name, propertyType, ownerType, defaultMetadata, validateValueCallback
+                        ));
     }
 }

@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 
+using WPFUtilities.Extensions.DependencyObjects;
 using WPFUtilities.Helpers;
 
 namespace WPFUtilities.Components.UI
@@ -40,7 +41,7 @@ namespace WPFUtilities.Components.UI
         /// is auto property
         /// </summary>
         public static readonly DependencyProperty IsAutoProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "IsAuto",
                 typeof(bool),
                 typeof(Scrolling),

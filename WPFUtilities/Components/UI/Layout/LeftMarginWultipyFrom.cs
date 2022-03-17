@@ -31,7 +31,7 @@ namespace WPFUtilities.Components.UI
         /// left margin multiply from property
         /// </summary>
         public static readonly DependencyProperty LeftMarginMultiplyFromProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "LeftMarginMultiplyFrom",
                 typeof(double),
                 typeof(Layout),

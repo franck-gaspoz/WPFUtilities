@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace SampleApp.Components.Data.Tree
 {
     /// <summary>
@@ -21,7 +23,7 @@ namespace SampleApp.Components.Data.Tree
         }
 
         public static readonly DependencyProperty ColumnsProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "Columns",
                 typeof(ObservableCollection<DataGridColumn>),
                 typeof(TreeDataGridView),
@@ -34,7 +36,7 @@ namespace SampleApp.Components.Data.Tree
         }
 
         public static readonly DependencyProperty TreeColumnHeaderProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "TreeColumnHeader",
                 typeof(object),
                 typeof(TreeDataGridView),

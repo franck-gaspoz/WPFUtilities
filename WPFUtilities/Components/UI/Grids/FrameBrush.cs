@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace WPFUtilities.Components.UI
 {
     /// <summary>
@@ -30,7 +32,7 @@ namespace WPFUtilities.Components.UI
         /// margin property
         /// </summary>
         public static readonly DependencyProperty FrameBrushProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "FrameBrush",
                 typeof(Brush),
                 typeof(Grids),

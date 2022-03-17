@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 
 using WPFUtilities.Components.UI.DataGridExtensions;
+using WPFUtilities.Extensions.DependencyObjects;
 
 using DataGridControlType = System.Windows.Controls.DataGrid;
 
@@ -31,7 +32,7 @@ namespace WPFUtilities.Components.UI
         /// margin property
         /// </summary>
         public static readonly DependencyProperty DataGridViewPropertiesProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "DataGridViewProperties",
                 typeof(DataGridViewProperties),
                 typeof(DataGridControlType),

@@ -5,6 +5,7 @@ using System.Windows;
 using Microsoft.Extensions.Logging;
 
 using WPFUtilities.Components.Services.Command.Attributes;
+using WPFUtilities.Extensions.DependencyObjects;
 
 namespace WPFUtilities.Commands.Application
 {
@@ -28,11 +29,11 @@ namespace WPFUtilities.Commands.Application
         /// message property
         /// </summary>
         public static readonly DependencyProperty MessageProperty =
-        DependencyProperty.Register(
-            "Message",
-            typeof(string),
-            typeof(LogObjectCommandParameters),
-            new UIPropertyMetadata(null));
+            DependencyObjectExtensions.Register(
+                "Message",
+                typeof(string),
+                typeof(LogObjectCommandParameters),
+                new UIPropertyMetadata(null));
 
         /// <summary>
         /// log level
@@ -52,10 +53,10 @@ namespace WPFUtilities.Commands.Application
         /// data property
         /// </summary>
         public static readonly DependencyProperty DataProperty =
-                DependencyProperty.Register(
-                    "Data",
-                    typeof(object),
-                    typeof(LogObjectCommandParameters),
-                    new UIPropertyMetadata(null));
+            DependencyObjectExtensions.Register(
+                "Data",
+                typeof(object),
+                typeof(LogObjectCommandParameters),
+                new UIPropertyMetadata(null));
     }
 }

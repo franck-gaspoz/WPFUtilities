@@ -37,7 +37,7 @@ namespace WPFUtilities.Components.UI
         /// margin property
         /// </summary>
         public static readonly DependencyProperty SetTreeColumnProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "SetTreeColumn",
                 typeof(string),
                 typeof(DataGridControlType),

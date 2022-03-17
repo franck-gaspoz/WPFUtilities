@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Windows;
 
 using WPFUtilities.Components.ServiceComponent;
+using WPFUtilities.Extensions.DependencyObjects;
 
 namespace WPFUtilities.Components.Services.Properties
 {
@@ -36,7 +37,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// IsAuto dependency property
         /// </summary>
         public static readonly DependencyProperty IsAutoProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "IsAuto",
                 typeof(bool),
                 typeof(DataContext),
@@ -66,7 +67,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// Resolve dependency property
         /// </summary>
         public static readonly DependencyProperty ResolveProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "Resolve",
                 typeof(Type),
                 typeof(DataContext),

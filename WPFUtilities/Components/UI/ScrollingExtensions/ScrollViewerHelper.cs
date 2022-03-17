@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 
 using WPFUtilities.Components.UI.ScrollingExtensions;
+using WPFUtilities.Extensions.DependencyObjects;
 using WPFUtilities.Extensions.Services;
 
 namespace WPFUtilities.Components.UI
@@ -34,7 +35,7 @@ namespace WPFUtilities.Components.UI
         /// scroll viewer helper view properties
         /// </summary>
         public static readonly DependencyProperty ScrollViewerHelperViewPropertiesProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "ScrollViewerHelperViewProperties",
                 typeof(IScrollViewerHelperViewProperties),
                 typeof(ScrollViewer),
@@ -64,7 +65,7 @@ namespace WPFUtilities.Components.UI
         /// scroll viewer helper is enabled
         /// </summary>
         public static readonly DependencyProperty ScrollViewerHelperIsEnabledProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "ScrollViewerHelperIsEnabled",
                 typeof(bool),
                 typeof(ScrollViewer),

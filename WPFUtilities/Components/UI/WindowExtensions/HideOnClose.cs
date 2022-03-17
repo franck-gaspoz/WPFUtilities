@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 using win = System.Windows;
 
 namespace WPFUtilities.Components.UI
@@ -30,7 +32,7 @@ namespace WPFUtilities.Components.UI
         /// HideOnClose property
         /// </summary>
         public static readonly DependencyProperty HideOnCloseProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "HideOnClose",
                 typeof(bool),
                 typeof(win.Window),

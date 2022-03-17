@@ -11,11 +11,6 @@ namespace SampleApp.Components.Hosts
     public interface IHostsViewModel : IModelBase
     {
         /// <summary>
-        /// label
-        /// </summary>
-        string Label { get; set; }
-
-        /// <summary>
         /// hosts
         /// </summary>
         BindingList<IHostViewModel> Hosts { get; }

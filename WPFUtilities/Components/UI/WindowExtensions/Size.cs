@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 using win = System.Windows;
 
 namespace WPFUtilities.Components.UI
@@ -34,7 +36,7 @@ namespace WPFUtilities.Components.UI
         /// Initial width property
         /// </summary>
         public static readonly DependencyProperty InitialWidthProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "InitialWidth",
                 typeof(double),
                 typeof(win.Window),
@@ -62,7 +64,7 @@ namespace WPFUtilities.Components.UI
         /// Initial height property
         /// </summary>
         public static readonly DependencyProperty InitialHeightProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "InitialHeight",
                 typeof(double),
                 typeof(win.Window),

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Windows;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace WPFUtilities.Components.UI
 {
     /// <summary>
@@ -27,7 +29,7 @@ namespace WPFUtilities.Components.UI
         /// margin property
         /// </summary>
         public static readonly DependencyProperty AdditionalDataProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "AdditionalData",
                 typeof(Dictionary<string, object>),
                 typeof(Grids),

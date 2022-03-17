@@ -35,7 +35,7 @@ namespace WPFUtilities.Components.UI
         /// margin property
         /// </summary>
         public static readonly DependencyProperty AdjustColumnSizeModeProperty =
-            DependencyProperty.Register(
+            DependencyObjectExtensions.Register(
                 "AdjustColumnSizeMode",
                 typeof(AdjustColumnSizeModes),
                 typeof(DataGridControlType),

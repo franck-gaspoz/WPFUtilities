@@ -2,6 +2,8 @@
 using System.Windows;
 using System.Windows.Controls;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace WPFUtilities.Components.UI
 {
     /// <summary>
@@ -29,7 +31,7 @@ namespace WPFUtilities.Components.UI
         /// margin property
         /// </summary>
         public static readonly DependencyProperty MaximizeColumnIndexProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "MaximizeColumnIndex",
                 typeof(int),
                 typeof(Grids),

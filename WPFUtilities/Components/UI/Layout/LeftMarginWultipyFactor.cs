@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace WPFUtilities.Components.UI
 {
     /// <summary>
@@ -27,7 +29,7 @@ namespace WPFUtilities.Components.UI
         /// left margin multiply factor property
         /// </summary>
         public static readonly DependencyProperty LeftMarginMultiplyFactorProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "LeftMarginMultiplyFactor",
                 typeof(double),
                 typeof(Layout),

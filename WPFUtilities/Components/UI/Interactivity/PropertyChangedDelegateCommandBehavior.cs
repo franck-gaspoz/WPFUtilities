@@ -5,6 +5,8 @@ using System.Windows.Input;
 
 using Microsoft.Xaml.Behaviors;
 
+using WPFUtilities.Extensions.DependencyObjects;
+
 namespace WPFUtilities.Components.UI.Interactivity
 {
     /// <summary>
@@ -44,7 +46,7 @@ namespace WPFUtilities.Components.UI.Interactivity
         /// command property
         /// </summary>
         public static readonly DependencyProperty CommandProperty =
-            DependencyProperty.RegisterAttached("Command", typeof(ICommand), typeof(PropertyChangedDelegateCommandBehavior), new PropertyMetadata(null));
+            DependencyObjectExtensions.RegisterAttached("Command", typeof(ICommand), typeof(PropertyChangedDelegateCommandBehavior), new PropertyMetadata(null));
 
         #endregion
 
@@ -79,7 +81,7 @@ namespace WPFUtilities.Components.UI.Interactivity
         /// command parameter
         /// </summary>
         public static readonly DependencyProperty CommandParameterProperty =
-            DependencyProperty.RegisterAttached("CommandParameter", typeof(object), typeof(PropertyChangedDelegateCommandBehavior), new PropertyMetadata(null));
+            DependencyObjectExtensions.RegisterAttached("CommandParameter", typeof(object), typeof(PropertyChangedDelegateCommandBehavior), new PropertyMetadata(null));
 
         #endregion
 
@@ -114,7 +116,7 @@ namespace WPFUtilities.Components.UI.Interactivity
         /// source property
         /// </summary>
         public static readonly DependencyProperty SourceProperty =
-            DependencyProperty.RegisterAttached("Source", typeof(INotifyPropertyChanged), typeof(PropertyChangedDelegateCommandBehavior), new PropertyMetadata(null));
+            DependencyObjectExtensions.RegisterAttached("Source", typeof(INotifyPropertyChanged), typeof(PropertyChangedDelegateCommandBehavior), new PropertyMetadata(null));
 
         #endregion
 
@@ -149,7 +151,7 @@ namespace WPFUtilities.Components.UI.Interactivity
         /// property name dependency property
         /// </summary>
         public static readonly DependencyProperty PropertyNameProperty =
-            DependencyProperty.RegisterAttached("PropertyName", typeof(string), typeof(PropertyChangedDelegateCommandBehavior), new PropertyMetadata(null));
+            DependencyObjectExtensions.RegisterAttached("PropertyName", typeof(string), typeof(PropertyChangedDelegateCommandBehavior), new PropertyMetadata(null));
 
         #endregion
 

@@ -6,6 +6,7 @@ using Microsoft.Xaml.Behaviors;
 
 using WPFUtilities.Components.Services.Command;
 using WPFUtilities.Extensions.Behaviors;
+using WPFUtilities.Extensions.DependencyObjects;
 using WPFUtilities.Extensions.Reflections;
 using WPFUtilities.Extensions.Services;
 
@@ -41,7 +42,7 @@ namespace WPFUtilities.Components.Services.Properties
         /// <para>Type is accepted on types FrameworkElement and Behavior</para>
         /// </summary>
         public static readonly DependencyProperty TypeProperty =
-            DependencyProperty.RegisterAttached(
+            DependencyObjectExtensions.RegisterAttached(
                 "Type",
                 typeof(Type),
                 typeof(Command),
