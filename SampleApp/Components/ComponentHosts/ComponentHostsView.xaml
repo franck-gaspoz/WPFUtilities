@@ -43,7 +43,7 @@
                       />
 
         <Grid Grid.Row="2"
-              Margin="0,4,0,0"
+              Margin="0,0,0,0"
               >
 
             <Grid>
@@ -53,7 +53,7 @@
                     <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
                 
-            <!-- host loggers -->
+                <!-- host loggers -->
 
                 <TabControl>
                     <TabItem Header="Loggers">
