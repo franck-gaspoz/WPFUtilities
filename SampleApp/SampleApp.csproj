@@ -64,6 +64,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Components\ComponentHosts\Loggers\LoggersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\ComponentHosts\Services\ServicesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Components\Data\Tree\TreeDataGridStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -96,7 +104,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles.xaml">
+    <Page Include="Resources\Styles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,6 +142,14 @@
       <DependentUpon>ComponentHostsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\ComponentHosts\ComponentHostsViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Loggers\LoggersView.xaml.cs">
+      <DependentUpon>LoggersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\ComponentHosts\Loggers\ILoggersViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Loggers\LoggersViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Services\ServicesView.xaml.cs">
+      <DependentUpon>ServicesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Components\Debug\TestCommand.cs" />
     <Compile Include="Components\Main\OnMainWindowShownCommand.cs" />
     <Compile Include="Components\About\AboutWindow.xaml.cs">

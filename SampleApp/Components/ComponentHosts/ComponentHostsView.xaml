@@ -6,6 +6,8 @@
              xmlns:local="clr-namespace:SampleApp.Components.ComponentHosts"
              xmlns:data="clr-namespace:SampleApp.Components.Data.KeyValue"
              xmlns:hosts="clr-namespace:SampleApp.Components.ComponentHosts.Hosts"
+             xmlns:loggers="clr-namespace:SampleApp.Components.ComponentHosts.Loggers"
+             xmlns:services="clr-namespace:SampleApp.Components.ComponentHosts.Services"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
@@ -17,8 +19,9 @@
     <Grid Margin="{DynamicResource Margin_Default}">
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="70*"/>
-            <RowDefinition Height="30*"/>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
 
         <Grid>
@@ -35,19 +38,43 @@
 
         </Grid>
 
-        <Grid Grid.Row="1"
+        <GridSplitter Grid.Row="1"
+                      Style="{DynamicResource GridSplitter_Horizontal}"
+                      />
+
+        <Grid Grid.Row="2"
               Margin="0,4,0,0"
               >
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                
+            <!-- host loggers -->
+
+                <TabControl>
+                    <TabItem Header="Loggers">
+                        <loggers:LoggersView/>
+                    </TabItem>
+                </TabControl>
+
+                <GridSplitter 
+                    Grid.Column="1"
+                    Style="{DynamicResource GridSplitter_Vertical}"/>
+
+                <!-- a key/value panel -->
+
+                <TabControl Grid.Column="2">
+                    <TabItem Header="Services">
+                        <services:ServicesView />
+                    </TabItem>
+                </TabControl>
+
+            </Grid>
             
-            <!-- a key/value panel -->
-            
-            <TabControl>
-                <TabItem Header="Data">
-                    <data:KeyValueView 
-                        service:DataContext.Resolve="{x:Type data:IKeyValueViewModel}"
-                        />
-                </TabItem>
-            </TabControl>
         </Grid>
 
     </Grid>

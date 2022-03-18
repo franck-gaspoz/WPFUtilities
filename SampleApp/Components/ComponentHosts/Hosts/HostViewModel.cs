@@ -23,7 +23,6 @@ namespace SampleApp.Components.ComponentHosts.Hosts
     [DebuggerDisplay("HostViewModel: component host = {ComponentHost}")]
     public class HostViewModel :
         TreeDataGridRowViewModel<IHostViewModel>,
-        ITreeDataGridRowViewModel<IHostViewModel>,
         IHostViewModel
     {
         #region host view properties

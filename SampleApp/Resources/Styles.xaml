@@ -50,6 +50,16 @@
         <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource DataGrid_LinesBrush}"/>
         <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource DataGrid_LinesBrush}"/>
         <Setter Property="CanUserSortColumns" Value="True"/>
-    </Style>   
-    
+    </Style>
+
+    <Style TargetType="GridSplitter" x:Key="GridSplitter_Horizontal">
+        <Setter Property="Height" Value="4"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+    </Style>
+
+    <Style TargetType="GridSplitter" x:Key="GridSplitter_Vertical">
+        <Setter Property="Width" Value="4"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+    </Style>
+
 </ResourceDictionary>
