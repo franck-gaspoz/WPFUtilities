@@ -5,6 +5,8 @@
     xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <!-- controls -->
+    
     <Style TargetType="Button">
         <Setter Property="Padding" Value="4,2,4,2"/>
     </Style>
@@ -18,6 +20,8 @@
         <Setter Property="BorderThickness" Value="0,0.5,0,0"/>
         <Setter Property="BorderBrush" Value="Gray"/>
     </Style>
+    
+    <!-- convetioned styles -->
 
     <sys:Double x:Key="Margin_Default_Size">4</sys:Double>
     <Thickness x:Key="Margin_Default" 
@@ -34,6 +38,8 @@
         <Setter Property="Foreground" Value="Red"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
+    
+    <!-- datagrid -->
 
     <SolidColorBrush x:Key="DataGrid_LinesBrush">LightGray</SolidColorBrush>
 
@@ -52,12 +58,63 @@
         <Setter Property="CanUserSortColumns" Value="True"/>
     </Style>
 
-    <Style TargetType="GridSplitter" x:Key="GridSplitter_Horizontal">
+    <!-- grid splitter -->
+
+    <Style TargetType="GridSplitter"
+           BasedOn="{StaticResource {x:Type GridSplitter}}"
+           x:Key="GridSplitter_Base">
+        <Setter Property="Background" Value="Transparent"/>
+        <Style.Triggers>
+           <!-- <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="SkyBlue"/>
+            </Trigger>-->
+            <EventTrigger RoutedEvent="GridSplitter.MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                      AutoReverse="False" 
+                      Duration="0:0:1" 
+                      From="Blue" To="Red"
+                      AccelerationRatio="1" 
+                      Storyboard.TargetProperty="(GridSplitter.Background).(SolidColorBrush.Color)"
+                      FillBehavior="HoldEnd">
+                            </ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="GridSplitter.MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                      AutoReverse="False" 
+                      Duration="0:0:1" 
+                      From="Red" To="Blue"
+                      AccelerationRatio="1" 
+                      Storyboard.TargetProperty="(GridSplitter.Background).(SolidColorBrush.Color)"
+                      FillBehavior="HoldEnd">
+                            </ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+     
+    <Style TargetType="GridSplitter" 
+           BasedOn="{StaticResource GridSplitter_Base}"
+           x:Key="GridSplitter_Horizontal">
         <Setter Property="Height" Value="4"/>
+        <Setter Property="Margin" Value="0,2,0,2"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
     </Style>
 
-    <Style TargetType="GridSplitter" x:Key="GridSplitter_Vertical">
+    <Style TargetType="GridSplitter" 
+           BasedOn="{StaticResource GridSplitter_Base}"
+           x:Key="GridSplitter_Vertical">
+        <Setter Property="Margin" Value="2,0,2,0"/>
         <Setter Property="Width" Value="4"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>

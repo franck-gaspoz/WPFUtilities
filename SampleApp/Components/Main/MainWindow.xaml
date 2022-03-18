@@ -36,15 +36,19 @@
 
         <uicomponents:ButtonBar Grid.Row="1"/>
 
-        <Grid Grid.Row="2">
+        <!-- window content -->
+        
+        <Grid Grid.Row="2" Margin="0,0,8,8">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="400"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
             <!-- tab panel -->
-            <TabControl Grid.Column="1" Grid.Row="2" Margin="8,0,8,8">
+            
+            <TabControl Grid.Column="2" Grid.Row="2">
 
                 <TabItem Header="Settings" IsSelected="False">
                     <settings:SettingsView service:Component.Type="{x:Type settings:SettingsComponent}" 
@@ -76,24 +80,27 @@
 
             </TabControl>
 
+            <GridSplitter Grid.Column="1" Style="{DynamicResource GridSplitter_Vertical}"/>
+
             <!-- logs panels -->
-            <Grid Grid.Row="3">
+            <Grid Grid.Row="3" Margin="8,0,0,8">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="40*"/>
+                    <RowDefinition Height="auto"/>
                     <RowDefinition Height="60*"/>
                 </Grid.RowDefinitions>
 
                 <logging:LogView
-                    Margin="8,0,8,8"
                     Title="application log"
                     service:Component.Type="{x:Type logging:ApplicationLogComponent}"
                     service:DataContext.IsAuto="True"
                 />
 
+                <GridSplitter Grid.Row="1" Style="{DynamicResource GridSplitter_Horizontal}"/>
+
                 <logging:LogView
-                    Margin="8,0,8,8"
-                    Grid.Row="1"
+                    Grid.Row="2"
                     Title="window log"
                     service:Component.Type="{x:Type logging:WindowLogComponent}"
                     service:DataContext.IsAuto="True"

@@ -10,6 +10,8 @@ namespace SampleApp.Components.Settings
         public SettingsView()
         {
             InitializeComponent();
+            /*var o = new GridSplitter();
+            o.MouseEnter*/
         }
     }
 }

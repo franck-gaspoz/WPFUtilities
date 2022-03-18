@@ -84,8 +84,7 @@
             </TabControl>
 
             <GridSplitter Grid.Column="1"                          
-                          Width="4px"
-                          HorizontalAlignment="Stretch"/>
+                          Style="{DynamicResource GridSplitter_Vertical}"/>
 
             <TabControl Grid.Column="2" 
                         service:DataContext.Resolve="{x:Type files:ISettingsFileViewModel}"
