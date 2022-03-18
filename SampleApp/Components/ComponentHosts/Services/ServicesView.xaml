@@ -7,8 +7,8 @@
              xmlns:local="clr-namespace:SampleApp.Components.ComponentHosts.Services"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d" 
-             d:DesignHeight="203.028"
-             d:DesignWidth="418.316">
+             d:DesignHeight="72.028"
+             d:DesignWidth="211.316">
     <Grid>
         <data:KeyValueView 
             service:DataContext.Resolve="{x:Type data:IKeyValueViewModel}"
