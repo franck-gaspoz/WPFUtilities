@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 using WPFUtilities.Components.Logging.ListLogger;
 using WPFUtilities.Components.ServiceComponent;
 
-namespace SampleApp.Components.Hosts
+namespace SampleApp.Components.ComponentHosts.Hosts
 {
     public class HostsComponent :
         AbstractServiceComponent,

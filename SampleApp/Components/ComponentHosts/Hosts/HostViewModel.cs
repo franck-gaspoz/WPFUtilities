@@ -15,7 +15,7 @@ using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Extensions.Reflections;
 using WPFUtilities.Extensions.Threading;
 
-namespace SampleApp.Components.Hosts
+namespace SampleApp.Components.ComponentHosts.Hosts
 {
     /// <summary>
     /// hosts view model

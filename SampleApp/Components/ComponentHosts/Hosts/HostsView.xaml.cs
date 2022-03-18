@@ -1,6 +1,6 @@
 ﻿using System.Windows.Controls;
 
-namespace SampleApp.Components.Hosts
+namespace SampleApp.Components.ComponentHosts.Hosts
 {
     /// <summary>
     /// Logique d'interaction pour HostsView.xaml

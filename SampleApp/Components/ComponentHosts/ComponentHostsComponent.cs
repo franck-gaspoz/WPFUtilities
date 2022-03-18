@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using SampleApp.Components.ComponentHosts.Hosts;
 using SampleApp.Components.Data.KeyValue;
-using SampleApp.Components.Hosts;
 
 using WPFUtilities.Components.Logging.ListLogger;
 using WPFUtilities.Components.ServiceComponent;

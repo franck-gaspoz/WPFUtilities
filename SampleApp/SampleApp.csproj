@@ -72,7 +72,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Components\Hosts\HostsView.xaml">
+    <Page Include="Components\ComponentHosts\Hosts\HostsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,16 +146,16 @@
     </Compile>
     <Compile Include="Components\Data\Tree\ITreeDataGridRowViewModel.cs" />
     <Compile Include="Components\Data\Tree\TreeDataGridRowViewModel.cs" />
-    <Compile Include="Components\Hosts\HostsComponent.cs" />
-    <Compile Include="Components\Hosts\HostsGridViewModel.cs" />
-    <Compile Include="Components\Hosts\HostsView.xaml.cs">
+    <Compile Include="Components\ComponentHosts\Hosts\HostsComponent.cs" />
+    <Compile Include="Components\ComponentHosts\Hosts\HostsGridViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Hosts\HostsView.xaml.cs">
       <DependentUpon>HostsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Hosts\HostsViewModel.cs" />
-    <Compile Include="Components\Hosts\HostViewModel.cs" />
-    <Compile Include="Components\Hosts\IHostsGridViewModel.cs" />
-    <Compile Include="Components\Hosts\IHostsViewModel.cs" />
-    <Compile Include="Components\Hosts\IHostViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Hosts\HostsViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Hosts\HostViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Hosts\IHostsGridViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Hosts\IHostsViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Hosts\IHostViewModel.cs" />
     <Compile Include="Components\Logging\WindowLogComponent.cs" />
     <Compile Include="Components\Logging\ILogViewModel.cs" />
     <Compile Include="Components\Logging\ApplicationLogComponent.cs" />

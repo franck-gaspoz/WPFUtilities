@@ -7,7 +7,7 @@ using SampleApp.Components.Data.Tree;
 using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.ServiceComponent;
 
-namespace SampleApp.Components.Hosts
+namespace SampleApp.Components.ComponentHosts.Hosts
 {
     public interface IHostViewModel :
         ITreeDataGridRowViewModel,

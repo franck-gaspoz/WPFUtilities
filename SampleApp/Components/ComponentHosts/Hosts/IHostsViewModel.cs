@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 using WPFUtilities.ComponentModels;
 
-namespace SampleApp.Components.Hosts
+namespace SampleApp.Components.ComponentHosts.Hosts
 {
     /// <summary>
     /// interface hosts view model
