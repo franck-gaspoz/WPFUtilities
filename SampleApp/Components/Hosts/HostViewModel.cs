@@ -11,7 +11,6 @@ using Microsoft.Extensions.Logging;
 
 using SampleApp.Components.Data.Tree;
 
-using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Extensions.Reflections;
 using WPFUtilities.Extensions.Threading;
@@ -23,125 +22,11 @@ namespace SampleApp.Components.Hosts
     /// </summary>
     [DebuggerDisplay("HostViewModel: component host = {ComponentHost}")]
     public class HostViewModel :
-        ModelBase,
-        IHostViewModel,
-        ITreeDataGridRowViewModel<IHostViewModel>
+        TreeDataGridRowViewModel<IHostViewModel>,
+        ITreeDataGridRowViewModel<IHostViewModel>,
+        IHostViewModel
     {
-        public HostViewModel()
-        {
-            Childs.ListChanged += (o, e) =>
-            {
-                NotifyPropertyChanged(nameof(ChildsCount));
-            };
-        }
-
-        #region tree properties
-
-        int _level = 0;
-        /// <inheritdoc/>
-        public int Level
-        {
-            get
-            {
-                return _level;
-            }
-            set
-            {
-                _level = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        bool _isExpanded = true;
-        /// <inheritdoc/>
-        public bool IsExpanded
-        {
-            get
-            {
-                return _isExpanded;
-            }
-            set
-            {
-                _isExpanded = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        /// <inheritdoc/>
-        public int ChildsCount => Childs?.Count ?? 0;
-
-        /// <inheritdoc/>
-        public bool IsFolded
-        {
-            get
-            {
-                IHostViewModel parent = ParentViewModel;
-                while (parent != null)
-                {
-                    if (!parent.IsExpanded) return true;
-                    parent = parent.ParentViewModel;
-                }
-                return false;
-            }
-        }
-
-        IHostViewModel _parentViewModel = null;
-        /// <inheritdoc/>
-        public IHostViewModel ParentViewModel
-        {
-            get => _parentViewModel;
-
-            set
-            {
-                if (_parentViewModel != null)
-                    _parentViewModel.PropertyChanged -= ParentIsExpandedPropertyChanged;
-                _parentViewModel = value;
-                if (_parentViewModel != null)
-                    _parentViewModel.PropertyChanged += ParentIsExpandedPropertyChanged;
-                NotifyPropertyChanged();
-            }
-        }
-
-        private void ParentIsExpandedPropertyChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(IHostViewModel.IsExpanded))
-            {
-                NotifyPropertyChanged(nameof(IsFolded));
-                if (ChildsCount > 0)
-                    NotifyPropertyChanged(nameof(IsExpanded));
-            }
-        }
-
-        IHostViewModel _parent = null;
-        /// <summary>
-        /// parent tree
-        /// </summary>
-        public IHostViewModel Parent
-        {
-            get
-            {
-                return _parent;
-            }
-            set
-            {
-                _parent = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        /// <summary>
-        /// childs
-        /// </summary>
-        public BindingList<IHostViewModel> Childs { get; }
-            = new BindingList<IHostViewModel>();
-
-        /// <inheritdoc/>
-        public ITreeDataGridRowViewModel GetParent() => Parent;
-
-        /// <inheritdoc/>
-        public IEnumerable<ITreeDataGridRowViewModel> GetChilds() => Childs.AsEnumerable();
-
-        #endregion
+        #region host view properties
 
         string _name = null;
         /// <inheritdoc/>
@@ -255,6 +140,8 @@ namespace SampleApp.Components.Hosts
         /// </summary>
         public BindingList<object> ScopeLoggers = new BindingList<object>();
 
+        #endregion
+
         /// <inheritdoc/>
         public IHostViewModel Initialize(
             IComponentHost host,
@@ -264,7 +151,7 @@ namespace SampleApp.Components.Hosts
             Name = host.Name;
             ComponentHost = host;
             Level = level;
-            this.ParentViewModel = parentViewModel;
+            this.Parent = parentViewModel;
 
             host.OnNotNull<IHost>(
                 "Host",

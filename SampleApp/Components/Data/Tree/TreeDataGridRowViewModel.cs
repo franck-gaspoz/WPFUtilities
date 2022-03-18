@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 
 using WPFUtilities.ComponentModels;
 
@@ -9,9 +9,13 @@ namespace SampleApp.Components.Data.Tree
     /// <summary>
     /// a 'tree style' data grid row view model
     /// </summary>
-    public class TreeDataGridRowViewModel<ViewModelBase> : ModelBase,
+    public class TreeDataGridRowViewModel<ViewModelBase>
+        : ModelBase,
         ITreeDataGridRowViewModel<ViewModelBase>
-        where ViewModelBase : ModelBase, ITreeDataGridRowViewModel<ViewModelBase>
+        where ViewModelBase :
+            IModelBase,
+            ITreeDataGridRowViewModel,
+            ITreeDataGridRowViewModel<ViewModelBase>
     {
         #region tree properties
 
@@ -63,7 +67,7 @@ namespace SampleApp.Components.Data.Tree
             }
         }
 
-        ViewModelBase _parent = null;
+        ViewModelBase _parent = default;
         /// <inheritdoc/>
         public ViewModelBase Parent
         {
@@ -94,13 +98,26 @@ namespace SampleApp.Components.Data.Tree
 
         /// <inheritdoc/>
         public BindingList<ViewModelBase> Childs { get; }
+            = new BindingList<ViewModelBase>();
 
         /// <inheritdoc/>
         public ITreeDataGridRowViewModel GetParent() => Parent;
 
         /// <inheritdoc/>
-        public IEnumerable<ITreeDataGridRowViewModel> GetChilds() => Childs.AsEnumerable();
+        public IEnumerable<ITreeDataGridRowViewModel> GetChilds()
+            => throw new NotImplementedException(); // Childs.AsEnumerable();
 
         #endregion
+
+        /// <summary>
+        /// creates a new instance
+        /// </summary>
+        public TreeDataGridRowViewModel()
+        {
+            Childs.ListChanged += (o, e) =>
+            {
+                NotifyPropertyChanged(nameof(ChildsCount));
+            };
+        }
     }
 }

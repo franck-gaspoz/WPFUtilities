@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-
+﻿
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -10,13 +9,11 @@ using WPFUtilities.Components.ServiceComponent;
 
 namespace SampleApp.Components.Hosts
 {
-    public interface IHostViewModel : ITreeDataGridRowViewModel, IModelBase
+    public interface IHostViewModel :
+        ITreeDataGridRowViewModel,
+        ITreeDataGridRowViewModel<IHostViewModel>,
+        IModelBase
     {
-        /// <summary>
-        /// parent (tree) model
-        /// </summary>
-        IHostViewModel ParentViewModel { get; }
-
         /// <summary>
         /// name
         /// </summary>
@@ -56,11 +53,6 @@ namespace SampleApp.Components.Hosts
         /// services count
         /// </summary>
         int ServicesCount { get; }
-
-        /// <summary>
-        /// hosts
-        /// </summary>
-        BindingList<IHostViewModel> Childs { get; }
 
         /// <summary>
         /// initialize from a component host

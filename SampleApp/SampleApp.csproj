@@ -140,7 +140,7 @@
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Data\Tree\TreeColumnBinding.cs" />
-    <Compile Include="Components\Data\Tree\ITreeDataGridVRowViewModelT.cs" />
+    <Compile Include="Components\Data\Tree\ITreeDataGridVRowViewModel_T.cs" />
     <Compile Include="Components\Data\Tree\TreeDataGridView.xaml.cs">
       <DependentUpon>TreeDataGridView.xaml</DependentUpon>
     </Compile>
