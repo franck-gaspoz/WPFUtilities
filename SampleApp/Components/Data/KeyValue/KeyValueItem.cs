@@ -1,18 +1,14 @@
-﻿namespace SampleApp.Components.Data.KeyValue
+﻿using WPFUtilities.ComponentModels;
+
+namespace SampleApp.Components.Data.KeyValue
 {
-    /// <summary>
-    /// key / value data item
-    /// </summary>
-    public class KeyValueItem
+    /// <inheritdoc/>
+    public class KeyValueItem : ModelBase, IKeyValueItem
     {
-        /// <summary>
-        /// key
-        /// </summary>
+        /// <inheritdoc/>
         public string Key { get; set; }
 
-        /// <summary>
-        /// value
-        /// </summary>
+        /// <inheritdoc/>
         public string Value { get; set; }
     }
 }

@@ -10,6 +10,11 @@ namespace SampleApp.Components.Data.KeyValue
         /// <summary>
         /// items list
         /// </summary>
-        ObservableCollection<KeyValueItem> Items { get; }
+        ObservableCollection<IKeyValueItem> Items { get; }
+
+        /// <summary>
+        /// selected item
+        /// </summary>
+        IKeyValueItem SelectedItem { get; set; }
     }
 }

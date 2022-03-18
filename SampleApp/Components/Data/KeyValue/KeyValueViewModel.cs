@@ -7,6 +7,21 @@ namespace SampleApp.Components.Data.KeyValue
     public class KeyValueViewModel : ModelBase, IKeyValueViewModel
     {
         /// <inheritdoc/>
-        public ObservableCollection<KeyValueItem> Items { get; } = new ObservableCollection<KeyValueItem>();
+        public ObservableCollection<IKeyValueItem> Items { get; } = new ObservableCollection<IKeyValueItem>();
+
+        IKeyValueItem _selectedItem = null;
+        /// <inheritdoc/>
+        public IKeyValueItem SelectedItem
+        {
+            get
+            {
+                return _selectedItem;
+            }
+            set
+            {
+                _selectedItem = value;
+                NotifyPropertyChanged();
+            }
+        }
     }
 }
