@@ -71,7 +71,7 @@
                         <Storyboard>
                             <ColorAnimation 
                                   AutoReverse="False" 
-                                  Duration="0:0:0.175" 
+                                  Duration="0:0:0.050" 
                                   From="Transparent" To="SkyBlue"
                                   AccelerationRatio="1" 
                                   Storyboard.TargetProperty="(GridSplitter.Background).(SolidColorBrush.Color)"
