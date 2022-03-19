@@ -71,7 +71,6 @@
         <!-- configuration details -->
         
         <Grid Grid.Row="2"
-              Margin="0,4,0,0"
               ui:Grids.MaximizeColumnIndex="0"
               ui:Grids.MinimizeColumnIndex="2"
               ui:Grids.MaximizeColumnTrigger="{Binding IsVisible}"
@@ -95,7 +94,8 @@
             </TabControl>
 
             <GridSplitter Grid.Column="1"                          
-                          Style="{DynamicResource GridSplitter_Vertical}"/>
+                          Style="{DynamicResource GridSplitter_Vertical}"
+                          Visibility="{Binding IsVisible,Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"/>
 
             <TabControl Grid.Column="2" 
                         service:DataContext.Resolve="{x:Type files:ISettingsFileViewModel}"

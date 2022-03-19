@@ -56,8 +56,7 @@
                 Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"
             >
             <ScrollViewer VerticalScrollBarVisibility="Auto"
-                              HorizontalScrollBarVisibility="Auto"
-                              >
+                HorizontalScrollBarVisibility="Auto">
                 <TextBox Margin="{DynamicResource Margin_Default}"
                              IsReadOnly="False"
                              Text="{Binding FileText,FallbackValue='file text'}"/>
