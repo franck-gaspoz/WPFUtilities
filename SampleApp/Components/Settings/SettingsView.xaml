@@ -18,18 +18,22 @@
     <Grid Margin="{DynamicResource Margin_Default}">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
 
+        <!-- application properties -->
+
         <Grid 
-              ui:Grids.FrameBrush="DarkGray"
-              ui:Grids.FrameSize="1"
-              >
+            ui:Grids.FrameBrush="DarkGray"
+            ui:Grids.FrameSize="1"
+            >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
@@ -37,7 +41,7 @@
             </Grid.ColumnDefinitions>
             <Grid.Resources>
                 <Style TargetType="TextBlock">
-                    <Setter Property="Background" Value="#EAEAEA"/>
+                    <Setter Property="Background" Value="WhiteSmoke"/>
                     <Setter Property="Padding" Value="4,2,4,2"/>
                 </Style>
             </Grid.Resources>
@@ -53,24 +57,31 @@
 
             <TextBlock Grid.Row="3" Text="Providers" />
 
+            <Grid Grid.Row="4" Grid.Column="0" Background="WhiteSmoke" />
+            <Grid Grid.Row="4" Grid.Column="1" Background="WhiteSmoke" />
+
             <providers:ProvidersView 
                 Grid.Row="3" 
                 Grid.Column="1"/>
 
         </Grid>
+    
+        <GridSplitter Grid.Row="1" Style="{DynamicResource GridSplitter_Horizontal}"/>
 
-        <Grid Grid.Row="1"
+        <!-- configuration details -->
+        
+        <Grid Grid.Row="2"
               Margin="0,4,0,0"
               ui:Grids.MaximizeColumnIndex="0"
               ui:Grids.MinimizeColumnIndex="2"
               ui:Grids.MaximizeColumnTrigger="{Binding IsVisible}"
               service:DataContext.Resolve="{x:Type files:ISettingsFileViewModel}"
-              d:DataContext="{d:DesignInstance Type=files:SettingsFileViewModel}" 
+              d:DataContext="{d:DesignInstance Type=files:SettingsFileViewModel}"               
               >
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="50*"/>
-                <ColumnDefinition Width="4px"/>
+                <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="50*"/>
             </Grid.ColumnDefinitions>
         

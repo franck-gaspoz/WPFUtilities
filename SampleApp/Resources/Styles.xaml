@@ -73,12 +73,12 @@
                     <BeginStoryboard>
                         <Storyboard>
                             <ColorAnimation 
-                      AutoReverse="False" 
-                      Duration="0:0:1" 
-                      From="Blue" To="Red"
-                      AccelerationRatio="1" 
-                      Storyboard.TargetProperty="(GridSplitter.Background).(SolidColorBrush.Color)"
-                      FillBehavior="HoldEnd">
+                                  AutoReverse="False" 
+                                  Duration="0:0:0.25" 
+                                  From="Transparent" To="SkyBlue"
+                                  AccelerationRatio="1" 
+                                  Storyboard.TargetProperty="(GridSplitter.Background).(SolidColorBrush.Color)"
+                                  FillBehavior="HoldEnd">
                             </ColorAnimation>
                         </Storyboard>
                     </BeginStoryboard>
@@ -89,12 +89,12 @@
                     <BeginStoryboard>
                         <Storyboard>
                             <ColorAnimation 
-                      AutoReverse="False" 
-                      Duration="0:0:1" 
-                      From="Red" To="Blue"
-                      AccelerationRatio="1" 
-                      Storyboard.TargetProperty="(GridSplitter.Background).(SolidColorBrush.Color)"
-                      FillBehavior="HoldEnd">
+                                  AutoReverse="False" 
+                                  Duration="0:0:0.5" 
+                                  From="SkyBlue" To="Transparent"
+                                  AccelerationRatio="1" 
+                                  Storyboard.TargetProperty="(GridSplitter.Background).(SolidColorBrush.Color)"
+                                  FillBehavior="HoldEnd">
                             </ColorAnimation>
                         </Storyboard>
                     </BeginStoryboard>
