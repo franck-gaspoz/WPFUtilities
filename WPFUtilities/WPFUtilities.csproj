@@ -313,7 +313,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controls\" />
-    <Folder Include="drafts\" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".editorconfig" />

@@ -1,29 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 
-using WPFUtilities.ComponentModels;
+using SampleApp.Components.Data.Tree;
 
 namespace SampleApp.Components.ComponentHosts.Hosts
 {
     /// <summary>
     /// flat project the hosts view model (Hosts -> Items)
     /// </summary>
-    public class HostsGridViewModel : ModelBase, IHostsGridViewModel
+    public class HostsGridViewModel :
+        TreeDataGridViewModel<IHostViewModel>,
+        IHostsGridViewModel
     {
-        public BindingList<IHostViewModel> Items { get; }
-            = new BindingList<IHostViewModel>();
-
-        IHostViewModel _selectedItem;
-        public IHostViewModel SelectedItem
-        {
-            get => _selectedItem;
-            set
-            {
-                _selectedItem = value;
-                NotifyPropertyChanged();
-            }
-        }
-
         IHostsViewModel _hostsViewModel;
 
         public HostsGridViewModel(

@@ -21,11 +21,15 @@
                   SelectedItem="{Binding SelectedItem}"
                   ui:DataGrid.TreeColumnPath="Name"
                   ui:DataGrid.SetTreeColumn="Host">
+            
             <DataGrid.Columns>
-                <DataGridTemplateColumn Header="Host" />
+                
+                <DataGridTemplateColumn Header="Host"/>
+                
                 <DataGridTextColumn Header="Loggers" 
                                     Binding="{Binding LoggersCount}"/>
                 <DataGridTextColumn Header="Options" Binding="{Binding OptionsCount}"/>
+                
                 <DataGridTextColumn                                   
                                     Binding="{Binding HostOptions.BackgroundServiceExceptionBehavior}">
                     <DataGridTextColumn.Header>
@@ -36,8 +40,12 @@
                                    Width="112px"/>
                     </DataGridTextColumn.Header>
                 </DataGridTextColumn>
+                
+                
                 <DataGridTextColumn Header="Shutdown timeout" Binding="{Binding HostOptions.ShutdownTimeout}"/>
+                
                 <DataGridTextColumn Header="Services" Binding="{Binding ServicesCount}"/>
+            
             </DataGrid.Columns>
         </DataGrid>
         

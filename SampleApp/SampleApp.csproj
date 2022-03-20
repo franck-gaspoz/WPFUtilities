@@ -151,6 +151,9 @@
       <DependentUpon>ServicesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Data\KeyValue\IKeyValueItem.cs" />
+    <Compile Include="Components\Data\Tree\ITreeDataGridViewModel.cs" />
+    <Compile Include="Components\Data\Tree\ITreeDataGridViewModel_T.cs" />
+    <Compile Include="Components\Data\Tree\TreeDataGridViewModel_T.cs" />
     <Compile Include="Components\Debug\TestCommand.cs" />
     <Compile Include="Components\Main\OnMainWindowShownCommand.cs" />
     <Compile Include="Components\About\AboutWindow.xaml.cs">

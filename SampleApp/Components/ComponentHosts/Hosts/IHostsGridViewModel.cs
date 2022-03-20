@@ -1,19 +1,14 @@
-﻿using System.ComponentModel;
-
-using WPFUtilities.ComponentModels;
+﻿
+using SampleApp.Components.Data.Tree;
 
 namespace SampleApp.Components.ComponentHosts.Hosts
 {
     /// <summary>
     /// hosts grid view model
     /// </summary>
-    public interface IHostsGridViewModel : IModelBase
+    public interface IHostsGridViewModel :
+        ITreeDataGridViewModel<IHostViewModel>
     {
-        /// <summary>
-        /// items
-        /// </summary>
-        BindingList<IHostViewModel> Items { get; }
 
-        IHostViewModel SelectedItem { get; set; }
     }
 }

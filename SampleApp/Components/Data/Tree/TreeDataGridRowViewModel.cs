@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 using WPFUtilities.ComponentModels;
 
@@ -105,7 +105,8 @@ namespace SampleApp.Components.Data.Tree
 
         /// <inheritdoc/>
         public IEnumerable<ITreeDataGridRowViewModel> GetChilds()
-            => throw new NotImplementedException(); // Childs.AsEnumerable();
+            => Childs.Cast<ITreeDataGridRowViewModel>()
+                .AsEnumerable();
 
         #endregion
 
