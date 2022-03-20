@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 
 using WPFUtilities.ComponentModels;
 
@@ -9,6 +8,7 @@ namespace SampleApp.Components.Data.Tree
     /// view model of a 'tree style' data grid
     /// </summary>
     public interface ITreeDataGridViewModel<ViewModelBase> :
+        ITreeDataGridViewModel,
         IModelBase
 
         where ViewModelBase :
@@ -24,17 +24,5 @@ namespace SampleApp.Components.Data.Tree
         /// selected item
         /// </summary>
         ViewModelBase SelectedItem { get; set; }
-
-        /// <summary>
-        /// get selected tree item
-        /// </summary>
-        /// <returns></returns>
-        ITreeDataGridRowViewModel GetSelectedItem();
-
-        /// <summary>
-        /// get items
-        /// </summary>
-        /// <returns>enumerable of tree items</returns>
-        IEnumerable<ITreeDataGridRowViewModel> GetItems();
     }
 }
