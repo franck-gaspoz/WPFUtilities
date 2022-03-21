@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace WPFUtilities.Extensions.Reflections
 {
@@ -23,6 +25,31 @@ namespace WPFUtilities.Extensions.Reflections
                     prop.SetValue(target,
                         prop.GetValue(source));
             return target;
+        }
+
+        /// <summary>
+        /// get dump of properties of an object
+        /// </summary>
+        /// <param name="o">object</param>
+        /// <param name="selectedProperties">only these selected properties if not null and any</param>
+        /// <param name="separator">properties dumps separator</param>
+        /// <returns>multiline string</returns>
+        public static string GetPropertiesDump(
+            this object o,
+            IEnumerable<string> selectedProperties = null,
+            string separator = ","
+            )
+        {
+            if (o == null) return string.Empty;
+            var sb = new List<string>();
+            foreach (var prop in o.GetType().GetProperties()
+                .Where(prop => prop.CanRead)
+                )
+                if (selectedProperties == null
+                    || !selectedProperties.Any()
+                    || selectedProperties.Contains(prop.Name))
+                    sb.Add(prop.Name + "=" + prop.GetValue(o));
+            return string.Join(separator, sb);
         }
     }
 }

@@ -14,7 +14,9 @@
     <Grid>
 
         <data:KeyValueView 
-            service:DataContext.Resolve="{x:Type data:IKeyValueViewModel}"
+            service:DataContext.Resolve="{x:Type local:ILoggersViewModel}"
+            KeyColumnHeader="Logger"
+            ValueColumnHeader="Properties"
             />
 
     </Grid>

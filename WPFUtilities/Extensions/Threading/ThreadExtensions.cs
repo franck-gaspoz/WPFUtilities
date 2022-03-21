@@ -19,7 +19,7 @@ namespace WPFUtilities.Extensions.Threading
         /// <summary>
         /// default wait time before trigger action
         /// </summary>
-        public const int DefaultWaitTimeBeforeTriggerAction = 10000;
+        public const int DefaultWaitTimeBeforeTriggerAction = 0;
 
         /// <summary>
         /// default sleep delay ms

@@ -21,10 +21,20 @@ namespace SampleApp.Components.Data.Tree
         public BindingList<ViewModelBase> Items { get; }
             = new BindingList<ViewModelBase>();
 
-        /// <summary>
-        /// selected item
-        /// </summary>
-        public ViewModelBase SelectedItem { get; set; }
+        ViewModelBase _selectedItem = default;
+        /// <inheritdoc/>
+        public ViewModelBase SelectedItem
+        {
+            get
+            {
+                return _selectedItem;
+            }
+            set
+            {
+                _selectedItem = value;
+                NotifyPropertyChanged();
+            }
+        }
 
         /// <inheritdoc/>
         public ITreeDataGridRowViewModel GetSelectedItem()

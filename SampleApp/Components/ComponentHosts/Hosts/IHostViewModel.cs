@@ -1,7 +1,10 @@
 ﻿
+using System.ComponentModel;
+
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using SampleApp.Components.ComponentHosts.Hosts.Data;
 using SampleApp.Components.Data.Tree;
 
 using WPFUtilities.ComponentModels;
@@ -53,6 +56,21 @@ namespace SampleApp.Components.ComponentHosts.Hosts
         /// services count
         /// </summary>
         int ServicesCount { get; }
+
+        /// <summary>
+        /// loggers informations
+        /// </summary>
+        BindingList<LoggerModel> LoggerInformations { get; }
+
+        /// <summary>
+        /// message loggers
+        /// </summary>
+        BindingList<MessageLoggerModel> MessageLoggers { get; }
+
+        /// <summary>
+        /// scope loggers
+        /// </summary>
+        BindingList<ScopeLoggerModel> ScopeLoggers { get; }
 
         /// <summary>
         /// initialize from a component host

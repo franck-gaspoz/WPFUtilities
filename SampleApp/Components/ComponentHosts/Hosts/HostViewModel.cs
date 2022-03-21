@@ -9,6 +9,7 @@ using System.Text;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
+using SampleApp.Components.ComponentHosts.Hosts.Data;
 using SampleApp.Components.Data.Tree;
 
 using WPFUtilities.Components.ServiceComponent;
@@ -124,20 +125,14 @@ namespace SampleApp.Components.ComponentHosts.Hosts
             }
         }
 
-        /// <summary>
-        /// loggers informations
-        /// </summary>
-        public BindingList<object> LoggerInformations = new BindingList<object>();
+        /// <inheritdoc/>
+        public BindingList<LoggerModel> LoggerInformations { get; } = new BindingList<LoggerModel>();
 
-        /// <summary>
-        /// message loggers
-        /// </summary>
-        public BindingList<object> MessageLoggers = new BindingList<object>();
+        /// <inheritdoc/>
+        public BindingList<MessageLoggerModel> MessageLoggers { get; } = new BindingList<MessageLoggerModel>();
 
-        /// <summary>
-        /// scope loggers
-        /// </summary>
-        public BindingList<object> ScopeLoggers = new BindingList<object>();
+        /// <inheritdoc/>
+        public BindingList<ScopeLoggerModel> ScopeLoggers { get; } = new BindingList<ScopeLoggerModel>();
 
         #endregion
 
@@ -216,9 +211,9 @@ namespace SampleApp.Components.ComponentHosts.Hosts
 
             var t = new (string key, List<object> values)[]
             {
-                ("logger informations:",LoggerInformations.ToList()),
-                ("message loggers:",MessageLoggers.ToList()),
-                ("scope loggers:",ScopeLoggers.ToList())
+                ("logger informations:",LoggerInformations.Cast<object>().ToList()),
+                ("message loggers:",MessageLoggers.Cast<object>().ToList()),
+                ("scope loggers:",ScopeLoggers.Cast<object>().ToList())
             };
             foreach (var t2 in t)
             {
@@ -233,12 +228,12 @@ namespace SampleApp.Components.ComponentHosts.Hosts
 
         void AddLoggerInformation(object logger)
         {
-            var data = new
+            var data = new LoggerModel
             {
                 Category = logger.GetMember<string>("Category"),
                 ExternalScope = logger.GetMember<bool>("ExternalScope"),
                 Logger = logger.GetMember<ILogger>("Logger"),
-                LoggerDescription = logger.GetMember<ILogger>("Logger")?.ToString(),
+                LoggerDescription = logger.GetMember<string>("LoggerDescription"),
                 ProviderType = logger.GetMember<Type>("ProviderType")
             };
             LoggerInformations.Add(data);
@@ -246,11 +241,11 @@ namespace SampleApp.Components.ComponentHosts.Hosts
 
         void AddMessageLogger(object logger)
         {
-            var data = new
+            var data = new MessageLoggerModel
             {
                 Category = logger.GetMember<string>("Category"),
                 Logger = logger.GetMember<ILogger>("Logger"),
-                LoggerDescription = logger.GetMember<ILogger>("Logger")?.ToString(),
+                LoggerDescription = logger.GetMember<string>("LoggerDescription"),
                 MinLevel = logger.GetMember<LogLevel?>("MinLevel"),
             };
             MessageLoggers.Add(data);
@@ -258,11 +253,11 @@ namespace SampleApp.Components.ComponentHosts.Hosts
 
         void AddScopeLogger(object logger)
         {
-            var data = new
+            var data = new ScopeLoggerModel
             {
                 ExternalScopeProvider = logger.GetMember<IExternalScopeProvider>("ExternalScopeProvider"),
                 Logger = logger.GetMember<ILogger>("Logger"),
-                LoggerDescription = logger.GetMember<ILogger>("Logger")?.ToString()
+                LoggerDescription = logger.GetMember<string>("LoggerDescription")
             };
             ScopeLoggers.Add(data);
         }

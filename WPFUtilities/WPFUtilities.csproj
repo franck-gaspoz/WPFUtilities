@@ -109,6 +109,7 @@
     <Compile Include="Commands\Application\LogObjectCommand.cs" />
     <Compile Include="Commands\Application\LogObjectCommandParameters.cs" />
     <Compile Include="Commands\Application\OpenDialogCommand.cs" />
+    <Compile Include="ComponentModels\NamedPropertyChangedEventHandler.cs" />
     <Compile Include="Components\Binding\BindingProxy.cs" />
     <Compile Include="Components\ServiceComponent\ChildHostsCollectionChangedEventArgs.cs" />
     <Compile Include="Components\ServiceComponent\ParentHostChangedEventArgs.cs" />
