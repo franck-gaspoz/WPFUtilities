@@ -176,6 +176,7 @@
     <Compile Include="Extensions\DependencyObjects\DependencyObjectExtensions.cs" />
     <Compile Include="Extensions\Exceptions\ExceptionsExtensions.cs" />
     <Compile Include="Extensions\FrameworkElements\FrameworkElementExtensions.cs" />
+    <Compile Include="Extensions\Models\ModelExtensions.cs" />
     <Compile Include="Extensions\Reflections\Object.cs" />
     <Compile Include="Extensions\Services\ServicesPropertiesHelperExtensions.cs" />
     <Compile Include="Components\UI\Layout\Layout.cs" />

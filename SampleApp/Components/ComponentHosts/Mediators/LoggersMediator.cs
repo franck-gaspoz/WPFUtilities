@@ -7,8 +7,8 @@ using SampleApp.Components.ComponentHosts.Hosts;
 using SampleApp.Components.ComponentHosts.Hosts.Data;
 using SampleApp.Components.ComponentHosts.Loggers;
 
-using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.ServiceComponent;
+using WPFUtilities.Extensions.Models;
 using WPFUtilities.Extensions.Reflections;
 using WPFUtilities.Extensions.Threading;
 
@@ -35,13 +35,13 @@ namespace SampleApp.Components.ComponentHosts.Mediators
                                 .Services
                                 .GetRequiredService<IHostsGridViewModel>();
 
-                        new NamedPropertyChangedEventHandler(
-                            nameof(IHostsGridViewModel.SelectedItem),
-                            _hostsGridViewModel,
-                            (o, e) =>
-                            {
-                                Initialize();
-                            });
+                        _hostsGridViewModel
+                            .OnPropertyChanged<IHostsGridViewModel>(
+                                nameof(IHostsGridViewModel.SelectedItem),
+                                (model, changed) =>
+                                {
+                                    Initialize();
+                                });
                     });
         }
 
