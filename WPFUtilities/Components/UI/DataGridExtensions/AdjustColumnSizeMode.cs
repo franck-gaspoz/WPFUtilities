@@ -22,14 +22,19 @@ namespace WPFUtilities.Components.UI
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
-        public static AdjustColumnSizeModes GetAdjustColumnSizeMode(DependencyObject dependencyObject) => (AdjustColumnSizeModes)dependencyObject.GetValue(AdjustColumnSizeModeProperty);
+        public static AdjustColumnSizeModes GetAdjustColumnSizeMode(DependencyObject dependencyObject)
+            => (AdjustColumnSizeModes)dependencyObject.GetValue(AdjustColumnSizeModeProperty);
 
         /// <summary>
         /// set adjust column size modes
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="AdjustColumnSizeMode">AdjustColumnSizeMode</param>
-        public static void SetAdjustColumnSizeMode(DependencyObject dependencyObject, AdjustColumnSizeModes AdjustColumnSizeMode) => dependencyObject.SetValue(AdjustColumnSizeModeProperty, AdjustColumnSizeMode);
+        public static void SetAdjustColumnSizeMode(DependencyObject dependencyObject, AdjustColumnSizeModes AdjustColumnSizeMode)
+        {
+            if (AdjustColumnSizeModeProperty == null) return;
+            dependencyObject.SetValue(AdjustColumnSizeModeProperty, AdjustColumnSizeMode);
+        }
 
         /// <summary>
         /// margin property
