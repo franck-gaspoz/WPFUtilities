@@ -31,6 +31,8 @@ namespace SampleApp.Components.Settings.Mediators
             if (e.PropertyName != nameof(ISettingsViewModel.SelectedProvider)) return;
             _dataViewModel.Items.Clear();
             dynamic item = _settingsViewModel.SelectedProvider;
+            if (item == null) return;
+
             object oprovider = item.Provider;
 
             var items = new List<KeyValueItem>();
