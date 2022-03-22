@@ -49,6 +49,8 @@ namespace SampleApp.Components.ComponentHosts.Mediators
         {
             _loggersViewModel.Items.Clear();
             var host = _hostsGridViewModel.SelectedItem;
+            if (host == null) return;
+
             foreach (var logger in host.LoggerInformations)
                 _loggersViewModel.Items.Add(
                     new LoggerViewModel
