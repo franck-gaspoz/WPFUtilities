@@ -14,12 +14,12 @@ using WPFUtilities.Extensions.Threading;
 
 namespace SampleApp.Components.ComponentHosts.Mediators
 {
-    public class LoggersMediator
+    public class HostLoggersMediator
     {
         IHostsGridViewModel _hostsGridViewModel;
         ILoggersViewModel _loggersViewModel;
 
-        public LoggersMediator(
+        public HostLoggersMediator(
             HostsComponent hostsGridViewModel,
             ILoggersViewModel loggersViewModel
             )
@@ -60,9 +60,9 @@ namespace SampleApp.Components.ComponentHosts.Mediators
                         Value = logger.GetPropertiesDump(
                             new List<string> {
                                 nameof(LoggerModel.ProviderType),
-                                nameof(LoggerModel.ExternalScope)}
-                            )
+                                nameof(LoggerModel.ExternalScope)})
                     });
+
             foreach (var logger in host.MessageLoggers)
                 _loggersViewModel.Items.Add(
                     new LoggerViewModel
@@ -72,9 +72,9 @@ namespace SampleApp.Components.ComponentHosts.Mediators
                         Value = logger.GetPropertiesDump(
                             new List<string> {
                                 nameof(MessageLoggerModel.Category),
-                                nameof(MessageLoggerModel.MinLevel)}
-                            )
+                                nameof(MessageLoggerModel.MinLevel)})
                     });
+
             foreach (var logger in host.ScopeLoggers)
                 _loggersViewModel.Items.Add(
                     new LoggerViewModel
@@ -83,8 +83,7 @@ namespace SampleApp.Components.ComponentHosts.Mediators
                         Key = logger.Logger?.ToString(),
                         Value = logger.GetPropertiesDump(
                             new List<string> {
-                                nameof(ScopeLoggerModel.ExternalScopeProvider) }
-                            )
+                                nameof(ScopeLoggerModel.ExternalScopeProvider) })
                     });
         }
     }

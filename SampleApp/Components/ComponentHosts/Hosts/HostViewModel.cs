@@ -134,6 +134,12 @@ namespace SampleApp.Components.ComponentHosts.Hosts
         /// <inheritdoc/>
         public BindingList<ScopeLoggerModel> ScopeLoggers { get; } = new BindingList<ScopeLoggerModel>();
 
+        /// <inheritdoc/>
+        public BindingList<ServiceModel> RealizedServices { get; } = new BindingList<ServiceModel>();
+
+        /// <inheritdoc/>
+        public BindingList<ServiceModel> RegisteredServices { get; } = new BindingList<ServiceModel>();
+
         #endregion
 
         /// <inheritdoc/>
@@ -156,6 +162,13 @@ namespace SampleApp.Components.ComponentHosts.Hosts
                         var ms = services.GetType().GetMembers(TypeExtensions.DefaultScopeBindingFlags);
                         var keys = services.InvokeMethod<IReadOnlyCollection<Type>>("get_Keys");
                         ServicesCount = keys.Count;
+                        foreach (var key in keys)
+                            RealizedServices.Add(
+                                new ServiceModel
+                                {
+                                    Name = key.Name,
+                                    Type = key
+                                });
                     }
 
                     if (_host.GetField<HostOptions>("_options", out var options))

@@ -73,6 +73,16 @@ namespace SampleApp.Components.ComponentHosts.Hosts
         BindingList<ScopeLoggerModel> ScopeLoggers { get; }
 
         /// <summary>
+        /// realized services
+        /// </summary>
+        BindingList<ServiceModel> RealizedServices { get; }
+
+        /// <summary>
+        /// registered services
+        /// </summary>
+        BindingList<ServiceModel> RegisteredServices { get; }
+
+        /// <summary>
         /// initialize from a component host
         /// </summary>
         /// <param name="host">host</param>

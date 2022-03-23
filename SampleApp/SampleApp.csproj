@@ -136,6 +136,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Components\ComponentHosts\Hosts\Data\ServiceModel.cs" />
     <Compile Include="Components\ComponentHosts\Hosts\Data\LoggerModel.cs" />
     <Compile Include="Components\ComponentHosts\Hosts\Data\MessageLoggerModel.cs" />
     <Compile Include="Components\ComponentHosts\Hosts\Data\ScopeLoggerModel.cs" />
@@ -152,7 +153,8 @@
     <Compile Include="Components\ComponentHosts\Loggers\ILoggersViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Loggers\LoggersViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Loggers\LoggerViewModel.cs" />
-    <Compile Include="Components\ComponentHosts\Mediators\LoggersMediator.cs" />
+    <Compile Include="Components\ComponentHosts\Mediators\HostServicesMediator.cs" />
+    <Compile Include="Components\ComponentHosts\Mediators\HostLoggersMediator.cs" />
     <Compile Include="Components\ComponentHosts\Services\IServicesViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Services\IServiceViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Services\ServicesViewModel.cs" />

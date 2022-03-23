@@ -33,7 +33,8 @@ namespace SampleApp.Components.ComponentHosts
 
                 .AddSingleton<ILoggersViewModel, LoggersViewModel>()
                 .AddSingleton<IServicesViewModel, ServicesViewModel>()
-                .AddSingleton<LoggersMediator>()
+                .AddSingleton<HostLoggersMediator>()
+                .AddSingleton<HostServicesMediator>()
                 ;
 
             services.Services
@@ -56,7 +57,8 @@ namespace SampleApp.Components.ComponentHosts
         public override void Build()
         {
             base.Build();
-            _ = this.ComponentHost.Services.GetRequiredService<LoggersMediator>();
+            _ = this.ComponentHost.Services.GetRequiredService<HostLoggersMediator>();
+            _ = this.ComponentHost.Services.GetRequiredService<HostServicesMediator>();
         }
     }
 }
