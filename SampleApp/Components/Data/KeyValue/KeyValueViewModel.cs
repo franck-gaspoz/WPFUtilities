@@ -7,7 +7,8 @@ namespace SampleApp.Components.Data.KeyValue
     public class KeyValueViewModel : ModelBase, IKeyValueViewModel
     {
         /// <inheritdoc/>
-        public ObservableCollection<IKeyValueItem> Items { get; } = new ObservableCollection<IKeyValueItem>();
+        public ObservableCollection<IKeyValueItem> Items { get; }
+            = new ObservableCollection<IKeyValueItem>();
 
         IKeyValueItem _selectedItem = null;
         /// <inheritdoc/>

@@ -32,15 +32,11 @@ namespace SampleApp.Components.Data.KeyValue
             }
         }
 
-        /// <summary>
-        /// selected tree item
-        /// </summary>
+        /// <inheritdoc/>
         public IKeyValueItem GetSelectedItem()
             => SelectedItem;
 
-        /// <summary>
-        /// get tree items
-        /// </summary>
+        /// <inheritdoc/>
         public IEnumerable<IKeyValueItem> GetItems()
             => Items.Cast<IKeyValueItem>()
                     .AsEnumerable();

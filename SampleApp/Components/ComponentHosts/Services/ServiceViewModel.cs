@@ -1,21 +1,16 @@
 ﻿
 using SampleApp.Components.Data.KeyValue;
 
-using WPFUtilities.ComponentModels;
-
 namespace SampleApp.Components.ComponentHosts.Services
 {
     /// <summary>
-    /// 
+    /// service view model
     /// </summary>
     public class ServiceViewModel :
         KeyValueItem,
-        IKeyValueItem,
-        IModelBase
+        IServiceViewModel
     {
-        /// <summary>
-        /// group name
-        /// </summary>
+        /// <inheritdoc/>
         public string GroupName { get; set; }
     }
 }

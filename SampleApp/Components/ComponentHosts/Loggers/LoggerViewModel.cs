@@ -1,21 +1,16 @@
 ﻿
 using SampleApp.Components.Data.KeyValue;
 
-using WPFUtilities.ComponentModels;
-
 namespace SampleApp.Components.ComponentHosts.Loggers
 {
     /// <summary>
-    /// 
+    /// logger view model
     /// </summary>
     public class LoggerViewModel :
         KeyValueItem,
-        IKeyValueItem,
-        IModelBase
+        ILoggerViewModel
     {
-        /// <summary>
-        /// group name
-        /// </summary>
+        /// <inheritdoc/>
         public string GroupName { get; set; }
     }
 }

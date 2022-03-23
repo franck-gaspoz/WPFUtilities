@@ -9,8 +9,7 @@ namespace SampleApp.Components.Data.KeyValue
         IModelBase,
         IKeyValueViewModelBase
         where ViewModelBase :
-        IKeyValueItem,
-        IModelBase
+        IKeyValueItem
     {
         /// <summary>
         /// items list

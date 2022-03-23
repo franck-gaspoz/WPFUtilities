@@ -1,12 +1,12 @@
 ﻿using SampleApp.Components.Data.KeyValue;
 
-using WPFUtilities.ComponentModels;
-
 namespace SampleApp.Components.ComponentHosts.Loggers
 {
+    /// <summary>
+    /// loggers view model
+    /// </summary>
     public interface ILoggersViewModel :
-        IModelBase,
-        IKeyValueViewModel
+        IKeyValueViewModel<ILoggerViewModel>
     {
 
     }

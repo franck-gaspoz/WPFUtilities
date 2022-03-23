@@ -145,6 +145,7 @@
       <DependentUpon>ComponentHostsView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\ComponentHosts\ComponentHostsViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Loggers\ILoggerViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Loggers\LoggersView.xaml.cs">
       <DependentUpon>LoggersView.xaml</DependentUpon>
     </Compile>
@@ -153,12 +154,16 @@
     <Compile Include="Components\ComponentHosts\Loggers\LoggerViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Mediators\LoggersMediator.cs" />
     <Compile Include="Components\ComponentHosts\Services\IServicesViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Services\IServiceViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Services\ServicesViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Services\ServicesView.xaml.cs">
       <DependentUpon>ServicesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\ComponentHosts\Services\ServiceViewModel.cs" />
     <Compile Include="Components\Data\KeyValue\IKeyValueItem.cs" />
+    <Compile Include="Components\Data\KeyValue\IKeyValueViewModelBase.cs" />
+    <Compile Include="Components\Data\KeyValue\IKeyValueViewModel_T.cs" />
+    <Compile Include="Components\Data\KeyValue\KeyValueViewModel_T.cs" />
     <Compile Include="Components\Data\Tree\ITreeDataGridViewModel.cs" />
     <Compile Include="Components\Data\Tree\ITreeDataGridViewModel_T.cs" />
     <Compile Include="Components\Data\Tree\TreeDataGridViewModel_T.cs" />
