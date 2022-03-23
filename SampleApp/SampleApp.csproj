@@ -152,10 +152,14 @@
     <Compile Include="Components\ComponentHosts\Loggers\LoggersViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Loggers\LoggerViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Mediators\LoggersMediator.cs" />
+    <Compile Include="Components\ComponentHosts\Services\IServicesViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Services\ServicesViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Services\ServicesView.xaml.cs">
       <DependentUpon>ServicesView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Components\ComponentHosts\Services\ServiceViewModel.cs" />
     <Compile Include="Components\Data\KeyValue\IKeyValueItem.cs" />
+    <Compile Include="Components\Data\KeyValue\IKeyValueViewModel - Copier.cs" />
     <Compile Include="Components\Data\Tree\ITreeDataGridViewModel.cs" />
     <Compile Include="Components\Data\Tree\ITreeDataGridViewModel_T.cs" />
     <Compile Include="Components\Data\Tree\TreeDataGridViewModel_T.cs" />

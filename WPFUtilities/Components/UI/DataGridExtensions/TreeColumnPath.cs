@@ -27,7 +27,11 @@ namespace WPFUtilities.Components.UI
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="TreeColumnPath">TreeColumnPath</param>
-        public static void SetTreeColumnPath(DependencyObject dependencyObject, string TreeColumnPath) => dependencyObject.SetValue(TreeColumnPathProperty, TreeColumnPath);
+        public static void SetTreeColumnPath(DependencyObject dependencyObject, string TreeColumnPath)
+        {
+            if (TreeColumnPathProperty == null) return;
+            dependencyObject.SetValue(TreeColumnPathProperty, TreeColumnPath);
+        }
 
         /// <summary>
         /// column path property
