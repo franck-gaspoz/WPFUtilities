@@ -12,8 +12,8 @@
     <Grid>
         <data:KeyValueView 
             service:DataContext.Resolve="{x:Type local:IServicesViewModel}"
-            KeyColumnHeader="Interface type"
-            ValueColumnHeader="Implementation type"
+            KeyColumnHeader="Type"
+            ValueColumnHeader="Assembly"
             />
     </Grid>
 </UserControl>

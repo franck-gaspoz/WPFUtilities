@@ -157,18 +157,25 @@ namespace SampleApp.Components.ComponentHosts.Hosts
                 "Host",
                 (_host) =>
                 {
-                    if (_host.Services.GetMember<object>("_realizedServices", out var services))
+                    if (_host.Services.GetMember<object>("_realizedServices", out var rservices))
                     {
-                        var ms = services.GetType().GetMembers(TypeExtensions.DefaultScopeBindingFlags);
-                        var keys = services.InvokeMethod<IReadOnlyCollection<Type>>("get_Keys");
+                        var ms = rservices.GetType().GetMembers(TypeExtensions.DefaultScopeBindingFlags);
+                        var keys = rservices.InvokeMethod<IReadOnlyCollection<Type>>("get_Keys");
                         ServicesCount = keys.Count;
                         foreach (var key in keys)
                             RealizedServices.Add(
                                 new ServiceModel
                                 {
-                                    Name = key.Name,
-                                    Type = key
+                                    RegisteredType = key,
+                                    ResolvedType = key,
+                                    Assembly = key.Assembly
                                 });
+                    }
+
+                    if (_host.Services.GetMember<object>("CallSiteFactory", out var csfactory)
+                        && csfactory.GetMember<object>("_callSiteCache", out var cscache))
+                    {
+
                     }
 
                     if (_host.GetField<HostOptions>("_options", out var options))
@@ -247,7 +254,8 @@ namespace SampleApp.Components.ComponentHosts.Hosts
                 ExternalScope = logger.GetMember<bool>("ExternalScope"),
                 Logger = logger.GetMember<ILogger>("Logger"),
                 LoggerDescription = logger.GetMember<string>("LoggerDescription"),
-                ProviderType = logger.GetMember<Type>("ProviderType")
+                ProviderType = logger.GetMember<Type>("ProviderType"),
+                Assembly = logger.GetMember<ILogger>("Logger")?.GetType().Assembly
             };
             LoggerInformations.Add(data);
         }
@@ -260,6 +268,7 @@ namespace SampleApp.Components.ComponentHosts.Hosts
                 Logger = logger.GetMember<ILogger>("Logger"),
                 LoggerDescription = logger.GetMember<string>("LoggerDescription"),
                 MinLevel = logger.GetMember<LogLevel?>("MinLevel"),
+                Assembly = logger.GetMember<ILogger>("Logger")?.GetType().Assembly
             };
             MessageLoggers.Add(data);
         }
@@ -270,7 +279,8 @@ namespace SampleApp.Components.ComponentHosts.Hosts
             {
                 ExternalScopeProvider = logger.GetMember<IExternalScopeProvider>("ExternalScopeProvider"),
                 Logger = logger.GetMember<ILogger>("Logger"),
-                LoggerDescription = logger.GetMember<string>("LoggerDescription")
+                LoggerDescription = logger.GetMember<string>("LoggerDescription"),
+                Assembly = logger.GetMember<ILogger>("Logger")?.GetType().Assembly
             };
             ScopeLoggers.Add(data);
         }

@@ -1,4 +1,6 @@
-﻿using SampleApp.Components.Data.KeyValue;
+﻿using System.Reflection;
+
+using SampleApp.Components.Data.KeyValue;
 
 namespace SampleApp.Components.ComponentHosts.Loggers
 {
@@ -11,5 +13,10 @@ namespace SampleApp.Components.ComponentHosts.Loggers
         /// logger group name
         /// </summary>
         string GroupName { get; set; }
+
+        /// <summary>
+        /// logger assembly
+        /// </summary>
+        Assembly Assembly { get; set; }
     }
 }

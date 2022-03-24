@@ -1,13 +1,22 @@
 ﻿using System;
 
+using Microsoft.Extensions.Logging;
+
 namespace SampleApp.Components.ComponentHosts.Hosts.Data
 {
     /// <summary>
-    /// service model
+    /// logger model
     /// </summary>
-    public class ServiceModel
+    public class LoggerModel : TypeReferenceModelAbstract
     {
-        public Type Type { get; set; }
-        public string Name { get; set; }
+        public string Category { get; set; }
+
+        public bool ExternalScope { get; set; }
+
+        public ILogger Logger { get; set; }
+
+        public string LoggerDescription { get; set; }
+
+        public Type ProviderType { get; set; }
     }
 }

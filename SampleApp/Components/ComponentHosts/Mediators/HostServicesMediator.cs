@@ -1,4 +1,6 @@
 ﻿
+using System.IO;
+
 using Microsoft.Extensions.Hosting;
 
 using SampleApp.Components.ComponentHosts.Hosts;
@@ -6,6 +8,7 @@ using SampleApp.Components.ComponentHosts.Services;
 
 using WPFUtilities.Components.ServiceComponent;
 using WPFUtilities.Extensions.Models;
+using WPFUtilities.Extensions.Reflections;
 using WPFUtilities.Extensions.Threading;
 
 namespace SampleApp.Components.ComponentHosts.Mediators
@@ -53,8 +56,8 @@ namespace SampleApp.Components.ComponentHosts.Mediators
                     new ServiceViewModel
                     {
                         GroupName = "Realized",
-                        Key = service.Type.FullName,
-                        Value = service.Name
+                        Key = service.RegisteredType.UnmangledTypeName(true),
+                        Value = Path.GetFileNameWithoutExtension(service.Assembly.Location)
                     });
             }
         }

@@ -10,6 +10,32 @@ namespace WPFUtilities.Extensions.Reflections
     public static class TypeExtensions
     {
         /// <summary>
+        /// return unmangled type name
+        /// </summary>
+        /// <param name="type">type</param>
+        /// <param name="fullName">if true builds a long name, else a short</param>
+        /// <returns></returns>
+        public static string UnmangledTypeName(this Type type, bool fullName = false)
+        {
+            if (type == null) return null;
+
+            string name = fullName ? type.FullName : type.Name;
+            if (!type.IsGenericType) return name;
+
+            name = name.Split('`')[0];
+            name += "<";
+            int i = 0;
+            foreach (Type genericArgumentType in type.GetGenericArguments())
+            {
+                if (i > 0) name += ",";
+                name += UnmangledTypeName(genericArgumentType, fullName);
+                i++;
+            }
+            name += ">";
+            return name;
+        }
+
+        /// <summary>
         /// default binding scopes
         /// </summary>
         public const BindingFlags DefaultScopeBindingFlags =

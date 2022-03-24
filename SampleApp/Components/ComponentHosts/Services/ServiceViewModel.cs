@@ -1,4 +1,6 @@
 ﻿
+using System.Reflection;
+
 using SampleApp.Components.Data.KeyValue;
 
 namespace SampleApp.Components.ComponentHosts.Services
@@ -12,5 +14,8 @@ namespace SampleApp.Components.ComponentHosts.Services
     {
         /// <inheritdoc/>
         public string GroupName { get; set; }
+
+        /// <inheritdoc/>
+        public Assembly Assembly { get; set; }
     }
 }

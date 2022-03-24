@@ -136,6 +136,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Components\ComponentHosts\Hosts\Data\TypeReferenceModelAbstract.cs" />
     <Compile Include="Components\ComponentHosts\Hosts\Data\ServiceModel.cs" />
     <Compile Include="Components\ComponentHosts\Hosts\Data\LoggerModel.cs" />
     <Compile Include="Components\ComponentHosts\Hosts\Data\MessageLoggerModel.cs" />

@@ -1,4 +1,5 @@
-﻿using SampleApp.Components.Data.KeyValue;
+﻿
+using SampleApp.Components.Data.KeyValue;
 
 namespace SampleApp.Components.ComponentHosts.Loggers
 {
@@ -8,6 +9,5 @@ namespace SampleApp.Components.ComponentHosts.Loggers
     public interface ILoggersViewModel :
         IKeyValueViewModel<ILoggerViewModel>
     {
-
     }
 }
