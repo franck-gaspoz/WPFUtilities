@@ -1,7 +1,4 @@
-﻿
-using System.Reflection;
-
-using SampleApp.Components.Data.KeyValue;
+﻿using SampleApp.Components.ComponentHosts.Common;
 
 namespace SampleApp.Components.ComponentHosts.Loggers
 {
@@ -9,13 +6,8 @@ namespace SampleApp.Components.ComponentHosts.Loggers
     /// logger view model
     /// </summary>
     public class LoggerViewModel :
-        KeyValueItem,
+        ExtendedKeyValueItemViewModel,
         ILoggerViewModel
     {
-        /// <inheritdoc/>
-        public string GroupName { get; set; }
-
-        /// <inheritdoc/>
-        public Assembly Assembly { get; set; }
     }
 }

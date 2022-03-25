@@ -136,6 +136,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Components\ComponentHosts\Common\ExtendedKeyValueItemViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Hosts\Data\TypeReferenceModelAbstract.cs" />
     <Compile Include="Components\ComponentHosts\Hosts\Data\ServiceModel.cs" />
     <Compile Include="Components\ComponentHosts\Hosts\Data\LoggerModel.cs" />
@@ -200,7 +201,7 @@
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Logging\LogViewModel.cs" />
-    <Compile Include="Components\Data\KeyValue\KeyValueItem.cs" />
+    <Compile Include="Components\Data\KeyValue\KeyValueItemViewModel.cs" />
     <Compile Include="Components\Settings\Mediators\DataProviderMediator.cs" />
     <Compile Include="Components\Data\KeyValue\KeyValueView.xaml.cs">
       <DependentUpon>KeyValueView.xaml</DependentUpon>

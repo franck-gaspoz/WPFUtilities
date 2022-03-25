@@ -1,7 +1,4 @@
-﻿
-using System.Reflection;
-
-using SampleApp.Components.Data.KeyValue;
+﻿using SampleApp.Components.ComponentHosts.Common;
 
 namespace SampleApp.Components.ComponentHosts.Services
 {
@@ -9,13 +6,8 @@ namespace SampleApp.Components.ComponentHosts.Services
     /// service view model
     /// </summary>
     public class ServiceViewModel :
-        KeyValueItem,
+        ExtendedKeyValueItemViewModel,
         IServiceViewModel
     {
-        /// <inheritdoc/>
-        public string GroupName { get; set; }
-
-        /// <inheritdoc/>
-        public Assembly Assembly { get; set; }
     }
 }

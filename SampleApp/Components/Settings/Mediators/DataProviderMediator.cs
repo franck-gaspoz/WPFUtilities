@@ -35,7 +35,7 @@ namespace SampleApp.Components.Settings.Mediators
 
             object oprovider = item.Provider;
 
-            var items = new List<KeyValueItem>();
+            var items = new List<KeyValueItemViewModel>();
 
             if (oprovider is IConfigurationProvider provider
                 && provider.TryGetData(out var data))
@@ -43,7 +43,7 @@ namespace SampleApp.Components.Settings.Mediators
                 foreach (var kvp in data)
                 {
                     items.Add(
-                        new KeyValueItem { Key = kvp.Key, Value = kvp.Value }
+                        new KeyValueItemViewModel { Key = kvp.Key, Value = kvp.Value }
                         );
                 }
                 foreach (var dataItem in items)
