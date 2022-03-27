@@ -33,7 +33,7 @@
                         service:DataContext.Resolve="{x:Type hosts:IHostsViewModel}"
                         >
                 <TabItem Header="Hosts"
-                         appui:TabItemHeaderCounter.Counter="{Binding Hosts.Count}"
+                         appui:TabItemHeaderCount.Count="{Binding Hosts.Count}"
                          >
                     <hosts:HostsView
                         MinHeight="200"/>
@@ -62,7 +62,7 @@
                 <TabControl>
                     <TabItem Header="Loggers"
                              service:DataContext.Resolve="{x:Type loggers:ILoggersViewModel}"
-                             appui:TabItemHeaderCounter.Counter="{Binding Items.Count}"
+                             appui:TabItemHeaderCount.Count="{Binding Items.Count}"
                              >
                         <loggers:LoggersView />
                     </TabItem>
@@ -80,7 +80,7 @@
                             
                             <TabItem Header="Realized services"
                                      service:DataContext.Resolve="{x:Type services:IServicesViewModel}"
-                                     appui:TabItemHeaderCounter.Counter="{Binding Items.Count}"
+                                     appui:TabItemHeaderCount.Count="{Binding Items.Count}"
                                      >
                                 <services:ServicesView/>
                             </TabItem>
@@ -89,7 +89,7 @@
 
                             <TabItem Header="Registered services"
                                      service:DataContext.Resolve="{x:Type services:IServicesRegisteredViewModel}"
-                                     appui:TabItemHeaderCounter.Counter="{Binding Items.Count}"
+                                     appui:TabItemHeaderCount.Count="{Binding Items.Count}"
                                      >
                                 <services:ServicesView/>
                             </TabItem>

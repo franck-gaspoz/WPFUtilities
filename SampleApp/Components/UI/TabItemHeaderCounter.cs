@@ -10,7 +10,7 @@ namespace SampleApp.Components.UI
     /// <summary>
     /// tab item header counter: decorates the tab item header with a value: TabItemHeader (x)
     /// </summary>
-    public static class TabItemHeaderCounter
+    public static class TabItemHeaderCount
     {
         #region counter
 
@@ -19,35 +19,35 @@ namespace SampleApp.Components.UI
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
-        public static object GetCounter(DependencyObject dependencyObject) => dependencyObject.GetValue(CounterProperty);
+        public static object GetCount(DependencyObject dependencyObject) => dependencyObject.GetValue(CountProperty);
 
         /// <summary>
         /// set adjust column size modes
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
-        /// <param name="Counter">Counter</param>
-        public static void SetCounter(DependencyObject dependencyObject, object Counter)
+        /// <param name="Count">Count</param>
+        public static void SetCount(DependencyObject dependencyObject, object Count)
         {
-            if (CounterProperty == null) return;
-            dependencyObject.SetValue(CounterProperty, Counter);
+            if (CountProperty == null) return;
+            dependencyObject.SetValue(CountProperty, Count);
         }
 
         /// <summary>
         /// margin property
         /// </summary>
-        public static readonly DependencyProperty CounterProperty =
+        public static readonly DependencyProperty CountProperty =
             DependencyObjectExtensions.RegisterAttached(
-                "Counter",
+                "Count",
                 typeof(object),
-                typeof(TabItemHeaderCounter),
-                new UIPropertyMetadata(null, CounterChanged));
+                typeof(TabItemHeaderCount),
+                new UIPropertyMetadata(null, CountChanged));
 
         #endregion
 
         static string Decorates(object text, object value)
             => text + " (" + value + ")";
 
-        static void CounterChanged(
+        static void CountChanged(
             DependencyObject dependencyObject,
             DependencyPropertyChangedEventArgs eventArgs)
         {
@@ -56,7 +56,7 @@ namespace SampleApp.Components.UI
 
             tabItem.OnLoaded((routed) =>
             {
-                var counter = tabItem.GetValue(CounterProperty);
+                var counter = tabItem.GetValue(CountProperty);
                 if (tabItem.Header == null)
                     tabItem.Header = Decorates(tabItem.Header, counter);
                 else
