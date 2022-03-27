@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:SampleApp.Components.Data.KeyValue"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
+             xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              xmlns:binding="clr-namespace:WPFUtilities.Components.Bindings;assembly=WPFUtilities"
              mc:Ignorable="d" 
              x:Name="uc"
@@ -13,10 +14,21 @@
              d:DesignHeight="111.218" 
              d:DesignWidth="295.988">
     <Grid>
+
+        <Grid.Resources>
+            <CollectionViewSource x:Key="cvs" Source="{Binding Items}">
+                <CollectionViewSource.SortDescriptions>
+                    <scm:SortDescription PropertyName="Key" Direction="Ascending"/>
+                </CollectionViewSource.SortDescriptions>
+            </CollectionViewSource>
+        </Grid.Resources>
+        
         <DataGrid
-            ui:DataGrid.AdjustColumnSizeMode="OnResize"
+            x:Name="datagrid"
+            ui:DataGrid.AdjustColumnSizeMode="OnResize"            
             SelectedItem="{Binding SelectedItem}"
-            ItemsSource="{Binding Items}">
+            ItemsSource="{Binding Source={StaticResource cvs}}"                        
+            >
             
             <DataGrid.Resources>
                 <binding:BindingProxy x:Key="proxy" Data="{Binding ElementName=uc}"/>
@@ -29,6 +41,7 @@
                                         Path=Data.KeyColumnHeader,
                                         FallbackValue=Key}" 
                                     Binding="{Binding Key}" 
+                                    SortDirection="Ascending"
                                     Width="50*"/>
 
                 <DataGridTextColumn Header="{Binding

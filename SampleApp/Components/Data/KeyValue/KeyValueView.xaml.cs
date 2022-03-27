@@ -55,5 +55,37 @@ namespace SampleApp.Components.Data.KeyValue
                 typeof(object),
                 typeof(KeyValueView),
                 new PropertyMetadata("Value"));
+
+        #region datagrid accessor
+
+        /// <summary>
+        /// get adjust column size modes
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <returns>value</returns>
+        public static DataGrid GetDataGrid(DependencyObject dependencyObject) => (DataGrid)dependencyObject.GetValue(DataGridProperty);
+
+        /// <summary>
+        /// set adjust column size modes
+        /// </summary>
+        /// <param name="dependencyObject">dependency Object</param>
+        /// <param name="DataGrid">DataGrid</param>
+        public static void SetDataGrid(DependencyObject dependencyObject, DataGrid dataGrid)
+        {
+            if (DataGridProperty == null) return;
+            dependencyObject.SetValue(DataGridProperty, dataGrid);
+        }
+
+        /// <summary>
+        /// margin property
+        /// </summary>
+        public static readonly DependencyProperty DataGridProperty =
+            DependencyObjectExtensions.Register(
+                "DataGrid",
+                typeof(DataGrid),
+                typeof(KeyValueView),
+                new UIPropertyMetadata(null));
+
+        #endregion
     }
 }

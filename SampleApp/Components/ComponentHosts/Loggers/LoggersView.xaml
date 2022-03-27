@@ -15,7 +15,7 @@
 
         <data:KeyValueView 
             KeyColumnHeader="Logger"
-            ValueColumnHeader="Properties"
+            ValueColumnHeader="Properties"            
             />
 
     </Grid>
