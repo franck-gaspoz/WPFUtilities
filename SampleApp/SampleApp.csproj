@@ -249,6 +249,7 @@
   <ItemGroup>
     <Compile Include="Components\Main\MainWindowViewModel.cs" />
     <Compile Include="Components\Main\MainWindowComponent.cs" />
+    <Compile Include="Components\UI\TabItemHeaderCounter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

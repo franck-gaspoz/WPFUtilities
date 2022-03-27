@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:SampleApp.Components.ComponentHosts"
              xmlns:data="clr-namespace:SampleApp.Components.Data.KeyValue"
              xmlns:hosts="clr-namespace:SampleApp.Components.ComponentHosts.Hosts"
+             xmlns:appui="clr-namespace:SampleApp.Components.UI"
              xmlns:loggers="clr-namespace:SampleApp.Components.ComponentHosts.Loggers"
              xmlns:services="clr-namespace:SampleApp.Components.ComponentHosts.Services"
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
@@ -27,11 +28,14 @@
         <Grid>
 
             <!-- hosts tree grid -->
-            
-            <TabControl>
-                <TabItem Header="Hosts">
+
+            <TabControl service:Component.Type="{x:Type hosts:HostsComponent}"
+                        service:DataContext.Resolve="{x:Type hosts:IHostsViewModel}"
+                        >
+                <TabItem Header="Hosts"
+                         appui:TabItemHeaderCounter.Counter="{Binding Hosts.Count}"
+                         >
                     <hosts:HostsView
-                        service:Component.Type="{x:Type hosts:HostsComponent}"
                         MinHeight="200"/>
                 </TabItem>
             </TabControl>
@@ -56,8 +60,11 @@
                 <!-- host loggers -->
 
                 <TabControl>
-                    <TabItem Header="Loggers">
-                        <loggers:LoggersView/>
+                    <TabItem Header="Loggers"
+                             service:DataContext.Resolve="{x:Type loggers:ILoggersViewModel}"
+                             appui:TabItemHeaderCounter.Counter="{Binding Items.Count}"
+                             >
+                        <loggers:LoggersView />
                     </TabItem>
                 </TabControl>
 
@@ -71,16 +78,20 @@
 
                             <!-- realized services -->
                             
-                            <TabItem Header="Realized services">
-                                <services:ServicesView
-                                        service:DataContext.Resolve="{x:Type services:IServicesViewModel}" />
+                            <TabItem Header="Realized services"
+                                     service:DataContext.Resolve="{x:Type services:IServicesViewModel}"
+                                     appui:TabItemHeaderCounter.Counter="{Binding Items.Count}"
+                                     >
+                                <services:ServicesView/>
                             </TabItem>
 
                             <!-- registered services -->
 
-                            <TabItem Header="Registered services">
-                                <services:ServicesView
-                                    service:DataContext.Resolve="{x:Type services:IServicesRegisteredViewModel}" />
+                            <TabItem Header="Registered services"
+                                     service:DataContext.Resolve="{x:Type services:IServicesRegisteredViewModel}"
+                                     appui:TabItemHeaderCounter.Counter="{Binding Items.Count}"
+                                     >
+                                <services:ServicesView/>
                             </TabItem>
                             
                         </TabControl>
