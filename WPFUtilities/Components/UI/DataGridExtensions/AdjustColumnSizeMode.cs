@@ -37,7 +37,7 @@ namespace WPFUtilities.Components.UI
         }
 
         /// <summary>
-        /// margin property
+        /// adjust column site mode property
         /// </summary>
         public static readonly DependencyProperty AdjustColumnSizeModeProperty =
             DependencyObjectExtensions.Register(
