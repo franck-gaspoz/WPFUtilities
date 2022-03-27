@@ -46,14 +46,12 @@ namespace SampleApp.Components.ComponentHosts.Hosts
                         break;
                     case ListChangedType.ItemAdded:
                         var child = host.Childs[e.NewIndex];
-                        System.Diagnostics.Debug.WriteLine($" -2-> {host} == {host.ComponentHost.Name} > {child.ComponentHost.Name}");
                         GetHost(child);
                         break;
                 }
             }
 
             Items.Add(host);
-            System.Diagnostics.Debug.WriteLine($"-1-> {host} == {host.ComponentHost.Name}");
             host.Childs.ListChanged += ChildHosts_ListChanged;
             GetHosts(host.Childs);
         }

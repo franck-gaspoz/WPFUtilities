@@ -65,29 +65,27 @@
                     Grid.Column="1"
                     Style="{DynamicResource GridSplitter_Vertical}"/>
 
-                <TabControl Grid.Column="2">
-                    <TabItem Header="Services">
-
-                        <TabControl Grid.Column="2">
+                <Grid Grid.Column="2">
+                    
+                        <TabControl>
 
                             <!-- realized services -->
                             
                             <TabItem Header="Realized services">
                                 <services:ServicesView
-                            service:DataContext.Resolve="{x:Type services:IServicesViewModel}" />
+                                        service:DataContext.Resolve="{x:Type services:IServicesViewModel}" />
                             </TabItem>
 
                             <!-- registered services -->
 
                             <TabItem Header="Registered services">
                                 <services:ServicesView
-                        service:DataContext.Resolve="{x:Type services:IServicesRegisteredViewModel}" />
+                                    service:DataContext.Resolve="{x:Type services:IServicesRegisteredViewModel}" />
                             </TabItem>
                             
                         </TabControl>
 
-                    </TabItem>
-                </TabControl>
+                </Grid>
 
             </Grid>
             

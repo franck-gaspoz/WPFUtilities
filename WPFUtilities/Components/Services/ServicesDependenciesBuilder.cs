@@ -167,7 +167,10 @@ namespace WPFUtilities.Components.Services
         {
             var types = GetTypes(assembly, typeof(SingletonService<>).Name).ToArray();
             for (int i = 0; i < types.Length; i++)
+            {
                 AddSingleton(types[i], null);
+                System.Diagnostics.Debug.WriteLine(types[i]);
+            }
             return this;
         }
 
