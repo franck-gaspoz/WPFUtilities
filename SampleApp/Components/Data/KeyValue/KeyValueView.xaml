@@ -18,7 +18,7 @@
             ui:DataGrid.AdjustColumnSizeMode="OnResize"            
             SelectedItem="{Binding SelectedItem}"
             ItemsSource="{Binding Items}"
-            ui:DataGrid.Sort="Key:ASC"
+            ui:DataGrid.Sort="Key:ASC,Value:ASC"
             >
             
             <DataGrid.Resources>

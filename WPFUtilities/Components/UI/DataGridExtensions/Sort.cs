@@ -57,11 +57,19 @@ namespace WPFUtilities.Components.UI
                 || !(dependencyObject is DataGridControlType datagrid)) return;
 
             var sort = GetSort(datagrid);
+            if (sort == null) return;
+            var pathes = sort.Split(',');
+            foreach (var path in pathes)
+                AddSort(datagrid, path);
+        }
+
+        static void AddSort(DataGridControlType datagrid, string sort)
+        {
             var values = sort.Split(':');
             if (values.Length != 2
                 || (values[1] != "ASC"
                 && values[1] != "DESC"))
-                throw new ArgumentException("sort should be formated 'Name:ASC' or 'Name:DESC'");
+                throw new ArgumentException("sort should be formated '{Name_1}:ASC|DESC',..,{Name_n}:ASC|DESC");
 
             var sortPath = values[0];
             var sortDir = values[1] == "ASC" ?
