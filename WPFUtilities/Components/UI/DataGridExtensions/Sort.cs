@@ -59,6 +59,8 @@ namespace WPFUtilities.Components.UI
             var sort = GetSort(datagrid);
             if (sort == null) return;
             var pathes = sort.Split(',');
+
+            datagrid.Items.SortDescriptions.Clear();
             foreach (var path in pathes)
                 AddSort(datagrid, path);
         }
