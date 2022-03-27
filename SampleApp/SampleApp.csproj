@@ -155,11 +155,13 @@
     <Compile Include="Components\ComponentHosts\Loggers\ILoggersViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Loggers\LoggersViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Loggers\LoggerViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Mediators\HostServicesRegisteredMediator.cs" />
     <Compile Include="Components\ComponentHosts\Mediators\HostServicesMediator.cs" />
     <Compile Include="Components\ComponentHosts\Mediators\HostLoggersMediator.cs" />
     <Compile Include="Components\ComponentHosts\Services\IServicesRegisteredViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Services\IServicesViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Services\IServiceViewModel.cs" />
+    <Compile Include="Components\ComponentHosts\Services\ServicesRegisteredViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Services\ServicesViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Services\ServicesView.xaml.cs">
       <DependentUpon>ServicesView.xaml</DependentUpon>

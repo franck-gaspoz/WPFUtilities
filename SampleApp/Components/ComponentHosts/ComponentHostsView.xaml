@@ -51,8 +51,6 @@
                     <ColumnDefinition Width="50*"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="50*"/>
-                    <ColumnDefinition Width="auto"/>
-                    <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
                 
                 <!-- host loggers -->
@@ -67,25 +65,27 @@
                     Grid.Column="1"
                     Style="{DynamicResource GridSplitter_Vertical}"/>
 
-                <!-- realized services -->
-
                 <TabControl Grid.Column="2">
-                    <TabItem Header="Realized services">
-                        <services:ServicesView
+                    <TabItem Header="Services">
+
+                        <TabControl Grid.Column="2">
+
+                            <!-- realized services -->
+                            
+                            <TabItem Header="Realized services">
+                                <services:ServicesView
                             service:DataContext.Resolve="{x:Type services:IServicesViewModel}" />
-                    </TabItem>
-                </TabControl>
+                            </TabItem>
 
-                <GridSplitter 
-                    Grid.Column="3"
-                    Style="{DynamicResource GridSplitter_Vertical}"/>
+                            <!-- registered services -->
 
-                <!-- registered services -->
+                            <TabItem Header="Registered services">
+                                <services:ServicesView
+                        service:DataContext.Resolve="{x:Type services:IServicesRegisteredViewModel}" />
+                            </TabItem>
+                            
+                        </TabControl>
 
-                <TabControl Grid.Column="4">
-                    <TabItem Header="Registered services">
-                        <services:ServicesView
-                            service:DataContext.Resolve="{x:Type services:IServicesRegisteredViewModel}" />
                     </TabItem>
                 </TabControl>
 

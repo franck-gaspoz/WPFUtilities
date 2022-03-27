@@ -8,6 +8,5 @@ namespace SampleApp.Components.ComponentHosts.Services
     public class ServicesViewModel :
         KeyValueViewModel<IServiceViewModel>,
         IServicesViewModel
-    {
-    }
+    { }
 }

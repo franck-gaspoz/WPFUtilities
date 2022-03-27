@@ -13,14 +13,14 @@ using WPFUtilities.Extensions.Threading;
 
 namespace SampleApp.Components.ComponentHosts.Mediators
 {
-    public class HostServicesMediator
+    public class HostServicesRegisteredMediator
     {
         IHostsGridViewModel _hostsGridViewModel;
-        IServicesViewModel _servicesViewModel;
+        IServicesRegisteredViewModel _servicesViewModel;
 
-        public HostServicesMediator(
+        public HostServicesRegisteredMediator(
             HostsComponent hostsGridViewModel,
-            IServicesViewModel servicesViewModel
+            IServicesRegisteredViewModel servicesViewModel
             )
         {
             _servicesViewModel = servicesViewModel;
@@ -50,7 +50,7 @@ namespace SampleApp.Components.ComponentHosts.Mediators
             var host = _hostsGridViewModel.SelectedItem;
             if (host == null) return;
 
-            foreach (var service in host.RealizedServices)
+            foreach (var service in host.RegisteredServices)
             {
                 _servicesViewModel.Items.Add(
                     new ServiceViewModel

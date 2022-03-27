@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Windows;
 
+using Microsoft.Extensions.Logging;
+
 using WPFUtilities.Components.ServiceComponent;
 
 namespace WPFUtilities.Components.Services.Properties
@@ -37,7 +39,18 @@ namespace WPFUtilities.Components.Services.Properties
                 frameworkElement.DataContext =
                     componentHost.Services
                         .GetService(type);
+                if (frameworkElement.DataContext == null)
+                {
+                    var logger = componentHost.Services.GetService<ILogger<IComponentHost>>();
+                    logger.LogError($"SetupServiceDependencyDataContext failed to resolve type: {type.FullName} for dependencyObject={dependencyObject}");
+                }
             }
+#if DEBUG
+            else
+            {
+                System.Diagnostics.Debug.WriteLine($"SetupServiceDependencyDataContext failed: dependencyObject={dependencyObject} componentHost={componentHost}");
+            }
+#endif
         }
 
         /// <summary>

@@ -33,8 +33,10 @@ namespace SampleApp.Components.ComponentHosts
 
                 .AddSingleton<ILoggersViewModel, LoggersViewModel>()
                 .AddSingleton<IServicesViewModel, ServicesViewModel>()
+                .AddSingleton<IServicesRegisteredViewModel, ServicesRegisteredViewModel>()
                 .AddSingleton<HostLoggersMediator>()
                 .AddSingleton<HostServicesMediator>()
+                .AddSingleton<HostServicesRegisteredMediator>()
                 ;
 
             services.Services
@@ -59,6 +61,7 @@ namespace SampleApp.Components.ComponentHosts
             base.Build();
             _ = this.ComponentHost.Services.GetRequiredService<HostLoggersMediator>();
             _ = this.ComponentHost.Services.GetRequiredService<HostServicesMediator>();
+            _ = this.ComponentHost.Services.GetRequiredService<HostServicesRegisteredMediator>();
         }
     }
 }

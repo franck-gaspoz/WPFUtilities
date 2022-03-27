@@ -167,15 +167,26 @@ namespace SampleApp.Components.ComponentHosts.Hosts
                                 new ServiceModel
                                 {
                                     RegisteredType = key,
-                                    ResolvedType = key,
+                                    ResolvedType = null,
                                     Assembly = key.Assembly
                                 });
                     }
 
                     if (_host.Services.GetMember<object>("CallSiteFactory", out var csfactory)
-                        && csfactory.GetMember<object>("_callSiteCache", out var cscache))
+                        && csfactory.GetMember<ICollection>("_callSiteCache", out var cscache))
                     {
-
+                        //var keys = cscache.InvokeMethod<object>("get_Keys");
+                        foreach (var key in cscache)
+                        {
+                            var type = key.GetMember<object>("Key")?.GetMember<Type>("Type");
+                            RegisteredServices.Add(
+                                new ServiceModel
+                                {
+                                    RegisteredType = type,
+                                    ResolvedType = null,
+                                    Assembly = type.Assembly
+                                });
+                        }
                     }
 
                     if (_host.GetField<HostOptions>("_options", out var options))
