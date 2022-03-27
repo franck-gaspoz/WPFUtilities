@@ -180,7 +180,6 @@ namespace WPFUtilities.Components.ServiceComponent
         {
             if (component == null || component.IsBuilt) return;
             //_host.RegisterChildHost(component.ComponentHost);
-            System.Diagnostics.Debug.WriteLine(component.ToString() + " childs= " + _host.ChildHosts.Count);
             component.ComponentHost.ParentHost = _host;
             component.Configure();
             component.Build();
