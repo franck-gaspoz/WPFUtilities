@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 
 using properties = WPFUtilities.Components.Services.Properties;
@@ -37,6 +38,8 @@ namespace WPFUtilities.Components.ServiceComponent
         /// <param name="frameworkElement">framework element</param>
         public static void SetComponentHostPropertyFromResolvedComponentWhenLoaded(FrameworkElement frameworkElement)
         {
+            if (DesignerProperties.GetIsInDesignMode(frameworkElement)) return;
+
             if (!frameworkElement.IsLoaded)
                 frameworkElement.Loaded += ResolveAndSetComponent;
             else

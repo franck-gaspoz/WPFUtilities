@@ -157,6 +157,7 @@
     <Compile Include="Components\ComponentHosts\Loggers\LoggerViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Mediators\HostServicesMediator.cs" />
     <Compile Include="Components\ComponentHosts\Mediators\HostLoggersMediator.cs" />
+    <Compile Include="Components\ComponentHosts\Services\IServicesRegisteredViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Services\IServicesViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Services\IServiceViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Services\ServicesViewModel.cs" />

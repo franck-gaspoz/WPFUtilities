@@ -11,7 +11,6 @@
              d:DesignWidth="291.316">
     <Grid>
         <data:KeyValueView 
-            service:DataContext.Resolve="{x:Type local:IServicesViewModel}"
             KeyColumnHeader="Type"
             ValueColumnHeader="Assembly"
             />

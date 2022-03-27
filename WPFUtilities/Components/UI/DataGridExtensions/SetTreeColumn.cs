@@ -12,8 +12,6 @@ namespace WPFUtilities.Components.UI
 {
     /// <summary>
     /// turn on tree column 'mode' on a datagrid column
-    /// <para>needs the datagrid items source to be of type I..</para>
-    /// <para>needs the ...</para>
     /// </summary>
     static partial class DataGrid
     {
@@ -31,7 +29,11 @@ namespace WPFUtilities.Components.UI
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="SetTreeColumn">SetTreeColumn</param>
-        public static void SetSetTreeColumn(DependencyObject dependencyObject, string SetTreeColumn) => dependencyObject.SetValue(SetTreeColumnProperty, SetTreeColumn);
+        public static void SetSetTreeColumn(DependencyObject dependencyObject, string SetTreeColumn)
+        {
+            if (SetTreeColumnProperty == null) return;
+            dependencyObject.SetValue(SetTreeColumnProperty, SetTreeColumn);
+        }
 
         /// <summary>
         /// margin property

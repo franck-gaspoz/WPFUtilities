@@ -14,7 +14,7 @@
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=local:ComponentHostsViewModel}"
              d:DesignHeight="401.796" 
-             d:DesignWidth="559.944"
+             d:DesignWidth="999.944"
              >
     <Grid Margin="{DynamicResource Margin_Default}">
         
@@ -51,6 +51,8 @@
                     <ColumnDefinition Width="50*"/>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="50*"/>
                 </Grid.ColumnDefinitions>
                 
                 <!-- host loggers -->
@@ -65,11 +67,25 @@
                     Grid.Column="1"
                     Style="{DynamicResource GridSplitter_Vertical}"/>
 
-                <!-- a key/value panel -->
+                <!-- realized services -->
 
                 <TabControl Grid.Column="2">
-                    <TabItem Header="Services">
-                        <services:ServicesView/>
+                    <TabItem Header="Realized services">
+                        <services:ServicesView
+                            service:DataContext.Resolve="{x:Type services:IServicesViewModel}" />
+                    </TabItem>
+                </TabControl>
+
+                <GridSplitter 
+                    Grid.Column="3"
+                    Style="{DynamicResource GridSplitter_Vertical}"/>
+
+                <!-- registered services -->
+
+                <TabControl Grid.Column="4">
+                    <TabItem Header="Registered services">
+                        <services:ServicesView
+                            service:DataContext.Resolve="{x:Type services:IServicesRegisteredViewModel}" />
                     </TabItem>
                 </TabControl>
 
