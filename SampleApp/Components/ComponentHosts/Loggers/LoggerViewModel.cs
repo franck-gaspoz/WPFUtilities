@@ -8,6 +8,5 @@ namespace SampleApp.Components.ComponentHosts.Loggers
     public class LoggerViewModel :
         ExtendedKeyValueItemViewModel,
         ILoggerViewModel
-    {
-    }
+    { }
 }

@@ -14,14 +14,14 @@
              d:DesignHeight="71"
              d:DesignWidth="480.818">
     <Grid>
-
         <DataGrid ItemsSource="{Binding Items}"                  
                   service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}"
                   Grid.Row="1"
                   SelectedItem="{Binding SelectedItem}"
                   ui:DataGrid.TreeColumnPath="Name"
-                  ui:DataGrid.SetTreeColumn="Host">
-            
+                  ui:DataGrid.SetTreeColumn="Host"
+                  >
+
             <DataGrid.Columns>
                 
                 <DataGridTemplateColumn Header="Host"/>

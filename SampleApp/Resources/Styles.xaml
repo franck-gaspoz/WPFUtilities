@@ -21,7 +21,7 @@
         <Setter Property="BorderBrush" Value="Gray"/>
     </Style>
     
-    <!-- convetioned styles -->
+    <!-- conventioned styles -->
 
     <sys:Double x:Key="Margin_Default_Size">4</sys:Double>
     <Thickness x:Key="Margin_Default" 
@@ -41,7 +41,27 @@
     
     <!-- datagrid -->
 
+    <Style x:Key="DataGrid_GroupHeaderStyle" TargetType="{x:Type GroupItem}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Expander x:Name="expander" IsExpanded="True">
+                        <Expander.Header>
+                            <TextBlock Text="{Binding GroupName}"/>
+                        </Expander.Header>
+                        <ItemsPresenter/>
+                    </Expander>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <SolidColorBrush x:Key="DataGrid_LinesBrush">LightGray</SolidColorBrush>
+
+    <Style x:Key="DataGrid_Row" TargetType="{x:Type DataGridRow}">
+        <Setter Property="TextBlock.Padding" Value="8"/>
+        <Setter Property="Height" Value="24"/>
+    </Style>
 
     <Style TargetType="DataGrid">
         <!-- 
@@ -56,9 +76,11 @@
         <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource DataGrid_LinesBrush}"/>
         <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource DataGrid_LinesBrush}"/>
         <Setter Property="CanUserSortColumns" Value="True"/>
+        <Setter Property="AlternatingRowBackground" Value="#f9f9f9"/>
+        <Setter Property="RowStyle" Value="{DynamicResource DataGrid_Row}"/>
     </Style>
 
-    <!-- grid splitter -->
+        <!-- grid splitter -->
 
     <Style TargetType="GridSplitter"
            BasedOn="{StaticResource {x:Type GridSplitter}}"
