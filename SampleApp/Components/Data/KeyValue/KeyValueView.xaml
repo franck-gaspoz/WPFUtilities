@@ -50,6 +50,7 @@
                                         FallbackValue=Value}" 
                                     Binding="{Binding Value}" 
                                     Width="50*"/>
+                
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
