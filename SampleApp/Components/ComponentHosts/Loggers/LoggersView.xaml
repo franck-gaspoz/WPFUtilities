@@ -15,7 +15,8 @@
 
         <data:KeyValueView 
             KeyColumnHeader="Logger"
-            ValueColumnHeader="Properties"            
+            ValueColumnHeader="Properties" 
+            ui:DataGrid.Sort="Value:DESC"
             />
 
     </Grid>

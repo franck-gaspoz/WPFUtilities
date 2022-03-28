@@ -56,11 +56,11 @@ namespace WPFUtilities.Components.UI
             if (DesignerProperties.GetIsInDesignMode(dependencyObject)
                 || !(dependencyObject is DataGridControlType datagrid)) return;
 
+            datagrid.Items.SortDescriptions.Clear();
             var sort = GetSort(datagrid);
             if (sort == null) return;
             var pathes = sort.Split(',');
 
-            datagrid.Items.SortDescriptions.Clear();
             foreach (var path in pathes)
                 AddSort(datagrid, path);
         }
