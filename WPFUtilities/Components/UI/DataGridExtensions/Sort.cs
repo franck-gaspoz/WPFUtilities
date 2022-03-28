@@ -12,7 +12,7 @@ using DataGridControlType = System.Windows.Controls.DataGrid;
 namespace WPFUtilities.Components.UI
 {
     /// <summary>
-    /// add sort on datagrid column - preserve previous sorts
+    /// add sorts on datagrid columns
     /// </summary>
     public static partial class DataGrid
     {

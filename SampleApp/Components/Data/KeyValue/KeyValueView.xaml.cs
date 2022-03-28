@@ -1,7 +1,10 @@
-﻿using System.Windows;
+﻿using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 
 using WPFUtilities.Extensions.DependencyObjects;
+
+using dg = WPFUtilities.Components.UI.DataGrid;
 
 namespace SampleApp.Components.Data.KeyValue
 {
@@ -56,35 +59,45 @@ namespace SampleApp.Components.Data.KeyValue
                 typeof(KeyValueView),
                 new PropertyMetadata("Value"));
 
-        #region datagrid accessor
+        #region grouping
 
         /// <summary>
-        /// get adjust column size modes
+        /// get grouping
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
-        public static DataGrid GetDataGrid(DependencyObject dependencyObject) => (DataGrid)dependencyObject.GetValue(DataGridProperty);
+        public static string GetGrouping(DependencyObject dependencyObject) => (string)dependencyObject.GetValue(DataGridProperty);
 
         /// <summary>
-        /// set adjust column size modes
+        /// set grouping
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
-        /// <param name="DataGrid">DataGrid</param>
-        public static void SetDataGrid(DependencyObject dependencyObject, DataGrid dataGrid)
+        /// <param name="grouping">groups definition: [group1][,..,[groupn]]</param>
+        public static void SetGrouping(DependencyObject dependencyObject, string grouping)
         {
             if (DataGridProperty == null) return;
-            dependencyObject.SetValue(DataGridProperty, dataGrid);
+            dependencyObject.SetValue(DataGridProperty, grouping);
         }
 
         /// <summary>
-        /// margin property
+        /// grouping property
         /// </summary>
         public static readonly DependencyProperty DataGridProperty =
             DependencyObjectExtensions.Register(
-                "DataGrid",
-                typeof(DataGrid),
+                "Grouping",
+                typeof(string),
                 typeof(KeyValueView),
-                new UIPropertyMetadata(null));
+                new UIPropertyMetadata(null, GroupingChanged));
+
+        private static void GroupingChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
+        {
+            if (DesignerProperties.GetIsInDesignMode(dependencyObject)
+                || !(dependencyObject is KeyValueView keyValueView)) return;
+
+            var datagrid = (DataGrid)keyValueView.FindName("datagrid");
+            if (datagrid != null)
+                datagrid.SetValue(dg.GroupingProperty, GetGrouping(keyValueView));
+        }
 
         #endregion
     }

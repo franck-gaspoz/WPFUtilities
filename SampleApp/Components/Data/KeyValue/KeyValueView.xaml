@@ -20,6 +20,16 @@
             ItemsSource="{Binding Items}"
             ui:DataGrid.Sort="Key:ASC"
             >
+
+            <DataGrid.GroupStyle>
+                <GroupStyle ContainerStyle="{StaticResource DataGrid_GroupHeaderStyle}">
+                    <GroupStyle.Panel>
+                        <ItemsPanelTemplate>
+                            <DataGridRowsPresenter/>
+                        </ItemsPanelTemplate>
+                    </GroupStyle.Panel>
+                </GroupStyle>
+            </DataGrid.GroupStyle>
             
             <DataGrid.Resources>
                 <binding:BindingProxy x:Key="proxy" Data="{Binding ElementName=uc}"/>

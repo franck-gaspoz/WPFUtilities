@@ -47,7 +47,7 @@
                 <ControlTemplate>
                     <Expander x:Name="expander" IsExpanded="True">
                         <Expander.Header>
-                            <TextBlock Text="{Binding GroupName}"/>
+                            <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
                         </Expander.Header>
                         <ItemsPresenter/>
                     </Expander>
@@ -59,7 +59,6 @@
     <SolidColorBrush x:Key="DataGrid_LinesBrush">LightGray</SolidColorBrush>
 
     <Style x:Key="DataGrid_Row" TargetType="{x:Type DataGridRow}">
-        <Setter Property="TextBlock.Padding" Value="8"/>
         <Setter Property="Height" Value="24"/>
     </Style>
 
@@ -80,10 +79,10 @@
         <Setter Property="RowStyle" Value="{DynamicResource DataGrid_Row}"/>
     </Style>
 
-        <!-- grid splitter -->
+    <!-- grid splitter -->
 
     <Style TargetType="GridSplitter"
-           BasedOn="{StaticResource {x:Type GridSplitter}}"
+           BasedOn="{DynamicResource {x:Type GridSplitter}}"
            x:Key="GridSplitter_Base">
         <Setter Property="Background" Value="Transparent"/>
         <Style.Triggers>

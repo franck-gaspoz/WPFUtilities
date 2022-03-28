@@ -17,6 +17,7 @@
             KeyColumnHeader="Logger"
             ValueColumnHeader="Properties" 
             ui:DataGrid.Sort="Value:DESC"
+            Grouping="GroupName"
             />
 
     </Grid>

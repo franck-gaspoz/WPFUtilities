@@ -141,6 +141,7 @@
     <Compile Include="Components\Services\Properties\CommandExtensions\Param3.cs" />
     <Compile Include="Components\Services\Properties\CommandExtensions\Param2.cs" />
     <Compile Include="Components\Services\Properties\ServicesPropertiesHelper.cs" />
+    <Compile Include="Components\UI\DataGridExtensions\Grouping.cs" />
     <Compile Include="Components\UI\DataGridExtensions\Sort.cs" />
     <Compile Include="Components\UI\DataGridExtensions\AppendColumns.cs" />
     <Compile Include="Components\UI\DataGridExtensions\AdjustColumnSizeMode.cs" />
