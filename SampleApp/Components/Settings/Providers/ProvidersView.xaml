@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SampleApp.Components.Settings.Providers"
              xmlns:settings="clr-namespace:SampleApp.Components.Settings"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d" 
@@ -19,7 +18,7 @@
             ItemsSource="{Binding Providers}"
             AutoGenerateColumns="False"
             HorizontalGridLinesBrush="Transparent"
-            VerticalGridLinesBrush="Transparent"
+            VerticalGridLinesBrush="Transparent"            
             >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>

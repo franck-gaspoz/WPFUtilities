@@ -12,18 +12,19 @@
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance Type=local:SettingsViewModel}" 
-             d:DesignHeight="278.796" 
+             d:DesignHeight="367.796" 
              d:DesignWidth="649.875"
              >
     <Grid Margin="{DynamicResource Margin_Default}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto" MinHeight="160" MaxHeight="400"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*" />
         </Grid.RowDefinitions>
 
         <!-- application properties -->
 
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid 
             ui:Grids.FrameBrush="DarkGray"
             ui:Grids.FrameSize="1"
@@ -65,6 +66,7 @@
                 Grid.Column="1"/>
 
         </Grid>
+        </ScrollViewer>
     
         <GridSplitter Grid.Row="1" Style="{DynamicResource GridSplitter_Horizontal}"/>
 
@@ -75,7 +77,8 @@
               ui:Grids.MinimizeColumnIndex="2"
               ui:Grids.MaximizeColumnTrigger="{Binding IsVisible}"
               service:DataContext.Resolve="{x:Type files:ISettingsFileViewModel}"
-              d:DataContext="{d:DesignInstance Type=files:SettingsFileViewModel}"               
+              d:DataContext="{d:DesignInstance Type=files:SettingsFileViewModel}"  
+              MinHeight="180"
               >
 
             <Grid.ColumnDefinitions>
@@ -87,7 +90,7 @@
             <TabControl Grid.Column="0">
             
                 <TabItem Header="Data">
-                    <data:KeyValueView 
+                    <data:KeyValueDataGrid
                         service:DataContext.Resolve="{x:Type data:IKeyValueViewModel}"/>
                 </TabItem>
             

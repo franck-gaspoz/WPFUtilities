@@ -12,7 +12,9 @@ namespace SampleApp.Components.ComponentHosts.Common
         : KeyValueItemViewModel
     {
         string _groupName = null;
-        /// <inheritdoc/>
+        /// <summary>
+        /// groupe name
+        /// </summary>
         public string GroupName
         {
             get
@@ -27,7 +29,9 @@ namespace SampleApp.Components.ComponentHosts.Common
         }
 
         Assembly _assembly = null;
-        /// <inheritdoc/>
+        /// <summary>
+        /// assembly
+        /// </summary>
         public Assembly Assembly
         {
             get

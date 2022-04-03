@@ -21,9 +21,9 @@
     <Grid Margin="{DynamicResource Margin_Default}">
         
         <Grid.RowDefinitions>
-            <RowDefinition Height="40*"/>
+            <RowDefinition Height="40*" MinHeight="180"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="60*"/>
+            <RowDefinition Height="60*"  MinHeight="180"/>
         </Grid.RowDefinitions>
 
         <Grid>
@@ -36,8 +36,7 @@
                 <TabItem Header="Hosts"
                          appui:TabItemHeaderCount.Count="{Binding Hosts.Count}"
                          >
-                    <hosts:HostsView
-                        MinHeight="200"/>
+                    <hosts:HostsView/>
                 </TabItem>
             </TabControl>
 
