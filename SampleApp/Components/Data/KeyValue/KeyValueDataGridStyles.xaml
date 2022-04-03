@@ -42,7 +42,7 @@
                             <DataGridTextColumn Header="{Binding
                                     Source={StaticResource proxy},
                                     Path=Data.KeyColumnHeader,
-                                    FallbackValue=Value}"
+                                    FallbackValue=Key}"
                                     Binding="{Binding Key}" 
                                     Width="50*"/>
 

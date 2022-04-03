@@ -4,28 +4,16 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:data="clr-namespace:SampleApp.Components.Data.KeyValue"
-             xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
-             xmlns:local="clr-namespace:SampleApp.Components.ComponentHosts.Loggers"
-             xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d" 
              d:DesignHeight="99.796" 
              d:DesignWidth="206.944"
              >
     <Grid>
 
-        <!--
-        <data:KeyValueView 
-            KeyColumnHeader="Logger"
-            ValueColumnHeader="Properties" 
-            ui:DataGrid.Sort="Value:DESC"
-            Grouping="GroupName"
-            />
-        -->
         <data:KeyValueDataGrid
             KeyColumnHeader="Logger"
             ValueColumnHeader="Properties"
-            Grouping="GroupName"
-            />
+            Grouping="GroupName"/>
 
     </Grid>
 </UserControl>

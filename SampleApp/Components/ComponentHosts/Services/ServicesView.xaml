@@ -4,13 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:data="clr-namespace:SampleApp.Components.Data.KeyValue"
-             xmlns:local="clr-namespace:SampleApp.Components.ComponentHosts.Services"
-             xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d" 
              d:DesignHeight="72.028"
              d:DesignWidth="291.316">
     <Grid>
-        <data:KeyValueView 
+        <data:KeyValueDataGrid 
             KeyColumnHeader="Type"
             ValueColumnHeader="Assembly"
             />
