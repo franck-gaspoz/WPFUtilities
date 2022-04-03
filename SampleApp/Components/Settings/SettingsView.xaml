@@ -26,8 +26,8 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid 
-            ui:Grids.FrameBrush="DarkGray"
-            ui:Grids.FrameSize="1"
+            ui:Grids.FrameBrush="{DynamicResource Frame_LineBrush}"
+            ui:Grids.FrameSize="{DynamicResource Frame_Size}"
             >
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -42,7 +42,7 @@
             </Grid.ColumnDefinitions>
             <Grid.Resources>
                 <Style TargetType="TextBlock">
-                    <Setter Property="Background" Value="WhiteSmoke"/>
+                    <Setter Property="Background" Value="{DynamicResource Frame_Background}"/>
                     <Setter Property="Padding" Value="4,2,4,2"/>
                 </Style>
             </Grid.Resources>
@@ -58,8 +58,8 @@
 
             <TextBlock Grid.Row="3" Text="Providers" />
 
-            <Grid Grid.Row="4" Grid.Column="0" Background="WhiteSmoke" />
-            <Grid Grid.Row="4" Grid.Column="1" Background="WhiteSmoke" />
+            <Grid Grid.Row="4" Grid.Column="0" Background="{DynamicResource Frame_Background}" />
+            <Grid Grid.Row="4" Grid.Column="1" Background="{DynamicResource Frame_Background}" />
 
             <providers:ProvidersView 
                 Grid.Row="3" 

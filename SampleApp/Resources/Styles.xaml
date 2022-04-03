@@ -21,18 +21,29 @@
         <Setter Property="BorderBrush" Value="Gray"/>
     </Style>
     
-    <!-- conventioned styles -->
+    <!-- frames -->
+
+    <SolidColorBrush x:Key="Frame_Background">WhiteSmoke</SolidColorBrush>
+    <SolidColorBrush x:Key="Frame_LineBrush">DarkGray</SolidColorBrush>
+    <sys:Double x:Key="Frame_Size">1</sys:Double>
+    
+    <!-- layout -->
 
     <sys:Double x:Key="Margin_Default_Size">4</sys:Double>
+    
     <Thickness x:Key="Margin_Default" 
                Left="{StaticResource Margin_Default_Size}"
                Top="{StaticResource Margin_Default_Size}"
                Right="{StaticResource Margin_Default_Size}"
                Bottom="{StaticResource Margin_Default_Size}"/>
+    
     <Thickness x:Key="MarginBottom_Default"
                Bottom="{StaticResource Margin_Default_Size}"/>
+    
     <Thickness x:Key="MarginTop_Default"
                Top="{StaticResource Margin_Default_Size}"/>
+    
+    <!-- decoration -->
     
     <Style x:Key="ErrorText" TargetType="TextBlock">
         <Setter Property="Foreground" Value="Red"/>
