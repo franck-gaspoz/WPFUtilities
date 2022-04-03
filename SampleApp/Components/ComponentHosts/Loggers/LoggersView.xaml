@@ -13,10 +13,17 @@
              >
     <Grid>
 
+        <!--
         <data:KeyValueView 
             KeyColumnHeader="Logger"
             ValueColumnHeader="Properties" 
             ui:DataGrid.Sort="Value:DESC"
+            Grouping="GroupName"
+            />
+        -->
+        <data:KeyValueDataGrid
+            KeyColumnHeader="Logger"
+            ValueColumnHeader="Properties"
             Grouping="GroupName"
             />
 

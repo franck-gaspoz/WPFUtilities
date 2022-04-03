@@ -98,6 +98,8 @@
         <Setter Property="AlternatingRowBackground" Value="#f9f9f9"/>
         <Setter Property="RowStyle" Value="{DynamicResource DataGrid_Row}"/>
         <Setter Property="CellStyle" Value="{DynamicResource DataGrid_Cell}"/>
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="SelectionUnit" Value="FullRow"/>
     </Style>
 
     <!-- grid splitter -->

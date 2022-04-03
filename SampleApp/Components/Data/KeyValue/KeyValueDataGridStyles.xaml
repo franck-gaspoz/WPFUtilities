@@ -1,0 +1,67 @@
+﻿<ResourceDictionary 
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
+    xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
+    xmlns:local="clr-namespace:SampleApp.Components.Data.KeyValue"
+    xmlns:binding="clr-namespace:WPFUtilities.Components.Bindings;assembly=WPFUtilities"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style TargetType="local:KeyValueDataGrid">
+
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="local:KeyValueDataGrid">
+
+                    <DataGrid
+                        ui:DataGrid.AdjustColumnSizeMode="OnResize"  
+                        SelectedItem="{Binding SelectedItem}"
+                        ItemsSource="{Binding Items}"
+                        ui:DataGrid.Sort="Key:ASC"
+                        x:Name="datagrid"
+                        >
+
+                        <DataGrid.GroupStyle>
+                            <GroupStyle ContainerStyle="{StaticResource DataGrid_GroupHeaderStyle}">
+                                <GroupStyle.Panel>
+                                    <ItemsPanelTemplate>
+                                        <DataGridRowsPresenter/>
+                                    </ItemsPanelTemplate>
+                                </GroupStyle.Panel>
+                            </GroupStyle>
+                        </DataGrid.GroupStyle>
+
+                        <DataGrid.Resources>
+                            <binding:BindingProxy x:Key="proxy" 
+                                Data="{Binding RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"/>
+                        </DataGrid.Resources>
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="{Binding
+                                    Source={StaticResource proxy},
+                                    Path=Data.KeyColumnHeader,
+                                    FallbackValue=Value}"
+                                    Binding="{Binding Key}" 
+                                    Width="50*"/>
+
+                            <DataGridTextColumn Header="{Binding
+                                    Source={StaticResource proxy},
+                                    Path=Data.ValueColumnHeader,
+                                    FallbackValue=Value}" 
+                                    Binding="{Binding Value}" 
+                                    Width="50*"/>
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
+
+</ResourceDictionary>

@@ -72,6 +72,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Components\Data\KeyValue\KeyValueDataGridStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Components\Data\Tree\TreeDataGridStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -170,6 +174,7 @@
     <Compile Include="Components\Data\KeyValue\IKeyValueItem.cs" />
     <Compile Include="Components\Data\KeyValue\IKeyValueViewModelBase.cs" />
     <Compile Include="Components\Data\KeyValue\IKeyValueViewModel_T.cs" />
+    <Compile Include="Components\Data\KeyValue\KeyValueDataGrid.cs" />
     <Compile Include="Components\Data\KeyValue\KeyValueViewModel_T.cs" />
     <Compile Include="Components\Data\Tree\ITreeDataGridViewModel.cs" />
     <Compile Include="Components\Data\Tree\ITreeDataGridViewModel_T.cs" />

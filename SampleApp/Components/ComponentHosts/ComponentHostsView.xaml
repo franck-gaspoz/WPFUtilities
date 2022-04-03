@@ -17,6 +17,15 @@
              d:DesignHeight="401.796" 
              d:DesignWidth="999.944"
              >
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Components/Data/KeyValue/KeyValueDataGridStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid Margin="{DynamicResource Margin_Default}">
         
         <Grid.RowDefinitions>
