@@ -22,7 +22,7 @@ namespace SampleApp.Components.Data.KeyValue
 
         public KeyValueDataGrid()
         {
-            var x = TryFindResource("KeyValueDataGrid");
+            //var x = TryFindResource("KeyValueDataGrid");
         }
 
         #region key column header
@@ -106,9 +106,9 @@ namespace SampleApp.Components.Data.KeyValue
             if (DesignerProperties.GetIsInDesignMode(dependencyObject)
                 || !(dependencyObject is KeyValueDataGrid keyValueView)) return;
 
-            keyValueView.OnLoaded((routed) =>
+            keyValueView.OnRendered(() =>
             {
-                var datagrid = //(DataGrid)keyValueView.FindName("datagrid");
+                var datagrid =
                     WPFUtilities.Helpers.WPFHelper.FindVisualChild<DataGrid>(keyValueView);
                 if (datagrid != null)
                     datagrid.SetValue(dg.GroupingProperty, GetGrouping(keyValueView));

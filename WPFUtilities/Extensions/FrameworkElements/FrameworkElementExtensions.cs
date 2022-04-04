@@ -225,5 +225,21 @@ namespace WPFUtilities.Extensions.FrameworkElements
             obj.ToolTipOpening += ToolTipOpening;
         }
 
+        /// <summary>
+        /// trigger an action on framework element once measure is valid event (immediately if measure is already valid)
+        /// </summary>
+        /// <typeparam name="T">filter framework element type</typeparam>
+        /// <param name="obj">source</param>
+        /// <param name="action">action to trigger</param>
+        public static void OnRendered<T>(
+            this T obj,
+            Action action)
+            where T : FrameworkElement
+        {
+            if (obj.IsMeasureValid)
+                action();
+            else
+                obj.OnSizeChanged((sizeChanged) => action());
+        }
     }
 }

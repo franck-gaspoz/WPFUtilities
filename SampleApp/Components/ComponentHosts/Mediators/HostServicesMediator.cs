@@ -52,12 +52,13 @@ namespace SampleApp.Components.ComponentHosts.Mediators
 
             foreach (var service in host.RealizedServices)
             {
+                var assembly = Path.GetFileNameWithoutExtension(service.Assembly.Location);
                 _servicesViewModel.Items.Add(
                     new ServiceViewModel
                     {
-                        GroupName = null,
+                        GroupName = assembly,
                         Key = service.RegisteredType.UnmangledTypeName(true),
-                        Value = Path.GetFileNameWithoutExtension(service.Assembly.Location)
+                        Value = assembly
                     });
             }
         }
