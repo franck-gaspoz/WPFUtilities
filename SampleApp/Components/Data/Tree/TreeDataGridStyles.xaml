@@ -6,7 +6,9 @@
     xmlns:local="clr-namespace:SampleApp.Components.Data.Tree"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="TreeDataGrid_Row" TargetType="{x:Type DataGridRow}">
+    <Style x:Key="TreeDataGrid_Row" TargetType="{x:Type DataGridRow}"
+           BasedOn="{StaticResource DataGrid_Row}"
+           >
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsFolded}" Value="True">
                 <Setter Property="Visibility" Value="Collapsed"/>
