@@ -9,7 +9,7 @@ using DataGridControlType = System.Windows.Controls.DataGrid;
 namespace WPFUtilities.Components.UI
 {
     /// <summary>
-    /// add group on datagrid
+    /// add groups on datagrid. Group := group1[,group2[,...groupn]]]
     /// </summary>
     public static partial class DataGrid
     {
@@ -49,12 +49,18 @@ namespace WPFUtilities.Components.UI
 
         #endregion
 
+        static string[] GetGroups(DependencyObject dependencyObject)
+            => GetGroup(dependencyObject)?.Split(',');
+
         static void GroupChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs eventArgs)
         {
             if (DesignerProperties.GetIsInDesignMode(dependencyObject)
                 || !(dependencyObject is DataGridControlType datagrid)) return;
 
-            datagrid.Items.GroupDescriptions.Add(new PropertyGroupDescription(GetGroup(datagrid)));
+            datagrid.Items.GroupDescriptions.Clear();
+            foreach (var group in GetGroups(dependencyObject))
+                datagrid.Items.GroupDescriptions.Add(
+                    new PropertyGroupDescription(group));
         }
 
     }
