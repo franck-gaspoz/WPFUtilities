@@ -171,10 +171,6 @@
       <DependentUpon>ServicesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\ComponentHosts\Services\ServiceViewModel.cs" />
-    <Compile Include="Components\Data\DataGridExtensions\DataGridTextLeftColumn.cs" />
-    <Compile Include="Components\Data\DataGridExtensions\DataGridTextRightColumn.cs" />
-    <Compile Include="Components\Data\DataGridExtensions\DataGridTextCenterColumn.cs" />
-    <Compile Include="Components\Data\DataGridExtensions\DataGridTextColumn.cs" />
     <Compile Include="Components\Data\KeyValue\IKeyValueItem.cs" />
     <Compile Include="Components\Data\KeyValue\IKeyValueViewModelBase.cs" />
     <Compile Include="Components\Data\KeyValue\IKeyValueViewModel_T.cs" />
