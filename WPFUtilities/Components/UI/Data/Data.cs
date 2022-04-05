@@ -12,14 +12,14 @@ namespace WPFUtilities.Components.UI
     public static partial class Data
     {
         /// <summary>
-        /// get brush
+        /// get additional data
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
         public static Dictionary<string, object> GetAdditionalData(DependencyObject dependencyObject) => (Dictionary<string, object>)dependencyObject.GetValue(AdditionalDataProperty);
 
         /// <summary>
-        /// set brush
+        /// set additional data
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
         /// <param name="AdditionalData">AdditionalData</param>
