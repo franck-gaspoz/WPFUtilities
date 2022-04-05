@@ -22,32 +22,32 @@ namespace WPFUtilities.Components.UI
         /// </summary>
         /// <param name="dependencyObject">dependency object</param>
         /// <returns>value</returns>
-        public static string GetSetTreeColumn(DependencyObject dependencyObject) => (string)dependencyObject.GetValue(SetTreeColumnProperty);
+        public static string GetTreeColumnName(DependencyObject dependencyObject) => (string)dependencyObject.GetValue(TreeColumnNameProperty);
 
         /// <summary>
         /// set adjust column size modes
         /// </summary>
         /// <param name="dependencyObject">dependency Object</param>
-        /// <param name="SetTreeColumn">SetTreeColumn</param>
-        public static void SetSetTreeColumn(DependencyObject dependencyObject, string SetTreeColumn)
+        /// <param name="TreeColumnName">SetTreeColumn</param>
+        public static void SetTreeColumnName(DependencyObject dependencyObject, string TreeColumnName)
         {
-            if (SetTreeColumnProperty == null) return;
-            dependencyObject.SetValue(SetTreeColumnProperty, SetTreeColumn);
+            if (TreeColumnNameProperty == null) return;
+            dependencyObject.SetValue(TreeColumnNameProperty, TreeColumnName);
         }
 
         /// <summary>
         /// margin property
         /// </summary>
-        public static readonly DependencyProperty SetTreeColumnProperty =
+        public static readonly DependencyProperty TreeColumnNameProperty =
             DependencyObjectExtensions.Register(
-                "SetTreeColumn",
+                "TreeColumnName",
                 typeof(string),
                 typeof(DataGridControlType),
-                new UIPropertyMetadata(null, SetTreeColumnChanged));
+                new UIPropertyMetadata(null, TreeColumnNameChanged));
 
         #endregion
 
-        static void SetTreeColumnChanged(
+        static void TreeColumnNameChanged(
             DependencyObject dependencyObject,
             DependencyPropertyChangedEventArgs eventArgs)
         {
@@ -59,13 +59,13 @@ namespace WPFUtilities.Components.UI
                 var treeColumnPath = datagrid.GetValue<string>(TreeColumnPathProperty);
                 if (treeColumnPath == null)
                 {
-                    var treeColumn = GetSetTreeColumn(dependencyObject);
+                    var treeColumn = GetTreeColumnName(dependencyObject);
                     datagrid.SetValue(TreeColumnPathProperty, treeColumn);
                 }
 
                 var cellDataTemplate = (DataTemplate)System.Windows.Application.Current
                     .FindResource("TreeDataGrid_TreeCell");
-                var name = datagrid.GetValue<string>(SetTreeColumnProperty);
+                var name = datagrid.GetValue<string>(TreeColumnNameProperty);
                 var column = datagrid.Columns.Where(
                     x => x.Header.ToString() == name)
                         .FirstOrDefault();

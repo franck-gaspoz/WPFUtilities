@@ -154,7 +154,7 @@
     <Compile Include="Components\UI\DataGridExtensions\DataGridViewProperties.cs" />
     <Compile Include="Components\UI\DataGridExtensions\DataGridViewPropertiesProperty.cs" />
     <Compile Include="Components\UI\DataGridExtensions\TreeColumnPath.cs" />
-    <Compile Include="Components\UI\DataGridExtensions\SetTreeColumn.cs" />
+    <Compile Include="Components\UI\DataGridExtensions\TreeColumnName.cs" />
     <Compile Include="Components\UI\Data\Data.cs" />
     <Compile Include="Components\UI\Grids\Grids.cs" />
     <Compile Include="Components\UI\Grids\FrameBrush.cs" />
@@ -170,6 +170,7 @@
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelperViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\IScrollViewerTouchViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelper.cs" />
+    <Compile Include="Components\UI\TreeDataGridControl\TreeDataGrid.cs" />
     <Compile Include="Components\UI\WindowExtensions\CenterOnParentOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\RestoreInitiaSizeOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\Size.cs" />

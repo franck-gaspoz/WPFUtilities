@@ -18,7 +18,7 @@
                   Grid.Row="1"
                   SelectedItem="{Binding SelectedItem}"
                   ui:DataGrid.TreeColumnPath="Name"
-                  ui:DataGrid.SetTreeColumn="Host"
+                  ui:DataGrid.TreeColumnName="Host"
                   >
 
             <DataGrid.Columns>
