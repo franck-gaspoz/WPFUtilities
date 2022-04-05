@@ -12,8 +12,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="71"
              d:DesignWidth="480.818">
+
     <Grid>
-        <DataGrid ItemsSource="{Binding Items}"                  
+        <ui:TreeDataGrid ItemsSource="{Binding Items}"                  
                   service:DataContext.Resolve="{x:Type local:IHostsGridViewModel}"
                   Grid.Row="1"
                   SelectedItem="{Binding SelectedItem}"
@@ -48,7 +49,7 @@
                 <dge:DataGridTextCenterColumn Header="Services" Binding="{Binding ServicesCount}"/>
             
             </DataGrid.Columns>
-        </DataGrid>
+        </ui:TreeDataGrid>
         
     </Grid>
 

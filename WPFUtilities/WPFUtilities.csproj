@@ -170,6 +170,7 @@
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelperViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\IScrollViewerTouchViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelper.cs" />
+    <Compile Include="Components\UI\TreeDataGridControl\TreeColumnBinding.cs" />
     <Compile Include="Components\UI\TreeDataGridControl\TreeDataGrid.cs" />
     <Compile Include="Components\UI\WindowExtensions\CenterOnParentOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\RestoreInitiaSizeOnShow.cs" />
@@ -344,6 +345,10 @@
     <None Include="Snippets\CSharp\command.snippet" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Components\UI\TreeDataGridControl\TreeDataGridStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\Styles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

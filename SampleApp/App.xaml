@@ -9,8 +9,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles.xaml"/>
-                <ResourceDictionary Source="Components/Data/Tree/TreeDataGridStyles.xaml"/>
                 <ResourceDictionary Source="Components/Data/KeyValue/KeyValueDataGridStyles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFUtilities;component/Components/UI/TreeDataGridControl/TreeDataGridStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

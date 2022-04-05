@@ -1,4 +1,8 @@
-﻿using DataGridType = System.Windows.Controls.DataGrid;
+﻿using System.Windows;
+
+using WPFUtilities.Extensions.DependencyObjects;
+
+using DataGridType = System.Windows.Controls.DataGrid;
 
 namespace WPFUtilities.Components.UI
 {
@@ -9,10 +13,54 @@ namespace WPFUtilities.Components.UI
     {
         #region TreeColumnPath
 
+        /// <summary>
+        /// tree column binding path
+        /// </summary>
+        public string TreeColumnPath
+        {
+            get { return (string)GetValue(TreeColumnPathProperty); }
+            set { SetValue(TreeColumnPathProperty, value); }
+        }
+
+        /// <summary>
+        /// tree column binding path property
+        /// </summary>
+        public static readonly DependencyProperty TreeColumnPathProperty =
+            DependencyObjectExtensions.Register(
+                "TreeColumnPath",
+                typeof(string),
+                typeof(TreeDataGrid),
+                new PropertyMetadata(null));
+
         #endregion
 
         #region TreeColumnName
 
+        /// <summary>
+        /// tree column name
+        /// </summary>
+        public string TreeColumnName
+        {
+            get { return (string)GetValue(TreeColumnNameProperty); }
+            set { SetValue(TreeColumnNameProperty, value); }
+        }
+
+        /// <summary>
+        /// tree column name property
+        /// </summary>
+        public static readonly DependencyProperty TreeColumnNameProperty =
+            DependencyObjectExtensions.Register(
+                "TreeColumnName",
+                typeof(string),
+                typeof(TreeDataGrid),
+                new PropertyMetadata(null));
+
         #endregion
+
+        static TreeDataGrid()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(TreeDataGrid),
+                new FrameworkPropertyMetadata(typeof(DataGridType)));
+        }
     }
 }
