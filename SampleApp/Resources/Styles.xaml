@@ -96,13 +96,6 @@
                             BorderBrush="{TemplateBinding BorderBrush}" 
                             BorderThickness="{TemplateBinding BorderThickness}"
                             Background="{TemplateBinding Background}">
-                        <Border.Resources>
-                            <Style TargetType="{x:Type TextBlock}">
-                                <Setter Property="Margin" Value="10"/>
-                                <Setter Property="Background" Value="Red"/>
-                                <Setter Property="Foreground" Value="Magenta"/>
-                            </Style>
-                        </Border.Resources>
                         <ContentPresenter VerticalAlignment="Center"/>
                     </Border>
                 </ControlTemplate>
