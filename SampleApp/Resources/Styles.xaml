@@ -87,8 +87,7 @@
         <GradientStop Offset="1" Color="Transparent"/>
     </LinearGradientBrush>
 
-    <Style x:Key="DataGrid_Cell"
-        TargetType="{x:Type DataGridCell}">
+    <Style x:Key="DataGrid_Cell" TargetType="{x:Type DataGridCell}">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
@@ -110,6 +109,8 @@
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
 
+    <SolidColorBrush x:Key="DataGrid_AlternatingRowBackground">#f9f9f9</SolidColorBrush>
+
     <Style TargetType="DataGrid">
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="IsReadOnly" Value="True"/>
@@ -120,7 +121,7 @@
         <Setter Property="HorizontalGridLinesBrush" Value="{DynamicResource DataGrid_HorizontalLinesBrush}"/>
         <Setter Property="VerticalGridLinesBrush" Value="{DynamicResource DataGrid_VerticalLinesBrush}"/>
         <Setter Property="CanUserSortColumns" Value="True"/>
-        <Setter Property="AlternatingRowBackground" Value="#f9f9f9"/>
+        <Setter Property="AlternatingRowBackground" Value="{DynamicResource DataGrid_AlternatingRowBackground}"/>
         <Setter Property="RowStyle" Value="{DynamicResource DataGrid_Row}"/>
         <Setter Property="CellStyle" Value="{DynamicResource DataGrid_Cell}"/>
         <Setter Property="SelectionMode" Value="Single"/>

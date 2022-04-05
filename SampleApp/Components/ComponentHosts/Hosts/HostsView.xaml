@@ -24,7 +24,7 @@
                 
                 <DataGridTemplateColumn Header="Host"/>
                 
-                <DataGridTextColumn Header="Loggers" 
+                <DataGridTextColumn Header="Loggers"
                                     Binding="{Binding LoggersCount}"/>
                 <DataGridTextColumn Header="Options" Binding="{Binding OptionsCount}"/>
                 
