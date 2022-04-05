@@ -17,7 +17,7 @@
         Title="{Binding Title,FallbackValue=title}" 
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
-        Topmost="False"
+        Topmost="True"
         Height="670" 
         Width="1162"        
         service:DataContext.IsAuto="True"

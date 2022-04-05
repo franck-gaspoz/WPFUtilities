@@ -19,7 +19,7 @@ namespace SampleApp.Components.Main
             get
             {
                 var wpfuVersion = Assembly.GetAssembly(typeof(ApplicationBase)).GetName().Version;
-                return $"WPFUtilities samples application | WPFUtilites v{wpfuVersion}";
+                return $"WPFUtilities samples | WPFUtilites v{wpfuVersion}";
             }
         }
 
