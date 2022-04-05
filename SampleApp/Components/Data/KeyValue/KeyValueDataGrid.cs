@@ -20,11 +20,6 @@ namespace SampleApp.Components.Data.KeyValue
                 new FrameworkPropertyMetadata(typeof(KeyValueDataGrid)));*/
         }
 
-        public KeyValueDataGrid()
-        {
-            //var x = TryFindResource("KeyValueDataGrid");
-        }
-
         #region key column header
 
         /// <summary>

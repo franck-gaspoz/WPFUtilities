@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:settings="clr-namespace:SampleApp.Components.Settings"
+             xmlns:dge="clr-namespace:SampleApp.Components.Data.DataGridExtensions"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              mc:Ignorable="d" 
              d:DesignHeight="124.993" 
@@ -22,7 +23,7 @@
             >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Count" Binding="{Binding DataCount}"/>
+                <dge:DataGridTextCenterColumn Header="Count" Binding="{Binding DataCount}"/>
                 <DataGridCheckBoxColumn Header="file provider" Binding="{Binding IsProvidingFile}"/>
             </DataGrid.Columns>
 

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.ComponentHosts.Hosts"
+             xmlns:dge="clr-namespace:SampleApp.Components.Data.DataGridExtensions"
              xmlns:service="clr-namespace:WPFUtilities.Components.Services.Properties;assembly=WPFUtilities"
              d:DataContext="{d:DesignInstance Type=local:HostsGridViewModel}" 
              xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
@@ -23,12 +24,12 @@
             <DataGrid.Columns>
                 
                 <DataGridTemplateColumn Header="Host"/>
-                
-                <DataGridTextColumn Header="Loggers"
+
+                <dge:DataGridTextCenterColumn Header="Loggers"
                                     Binding="{Binding LoggersCount}"/>
-                <DataGridTextColumn Header="Options" Binding="{Binding OptionsCount}"/>
-                
-                <DataGridTextColumn                                   
+                <dge:DataGridTextCenterColumn Header="Options" Binding="{Binding OptionsCount}"/>
+
+                <dge:DataGridTextCenterColumn                                   
                                     Binding="{Binding HostOptions.BackgroundServiceExceptionBehavior}">
                     <DataGridTextColumn.Header>
                         <TextBlock Text="Background service exception behavior"
@@ -37,11 +38,14 @@
                                    Height="32px"
                                    Width="112px"/>
                     </DataGridTextColumn.Header>
-                </DataGridTextColumn>
-                                
-                <DataGridTextColumn Header="Shutdown timeout" Binding="{Binding HostOptions.ShutdownTimeout}"/>
-                
-                <DataGridTextColumn Header="Services" Binding="{Binding ServicesCount}"/>
+                </dge:DataGridTextCenterColumn>
+
+                <dge:DataGridTextCenterColumn Header="Shutdown timeout"                                     
+                    Binding="{Binding HostOptions.ShutdownTimeout}"
+                    TextAlignment="Center"
+                    />
+
+                <dge:DataGridTextCenterColumn Header="Services" Binding="{Binding ServicesCount}"/>
             
             </DataGrid.Columns>
         </DataGrid>
