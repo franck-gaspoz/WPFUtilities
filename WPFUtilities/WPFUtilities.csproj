@@ -166,6 +166,17 @@
     <Compile Include="Components\UI\Grids\MinimizeColumnIndex.cs" />
     <Compile Include="Components\UI\Grids\MaximizeColumnIndex.cs" />
     <Compile Include="Components\UI\Grids\MaximizeColumnTrigger.cs" />
+    <Compile Include="Components\UI\KeyValueDataGridControl\IKeyValueItem.cs" />
+    <Compile Include="Components\UI\KeyValueDataGridControl\IKeyValueViewModel.cs" />
+    <Compile Include="Components\UI\KeyValueDataGridControl\IKeyValueViewModelBase.cs" />
+    <Compile Include="Components\UI\KeyValueDataGridControl\IKeyValueViewModel_T.cs" />
+    <Compile Include="Components\UI\KeyValueDataGridControl\KeyValueDataGrid.cs" />
+    <Compile Include="Components\UI\KeyValueDataGridControl\KeyValueItemViewModel.cs" />
+    <Compile Include="Components\UI\KeyValueDataGridControl\KeyValueView.xaml.cs">
+      <DependentUpon>KeyValueView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Components\UI\KeyValueDataGridControl\KeyValueViewModel.cs" />
+    <Compile Include="Components\UI\KeyValueDataGridControl\KeyValueViewModel_T.cs" />
     <Compile Include="Components\UI\Layout\LeftMarginWultipyFactor.cs" />
     <Compile Include="Components\UI\Layout\LeftMarginWultipyFrom.cs" />
     <Compile Include="Components\UI\Layout\ChildSpacing.cs" />
@@ -356,6 +367,14 @@
     <None Include="Snippets\CSharp\command.snippet" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Components\UI\KeyValueDataGridControl\KeyValueDataGridStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
+    <Page Include="Components\UI\KeyValueDataGridControl\KeyValueView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Components\UI\TreeDataGridControl\TreeDataGridStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

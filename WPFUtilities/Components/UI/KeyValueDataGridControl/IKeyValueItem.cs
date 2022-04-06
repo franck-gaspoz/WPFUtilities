@@ -1,6 +1,6 @@
 ﻿using WPFUtilities.ComponentModels;
 
-namespace SampleApp.Components.Data.KeyValue
+namespace WPFUtilities.Components.UI.KeyValueDataGridControl
 {
     /// <summary>
     /// key / value data item

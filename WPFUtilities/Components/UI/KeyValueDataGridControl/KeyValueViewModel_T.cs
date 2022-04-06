@@ -4,7 +4,7 @@ using System.Linq;
 
 using WPFUtilities.ComponentModels;
 
-namespace SampleApp.Components.Data.KeyValue
+namespace WPFUtilities.Components.UI.KeyValueDataGridControl
 {
     public class KeyValueViewModel<ViewModelBase> :
         ModelBase,

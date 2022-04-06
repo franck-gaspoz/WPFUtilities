@@ -2,7 +2,7 @@
 
 using WPFUtilities.ComponentModels;
 
-namespace SampleApp.Components.Data.KeyValue
+namespace WPFUtilities.Components.UI.KeyValueDataGridControl
 {
     public class KeyValueViewModel : ModelBase, IKeyValueViewModel
     {

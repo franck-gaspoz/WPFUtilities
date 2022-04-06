@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using WPFUtilities.ComponentModels;
 
-namespace SampleApp.Components.Data.KeyValue
+namespace WPFUtilities.Components.UI.KeyValueDataGridControl
 {
     public interface IKeyValueViewModelBase : IModelBase
     {

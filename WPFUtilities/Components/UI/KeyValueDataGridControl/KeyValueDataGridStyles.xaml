@@ -1,18 +1,18 @@
 ﻿<ResourceDictionary 
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
-    xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
-    xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
-    xmlns:local="clr-namespace:SampleApp.Components.Data.KeyValue"
-    xmlns:binding="clr-namespace:WPFUtilities.Components.Bindings;assembly=WPFUtilities"
+    xmlns:ui="clr-namespace:WPFUtilities.Components.UI"
+    xmlns:converters="clr-namespace:WPFUtilities.Converters"
+    xmlns:local="clr-namespace:WPFUtilities.Components.UI.KeyValueDataGridControl"
+    xmlns:binding="clr-namespace:WPFUtilities.Components.Bindings"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style TargetType="local:KeyValueDataGrid">
+    <Style TargetType="{x:Type ui:KeyValueDataGrid}">
 
         <Setter Property="Template">
             <Setter.Value>
 
-                <ControlTemplate TargetType="local:KeyValueDataGrid">
+                <ControlTemplate TargetType="{x:Type ui:KeyValueDataGrid}">
 
                     <DataGrid
                         ui:DataGrid.AdjustColumnSizeMode="OnResize"  

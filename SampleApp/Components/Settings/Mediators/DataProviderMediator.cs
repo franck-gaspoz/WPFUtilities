@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 using Microsoft.Extensions.Configuration;
 
-using SampleApp.Components.Data.KeyValue;
+using WPFUtilities.Components.UI.KeyValueDataGridControl;
 
 using WPFUtilities.Extensions.Configuration;
 

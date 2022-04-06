@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:SampleApp.Components.ComponentHosts"
-             xmlns:data="clr-namespace:SampleApp.Components.Data.KeyValue"
              xmlns:hosts="clr-namespace:SampleApp.Components.ComponentHosts.Hosts"
              xmlns:appui="clr-namespace:SampleApp.Components.UI"
              xmlns:loggers="clr-namespace:SampleApp.Components.ComponentHosts.Loggers"

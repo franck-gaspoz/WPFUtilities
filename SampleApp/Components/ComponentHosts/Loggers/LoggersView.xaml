@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:data="clr-namespace:SampleApp.Components.Data.KeyValue"
+             xmlns:ui="clr-namespace:WPFUtilities.Components.UI;assembly=WPFUtilities"
              mc:Ignorable="d" 
              d:DesignHeight="99.796" 
              d:DesignWidth="206.944"
              >
     <Grid>
 
-        <data:KeyValueDataGrid
+        <ui:KeyValueDataGrid
             KeyColumnHeader="Logger"
             ValueColumnHeader="Properties"
             Grouping="GroupName"/>

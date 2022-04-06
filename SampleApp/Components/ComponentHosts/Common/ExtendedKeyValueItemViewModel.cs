@@ -1,7 +1,7 @@
 ﻿
 using System.Reflection;
 
-using SampleApp.Components.Data.KeyValue;
+using WPFUtilities.Components.UI.KeyValueDataGridControl;
 
 namespace SampleApp.Components.ComponentHosts.Common
 {

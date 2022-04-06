@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-using SampleApp.Components.Data.KeyValue;
 using SampleApp.Components.Settings.Files;
 using SampleApp.Components.Settings.Mediators;
 
 using WPFUtilities.Components.Logging.ListLogger;
 using WPFUtilities.Components.ServiceComponent;
+using WPFUtilities.Components.UI.KeyValueDataGridControl;
 
 namespace SampleApp.Components.Settings
 {

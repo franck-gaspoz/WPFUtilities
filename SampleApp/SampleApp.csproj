@@ -72,15 +72,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Components\Data\KeyValue\KeyValueDataGridStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Components\ComponentHosts\Hosts\HostsView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Components\Data\KeyValue\KeyValueView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -163,11 +155,6 @@
       <DependentUpon>ServicesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\ComponentHosts\Services\ServiceViewModel.cs" />
-    <Compile Include="Components\Data\KeyValue\IKeyValueItem.cs" />
-    <Compile Include="Components\Data\KeyValue\IKeyValueViewModelBase.cs" />
-    <Compile Include="Components\Data\KeyValue\IKeyValueViewModel_T.cs" />
-    <Compile Include="Components\Data\KeyValue\KeyValueDataGrid.cs" />
-    <Compile Include="Components\Data\KeyValue\KeyValueViewModel_T.cs" />
     <Compile Include="Components\Debug\TestCommand.cs" />
     <Compile Include="Components\Main\OnMainWindowShownCommand.cs" />
     <Compile Include="Components\About\AboutWindow.xaml.cs">
@@ -191,12 +178,7 @@
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Components\Logging\LogViewModel.cs" />
-    <Compile Include="Components\Data\KeyValue\KeyValueItemViewModel.cs" />
     <Compile Include="Components\Settings\Mediators\DataProviderMediator.cs" />
-    <Compile Include="Components\Data\KeyValue\KeyValueView.xaml.cs">
-      <DependentUpon>KeyValueView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\Data\KeyValue\KeyValueViewModel.cs" />
     <Compile Include="Components\Settings\Providers\ProviderItemViewModel.cs" />
     <Compile Include="Components\Settings\Providers\ProvidersView.xaml.cs">
       <DependentUpon>ProvidersView.xaml</DependentUpon>
@@ -205,7 +187,6 @@
     <Compile Include="Components\Settings\Files\SettingsFileView.xaml.cs">
       <DependentUpon>SettingsFileView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Data\KeyValue\IKeyValueViewModel.cs" />
     <Compile Include="Components\Settings\Files\ISettingsFileViewModel.cs" />
     <Compile Include="Components\Settings\ISettingsViewModel.cs" />
     <Compile Include="Components\Settings\SettingsComponent.cs" />

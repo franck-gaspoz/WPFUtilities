@@ -3,24 +3,23 @@ using System.Windows;
 using System.Windows.Controls;
 
 using WPFUtilities.Extensions.DependencyObjects;
-using WPFUtilities.Extensions.FrameworkElements;
 
-using dg = WPFUtilities.Components.UI.DataGrid;
+using DataGridType = System.Windows.Controls.DataGrid;
 
-namespace SampleApp.Components.Data.KeyValue
+namespace WPFUtilities.Components.UI.KeyValueDataGridControl
 {
     /// <summary>
-    /// key value datagrid
+    /// key value view
     /// </summary>
-    public class KeyValueDataGrid : DataGrid
+    public partial class KeyValueView : UserControl
     {
-        static KeyValueDataGrid()
+        /// <summary>
+        /// creates a new instance
+        /// </summary>
+        public KeyValueView()
         {
-            /*DefaultStyleKeyProperty.OverrideMetadata(typeof(KeyValueDataGrid),
-                new FrameworkPropertyMetadata(typeof(KeyValueDataGrid)));*/
+            InitializeComponent();
         }
-
-        #region key column header
 
         /// <summary>
         /// key column header
@@ -38,12 +37,8 @@ namespace SampleApp.Components.Data.KeyValue
             DependencyObjectExtensions.Register(
                 "KeyColumnHeader",
                 typeof(object),
-                typeof(KeyValueDataGrid),
+                typeof(KeyValueView),
                 new PropertyMetadata("Key"));
-
-        #endregion
-
-        #region value column header
 
         /// <summary>
         /// value column header
@@ -61,10 +56,8 @@ namespace SampleApp.Components.Data.KeyValue
             DependencyObjectExtensions.Register(
                 "ValueColumnHeader",
                 typeof(object),
-                typeof(KeyValueDataGrid),
+                typeof(KeyValueView),
                 new PropertyMetadata("Value"));
-
-        #endregion
 
         #region grouping
 
@@ -93,21 +86,17 @@ namespace SampleApp.Components.Data.KeyValue
             DependencyObjectExtensions.Register(
                 "Grouping",
                 typeof(string),
-                typeof(KeyValueDataGrid),
+                typeof(KeyValueView),
                 new UIPropertyMetadata(null, GroupingChanged));
 
         private static void GroupingChanged(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs args)
         {
             if (DesignerProperties.GetIsInDesignMode(dependencyObject)
-                || !(dependencyObject is KeyValueDataGrid keyValueView)) return;
+                || !(dependencyObject is KeyValueView keyValueView)) return;
 
-            keyValueView.OnRendered(() =>
-            {
-                var datagrid =
-                    WPFUtilities.Helpers.WPFHelper.FindVisualChild<DataGrid>(keyValueView);
-                if (datagrid != null)
-                    datagrid.SetValue(dg.GroupingProperty, GetGrouping(keyValueView));
-            });
+            var datagrid = (DataGridType)keyValueView.FindName("datagrid");
+            if (datagrid != null)
+                datagrid.SetValue(DataGrid.GroupingProperty, GetGrouping(keyValueView));
         }
 
         #endregion
