@@ -83,7 +83,7 @@
                     Margin="2"
                     VerticalAlignment="Top"
                     >
-            
+
             <ToggleButton IsChecked="{Binding IsExpanded,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                 Visibility="{Binding ChildsCount,
                         Converter={x:Static converters:NumberToVisibilityConverter.Instance}}"
@@ -98,25 +98,10 @@
                 ui:Layout.LeftMarginMultiplyFactor="{Binding Width,ElementName=tb}"
                 ui:Layout.LeftMarginMultiplyFrom="{Binding Level}"
                 Padding="0"
-                Style="{DynamicResource ExpandCollapseToggleStyle}"
+                Style="{StaticResource ExpandCollapseToggleStyle}"
+                ClickMode="Press"
                 >
 
-                <!--
-                <ToggleButton.Style>
-                    <Style TargetType="ToggleButton">
-                        <Style.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter Property="Content" Value="-"/>
-                                <Setter Property="Background" Value="Transparent"/>
-                            </Trigger>
-                            <Trigger Property="IsChecked" Value="False">
-                                <Setter Property="Content" Value="+"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ToggleButton.Style>
-                 -->
-                
             </ToggleButton>
 
             <TextBlock Margin="8,0,0,0"                        
