@@ -57,10 +57,12 @@ namespace WPFUtilities.Components.UI
 
         #endregion
 
-        static TreeDataGrid()
+        /// <summary>
+        /// creates a new instance
+        /// </summary>
+        public TreeDataGrid()
         {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(TreeDataGrid),
-                new FrameworkPropertyMetadata(typeof(DataGridType)));
+
         }
     }
 }

@@ -209,6 +209,45 @@ namespace WPFUtilities.Extensions.Reflections
         }
 
         /// <summary>
+        /// indicates if a type inherits from another type. returns false if type is base type
+        /// </summary>
+        /// <param name="type">type to check</param>
+        /// <param name="baseType">expected base type</param>
+        /// <returns>true if type is a sub type of base type</returns>
+        public static bool InheritsFrom(this Type type, Type baseType)
+        {
+            if (baseType == null) return false;
+            if (type == baseType) return false;
+            type = type.BaseType;
+            while (type != null && type != typeof(object))
+            {
+                if (type == baseType) return true;
+                type = type.BaseType;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// indicates if a type inherits from another type. returns false if type is base type
+        /// </summary>
+        /// <param name="type">type to check</param>
+        /// <typeparam name="BaseType">expected base type</typeparam>
+        /// <returns>true if type is a sub type of base type</returns>
+        public static bool InheritsFrom<BaseType>(this Type type)
+        {
+            var baseType = typeof(BaseType);
+            if (baseType == null) return false;
+            if (type == baseType) return false;
+            type = type.BaseType;
+            while (type != null && type != typeof(object))
+            {
+                if (type == baseType) return true;
+                type = type.BaseType;
+            }
+            return false;
+        }
+
+        /// <summary>
         /// indicates if a type inherits from a type having an interface with the given interface name. returns true if type has given interface type name
         /// </summary>
         /// <param name="type">type to analyze</param>
@@ -216,6 +255,15 @@ namespace WPFUtilities.Extensions.Reflections
         /// <returns>true if type implements an interface, false otherwize</returns>
         public static bool HasInterface(this Type type, string interfaceTypeName)
             => type.GetInterfaces().Where(x => x.FullName == interfaceTypeName).Any();
+
+        /// <summary>
+        /// indicates if a type inherits from a type having an interface with the given interface name. returns true if type has given interface type name
+        /// </summary>
+        /// <param name="type">type to analyze</param>
+        /// <param name="interfaceType">interface type</param>
+        /// <returns>true if type implements an interface, false otherwize</returns>
+        public static bool HasInterface(this Type type, Type interfaceType)
+            => type.GetInterfaces().Where(x => x.FullName == interfaceType.FullName).Any();
 
         /// <summary>
         /// indicates if a type inherits from a type having an interface with the given interface name. returns true if type has given interface type name
