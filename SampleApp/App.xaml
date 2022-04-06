@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/WPFUtilities;component/Components/UI/Resources/SharedStyles.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPFUtilities;component/Components/UI/TreeDataGridControl/TreeDataGridStyles.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/WPFUtilities;component/Components/UI/KeyValueDataGridControl/KeyValueDataGridStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>

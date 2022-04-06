@@ -6,9 +6,6 @@
     xmlns:local="clr-namespace:WPFUtilities.Components.UI.TreeDataGridControl"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Color x:Key="GlyphColor">#FF444444</Color>
-    <Color x:Key="GlyphMouseOver">sc#1, 0.004391443, 0.002428215, 0.242281124</Color>
-
     <Style x:Key="ExpandCollapseToggleStyle"
        TargetType="ToggleButton">
         <Setter Property="Focusable"
