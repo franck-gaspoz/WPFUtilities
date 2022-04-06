@@ -10,9 +10,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using SampleApp.Components.ComponentHosts.Hosts.Data;
-using SampleApp.Components.Data.Tree;
 
 using WPFUtilities.Components.ServiceComponent;
+using WPFUtilities.Components.UI.TreeDataGridControl;
 using WPFUtilities.Extensions.Reflections;
 using WPFUtilities.Extensions.Threading;
 

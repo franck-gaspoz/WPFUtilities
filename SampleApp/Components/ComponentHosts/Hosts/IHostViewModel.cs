@@ -5,10 +5,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using SampleApp.Components.ComponentHosts.Hosts.Data;
-using SampleApp.Components.Data.Tree;
 
 using WPFUtilities.ComponentModels;
 using WPFUtilities.Components.ServiceComponent;
+using WPFUtilities.Components.UI.TreeDataGridControl;
 
 namespace SampleApp.Components.ComponentHosts.Hosts
 {

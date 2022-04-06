@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 
-using SampleApp.Components.Data.Tree;
+using WPFUtilities.Components.UI.TreeDataGridControl;
 
 namespace SampleApp.Components.ComponentHosts.Hosts
 {

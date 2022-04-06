@@ -76,14 +76,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Components\Data\Tree\TreeDataGridStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Components\Data\Tree\TreeDataGridView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Components\ComponentHosts\Hosts\HostsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -176,21 +168,11 @@
     <Compile Include="Components\Data\KeyValue\IKeyValueViewModel_T.cs" />
     <Compile Include="Components\Data\KeyValue\KeyValueDataGrid.cs" />
     <Compile Include="Components\Data\KeyValue\KeyValueViewModel_T.cs" />
-    <Compile Include="Components\Data\Tree\ITreeDataGridViewModel.cs" />
-    <Compile Include="Components\Data\Tree\ITreeDataGridViewModel_T.cs" />
-    <Compile Include="Components\Data\Tree\TreeDataGridViewModel_T.cs" />
     <Compile Include="Components\Debug\TestCommand.cs" />
     <Compile Include="Components\Main\OnMainWindowShownCommand.cs" />
     <Compile Include="Components\About\AboutWindow.xaml.cs">
       <DependentUpon>AboutWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Components\Data\Tree\TreeColumnBinding.cs" />
-    <Compile Include="Components\Data\Tree\ITreeDataGridVRowViewModel_T.cs" />
-    <Compile Include="Components\Data\Tree\TreeDataGridView.xaml.cs">
-      <DependentUpon>TreeDataGridView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Components\Data\Tree\ITreeDataGridRowViewModel.cs" />
-    <Compile Include="Components\Data\Tree\TreeDataGridRowViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Hosts\HostsComponent.cs" />
     <Compile Include="Components\ComponentHosts\Hosts\HostsGridViewModel.cs" />
     <Compile Include="Components\ComponentHosts\Hosts\HostsView.xaml.cs">
