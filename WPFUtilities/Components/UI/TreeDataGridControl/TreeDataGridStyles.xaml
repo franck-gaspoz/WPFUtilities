@@ -6,6 +6,63 @@
     xmlns:local="clr-namespace:WPFUtilities.Components.UI.TreeDataGridControl"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
+    <Color x:Key="GlyphColor">Black</Color>
+    
+    <Style x:Key="ExpandCollapseToggleStyle"
+       TargetType="ToggleButton">
+        <Setter Property="Focusable"
+          Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid Width="15"
+                          Height="13"
+                          Background="Transparent">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CheckStates">
+                                <VisualState x:Name="Checked">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                 Storyboard.TargetName="Collapsed">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                            Value="{x:Static Visibility.Hidden}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
+                                                 Storyboard.TargetName="Expanded">
+                                            <DiscreteObjectKeyFrame KeyTime="0"
+                                            Value="{x:Static Visibility.Visible}" />
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Unchecked" />
+                                <VisualState x:Name="Indeterminate" />
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Path x:Name="Collapsed"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="1,1,1,1"
+                            Data="M 4 0 L 8 4 L 4 8 Z">
+                            <Path.Fill>
+                                <SolidColorBrush Color="{DynamicResource GlyphColor}" />
+                            </Path.Fill>
+                        </Path>
+                        <Path x:Name="Expanded"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Margin="1,1,1,1"
+                            Data="M 0 4 L 8 4 L 4 8 Z"
+                            Visibility="Hidden">
+                            <Path.Fill>
+                                <SolidColorBrush Color="{DynamicResource GlyphColor}" />
+                            </Path.Fill>
+                        </Path>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="{x:Type ui:TreeDataGrid}" 
            BasedOn="{StaticResource {x:Type DataGrid}}"/>
 
@@ -40,7 +97,10 @@
                 ui:Layout.LeftMarginMultiplyFactor="{Binding Width,ElementName=tb}"
                 ui:Layout.LeftMarginMultiplyFrom="{Binding Level}"
                 Padding="0"
+                Style="{DynamicResource ExpandCollapseToggleStyle}"
                 >
+
+                <!--
                 <ToggleButton.Style>
                     <Style TargetType="ToggleButton">
                         <Style.Triggers>
@@ -54,6 +114,8 @@
                         </Style.Triggers>
                     </Style>
                 </ToggleButton.Style>
+                 -->
+                
             </ToggleButton>
 
             <TextBlock Margin="8,0,0,0"                        
