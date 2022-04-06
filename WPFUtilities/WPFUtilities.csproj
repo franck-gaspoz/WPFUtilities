@@ -344,9 +344,7 @@
     <Resource Include="Resources\Codicons-SymbolClass.png" Pack="true" PackagePath="\" />
     <Resource Include="Resources\Codicons-SymbolClass.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controls\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include=".editorconfig" />
     <None Include=".gitattributes" />
