@@ -64,5 +64,18 @@ namespace WPFUtilities.Components.UI
         {
 
         }
+
+        /// <summary>
+        /// prop changed
+        /// </summary>
+        /// <param name="e">event args</param>
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
+        {
+            base.OnPropertyChanged(e);
+            if (e.Property == TreeColumnNameProperty)
+                this.SetValue(DataGrid.TreeColumnNameProperty, TreeColumnName);
+            if (e.Property == TreeColumnPathProperty)
+                this.SetValue(DataGrid.TreeColumnPathProperty, TreeColumnPath);
+        }
     }
 }

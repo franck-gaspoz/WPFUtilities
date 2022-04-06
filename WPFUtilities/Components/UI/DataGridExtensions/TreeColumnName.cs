@@ -3,10 +3,12 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
+using WPFUtilities.Components.UI.DataGridExtensions.Controls;
 using WPFUtilities.Extensions.DependencyObjects;
 using WPFUtilities.Extensions.FrameworkElements;
 
 using DataGridControlType = System.Windows.Controls.DataGrid;
+using DataGridTemplateColumnType = System.Windows.Controls.DataGridTemplateColumn;
 
 namespace WPFUtilities.Components.UI
 {
@@ -66,10 +68,21 @@ namespace WPFUtilities.Components.UI
                 var cellDataTemplate = (DataTemplate)System.Windows.Application.Current
                     .FindResource("TreeDataGrid_TreeCell");
                 var name = datagrid.GetValue<string>(TreeColumnNameProperty);
-                var column = datagrid.Columns.Where(
-                    x => x.Header.ToString() == name)
-                        .FirstOrDefault();
-                if (column is DataGridTemplateColumn tplcol)
+
+                // search by name in custom column type
+                DataGridColumn column;
+                column = (DataGridColumn)datagrid.Columns
+                    .OfType<IDataGridNamedColumn>()
+                    .Where(x => x.Name == name)
+                    .FirstOrDefault();
+
+                // search by header
+                if (column == null)
+                    column = datagrid.Columns.Where(
+                        x => x.Header.ToString() == name)
+                            .FirstOrDefault();
+
+                if (column is DataGridTemplateColumnType tplcol)
                 {
                     tplcol.CellTemplate = cellDataTemplate;
                     var gridRowStyle = (Style)System.Windows.Application.Current

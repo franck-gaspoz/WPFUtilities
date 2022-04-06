@@ -11,20 +11,49 @@ namespace WPFUtilities.Components.UI.DataGridExtensions.Controls
     /// <summary>
     /// data grid text column extension
     /// </summary>
-    public class DataGridTextColumn : DataGridTextColumnType
+    public class DataGridTextColumn : DataGridTextColumnType, IDataGridNamedColumn
     {
         #region text alignment
 
+        /// <summary>
+        /// text alignment
+        /// </summary>
         public TextAlignment TextAlignment
         {
             get { return (TextAlignment)GetValue(TextAlignmentProperty); }
             set { SetValue(TextAlignmentProperty, value); }
         }
 
+        /// <summary>
+        /// text alignment property
+        /// </summary>
         public static readonly DependencyProperty TextAlignmentProperty =
             DependencyObjectExtensions.Register("TextAlignment",
                 typeof(TextAlignment), typeof(DataGridTextColumn),
                 new PropertyMetadata(TextAlignment.Left, TextAlignmentChanged));
+
+        #endregion
+
+        #region name
+
+        /// <summary>
+        /// column name
+        /// </summary>
+        public string Name
+        {
+            get { return (string)GetValue(NameProperty); }
+            set { SetValue(NameProperty, value); }
+        }
+
+        /// <summary>
+        /// name property
+        /// </summary>
+        public static readonly DependencyProperty NameProperty =
+            DependencyObjectExtensions.Register(
+                "Name",
+                typeof(string),
+                typeof(DataGridTextColumn),
+                new PropertyMetadata(null));
 
         #endregion
 
