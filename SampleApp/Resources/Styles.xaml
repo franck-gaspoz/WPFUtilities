@@ -5,7 +5,7 @@
     xmlns:converters="clr-namespace:WPFUtilities.Converters;assembly=WPFUtilities"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- controls -->
+    <!-- #region controls -->
     
     <Style TargetType="Button">
         <Setter Property="Padding" Value="4,2,4,2"/>
@@ -23,15 +23,15 @@
     
     <!-- #endregion -->
 
-    <!-- frames -->
+    <!-- #region frames -->
 
     <SolidColorBrush x:Key="Frame_Background">WhiteSmoke</SolidColorBrush>
     <SolidColorBrush x:Key="Frame_LineBrush">DarkGray</SolidColorBrush>
     <sys:Double x:Key="Frame_Size">1</sys:Double>
 
     <!-- #endregion -->
-    
-    <!-- layout -->
+
+    <!-- #region layout -->
 
     <sys:Double x:Key="Margin_Default_Size">4</sys:Double>
     
@@ -49,7 +49,7 @@
 
     <!-- #endregion -->
 
-    <!-- general -->
+    <!-- #region general -->
     
     <Style x:Key="ErrorText" TargetType="TextBlock">
         <Setter Property="Foreground" Value="Red"/>
@@ -57,10 +57,10 @@
     </Style>
 
     <!-- #endregion -->
-    
-    <!-- datagrid -->
 
-    <!-- datagrid colors & brushes -->
+    <!-- #region datagrid -->
+
+    <!-- #region datagrid colors & brushes -->
     
     <Color x:Key="DataGrid_LineColor">LightGray</Color>
     <SolidColorBrush x:Key="DataGrid_HorizontalLinesBrush" Color="{DynamicResource DataGrid_LineColor}"/>
@@ -81,8 +81,12 @@
     
     <!-- #endregion -->
 
+    <!-- #region dimensions -->
+    
     <sys:Double x:Key="DataGrid_RowHeight">26</sys:Double>
     <Thickness x:Key="DataGridCell_IsKeyboardFocusWithinBorderThickness">0</Thickness>
+
+    <!-- #endregion -->
 
     <Style x:Key="DataGrid_GroupHeaderStyle" TargetType="{x:Type GroupItem}">
         <Setter Property="Template">
@@ -176,8 +180,10 @@
 
     <!-- #endregion -->
     
-    <!-- grid splitter -->
+    <!-- #region grid splitter -->
 
+    <Color x:Key="GridSplitter_Color">SkyBlue</Color>
+    
     <Style TargetType="GridSplitter"
            BasedOn="{StaticResource {x:Type GridSplitter}}"
            x:Key="GridSplitter_Base">
@@ -190,7 +196,7 @@
                             <ColorAnimation 
                                   AutoReverse="False" 
                                   Duration="0:0:0.050" 
-                                  From="Transparent" To="SkyBlue"
+                                  From="Transparent" To="{StaticResource GridSplitter_Color}"
                                   AccelerationRatio="1" 
                                   Storyboard.TargetProperty="(GridSplitter.Background).(SolidColorBrush.Color)"
                                   FillBehavior="HoldEnd">
@@ -206,7 +212,7 @@
                             <ColorAnimation 
                                   AutoReverse="False" 
                                   Duration="0:0:0.25" 
-                                  From="SkyBlue" To="Transparent"
+                                  From="{StaticResource GridSplitter_Color}" To="Transparent"
                                   AccelerationRatio="1" 
                                   Storyboard.TargetProperty="(GridSplitter.Background).(SolidColorBrush.Color)"
                                   FillBehavior="HoldEnd">
@@ -222,14 +228,14 @@
            BasedOn="{StaticResource GridSplitter_Base}"
            x:Key="GridSplitter_Horizontal">
         <Setter Property="Height" Value="4"/>
-        <Setter Property="Margin" Value="0,2,0,2"/>
+        <Setter Property="Margin" Value="0,4,0,4"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
     </Style>
 
     <Style TargetType="GridSplitter" 
            BasedOn="{StaticResource GridSplitter_Base}"
            x:Key="GridSplitter_Vertical">
-        <Setter Property="Margin" Value="2,0,2,0"/>
+        <Setter Property="Margin" Value="4,0,4,0"/>
         <Setter Property="Width" Value="4"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
