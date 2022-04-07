@@ -83,30 +83,39 @@
             <GridSplitter Grid.Column="1" Style="{DynamicResource GridSplitter_Vertical}"/>
 
             <!-- logs panels -->
-            <Grid Grid.Row="3" Margin="8,0,0,0">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="auto"/>
-                    <RowDefinition Height="60*"/>
-                </Grid.RowDefinitions>
+            <TabControl Grid.Row="3" Margin="8,0,0,0">
 
-                <logging:LogView
-                    Title="application log"
-                    service:Component.Type="{x:Type logging:ApplicationLogComponent}"
-                    service:DataContext.IsAuto="True"
-                />
+                <TabItem Header="Logs" IsSelected="True">
 
-                <GridSplitter Grid.Row="1" Style="{DynamicResource GridSplitter_Horizontal}"/>
+                    <Grid Margin="4">
 
-                <logging:LogView
-                    Grid.Row="2"
-                    Title="window log"
-                    service:Component.Type="{x:Type logging:WindowLogComponent}"
-                    service:DataContext.IsAuto="True"
-                />
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40*"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="60*"/>
+                        </Grid.RowDefinitions>
 
-            </Grid>
+                        <logging:LogView
+                            Title="application log"
+                            service:Component.Type="{x:Type logging:ApplicationLogComponent}"
+                            service:DataContext.IsAuto="True"
+                        />
+
+                        <GridSplitter Grid.Row="1" Style="{DynamicResource GridSplitter_Horizontal}"/>
+
+                        <logging:LogView
+                            Grid.Row="2"
+                            Title="window log"
+                            service:Component.Type="{x:Type logging:WindowLogComponent}"
+                            service:DataContext.IsAuto="True"
+                        />
+
+                    </Grid>
+
+                </TabItem>
+
+            </TabControl>
 
         </Grid>
 
