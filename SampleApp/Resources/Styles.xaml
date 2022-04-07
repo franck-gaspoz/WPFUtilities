@@ -98,7 +98,7 @@
     <Color x:Key="DataGridRow_HighlightColor">DodgerBlue</Color>
     <Color x:Key="DataGridRow_InactiveSelectionHighlightColor">Gainsboro</Color>
 
-    <Color x:Key="DataGridCell_HighlightColor">Red</Color>
+    <SolidColorBrush x:Key="DataGridCell_IsKeyboardFocusWithinBorderBrush">DodgerBlue</SolidColorBrush>
     
     <Style x:Key="DataGrid_Cell" TargetType="{x:Type DataGridCell}">
         <Setter Property="Template">
@@ -113,6 +113,11 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                <Setter Property="BorderBrush" Value="{DynamicResource DataGridCell_IsKeyboardFocusWithinBorderBrush}" />
+            </Trigger>
+        </Style.Triggers>
         <Style.Resources>
             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextColorKey}" Color="{DynamicResource DataGridCell_HighlightColor}" />
         </Style.Resources>
