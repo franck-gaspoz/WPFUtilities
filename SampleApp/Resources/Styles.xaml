@@ -136,6 +136,13 @@
             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{DynamicResource DataGridRow_HighlightColor}" />
             <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="{DynamicResource DataGridRow_InactiveSelectionHighlightColor}" />
         </Style.Resources>
+        <!--
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="FontWeight" Value="Bold" />
+            </Trigger>
+        </Style.Triggers>
+        -->
     </Style>
 
     <SolidColorBrush x:Key="DataGrid_AlternatingRowBackground">#f9f9f9</SolidColorBrush>
