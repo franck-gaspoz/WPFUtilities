@@ -60,6 +60,30 @@
     
     <!-- datagrid -->
 
+    <!-- datagrid colors & brushes -->
+    
+    <Color x:Key="DataGrid_LineColor">LightGray</Color>
+    <SolidColorBrush x:Key="DataGrid_HorizontalLinesBrush" Color="{DynamicResource DataGrid_LineColor}"/>
+    <Color x:Key="DataGridRow_HighlightColor">DodgerBlue</Color>
+    <Color x:Key="DataGridRow_InactiveSelectionHighlightColor">Gainsboro</Color>
+    <SolidColorBrush x:Key="DataGridCell_IsKeyboardFocusWithinBackgroundBrush">RoyalBlue</SolidColorBrush>
+    <SolidColorBrush x:Key="DataGridCell_IsKeyboardFocusWithinBorderBrush">Transparent</SolidColorBrush>
+    <SolidColorBrush x:Key="DataGrid_AlternatingRowBackground">#f9f9f9</SolidColorBrush>
+
+    <LinearGradientBrush x:Key="DataGrid_VerticalLinesBrush"
+                         StartPoint="0,0" EndPoint="0,3" 
+                         MappingMode="Absolute" SpreadMethod="Repeat">
+        <GradientStop Offset="0" Color="{DynamicResource DataGrid_LineColor}"/>
+        <GradientStop Offset="0.5" Color="{DynamicResource DataGrid_LineColor}"/>
+        <GradientStop Offset="0.5" Color="Transparent"/>
+        <GradientStop Offset="1" Color="Transparent"/>
+    </LinearGradientBrush>
+    
+    <!-- #endregion -->
+
+    <sys:Double x:Key="DataGrid_RowHeight">26</sys:Double>
+    <Thickness x:Key="DataGridCell_IsKeyboardFocusWithinBorderThickness">0</Thickness>
+
     <Style x:Key="DataGrid_GroupHeaderStyle" TargetType="{x:Type GroupItem}">
         <Setter Property="Template">
             <Setter.Value>
@@ -82,24 +106,6 @@
         </Setter>
     </Style>
 
-    <Color x:Key="DataGrid_LineColor">LightGray</Color>
-
-    <SolidColorBrush x:Key="DataGrid_HorizontalLinesBrush" Color="{DynamicResource DataGrid_LineColor}"/>
-    
-    <LinearGradientBrush x:Key="DataGrid_VerticalLinesBrush"
-                         StartPoint="0,0" EndPoint="0,3" 
-                         MappingMode="Absolute" SpreadMethod="Repeat">
-        <GradientStop Offset="0" Color="{DynamicResource DataGrid_LineColor}"/>
-        <GradientStop Offset="0.5" Color="{DynamicResource DataGrid_LineColor}"/>
-        <GradientStop Offset="0.5" Color="Transparent"/>
-        <GradientStop Offset="1" Color="Transparent"/>
-    </LinearGradientBrush>
-
-    <Color x:Key="DataGridRow_HighlightColor">DodgerBlue</Color>
-    <Color x:Key="DataGridRow_InactiveSelectionHighlightColor">Gainsboro</Color>
-
-    <SolidColorBrush x:Key="DataGridCell_IsKeyboardFocusWithinBorderBrush">DodgerBlue</SolidColorBrush>
-    
     <Style x:Key="DataGrid_Cell" TargetType="{x:Type DataGridCell}">
         <Setter Property="Template">
             <Setter.Value>
@@ -116,14 +122,14 @@
         <Style.Triggers>
             <Trigger Property="IsKeyboardFocusWithin" Value="True">
                 <Setter Property="BorderBrush" Value="{DynamicResource DataGridCell_IsKeyboardFocusWithinBorderBrush}" />
+                <Setter Property="BorderThickness" Value="{DynamicResource DataGridCell_IsKeyboardFocusWithinBorderThickness}"/>
+                <Setter Property="Background" Value="{DynamicResource DataGridCell_IsKeyboardFocusWithinBackgroundBrush}"/>
             </Trigger>
         </Style.Triggers>
         <Style.Resources>
             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextColorKey}" Color="{DynamicResource DataGridCell_HighlightColor}" />
         </Style.Resources>
     </Style>
-
-    <sys:Double x:Key="DataGrid_RowHeight">26</sys:Double>
 
     <Style x:Key="Debug_ColorTest" TargetType="{x:Type Button}">
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
@@ -144,8 +150,6 @@
         </Style.Triggers>
         -->
     </Style>
-
-    <SolidColorBrush x:Key="DataGrid_AlternatingRowBackground">#f9f9f9</SolidColorBrush>
 
     <Style TargetType="DataGrid">
         <Setter Property="BorderThickness" Value="0"/>
