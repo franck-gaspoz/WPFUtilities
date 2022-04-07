@@ -21,11 +21,15 @@
         <Setter Property="BorderBrush" Value="Gray"/>
     </Style>
     
+    <!-- #endregion -->
+
     <!-- frames -->
 
     <SolidColorBrush x:Key="Frame_Background">WhiteSmoke</SolidColorBrush>
     <SolidColorBrush x:Key="Frame_LineBrush">DarkGray</SolidColorBrush>
     <sys:Double x:Key="Frame_Size">1</sys:Double>
+
+    <!-- #endregion -->
     
     <!-- layout -->
 
@@ -42,13 +46,17 @@
     
     <Thickness x:Key="MarginTop_Default"
                Top="{StaticResource Margin_Default_Size}"/>
-    
-    <!-- decoration -->
+
+    <!-- #endregion -->
+
+    <!-- general -->
     
     <Style x:Key="ErrorText" TargetType="TextBlock">
         <Setter Property="Foreground" Value="Red"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
+
+    <!-- #endregion -->
     
     <!-- datagrid -->
 
@@ -87,6 +95,11 @@
         <GradientStop Offset="1" Color="Transparent"/>
     </LinearGradientBrush>
 
+    <Color x:Key="DataGridRow_HighlightColor">DodgerBlue</Color>
+    <Color x:Key="DataGridRow_InactiveSelectionHighlightColor">Gainsboro</Color>
+
+    <Color x:Key="DataGridCell_HighlightColor">Red</Color>
+    
     <Style x:Key="DataGrid_Cell" TargetType="{x:Type DataGridCell}">
         <Setter Property="Template">
             <Setter.Value>
@@ -100,13 +113,24 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextColorKey}" Color="{DynamicResource DataGridCell_HighlightColor}" />
+        </Style.Resources>
     </Style>
-    
+
     <sys:Double x:Key="DataGrid_RowHeight">26</sys:Double>
 
+    <Style x:Key="Debug_ColorTest" TargetType="{x:Type Button}">
+        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.InactiveSelectionHighlightBrushKey}}"/>
+    </Style>
+    
     <Style x:Key="DataGrid_Row" TargetType="{x:Type DataGridRow}">
         <Setter Property="Height" Value="{DynamicResource DataGrid_RowHeight}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Style.Resources>
+            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="{DynamicResource DataGridRow_HighlightColor}" />
+            <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey}" Color="{DynamicResource DataGridRow_InactiveSelectionHighlightColor}" />
+        </Style.Resources>
     </Style>
 
     <SolidColorBrush x:Key="DataGrid_AlternatingRowBackground">#f9f9f9</SolidColorBrush>
@@ -134,6 +158,8 @@
         </Style.Triggers>
     </Style>
 
+    <!-- #endregion -->
+    
     <!-- grid splitter -->
 
     <Style TargetType="GridSplitter"
@@ -192,5 +218,7 @@
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="VerticalAlignment" Value="Stretch"/>
     </Style>
+
+    <!-- #endregion -->
 
 </ResourceDictionary>
