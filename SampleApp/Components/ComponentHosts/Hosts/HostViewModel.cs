@@ -125,6 +125,17 @@ namespace SampleApp.Components.ComponentHosts.Hosts
             }
         }
 
+        int _realizedServicesCount = 0;
+        /// <inheritdoc/>
+        public int RealizedServicesCount { 
+            get => _realizedServicesCount;
+            set
+            {
+                _realizedServicesCount = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         /// <inheritdoc/>
         public BindingList<LoggerModel> LoggerInformations { get; } = new BindingList<LoggerModel>();
 
@@ -175,7 +186,7 @@ namespace SampleApp.Components.ComponentHosts.Hosts
                     if (_host.Services.GetMember<object>("CallSiteFactory", out var csfactory)
                         && csfactory.GetMember<ICollection>("_callSiteCache", out var cscache))
                     {
-                        //var keys = cscache.InvokeMethod<object>("get_Keys");
+                        RealizedServicesCount = cscache.Count;
                         foreach (var key in cscache)
                         {
                             var type = key.GetMember<object>("Key")?.GetMember<Type>("Type");

@@ -58,6 +58,11 @@ namespace SampleApp.Components.ComponentHosts.Hosts
         int ServicesCount { get; }
 
         /// <summary>
+        /// services count
+        /// </summary>
+        int RealizedServicesCount { get; }
+
+        /// <summary>
         /// loggers informations
         /// </summary>
         BindingList<LoggerModel> LoggerInformations { get; }

@@ -48,7 +48,9 @@
                     />
 
                 <dge:DataGridTextCenterColumn Header="Services" Binding="{Binding ServicesCount}"/>
-            
+
+                <dge:DataGridTextCenterColumn Header="Realized services" Binding="{Binding RealizedServicesCount}"/>
+
             </DataGrid.Columns>
         </ui:TreeDataGrid>
         
