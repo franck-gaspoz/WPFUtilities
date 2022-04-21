@@ -49,6 +49,21 @@ namespace WPFUtilities.Components.UI.TreeDataGridControl
             }
         }
 
+        bool _isSelected = true;
+        /// <inheritdoc/>
+        public bool IsSelected
+        {
+            get
+            {
+                return _isSelected;
+            }
+            set
+            {
+                _isSelected = value;
+                NotifyPropertyChanged();
+            }
+        }
+
         /// <inheritdoc/>
         public int ChildsCount => Childs?.Count ?? 0;
 

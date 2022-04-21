@@ -6,10 +6,49 @@
     xmlns:local="clr-namespace:WPFUtilities.Components.UI.TreeDataGridControl"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Style x:Key="ExpandCollapseToggleStyle"
-       TargetType="ToggleButton">
-        <Setter Property="Focusable"
-          Value="False" />
+    <Color x:Key="ExpandCollapseTogglePathMouseOverColor">#96d9f9</Color>
+    <Color x:Key="ExpandCollapseTogglePathSelectedColor">White</Color>
+    <Color x:Key="ExpandCollapseTogglePathUnselectedColor">Black</Color>
+
+    <Style x:Key="ExpandCollapseTogglePathStyle">
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Path.MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                AutoReverse="False" 
+                                Duration="0:0:0.050" 
+                                To="{StaticResource ExpandCollapseTogglePathMouseOverColor}"
+                                AccelerationRatio="1" 
+                                Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
+                                FillBehavior="HoldEnd">
+                            </ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Path.MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                AutoReverse="False" 
+                                Duration="0:0:0.050" 
+                                To="{StaticResource ExpandCollapseTogglePathUnselectedColor}"
+                                AccelerationRatio="1" 
+                                Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
+                                FillBehavior="HoldEnd">
+                            </ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ExpandCollapseToggleStyle" TargetType="ToggleButton">
+        <Setter Property="Focusable" Value="False" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
@@ -18,6 +57,7 @@
                           Background="Transparent">
                         <VisualStateManager.VisualStateGroups>
                             <VisualStateGroup x:Name="CheckStates">
+                                
                                 <VisualState x:Name="Checked">
                                     <Storyboard>
                                         <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)"
@@ -30,27 +70,68 @@
                                             <DiscreteObjectKeyFrame KeyTime="0"
                                             Value="{x:Static Visibility.Visible}" />
                                         </ObjectAnimationUsingKeyFrames>
+                                        
+                                       <!-- 
+                                        <ColorAnimation Storyboard.TargetName="Expanded" 
+                                                    Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
+                                                    To="{StaticResource ExpandCollapseTogglePathSelectedColor}" Duration="0:0:0.75" />
+                                        <ColorAnimation Storyboard.TargetName="Collapsed" 
+                                                    Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
+                                                    To="{StaticResource ExpandCollapseTogglePathSelectedColor}" Duration="0:0:0.75" />                                        
+                                    
+                                        -->
+                                        
                                     </Storyboard>
                                 </VisualState>
-                                <VisualState x:Name="Unchecked" />
+
+                                <!--
+                                <VisualState x:Name="MouseOver">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="Expanded" 
+                                                    Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
+                                                    To="White" Duration="0:0:0.75" />
+                                        
+                                    </Storyboard>
+                                </VisualState>
+                                -->
+                                <!--
+                                <VisualState x:Name="Unselected">
+                                    <Storyboard>
+                                        <ColorAnimation Storyboard.TargetName="Expanded" 
+                                                    Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
+                                                    To="{StaticResource ExpandCollapseTogglePathUnselectedColor}" Duration="0:0:0.75" />
+                                        <ColorAnimation Storyboard.TargetName="Collapsed" 
+                                                    Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
+                                                    To="{StaticResource ExpandCollapseTogglePathUnselectedColor}" Duration="0:0:0.75" />
+                                    </Storyboard>
+                                </VisualState>
+                                -->
+                                <VisualState x:Name="Unchecked"/>
+
                                 <VisualState x:Name="Indeterminate" />
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
+                        
                         <Path x:Name="Collapsed"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="1,1,1,1"
-                            Data="M 4 0 L 8 4 L 4 8 Z">
+                            Data="M 4 0 L 8 4 L 4 8 Z"
+                            Style="{StaticResource ExpandCollapseTogglePathStyle}"
+                            >
                             <Path.Fill>
-                                <SolidColorBrush Color="{DynamicResource GlyphColor}" />
+                                <SolidColorBrush x:Name="GlyphCollapsedBackgroundColor" Color="{DynamicResource GlyphColor}" />
                             </Path.Fill>
+
                         </Path>
                         <Path x:Name="Expanded"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="1,1,1,1"
                             Data="M 0 4 L 8 4 L 4 8 Z"
-                            Visibility="Hidden">
+                            Visibility="Hidden"
+                            Style="{StaticResource ExpandCollapseTogglePathStyle}"
+                            >
                             <Path.Fill>
                                 <SolidColorBrush Color="{DynamicResource GlyphColor}" />
                             </Path.Fill>
@@ -61,25 +142,53 @@
         </Setter>
     </Style>
 
+    <!-- tree data grid style is default based on DataGrid style -->
     <Style TargetType="{x:Type ui:TreeDataGrid}" 
            BasedOn="{StaticResource {x:Type DataGrid}}"/>
 
+    <!-- tree data grid rows provides the supports for collapsing tree nodes childrens -->  
     <Style x:Key="TreeDataGrid_Row" TargetType="{x:Type DataGridRow}"
-           BasedOn="{StaticResource DataGrid_Row}"
+           BasedOn="{StaticResource DataGrid_Row}"         
            >
+        <Setter Property="IsSelected" Value="{Binding IsSelected}"/>
         <Style.Triggers>
             <DataTrigger Binding="{Binding IsFolded}" Value="True">
                 <Setter Property="Visibility" Value="Collapsed"/>
             </DataTrigger>
         </Style.Triggers>
     </Style>
+    
+    <!-- TreeNodeLines control style displays lines that joins the tree nodes -->
+    <Style TargetType="{x:Type local:TreeNodeLines}">
 
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:TreeNodeLines}">
+
+                    <StackPanel 
+                          Orientation="Horizontal"
+                          Background="Red"
+                          ui:Layout.LeftMarginMultiplyFactor="16"
+                          ui:Layout.LeftMarginMultiplyFrom="{Binding Level}"
+                          >
+                        <ItemsPresenter/>
+                    </StackPanel>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        
+    </Style>
+    
+    <!-- TreeDataGrid cell style displays the tree hierarchy -->
     <DataTemplate x:Key="TreeDataGrid_TreeCell">
         
         <StackPanel Orientation="Horizontal" 
                     Margin="2"
                     VerticalAlignment="Top"
                     >
+
+            <local:TreeNodeLines/>
 
             <ToggleButton IsChecked="{Binding IsExpanded,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" 
                 Visibility="{Binding ChildsCount,
@@ -91,13 +200,13 @@
                 Background="Transparent"
                 BorderThickness="1"
                 BorderBrush="Black"
-                x:Name="tb"
-                ui:Layout.LeftMarginMultiplyFactor="{Binding Width,ElementName=tb}"
-                ui:Layout.LeftMarginMultiplyFrom="{Binding Level}"
+                x:Name="tb"                
                 Padding="0"
                 Style="{StaticResource ExpandCollapseToggleStyle}"
                 ClickMode="Press"
                 >
+                <!-- ui:Layout.LeftMarginMultiplyFactor="{Binding Width,ElementName=tb}"
+                            ui:Layout.LeftMarginMultiplyFrom="{Binding Level}"--> 
 
             </ToggleButton>
 

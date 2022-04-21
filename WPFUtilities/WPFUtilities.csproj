@@ -193,6 +193,7 @@
     <Compile Include="Components\UI\TreeDataGridControl\TreeDataGrid.cs" />
     <Compile Include="Components\UI\TreeDataGridControl\TreeDataGridRowViewModel.cs" />
     <Compile Include="Components\UI\TreeDataGridControl\TreeDataGridViewModel_T.cs" />
+    <Compile Include="Components\UI\TreeDataGridControl\TreeNodeLines.cs" />
     <Compile Include="Components\UI\WindowExtensions\CenterOnParentOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\RestoreInitiaSizeOnShow.cs" />
     <Compile Include="Components\UI\WindowExtensions\Size.cs" />

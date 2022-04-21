@@ -23,6 +23,11 @@ namespace WPFUtilities.Components.UI.TreeDataGridControl
         bool IsExpanded { get; set; }
 
         /// <summary>
+        /// is selected
+        /// </summary>
+        bool IsSelected { get; set; }
+
+        /// <summary>
         /// childs count
         /// </summary>
         int ChildsCount { get; }

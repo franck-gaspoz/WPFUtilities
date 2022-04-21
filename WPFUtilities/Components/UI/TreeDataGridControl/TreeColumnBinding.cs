@@ -15,7 +15,7 @@ namespace WPFUtilities.Components.UI.TreeDataGridControl
     /// </summary>
     public static class TreeColumnBinding
     {
-        #region target dp
+        #region target 
 
         /// <summary>
         /// get DependencyProperty
