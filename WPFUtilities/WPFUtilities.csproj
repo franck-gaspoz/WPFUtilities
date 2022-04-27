@@ -185,6 +185,7 @@
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelperViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\IScrollViewerTouchViewProperties.cs" />
     <Compile Include="Components\UI\ScrollingExtensions\ScrollViewerHelper.cs" />
+    <Compile Include="Components\UI\TreeDataGridControl\RowSelectedStateToExpandCollapseTogglePathColorConverter.cs" />
     <Compile Include="Components\UI\TreeDataGridControl\ITreeDataGridRowViewModel.cs" />
     <Compile Include="Components\UI\TreeDataGridControl\ITreeDataGridViewModel.cs" />
     <Compile Include="Components\UI\TreeDataGridControl\ITreeDataGridViewModel_T.cs" />

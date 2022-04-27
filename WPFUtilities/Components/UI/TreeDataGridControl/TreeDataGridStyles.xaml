@@ -10,7 +10,7 @@
     <Color x:Key="ExpandCollapseTogglePathSelectedColor">White</Color>
     <Color x:Key="ExpandCollapseTogglePathUnselectedColor">Black</Color>
 
-    <Style x:Key="ExpandCollapseTogglePathStyle">
+    <Style x:Key="ExpandCollapseTogglePathUnselectedStyle">
         <Style.Triggers>
             <EventTrigger RoutedEvent="Path.MouseEnter">
                 <EventTrigger.Actions>
@@ -47,6 +47,43 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="ExpandCollapseTogglePathSelectedStyle">
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="Path.MouseEnter">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                AutoReverse="False" 
+                                Duration="0:0:0.050" 
+                                To="{StaticResource ExpandCollapseTogglePathMouseOverColor}"
+                                AccelerationRatio="1" 
+                                Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
+                                FillBehavior="HoldEnd">
+                            </ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Path.MouseLeave">
+                <EventTrigger.Actions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation 
+                                AutoReverse="False" 
+                                Duration="0:0:0.050" 
+                                To="{StaticResource ExpandCollapseTogglePathSelectedColor}"
+                                AccelerationRatio="1" 
+                                Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
+                                FillBehavior="HoldEnd">
+                            </ColorAnimation>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger.Actions>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
+
     <Style x:Key="ExpandCollapseToggleStyle" TargetType="ToggleButton">
         <Setter Property="Focusable" Value="False" />
         <Setter Property="Template">
@@ -71,41 +108,9 @@
                                             Value="{x:Static Visibility.Visible}" />
                                         </ObjectAnimationUsingKeyFrames>
                                         
-                                       <!-- 
-                                        <ColorAnimation Storyboard.TargetName="Expanded" 
-                                                    Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                                    To="{StaticResource ExpandCollapseTogglePathSelectedColor}" Duration="0:0:0.75" />
-                                        <ColorAnimation Storyboard.TargetName="Collapsed" 
-                                                    Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                                    To="{StaticResource ExpandCollapseTogglePathSelectedColor}" Duration="0:0:0.75" />                                        
-                                    
-                                        -->
-                                        
                                     </Storyboard>
                                 </VisualState>
 
-                                <!--
-                                <VisualState x:Name="MouseOver">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="Expanded" 
-                                                    Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                                    To="White" Duration="0:0:0.75" />
-                                        
-                                    </Storyboard>
-                                </VisualState>
-                                -->
-                                <!--
-                                <VisualState x:Name="Unselected">
-                                    <Storyboard>
-                                        <ColorAnimation Storyboard.TargetName="Expanded" 
-                                                    Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                                    To="{StaticResource ExpandCollapseTogglePathUnselectedColor}" Duration="0:0:0.75" />
-                                        <ColorAnimation Storyboard.TargetName="Collapsed" 
-                                                    Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                                    To="{StaticResource ExpandCollapseTogglePathUnselectedColor}" Duration="0:0:0.75" />
-                                    </Storyboard>
-                                </VisualState>
-                                -->
                                 <VisualState x:Name="Unchecked"/>
 
                                 <VisualState x:Name="Indeterminate" />
@@ -117,23 +122,42 @@
                             VerticalAlignment="Center"
                             Margin="1,1,1,1"
                             Data="M 4 0 L 8 4 L 4 8 Z"
-                            Style="{StaticResource ExpandCollapseTogglePathStyle}"
+                            Style="{StaticResource ExpandCollapseTogglePathUnselectedStyle}"
                             >
                             <Path.Fill>
-                                <SolidColorBrush x:Name="GlyphCollapsedBackgroundColor" Color="{DynamicResource GlyphColor}" />
+                                <SolidColorBrush>
+                                    <!--Color="{Binding IsSelected,Converter={x:Static local:RowSelectedStateToExpandCollapseTogglePathColorConverter.Instance}}"-->
+                                    <SolidColorBrush.Color>
+                                        <MultiBinding Converter="{x:Static local:RowSelectedStateToExpandCollapseTogglePathColorConverter.Instance}">
+                                            <Binding Path="." RelativeSource="{RelativeSource AncestorType=DataGridRow,Mode=FindAncestor}"/>
+                                            <Binding Path="."/>
+                                            <Binding Path="IsSelected"/>
+                                        </MultiBinding>
+                                    </SolidColorBrush.Color>
+                                </SolidColorBrush>
                             </Path.Fill>
 
                         </Path>
+                        
                         <Path x:Name="Expanded"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Margin="1,1,1,1"
                             Data="M 0 4 L 8 4 L 4 8 Z"
                             Visibility="Hidden"
-                            Style="{StaticResource ExpandCollapseTogglePathStyle}"
+                            Style="{StaticResource ExpandCollapseTogglePathUnselectedStyle}"
                             >
                             <Path.Fill>
-                                <SolidColorBrush Color="{DynamicResource GlyphColor}" />
+                                <SolidColorBrush>
+                                    <!-- Color="{Binding IsSelected,Converter={x:Static local:RowSelectedStateToExpandCollapseTogglePathColorConverter.Instance}}" -->
+                                    <SolidColorBrush.Color>
+                                        <MultiBinding Converter="{x:Static local:RowSelectedStateToExpandCollapseTogglePathColorConverter.Instance}">
+                                            <Binding Path="." RelativeSource="{RelativeSource AncestorType=DataGridRow,Mode=FindAncestor}"/>
+                                            <Binding Path="."/>
+                                            <Binding Path="IsSelected"/>
+                                        </MultiBinding>
+                                    </SolidColorBrush.Color>
+                                </SolidColorBrush>
                             </Path.Fill>
                         </Path>
                     </Grid>
