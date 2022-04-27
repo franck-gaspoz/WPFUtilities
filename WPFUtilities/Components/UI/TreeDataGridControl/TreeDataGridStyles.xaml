@@ -38,7 +38,7 @@
                                 To="{StaticResource ExpandCollapseTogglePathUnselectedColor}"
                                 AccelerationRatio="1" 
                                 Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                FillBehavior="HoldEnd">
+                                FillBehavior="Stop">
                             </ColorAnimation>
                         </Storyboard>
                     </BeginStoryboard>
@@ -59,7 +59,7 @@
                                 To="{StaticResource ExpandCollapseTogglePathMouseOverColor}"
                                 AccelerationRatio="1" 
                                 Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                FillBehavior="HoldEnd">
+                                FillBehavior="Stop">
                             </ColorAnimation>
                         </Storyboard>
                     </BeginStoryboard>
@@ -126,12 +126,11 @@
                             >
                             <Path.Fill>
                                 <SolidColorBrush>
-                                    <!--Color="{Binding IsSelected,Converter={x:Static local:RowSelectedStateToExpandCollapseTogglePathColorConverter.Instance}}"-->
                                     <SolidColorBrush.Color>
                                         <MultiBinding Converter="{x:Static local:RowSelectedStateToExpandCollapseTogglePathColorConverter.Instance}">
                                             <Binding Path="." RelativeSource="{RelativeSource AncestorType=DataGridRow,Mode=FindAncestor}"/>
                                             <Binding Path="."/>
-                                            <Binding Path="IsSelected"/>
+                                            <Binding Path="IsSelected" UpdateSourceTrigger="PropertyChanged"/>
                                         </MultiBinding>
                                     </SolidColorBrush.Color>
                                 </SolidColorBrush>
@@ -149,12 +148,11 @@
                             >
                             <Path.Fill>
                                 <SolidColorBrush>
-                                    <!-- Color="{Binding IsSelected,Converter={x:Static local:RowSelectedStateToExpandCollapseTogglePathColorConverter.Instance}}" -->
                                     <SolidColorBrush.Color>
                                         <MultiBinding Converter="{x:Static local:RowSelectedStateToExpandCollapseTogglePathColorConverter.Instance}">
                                             <Binding Path="." RelativeSource="{RelativeSource AncestorType=DataGridRow,Mode=FindAncestor}"/>
                                             <Binding Path="."/>
-                                            <Binding Path="IsSelected"/>
+                                            <Binding Path="IsSelected" UpdateSourceTrigger="PropertyChanged"/>
                                         </MultiBinding>
                                     </SolidColorBrush.Color>
                                 </SolidColorBrush>

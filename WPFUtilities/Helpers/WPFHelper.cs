@@ -150,6 +150,32 @@ namespace WPFUtilities.Helpers
         }
 
         /// <summary>
+        /// find a visual child having name and type T
+        /// </summary>
+        /// <param name="depencencyObject">from object</param>
+        /// <param name="name">lookup name</param>
+        /// <typeparam name="T">expected type</typeparam>
+        /// <returns>object or null</returns>
+        public static T FindByNameInVisualTree<T>(DependencyObject depencencyObject, string name)
+            where T : FrameworkElement
+        {
+            if (depencencyObject != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depencencyObject); ++i)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depencencyObject, i);
+                    if (child is T result && result.Name == name)
+                        return result;
+                    
+                    var r = FindByNameInVisualTree<T>(child, name);
+                    if (r != null)
+                        return r;                    
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
         /// find elements in logicical tree
         /// </summary>
         /// <param name="obj">from object</param>

@@ -4,8 +4,11 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media;
+using System.Windows.Shapes;
 
 using WPFUtilities.ComponentModels;
+using WPFUtilities.Extensions.Reflections;
+using WPFUtilities.Helpers;
 
 using app = System.Windows.Application;
 
@@ -18,8 +21,6 @@ namespace WPFUtilities.Components.UI.TreeDataGridControl
         SingletonService<RowSelectedStateToExpandCollapseTogglePathColorConverter>,
         IMultiValueConverter
     {
-        static readonly Color FallbackColor = Color.FromRgb(255, 0, 0);
-
         /// <summary>
         /// convert from bool to color
         /// </summary>
@@ -41,23 +42,14 @@ namespace WPFUtilities.Components.UI.TreeDataGridControl
                 var isSelected = (bool)values[2];
                 var color =
                     app.Current.TryFindResource(
-                        !isSelected ? 
-                            "GlyphColor" : 
-                            "InvertedGlyphColor")
-                    ?? FallbackColor;
-                /*
-                var style =
-                    (Style)app.Current.TryFindResource(
-                        !isSelected ? 
-                            "ExpandCollapseTogglePathUnselectedStyle" : 
-                            "ExpandCollapseTogglePathSelectedStyle");
-                row.Style = style;
-                */
+                        !isSelected ?
+                            "GlyphColor" :
+                            "InvertedGlyphColor");                
                 return color;
             }
             catch
             {
-                return FallbackColor;
+                return null;
             }
         }
 
