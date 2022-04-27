@@ -49,6 +49,38 @@ namespace WPFUtilities.Components.UI
 
         #endregion
 
+        #region tree data grid cell style key
+
+        /// <summary>
+        /// get tree data grid cell style key
+        /// </summary>
+        /// <param name="dependencyObject">dependency object</param>
+        /// <returns>tree data grid cell style key</returns>
+        public static string GetTreeDataGridCellStyleKey(DependencyObject dependencyObject) => (string)dependencyObject.GetValue(TreeDataGridCellStyleKeyProperty);
+
+        /// <summary>
+        /// set tree data grid cell style key
+        /// </summary>
+        /// <param name="dependencyObject">dependency Object</param>
+        /// <param name="TreeDataGridCellStyleKey">tree data grid cell style key</param>
+        public static void SetTreeDataGridCellStyleKey(DependencyObject dependencyObject, string TreeDataGridCellStyleKey)
+        {
+            if (TreeDataGridCellStyleKeyProperty == null) return;
+            dependencyObject.SetValue(TreeDataGridCellStyleKeyProperty, TreeDataGridCellStyleKey);
+        }
+
+        /// <summary>
+        /// tree data grid cell style key property
+        /// </summary>
+        public static readonly DependencyProperty TreeDataGridCellStyleKeyProperty =
+            DependencyObjectExtensions.Register(
+                "TreeDataGridCellStyleKey", 
+                typeof(string), 
+                typeof(DataGridControlType), 
+                new PropertyMetadata("TreeDataGrid_TreeCell"));
+
+        #endregion
+
         static void TreeColumnNameChanged(
             DependencyObject dependencyObject,
             DependencyPropertyChangedEventArgs eventArgs)
@@ -66,7 +98,8 @@ namespace WPFUtilities.Components.UI
                 }
 
                 var cellDataTemplate = (DataTemplate)System.Windows.Application.Current
-                    .FindResource("TreeDataGrid_TreeCell");
+                    .FindResource(
+                        datagrid.GetValue(TreeDataGridCellStyleKeyProperty));
                 var name = datagrid.GetValue<string>(TreeColumnNameProperty);
 
                 // search by name in custom column type

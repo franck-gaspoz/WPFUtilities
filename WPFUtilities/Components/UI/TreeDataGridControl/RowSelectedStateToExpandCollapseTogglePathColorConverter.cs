@@ -38,17 +38,23 @@ namespace WPFUtilities.Components.UI.TreeDataGridControl
             try
             {
                 var row = (DataGridRow)values[0];
+                var datagrid = WPFHelper.FindVisualAncestor<System.Windows.Controls.DataGrid>(row);
+                var glyphColorResourceKey = datagrid.GetValue(TreeDataGrid.GlyphColorResourceKeyProperty);
+                var invertedGlyphColorResourceKey = datagrid.GetValue(TreeDataGrid.InvertedGlyphColorResourceKeyProperty);
                 var rowViewModel = (ITreeDataGridRowViewModel)values[1];
                 var isSelected = (bool)values[2];
                 var color =
                     app.Current.TryFindResource(
                         !isSelected ?
-                            "GlyphColor" :
-                            "InvertedGlyphColor");                
+                            glyphColorResourceKey :
+                            invertedGlyphColorResourceKey);                
                 return color;
             }
-            catch
+            catch (Exception ex)
             {
+#if DEBUG
+                System.Console.Error.WriteLine(ex.Message);
+#endif
                 return null;
             }
         }

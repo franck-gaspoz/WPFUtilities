@@ -57,6 +57,52 @@ namespace WPFUtilities.Components.UI
 
         #endregion
 
+        #region GlyphColorResourceKey
+
+        /// <summary>
+        /// glyph color resource key
+        /// </summary>
+        public string GlyphColorResourceKey
+        {
+            get { return (string)GetValue(GlyphColorResourceKeyProperty); }
+            set { SetValue(GlyphColorResourceKeyProperty, value); }
+        }
+
+        /// <summary>
+        /// glyph color resource key property
+        /// </summary>
+        public static readonly DependencyProperty GlyphColorResourceKeyProperty =
+            DependencyObjectExtensions.Register(
+                "GlyphColorResourceKey", 
+                typeof(string), 
+                typeof(TreeDataGrid),
+                new PropertyMetadata("GlyphColor"));
+
+        #endregion
+
+        #region InvertedGlyphColorResourceKey
+
+        /// <summary>
+        /// inverted glyph color resource key
+        /// </summary>
+        public string InvertedGlyphColorResourceKey
+        {
+            get { return (string)GetValue(InvertedGlyphColorResourceKeyProperty); }
+            set { SetValue(InvertedGlyphColorResourceKeyProperty, value); }
+        }
+
+        /// <summary>
+        /// inverted glyph color resource key property
+        /// </summary>
+        public static readonly DependencyProperty InvertedGlyphColorResourceKeyProperty =
+            DependencyObjectExtensions.Register(
+                "InvertedGlyphColorResourceKey",
+                typeof(string),
+                typeof(TreeDataGrid),
+                new PropertyMetadata("InvertedGlyphColor"));
+
+        #endregion
+
         /// <summary>
         /// creates a new instance
         /// </summary>
