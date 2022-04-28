@@ -21,8 +21,16 @@
                   SelectedItem="{Binding SelectedItem}"
                   TreeColumnPath="Name"
                   TreeColumnName="Host"
+                  GlyphColorResourceKey="MyGlyphColor"
+                  InvertedGlyphColorResourceKey="MyInvertedGlyphColor"
                   >
-
+            <!-- how to: change toggle button colors:
+            <ui:TreeDataGrid.Resources>
+                <Color x:Key="MyGlyphColor">Magenta</Color>
+                <Color x:Key="MyInvertedGlyphColor">LightGreen</Color>
+            </ui:TreeDataGrid.Resources>
+            -->
+            
             <DataGrid.Columns>
                 
                 <dge:DataGridTemplateColumn Header="Host" Name="Host"/>

@@ -44,7 +44,7 @@ namespace WPFUtilities.Components.UI.TreeDataGridControl
                 var rowViewModel = (ITreeDataGridRowViewModel)values[1];
                 var isSelected = (bool)values[2];
                 var color =
-                    app.Current.TryFindResource(
+                    datagrid.TryFindResource(
                         !isSelected ?
                             glyphColorResourceKey :
                             invertedGlyphColorResourceKey);                
