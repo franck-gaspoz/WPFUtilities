@@ -21,10 +21,10 @@
                   SelectedItem="{Binding SelectedItem}"
                   TreeColumnPath="Name"
                   TreeColumnName="Host"
-                  GlyphColorResourceKey="MyGlyphColor"
-                  InvertedGlyphColorResourceKey="MyInvertedGlyphColor"
                   >
             <!-- how to: change toggle button colors:
+            GlyphColorResourceKey="MyGlyphColor"
+            InvertedGlyphColorResourceKey="MyInvertedGlyphColor"
             <ui:TreeDataGrid.Resources>
                 <Color x:Key="MyGlyphColor">Magenta</Color>
                 <Color x:Key="MyInvertedGlyphColor">LightGreen</Color>
