@@ -5,13 +5,11 @@
     xmlns:converters="clr-namespace:WPFUtilities.Converters"
     xmlns:local="clr-namespace:WPFUtilities.Components.UI.TreeDataGridControl"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-
+    
     <Color x:Key="ExpandCollapseTogglePathMouseOverColor">#96d9f9</Color>
-    <!-- overrided by TreeDataGrid.InvertedGlyphColorResourceKey.Value (default InvertedGlyphColor) -->
-    <Color x:Key="ExpandCollapseTogglePathSelectedColor">White</Color>
     <!-- overrided by TreeDataGrid.GlyphColorResourceKey.Value (default GlyphColor) -->
     <Color x:Key="ExpandCollapseTogglePathUnselectedColor">Black</Color>
-
+                  
     <Style x:Key="ExpandCollapseTogglePathUnselectedStyle">
         <Style.Triggers>
             <EventTrigger RoutedEvent="Path.MouseEnter">
@@ -41,43 +39,6 @@
                                 AccelerationRatio="1" 
                                 Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
                                 FillBehavior="Stop">
-                            </ColorAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger.Actions>
-            </EventTrigger>
-        </Style.Triggers>
-    </Style>
-
-    <Style x:Key="ExpandCollapseTogglePathSelectedStyle">
-        <Style.Triggers>
-            <EventTrigger RoutedEvent="Path.MouseEnter">
-                <EventTrigger.Actions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation 
-                                AutoReverse="False" 
-                                Duration="0:0:0.050" 
-                                To="{StaticResource ExpandCollapseTogglePathMouseOverColor}"
-                                AccelerationRatio="1" 
-                                Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                FillBehavior="Stop">
-                            </ColorAnimation>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger.Actions>
-            </EventTrigger>
-            <EventTrigger RoutedEvent="Path.MouseLeave">
-                <EventTrigger.Actions>
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <ColorAnimation 
-                                AutoReverse="False" 
-                                Duration="0:0:0.050" 
-                                To="{StaticResource ExpandCollapseTogglePathSelectedColor}"
-                                AccelerationRatio="1" 
-                                Storyboard.TargetProperty="(Path.Fill).(SolidColorBrush.Color)"
-                                FillBehavior="HoldEnd">
                             </ColorAnimation>
                         </Storyboard>
                     </BeginStoryboard>
